@@ -1,0 +1,7 @@
+{
+  "basic": ["next:media"],
+  "redirects": [
+  ],
+  "rewrites": [
+  ]
+}
