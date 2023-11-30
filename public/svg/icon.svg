@@ -1,0 +1,14 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-heart" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M27.787 6.147c-1.327-1.328-3.161-2.149-5.187-2.149s-3.859 0.821-5.187 2.149l-1.413 1.413-1.413-1.413c-1.327-1.327-3.161-2.148-5.187-2.148-4.051 0-7.335 3.284-7.335 7.335 0 2.026 0.821 3.859 2.148 5.187l11.787 11.787 11.787-11.787c1.328-1.327 2.149-3.161 2.149-5.187s-0.821-3.859-2.149-5.187l-0-0z"></path>
+</symbol>
+<symbol id="icon-tag" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M27.453 17.88l-9.56 9.56c-0.483 0.483-1.15 0.782-1.887 0.782s-1.404-0.299-1.887-0.782l-0-0-11.453-11.44v-13.333h13.333l11.453 11.453c0.479 0.482 0.775 1.146 0.775 1.88s-0.296 1.398-0.776 1.88l0-0z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M9.333 9.333h0.013"></path>
+</symbol>
+<symbol id="icon-map" viewBox="0 0 24 24">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle
+</symbol>
+</defs>
+</svg>
