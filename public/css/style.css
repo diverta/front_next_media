@@ -714,7 +714,7 @@ table {
       font-size: .95em;
       -webkit-transition: var(--transition-seconds) color;
       transition: var(--transition-seconds) color; }
-      .l-header__nav__list__item a:hover {
+      .l-header__nav__list__item a.current, .l-header__nav__list__item a:hover {
         color: var(--color-primary); }
     .l-header__nav__options__button {
       padding: 0.75em var(--spacing);
@@ -1327,7 +1327,7 @@ table {
     height: calc( var(--font-size-h1) + (var(--spacing-vertical-pc) * 2) + var(--spacing)  + var(--font-size-x-small)  + var(--font-size-small));
     content: ""; }
   .c-page-title::before {
-    background: url(/files/user/assets/images/top-hero.png) no-repeat center;
+    background: url(../images/top-hero.png) no-repeat center;
     background-size: cover;
     opacity: .7;
     z-index: -2; }

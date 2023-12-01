@@ -4,16 +4,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>トップページ</title>
-<link rel="stylesheet" href="css/style.css" media="all" title="no title" charset="utf-8">
-<script src="js/scripts.js" charset="utf-8"></script>
+<title>ショッピング</title>
+<link rel="stylesheet" href="../css/style.css" media="all" title="no title" charset="utf-8">
+<script src="../js/scripts.js" charset="utf-8"></script>
 </head>
 <body>
  
-<header class="l-header is-top" data-js="header-scroll">
+<header class="l-header">
   <div class="l-header__inner">
     <div class="l-header__logo">
-      <a href="/"><img src="images/logo.png" alt="Company Name"></a>
+      <a href="/"><img src="../images/logo.png" alt="Company Name"></a>
     </div>
     <nav class="l-header__nav">
       <button type="button" class="l-header__nav__toggle">
@@ -26,7 +26,7 @@
       <div class="l-header__nav__inner">
         <ul class="l-header__nav__list">
           <li class="l-header__nav__list__item"><a href="/article/index.html">FOOD</a></li>
-          <li class="l-header__nav__list__item"><a href="/article/index.html">SHOPPING</a></li>
+          <li class="l-header__nav__list__item"><a href="/article/index.html" class="current">SHOPPING</a></li>
           <li class="l-header__nav__list__item"><a href="/article/index.html">SIGHTSEEING</a></li>
           <li class="l-header__nav__list__item"><a href="/article/index.html">EVENT</a></li>
           <li class="l-header__nav__list__item"><a href="/article/index.html">CULTURE</a></li>
@@ -53,7 +53,7 @@
           -->
           <!--ログイン時-->
           <p class="is-sp c-text--small u-mt-0">ようこそ！クロコさん</p>
-          <a href="/member/mypage/index.html" class="l-header__nav__options__button c-button">マイページ</a
+          <a href="/member/mypage/" class="l-header__nav__options__button c-button">マイページ</a
           >
           <button
             type="button"
@@ -95,29 +95,29 @@
     </nav>
   </div>
 </header>
-<div class="l-container is-top">
+<div class="l-container">
 
-<section class="c-hero">
-  <div class="c-hero__body">
-    <p class="c-hero__body__lead">Let's Travel and Enjoy!</p>
-    <p class="c-hero__body__text">
-      旅に出よう！ホテル・グルメ・観光スポット お役立ち情報が満載！
-    </p>
+<nav class="l-breadcrumb is-pc">
+  <div class="l-container--large">
+    <ul>
+      <li>
+        <a href="/">トップ</a>
+      </li>
+      <li>ショッピング</li>
+    </ul>
   </div>
-</section>
+</nav>
+<div class="c-page-title">
+  <div class="l-container--large">
+    <h1 class="c-page-title__heading">ショッピング</h1>
+    <p class="c-heading--sub">Shopping</p>
+  </div>
+</div>
 
-<div class="l-container--col-2">
+<div class="l-container--col-2 l-container--contents">
   <div class="l-container--col-2__main">
-    <section class="c-newInfo">
-      <div class="u-display-flex u-display-flex-align-items-center u-mb-40">
-        <div class="u-display-flex-grow-1">
-          <h2 class="c-heading--lv1">新着情報</h2>
-          <p class="c-heading--sub">New articles</p>
-        </div>
-        <div class="u-display-flex-shrink-0">
-          <a href="/article/index.html" class="c-button">View All</a>
-        </div>
-      </div>
+    <section class="c-article__list">
+      <h2 class="c-heading--lv2 u-mb-50">ショッピング<span>記事一覧</span></h2>
       <ul class="c-card-list c-card-list--col-3">
         <li class="c-card__item">
   <a href="/article/detail.html" class="c-card">
@@ -131,7 +131,7 @@
     <div class="c-card__bottom">
       <div class="c-tag">
         <svg class="c-tag__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-tag"/>
+          <use xlink:href="../svg/icon.svg#icon-tag"/>
         </svg>
         <ul class="c-tag-card__list">
           <li class="c-tag-card__item">大阪</li>
@@ -141,7 +141,7 @@
       </div>
       <p class="c-favorite">
         <svg class="c-favorite__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-heart"/>
+          <use xlink:href="../svg/icon.svg#icon-heart"/>
         </svg>
         <span>5</span>
       </p>
@@ -160,7 +160,7 @@
     <div class="c-card__bottom">
       <div class="c-tag">
         <svg class="c-tag__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-tag"/>
+          <use xlink:href="../svg/icon.svg#icon-tag"/>
         </svg>
         <ul class="c-tag-card__list">
           <li class="c-tag-card__item">香港</li>
@@ -170,7 +170,7 @@
       </div>
       <p class="c-favorite">
         <svg class="c-favorite__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-heart"/>
+          <use xlink:href="../svg/icon.svg#icon-heart"/>
         </svg>           
         <span>5</span>
       </p>
@@ -189,7 +189,7 @@
     <div class="c-card__bottom">
       <div class="c-tag">
         <svg class="c-tag__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-tag"/>
+          <use xlink:href="../svg/icon.svg#icon-tag"/>
         </svg>
         <ul class="c-tag-card__list">
           <li class="c-tag-card__item">大阪</li>
@@ -199,7 +199,7 @@
       </div>
       <p class="c-favorite">
         <svg class="c-favorite__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-heart"/>
+          <use xlink:href="../svg/icon.svg#icon-heart"/>
         </svg>
         <span>5</span>
       </p>
@@ -218,7 +218,7 @@
     <div class="c-card__bottom">
       <div class="c-tag">
         <svg class="c-tag__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-tag"/>
+          <use xlink:href="../svg/icon.svg#icon-tag"/>
         </svg>
         <ul class="c-tag-card__list">
           <li class="c-tag-card__item">香港</li>
@@ -228,7 +228,7 @@
       </div>
       <p class="c-favorite">
         <svg class="c-favorite__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-heart"/>
+          <use xlink:href="../svg/icon.svg#icon-heart"/>
         </svg>           
         <span>5</span>
       </p>
@@ -247,7 +247,7 @@
     <div class="c-card__bottom">
       <div class="c-tag">
         <svg class="c-tag__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-tag"/>
+          <use xlink:href="../svg/icon.svg#icon-tag"/>
         </svg>
         <ul class="c-tag-card__list">
           <li class="c-tag-card__item">大阪</li>
@@ -257,7 +257,7 @@
       </div>
       <p class="c-favorite">
         <svg class="c-favorite__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-heart"/>
+          <use xlink:href="../svg/icon.svg#icon-heart"/>
         </svg>
         <span>5</span>
       </p>
@@ -276,7 +276,7 @@
     <div class="c-card__bottom">
       <div class="c-tag">
         <svg class="c-tag__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-tag"/>
+          <use xlink:href="../svg/icon.svg#icon-tag"/>
         </svg>
         <ul class="c-tag-card__list">
           <li class="c-tag-card__item">香港</li>
@@ -286,7 +286,7 @@
       </div>
       <p class="c-favorite">
         <svg class="c-favorite__icon c-svg">
-          <use xlink:href="svg/icon.svg#icon-heart"/>
+          <use xlink:href="../svg/icon.svg#icon-heart"/>
         </svg>           
         <span>5</span>
       </p>
@@ -294,94 +294,15 @@
   </a>
 </li>
       </ul>
-    </section>
 
-    <section class="c-box l-container--contents">
-      <div class="c-heading--box__outer">
-          <h2 class="c-heading--box -en">RANKING</h2>
-          <p class="c-heading--boxSub">お気に入りランキング</p>
-      </div>
-      <ul class="c-card-list c-card-list--col-2">
-        <li class="c-card__item">
-          <a href="/ltd-news/detail/13" class="c-card">
-            <span class="c-card__image__badge02">1</span>
-            <div class="c-card__image">
-              <img alt="dummy picture" src="https://placehold.jp/333/ffffff/300x300.png">
-            </div>
-            <div class="c-card__info">
-              <h3 class="c-card__heading">台湾のおすすめホテル5選！</h3>
-              <p class="c-card__text">観光に便利な大人気ホテルをご紹介。宿泊体験レポレートも。</p>
-              <div class="c-card__bottom">
-                <p class="c-card__area">
-                  <svg class="c-map__icon c-svg">
-                    <use xlink:href="svg/icon.svg#icon-map"/>
-                  </svg>台湾
-                </p>
-                <p class="c-card__category">CULTURE</p>
-              </div>
-            </div>
-          </a>
-        </li>
-        <li class="c-card__item">
-          <a href="/ltd-news/detail/13" class="c-card">
-            <span class="c-card__image__badge02">2</span>
-            <div class="c-card__image">
-              <img alt="dummy picture" src="https://placehold.jp/333/ffffff/300x300.png">
-            </div>
-            <div class="c-card__info">
-              <h3 class="c-card__heading">台湾のおすすめホテル5選！</h3>
-              <p class="c-card__text">観光に便利な大人気ホテルをご紹介。宿泊体験レポレートも。</p>
-              <div class="c-card__bottom">
-                <p class="c-card__area">
-                  <svg class="c-map__icon c-svg">
-                    <use xlink:href="svg/icon.svg#icon-map"/>
-                  </svg>韓国
-                </p>
-                <p class="c-card__category">EVENT</p>
-              </div>
-            </div>
-          </a>
-        </li>
-        <li class="c-card__item">
-          <a href="/ltd-news/detail/13" class="c-card">
-            <span class="c-card__image__badge02">3</span>
-            <div class="c-card__image">
-               <img alt="dummy picture" src="https://placehold.jp/333/ffffff/300x300.png">
-            </div>
-            <div class="c-card__info">
-              <h3 class="c-card__heading">台湾のおすすめホテル5選！</h3>
-              <p class="c-card__text">観光に便利な大人気ホテルをご紹介。宿泊体験レポレートも。</p>
-              <div class="c-card__bottom">
-                <p class="c-card__area">
-                  <svg class="c-map__icon c-svg">
-                    <use xlink:href="svg/icon.svg#icon-map"/>
-                  </svg>北海道
-                </p>
-                <p class="c-card__category">SIGHTSEEING</p>
-              </div>
-            </div>
-          </a>
-        </li>
-        <li class="c-card__item">
-          <a href="/ltd-news/detail/13" class="c-card">
-            <span class="c-card__image__badge02">4</span> 
-            <div class="c-card__image">
-              <img alt="dummy picture" src="https://placehold.jp/333/ffffff/300x300.png">
-            </div>
-            <div class="c-card__info">
-              <h3 class="c-card__heading">台湾のおすすめホテル5選！</h3>
-              <p class="c-card__text">観光に便利な大人気ホテルをご紹介。宿泊体験レポレートも。</p>
-              <div class="c-card__bottom">
-                <p class="c-card__area">
-                  <svg class="c-map__icon c-svg">
-                    <use xlink:href="svg/icon.svg#icon-map"/>
-                  </svg>韓国
-                </p>
-                <p class="c-card__category">SHOPPING</p>
-              </div>
-            </div>
-          </a>
-        </li>
+      <ul class="c-pager">
+        <li class="c-pager__item"><a class="c-pager__link" href="/DUMMY">&laquo;</a></li>
+        <li class="c-pager__item"><a class="c-pager__link" href="/DUMMY">&lsaquo;</a></li>
+        <li class="c-pager__item"><a class="c-pager__link" href="/DUMMY">1</a></li>
+        <li class="c-pager__item"><a class="c-pager__link is-current" href="/DUMMY">2</a></li>
+        <li class="c-pager__item"><a class="c-pager__link" href="/DUMMY">3</a></li>
+        <li class="c-pager__item"><a class="c-pager__link" href="/DUMMY">&rsaquo;</a></li>
+        <li class="c-pager__item"><a class="c-pager__link" href="/DUMMY">&raquo;</a></li>
       </ul>
     </section>
   </div>
