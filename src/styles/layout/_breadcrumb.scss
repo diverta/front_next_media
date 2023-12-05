@@ -1,0 +1,30 @@
+.l-breadcrumb {
+  padding: var(--spacing-large) 0 0;
+  font-size: var(--font-size-x-small);
+  ul {
+    display: flex;
+    li {
+      display: flex;
+      align-items: center;
+      &:not(:last-child) {
+        &::after {
+          flex: 0 0 auto;
+          display: block;
+          width: .4em;
+          height: .4em;
+          margin: 0 1em;
+          border-top: 1px solid;
+          border-right: 1px solid;
+          transform: rotate(45deg);
+          content: "";
+        }
+      }
+      a {
+        transition: var(--transition-seconds);
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

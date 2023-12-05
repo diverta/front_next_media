@@ -1,0 +1,115 @@
+@use "../media_query" as *;
+
+.l-container {
+  @include pc() {
+    &:not(.is-top) {
+      margin-top: var(--header-height-pc);
+    }
+    padding-bottom: calc(var(--spacing-vertical-pc) * 1.5);
+  }
+  @include sp() {
+    margin-top: var(--header-height-sp);
+    padding-bottom: var(--spacing-vertical-sp);
+  }
+  &--huge {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    @include pc() {
+      min-width: 1360px;
+      padding-right: var(--spacing-horizontal-pc);
+      padding-left: var(--spacing-horizontal-pc);
+    }
+    @include sp() {
+      padding-right: var(--spacing-horizontal-sp);
+      padding-left: var(--spacing-horizontal-sp);
+    }
+  }
+  &--large {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    @include pc() {
+      max-width: 1200px;
+      padding-right: var(--spacing-horizontal-pc);
+      padding-left: var(--spacing-horizontal-pc);
+    }
+    @include sp() {
+      padding-right: var(--spacing-horizontal-sp);
+      padding-left: var(--spacing-horizontal-sp);
+    }
+  }
+  &--small {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-base);
+    @include pc() {
+      max-width: 560px;
+      padding: var(--spacing-horizontal-pc);
+    }
+    @include sp() {
+      padding: var(--spacing-horizontal-sp);
+      width: calc(100% - var(--spacing-horizontal-sp) * 2);
+    }
+  }
+  &--col-2 {
+    @extend .l-container--large;
+    @include pc() {
+      display: flex;
+    }
+    &__main {
+      position: relative;
+      @include pc() {
+        width: calc(100% - 240px - var(--spacing-horizontal-pc) * 2);
+      }
+      @include sp() {
+        width: 100%;
+      }
+    }
+    &__side {
+      position: relative;
+      @include pc() {
+        width: 240px;
+        margin-left: calc( var(--spacing-horizontal-pc) * 2 );
+      }
+      @include sp() {
+        width: 100%;
+        margin-top: var(--spacing-vertical-sp);
+      }
+    }
+  }
+
+  &--contents {
+    @include pc() {
+      margin-top: var(--spacing-vertical-pc);
+    }
+    @include sp() {
+      margin-top: var(--spacing-vertical-sp);
+      &:not(:last-of-type) {
+        padding-bottom: var(--spacing-vertical-sp);
+      }
+    }
+    &-side {
+      &:not(:first-child) {
+        @include pc() {
+          margin-top: var(--spacing-vertical-side-pc);
+        }
+        @include sp() {
+          margin-top: var(--spacing-vertical-sp);
+        }
+      }
+    }
+  }
+}
+
+
+[class*=" l-container"],
+[class^="l-container"] {
+  &:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}

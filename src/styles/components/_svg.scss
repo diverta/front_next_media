@@ -1,0 +1,10 @@
+.c-svg {
+  stroke-width: 2;
+  fill: none;
+  stroke: var(--color-base);
+  width: var(--font-size-base);
+  height: var(--font-size-base);
+  &.c-map__icon {
+    margin-right: .25em;
+  }
+}

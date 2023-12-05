@@ -1,0 +1,44 @@
+@use "../media_query" as *;
+
+.c-pager {
+		text-align: center;
+    margin-top: var(--spacing-large);
+	&__item {
+    display: inline-block;
+    @include pc() {
+      width: 42px;
+      height: 42px;
+      margin: 0 5px;
+    }
+    @include sp() {
+      width: 36px;
+      height: 36px;
+    }
+	}
+	&__link {
+		display: block;
+		transition: .4s border, .4s background-color, .4s color;
+    text-decoration: none;
+    border-radius: 100%;
+    box-sizing: border-box;
+    color: #333;
+    font-weight: bold;
+    line-height: 1;
+
+    @include pc() {
+      width: 42px;
+      height: 42px;
+      padding: 11px 0;
+    }
+    @include sp() {
+      width: 36px;
+      height: 36px;
+      padding: 8px 0;
+    }
+		&:hover, &.is-current {
+			background-color: var(--color-primary);
+			color: var(--color-white);
+			text-decoration: none;
+		}
+	}
+}

@@ -1,0 +1,28 @@
+.c-alert {
+  border: 1px solid;
+  margin: var(--spacing-large) 0;
+  padding: var(--spacing);
+  border-radius: var(--border-radius);
+  &--error {
+    border-color: var(--color-error);
+  }
+  &--success {
+    border-color: var(--color-success);
+  }
+  &__icon {
+    margin-right: var(--spacing);
+  }
+  &__heading {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-weight: bold;
+  }
+  &__message {
+    margin: var(--spacing-small) 0;
+    font-size: var(--font-size-small);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

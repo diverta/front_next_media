@@ -1,0 +1,235 @@
+@use "../media_query" as *;
+
+.l-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  @include pc() {
+    &:not(.is-top) {
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-border);
+    }
+    &.-scrolled {
+      background-color: rgba(257, 257, 257, 0.9);
+      border-bottom: 1px solid var(--color-border);
+      transition: var(--transition-seconds);
+    }
+  }
+  @include sp() {
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+  &__inner {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include pc() {
+      height: var(--header-height-pc);
+      padding: var(--spacing) var(--spacing-horizontal-pc);
+    }
+    @include sp() {
+      height: var(--header-height-sp);
+      padding: var(--spacing-small) var(--spacing-horizontal-sp);
+    }
+  }
+  &__logo {
+    flex: 0 1 auto;
+    min-width: 100px;
+    @include pc() {
+      max-width: 190px;
+    }
+    a { 
+      display: block;
+      transition: var(--transition-seconds);
+      &:hover {
+        opacity: .8;
+      }
+    }
+    img,
+    svg {
+      display: block;
+      width:  auto !important;
+      position: relative !important;
+      @include sp() {
+        max-height: calc(var(--header-height-sp) - var(--spacing));
+      }
+    }
+  }
+  &__nav {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    &__toggle {
+      @include pc() { display: none; }
+      height: 3em;
+      padding: var(--spacing) 0;
+      background-color: transparent;
+      &__icon {
+        position: relative;
+        width: 1.5em;
+        height: 100%;
+        margin: auto;
+        span {
+          position: absolute;
+          right: 0;
+          display: block;
+          width: 100%;
+          border-bottom: 2px solid var(--color-dark-gray);
+          &:first-child { top: 0; }
+          &:nth-child(2) { top: 50%; }
+          &:last-child { top: 100%; }
+          .l-header.is-open & {
+            top: 50%;
+            &:first-child {
+              transform: rotate(45deg);
+            }
+            &:last-child {
+              transform: rotate(135deg);
+            }
+            &:nth-child(2) { display: none; }
+          }
+        }
+      }
+    }
+    &__inner {
+      @include pc() {
+        display: flex;
+        align-items: center;
+      }
+      @include sp() {
+        position: fixed;
+        top: var(--header-height-sp);
+        right: -100vw;
+        width: 100%;
+        height: calc( 100% - var(--header-height-sp) );
+        padding-top: var(--spacing-horizontal-sp);
+        background-color: var(--color-white);
+        z-index: 100;
+        transition: var(--transition-seconds) ease-out;
+        .l-header.is-open & {
+          right: 0;
+        }
+      }
+    }
+    &__list {
+      @include pc() {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        .is-top & {
+          color: var(--color-white);
+        }
+        .is-top.-scrolled & {
+          color: var(--color-base);
+        }
+      }
+      &__item {
+        a {
+          display: block;
+          padding: var(--spacing);
+          font-size: .95em;
+          transition: var(--transition-seconds) color;
+          @include sp() {
+            padding: var(--spacing) var(--spacing-horizontal-sp);
+            font-weight: bold;
+          }
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+    &__options {
+      @include pc() {
+        margin-left: var(--spacing);
+        display: flex;
+      }
+      @include sp() {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: var(--spacing-horizontal-sp);
+        p {
+          flex: 0 0 100%;
+        }
+      }
+      &__button {
+        padding: .75em var(--spacing);
+        border: 1px solid var(--color-base);
+        border-radius: var(--border-radius);
+        background-color: var(--color-base);
+        color: var(--color-white);
+        font-size: var(--font-size-x-small);
+        transition: var(--transition-seconds) border-color, var(--transition-seconds) background-color, var(--transition-seconds) color;
+        @include sp() {
+          width: 47%;
+          justify-content: center;
+        }
+        svg {
+          margin-left: var(--spacing-small);
+          transition: var(--transition-seconds);
+        }
+        &:hover {
+          color: var(--color-base);
+          background-color: var(--color-white);
+          svg path { stroke: var(--color-base); }
+        }
+        &.-regist, &.-logout {
+          @include pc() {
+            display: none;
+          }
+        }
+      }
+    }
+    &__search {
+      @include pc() {
+        margin-left: var(--spacing);
+      }
+      @include sp() {
+        margin-top: var(--spacing-small);
+        background-color: var(--color-beige);
+        padding: var(--spacing-horizontal-sp);
+      }
+      form {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--color-base);
+        background: var(--color-white);
+      }
+    }
+    &__searchText {
+      width: 160px;
+      height: 40px;
+      padding: 5px 15px 5px 0;
+      border: none;
+      box-sizing: border-box;
+      font-size: 1em;
+      outline: none;
+      &::placeholder {
+        color: var(--color-gray);
+      }
+    }
+    &__searchButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background-color: transparent;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      &:after {
+        width: 17px;
+        height: 17px;
+        background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cg%3E%20%3Cpath%20class%3D%22st0%22%20d%3D%22M376.324%2C312.508c49.638-78.774%2C40.238-184.326-28.306-252.871c-79.507-79.515-208.872-79.515-288.388%2C0%20c-79.507%2C79.516-79.507%2C208.873%2C0%2C288.379c68.536%2C68.544%2C174.115%2C77.935%2C252.88%2C28.306l135.668%2C135.676L512%2C448.186%20L376.324%2C312.508z%20M296.543%2C296.542c-51.121%2C51.139-134.308%2C51.139-185.439%2C0c-51.121-51.121-51.112-134.299%2C0.009-185.43%20c51.122-51.121%2C134.309-51.13%2C185.43-0.008C347.665%2C162.243%2C347.665%2C245.421%2C296.543%2C296.542z%22%20style%3D%22fill%3A%20%23222%3B%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+        background-repeat: no-repeat;
+        content: '';
+      }
+    }
+  }
+}

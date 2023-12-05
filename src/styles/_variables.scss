@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Secular+One&display=swap');
+
+:root {
+  --color-base: #222;
+  --color-primary: #d5772a;
+  --color-primary-dark: #442c16;
+  --color-error: #E63757;
+  --color-success: #21a68d;
+  --color-border: #c9ced6;
+  --color-white:  #FFFFFF;
+  --color-light-gray: #e4e9f2;
+  --color-gray: #7a869d;
+  --color-dark-gray: #2e3538;
+  --color-beige: #ede8e4;
+  --font-size-base: 1.6rem;
+  --font-size-h1: 2em;
+  --font-size-h1-sp: 1.6em;
+  --font-size-h2: 1.8em;
+  --font-size-h2-sp: 1.4em;
+  --font-size-h3: 1.3em;
+  --font-size-h3-sp: 1.2em;
+  --font-size-h4: 1.2em;
+  --font-size-h4-sp: 1.1em;
+  --font-size-medium: 1em;
+  --font-size-small: .9em;
+  --font-size-x-small: .8em ;
+  --font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', Meiryo, 'MS UI Gothic', Helvetica, Arial, sans-serif;
+  --font-en: 'Secular One', sans-serif;
+  --border-radius: 4px;
+  --border-radius-large: calc( var(--border-radius) * 2 );
+  --spacing: 1em;
+  --spacing-small: calc( var(--spacing) / 2 );
+  --spacing-large: calc( var(--spacing) * 2 );
+  --spacing-vertical-pc: 70px;
+  --spacing-horizontal-pc: 35px;
+  --spacing-vertical-side-pc: 50px;
+  --spacing-vertical-sp: 35px;
+  --spacing-horizontal-sp: 20px;
+  --transition-seconds: 0.4s;
+  --header-height-pc: 80px;
+  --header-height-sp: 60px;
+}

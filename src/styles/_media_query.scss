@@ -1,0 +1,32 @@
+$break_point: 768px;
+
+// 以上
+@mixin min-screen($break-point) {
+   @media screen and (min-width: $break-point){
+    @content;
+  }
+}
+// 以下
+@mixin max-screen($break-point) {
+   @media screen and (max-width: $break-point){
+    @content;
+  }
+}
+// $break-point-min 以上 $break-point-max 以下
+@mixin screen($break-point-min, $break-point-max) {
+   @media screen and (min-width: $break-point-min) and (max-width: $break-point-max){
+    @content;
+  }
+}
+// var の $break_point の値+1px以上
+@mixin pc() {
+   @media screen and (min-width: $break_point){
+    @content;
+  }
+}
+// var の $break_point の値以下
+@mixin sp() {
+   @media screen and (max-width: $break_point){
+    @content;
+  }
+}
