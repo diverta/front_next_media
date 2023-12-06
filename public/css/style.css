@@ -1209,7 +1209,7 @@ table {
 .c-heading--sub {
   margin: var(--spacing-small) 0 0 0;
   color: var(--color-primary);
-  font-family: 'Secular One', sans-serif;
+  font-family: var(--font-en);
   font-size: var(--font-size-small);
   letter-spacing: .05em; }
   .c-section--dark-block .c-heading--sub {
@@ -1218,7 +1218,7 @@ table {
 .c-heading--box {
   font-weight: bold; }
   .c-heading--box.-en {
-    font-family: 'Secular One', sans-serif;
+    font-family: var(--font-en);
     letter-spacing: .05em; }
   .c-heading--boxSub {
     font-weight: bold; }
@@ -1255,7 +1255,7 @@ table {
     z-index: 100; }
     .c-hero__body__lead {
       margin: 0;
-      font-family: 'Secular One', sans-serif;
+      font-family: var(--font-en);
       font-size: 5vw;
       line-height: 1.3; }
     .c-hero__body__text {

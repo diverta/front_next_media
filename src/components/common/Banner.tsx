@@ -3,8 +3,8 @@ import Image from 'next/image'
 const Banner = () => {
   return (
 
-    <ul className="l-container--contents-side">
-      <li>
+    <ul className="l-container--contents-side c-banner__list">
+      <li className="c-banner__item">
         <a href="/">
           <Image
               alt="dummy banner"
