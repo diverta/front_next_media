@@ -4,16 +4,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ログイン</title>
-<link rel="stylesheet" href="../css/style.css" media="all" title="no title" charset="utf-8">
-<script src="../js/scripts.js" charset="utf-8"></script>
+<title>記事詳細</title>
+<link rel="stylesheet" href="../../css/style.css" media="all" title="no title" charset="utf-8">
+<script src="../../js/scripts.js" charset="utf-8"></script>
 </head>
 <body>
  
 <header class="l-header">
   <div class="l-header__inner">
     <div class="l-header__logo">
-      <a href="/"><img src="../images/logo.png" alt="Company Name"></a>
+      <a href="/mock/top.html"><img src="../../images/logo.png" alt="Company Name"></a>
     </div>
     <nav class="l-header__nav">
       <button type="button" class="l-header__nav__toggle">
@@ -25,11 +25,11 @@
       </button>
       <div class="l-header__nav__inner">
         <ul class="l-header__nav__list">
-          <li class="l-header__nav__list__item"><a href="/article/index.html">FOOD</a></li>
-          <li class="l-header__nav__list__item"><a href="/article/index.html">SHOPPING</a></li>
-          <li class="l-header__nav__list__item"><a href="/article/index.html">SIGHTSEEING</a></li>
-          <li class="l-header__nav__list__item"><a href="/article/index.html">EVENT</a></li>
-          <li class="l-header__nav__list__item"><a href="/article/index.html">CULTURE</a></li>
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html">FOOD</a></li>
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html" class="current">SHOPPING</a></li>
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html">SIGHTSEEING</a></li>
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html">EVENT</a></li>
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html">CULTURE</a></li>
         </ul>
         <div class="l-header__nav__search">
           <form action="/search/" method="GET">
@@ -41,7 +41,7 @@
         </div>
         <div class="l-header__nav__options">
           <!--未ログイン
-          <a href="/login/" class="l-header__nav__options__button u-display-flex u-display-flex-align-items-center">
+          <a href="/mock/login/" class="l-header__nav__options__button u-display-flex u-display-flex-align-items-center">
           ログイン
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 2H12.6667C13.0203 2 13.3594 2.14048 13.6095 2.39052C13.8595 2.64057 14 2.97971 14 3.33333V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H10" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -49,11 +49,11 @@
               <path d="M10 8H2" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </a>
-          <a href="/member/regist/" class="l-header__nav__options__button c-button -regist">会員登録</a>
+          <a href="/mock/member/regist/" class="l-header__nav__options__button c-button -regist">会員登録</a>
           -->
           <!--ログイン時-->
           <p class="is-sp c-text--small u-mt-0">ようこそ！クロコさん</p>
-          <a href="/member/mypage/" class="l-header__nav__options__button c-button">マイページ</a
+          <a href="/mock/member/mypage/" class="l-header__nav__options__button c-button">マイページ</a
           >
           <button
             type="button"
@@ -101,37 +101,110 @@
   <div class="l-container--large">
     <ul>
       <li>
-        <a href="/">トップ</a>
+        <a href="/mock/">トップ</a>
       </li>
-      <li>ログイン</li>
+      <li>記事詳細</li>
     </ul>
   </div>
 </nav>
-<div class="c-page-title">
-  <div class="l-container--large">
-    <h1 class="c-page-title__heading">ログイン</h1>
-    <p class="c-heading--sub">Login</p>
+
+
+<div class="l-container--col-2 c-article">
+  <div class="l-container--col-2__main">
+    <article class="c-article__detail">
+      <header>
+        <figure class="c-article__detail__mainImage">
+          <img src="https://placehold.jp/333/ffffff/1200x600.png?text=main">
+        </figure>
+        <time class="c-article__detail__date">2023/10/30</time>
+        <h1 class="c-heading--lv1">大阪・難波 人気食べ歩きスポット10選！</h1>
+        <p class="c-favorite">
+          <a href="#">
+            <svg class="c-favorite__icon c-svg -active">
+              <use xlink:href="../svg/icon.svg#icon-heart"/>
+            </svg>
+            <span>5</span>
+          </a>
+        </p>
+        <div class="c-tag">
+          <svg class="c-tag__icon c-svg">
+            <use xlink:href="../svg/icon.svg#icon-tag"/>
+          </svg>
+          <ul class="c-tag__list">
+            <li class="c-tag__item"><a href="/mock/" class="c-tag__link">大阪</a></li>
+            <li class="c-tag__item"><a href="/mock/" class="c-tag__link">スイーツ</a></li>
+            <li class="c-tag__item"><a href="/mock/" class="c-tag__link">食べ歩き</a></li>
+          </ul>
+        </div>
+      </header>
+      <div class="c-article__detail__contents">
+        <div class="c-article__detail__intro">
+          <p class="c-article__detail__intro__text">大阪の人気エリア難波。昔ながらの名店から今年イチオシのおすすめスポットまで。大阪食い倒れツアーをご紹介します。</p>
+        </div>
+        <div class="c-article__detail__block">
+          <h2>小見出し小見出し</h2>
+          <div class="c-article__detail__free">
+            <p>せっかく旅行に訪れたなら、その土地の名物料理をたくさん味わいたいですよね。今回は観光を楽しみながら味わえるグルメや豆腐やおばんざいなど歴史あるグルメが盛りだくさんの「京都」をご紹介します。京都の味を食べ歩きましょう！</p>
+          </div>
+        </div>
+        <div class="c-article__detail__block">
+          <h2>小見出し小見出し小見出し小見出し小見出し小見出し</h2>
+          <div class="c-article__detail__free">
+            <figure class="c-article__detail__image">
+              <img src="https://placehold.jp/1200x400.png">
+              <figcaption>お店の2階でイートインも可能。</figcaption>
+            </figure>
+            <p>せっかく旅行に訪れたなら、その土地の名物料理をたくさん味わいたいですよね。今回は観光を楽しみながら味わえるグルメや豆腐やおばんざいなど歴史あるグルメが盛りだくさんの「京都」をご紹介します。京都の味を食べ歩きましょう！</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="l-container--col-2__side">
+    <ul class="l-container--contents-side">
+      <li>
+        <a href="/mock/"><img src="https://placehold.jp/333/ffffff/400x400.png?text=banner"></a>
+      </li>
+    </ul>
+    <section class="l-container--contents-side">
+      <h2 class="c-heading--lv3-b">特集</h2>
+      <ul class="c-banner__list">
+        <li class="c-banner__item">
+          <a href="/mock/"><img src="https://placehold.jp/333/ffffff/400x180.png?text=special"></a>
+        </li>
+        <li class="c-banner__item">
+          <a href="/mock/"><img src="https://placehold.jp/333/ffffff/400x180.png?text=special"></a>
+        </li>
+      </ul>
+    </section>
+    <section class="l-container--contents-side">
+      <h2 class="c-heading--lv3-b">エリアから探す</h2>
+      <ul class="c-tag__list">
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">韓国</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">台湾</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">マカオ</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">香港</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">タイ</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">北海道</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">シンガポール</a></li>
+      </ul>
+    </section>
+    <section class="l-container--contents-side">
+      <h2 class="c-heading--lv3-b">キーワードから探す</h2>
+      <ul class="c-tag__list">
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">ランチ</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">世界遺産</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">神社仏閣</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">カフェ</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">スイーツ</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">女子旅</a></li>
+        <li class="c-tag__item"><a href="/mock/" class="c-tag__link">夫婦旅</a></li>
+      </ul>
+    </section>
   </div>
 </div>
 
-<div class="l-container--small l-container--contents">
-  <form class="c-form">
-    <div class="c-form-group">
-      <label for="email" class="c-form-label">メールアドレス</label>
-      <input name="email" type="email" id="email">
-    </div>
-    <div class="c-form-group">
-      <label for="password" class="c-form-label">パスワード</label>
-      <input name="password" type="password" id="password">
-    </div>
-    <div class="c-form-group">
-      <button type="submit" class="c-button--primary u-width-100">ログイン</button>
-    </div>
-    <div class="u-text-align-center u-mt-25"><a href="/member/regist/index.html" class="">会員登録</a>
-    または<a href="/login/reminder/index.html" class="">パスワードをお忘れの方</a>
-    </div>
-  </form>
-</div>
+
 
 </div><!--//l-container-->
 <footer class="l-footer">
@@ -139,13 +212,13 @@
     <nav class="l-footer__nav">
       <ul class="l-footer__nav__list -menu">
         <li>
-          <a href="/privacy/index.html">プライバシーポリシー</a>
+          <a href="/mock/privacy/index.html">プライバシーポリシー</a>
         </li>
         <li>
           <a href="#">利用規約</a>
         </li>
         <li>
-          <a href="/contact/index.html">お問い合わせ</a>
+          <a href="/mock/contact/index.html">お問い合わせ</a>
         </li>
         <li>
           <a href="#">サイトマップ</a>
@@ -261,3 +334,4 @@
 
 </body>
 </html>
+

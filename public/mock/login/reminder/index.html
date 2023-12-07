@@ -1,18 +1,19 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>会員登録</title>
-<link rel="stylesheet" href="../../css/style.css" media="all" title="no title" charset="utf-8">
-<script src="../../js/scripts.js" charset="utf-8"></script>
+<title>パスワード再発行</title>
+<link rel="stylesheet" href="../../../css/style.css" media="all" title="no title" charset="utf-8">
+<script src="../../../js/scripts.js" charset="utf-8"></script>
 </head>
 <body>
  
 <header class="l-header">
   <div class="l-header__inner">
     <div class="l-header__logo">
-      <a href="/"><img src="../../images/logo.png" alt="Company Name"></a>
+      <a href="/mock/top.html"><img src="../../../images/logo.png" alt="Company Name"></a>
     </div>
     <nav class="l-header__nav">
       <button type="button" class="l-header__nav__toggle">
@@ -24,12 +25,12 @@
       </button>
       <div class="l-header__nav__inner">
         <ul class="l-header__nav__list">
-          <li class="l-header__nav__list__item"><a href="/article/index.html">FOOD</a></li>
-          <li class="l-header__nav__list__item"><a href="/article/index.html">SHOPPING</a></li>
-          <li class="l-header__nav__list__item"><a href="/article/index.html">SIGHTSEEING</a></li>
-          <li class="l-header__nav__list__item"><a href="/article/index.html">EVENT</a></li>
-          <li class="l-header__nav__list__item"><a href="/article/index.html">CULTURE</a></li>
-        </ul> 
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html">FOOD</a></li>
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html">SHOPPING</a></li>
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html">SIGHTSEEING</a></li>
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html">EVENT</a></li>
+          <li class="l-header__nav__list__item"><a href="/mock/article/index.html">CULTURE</a></li>
+        </ul>
         <div class="l-header__nav__search">
           <form action="/search/" method="GET">
             <button type="submit" aria-label="検索" class="l-header__nav__searchButton"></button>
@@ -39,15 +40,56 @@
           </form>
         </div>
         <div class="l-header__nav__options">
-          <a href="/login/index.html" class="l-header__nav__options__button u-display-flex u-display-flex-align-items-center">
-            ログイン
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 2H12.6667C13.0203 2 13.3594 2.14048 13.6095 2.39052C13.8595 2.64057 14 2.97971 14 3.33333V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H10" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M6.66675 11.3333L10.0001 7.99996L6.66675 4.66663" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M10 8H2" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </a>
-            <a href="/member/regist/index.html" class="l-header__nav__options__button c-button -regist">会員登録</a>
+          <!--未ログイン
+          <a href="/mock/login/" class="l-header__nav__options__button u-display-flex u-display-flex-align-items-center">
+          ログイン
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2H12.6667C13.0203 2 13.3594 2.14048 13.6095 2.39052C13.8595 2.64057 14 2.97971 14 3.33333V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H10" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M6.66675 11.3333L10.0001 7.99996L6.66675 4.66663" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M10 8H2" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+          <a href="/mock/member/regist/" class="l-header__nav__options__button c-button -regist">会員登録</a>
+          -->
+          <!--ログイン時-->
+          <p class="is-sp c-text--small u-mt-0">ようこそ！クロコさん</p>
+          <a href="/mock/member/mypage/index.html" class="l-header__nav__options__button c-button">マイページ</a
+          >
+          <button
+            type="button"
+            class="-logout l-header__nav__options__button u-display-flex u-display-flex-align-items-center"
+          >
+            ログアウト
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33333C2 2.97971 2.14048 2.64057 2.39052 2.39052C2.64057 2.14048 2.97971 2 3.33333 2H6"
+                stroke="white"
+                stroke-width="1.33333"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10.6667 11.3333L14.0001 7.99996L10.6667 4.66663"
+                stroke="white"
+                stroke-width="1.33333"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M14 8H6"
+                stroke="white"
+                stroke-width="1.33333"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </nav>
@@ -59,52 +101,34 @@
   <div class="l-container--large">
     <ul>
       <li>
-        <a href="/">トップ</a>
+        <a href="/mock/">トップ</a>
       </li>
-      <li>会員登録</li>
+      <li>パスワード再発行</li>
     </ul>
   </div>
 </nav>
 <div class="c-page-title">
   <div class="l-container--large">
-    <h1 class="c-page-title__heading">会員登録</h1>
-    <p class="c-heading--sub u-mt-20 u-mb-0">Sign Up</p>
+    <h1 class="c-page-title__heading">パスワード再発行</h1>
+    <p class="c-heading--sub">Password Reset</p>
   </div>
 </div>
 
 <div class="l-container--small l-container--contents">
-  <div class="c-form-group u-text-align-center">
-    <p class="c-text--small"><span class="c-form-label__required">*</span>は必須項目です。</p>
-  </div>
   <form class="c-form">
     <div class="c-form-group">
-      <label for="name1" class="c-form-label">名前（姓）</label> <span class="c-form-label__required">*</span>
-      <input name="name1" type="text" id="name1">
-    </div>
-    <div class="c-form-group">
-      <label for="name2" class="c-form-label">名前（名）</label>
-      <input name="name2" type="text" id="name2">
+      <p>パスワードリセットのメールを送信します。</p>
     </div>
     <div class="c-form-group">
       <label for="email" class="c-form-label">メールアドレス</label>
-      <input name="email" type="email">
+      <input name="email" type="email" id="email">
     </div>
     <div class="c-form-group">
-      <div class="u-display-flex">
-        <div class="u-display-flex-grow-1">
-          <label for="login_pwd" class="c-form-label">パスワード</label> <span class="c-form-label__required">*</span>
-        </div>
-        <p class="u-ma-0 c-text--small">半角英数8文字以上</p>
-      </div>
-      <input name="login_pwd" type="password" id="login_pwd">
-    </div>
-    <div class="c-form-group">
-      <button type="submit" class="c-button--primary u-width-100">登録</button>
+      <button class="c-button--primary u-width-100">送信</button>
     </div>
     <div class="c-form-group u-text-align-center">
-      すでに会員の方は<a href="/login/index.html" class="nuxt-link-active">ログイン</a>
+      <a href="/mock/login/index.html" class="nuxt-link-active">ログイン</a>
     </div>
-    <p class="c-text--small u-mt-25">続行することで<a href="#">利用規約</a>及び<a href="/privacy/index.html">プライバシーポリシー</a>に同意したこととなります。</p>
   </form>
 </div>
 
@@ -112,15 +136,15 @@
 <footer class="l-footer">
   <div class="l-container--large">
     <nav class="l-footer__nav">
-      <ul class="l-footer__nav__list">
+      <ul class="l-footer__nav__list -menu">
         <li>
-          <a href="/privacy/index.html">プライバシーポリシー</a>
+          <a href="/mock/privacy/index.html">プライバシーポリシー</a>
         </li>
         <li>
           <a href="#">利用規約</a>
         </li>
         <li>
-          <a href="/contact/index.html">お問い合わせ</a>
+          <a href="/mock/contact/index.html">お問い合わせ</a>
         </li>
         <li>
           <a href="#">サイトマップ</a>
