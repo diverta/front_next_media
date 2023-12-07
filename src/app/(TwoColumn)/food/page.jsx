@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Pager from "@/components/common/Pager";
 
-export default function () {
+export default function Food () {
   return (
 
     <section class="c-article__list">

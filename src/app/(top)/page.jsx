@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function () {
+export default function Home() {
   return (
     <div>
 
