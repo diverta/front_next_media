@@ -5,7 +5,7 @@ import Feature from "@/components/common/Feature";
 import TagArea from "@/components/common/TagArea";
 import TagKeyword from "@/components/common/TagKeyword";
 
-export default function Layout({ children }) {
+export default function TowColumnLayout({ children }) {
   return (
     <div className="l-container">
       <Breadcrumb />

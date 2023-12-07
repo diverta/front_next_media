@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/common/Breadcrumb";
 import PageTitle from "@/components/common/PageTitle";
 
-export default function Layout({ children }) {
+export default function SingleLayout({ children }) {
   return (
     <div className="l-container">
       <Breadcrumb />

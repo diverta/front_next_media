@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
 
@@ -6,21 +8,21 @@ const Footer = () => {
         <nav className="l-footer__nav">
           <ul className="l-footer__nav__list -menu">
             <li>
-              <a href="/privacy/">プライバシーポリシー</a>
+              <Link href="/privacy/">プライバシーポリシー</Link>
             </li>
             <li>
-              <a href="#">利用規約</a>
+              <Link href="#">利用規約</Link>
             </li>
             <li>
-              <a href="/contact/">お問い合わせ</a>
+              <Link href="/contact/">お問い合わせ</Link>
             </li>
             <li>
-              <a href="#">サイトマップ</a>
+              <Link href="#">サイトマップ</Link>
             </li>
           </ul>
           <ul className="l-footer__nav__list -sns">
             <li>
-              <a
+              <Link
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -40,10 +42,10 @@ const Footer = () => {
                     stroke-linejoin="round"
                   />
                 </svg>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -55,10 +57,10 @@ const Footer = () => {
                     fill="white"
                   />
                 </svg>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -92,10 +94,10 @@ const Footer = () => {
                     stroke-linejoin="round"
                   />
                 </svg>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" target="_blank" rel="noopener noreferrer"
+              <Link href="#" target="_blank" rel="noopener noreferrer"
                 ><svg
                   width="24"
                   height="24"
@@ -118,7 +120,7 @@ const Footer = () => {
                     stroke-linejoin="round"
                   />
                 </svg>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
