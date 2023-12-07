@@ -1,18 +1,16 @@
-import Hero from "@/components/section/top/Hero";
+import Breadcrumb from "@/components/common/Breadcrumb";
+import PageTitle from "@/components/common/PageTitle";
 import Banner from "@/components/common/Banner";
 import Feature from "@/components/common/Feature";
 import TagArea from "@/components/common/TagArea";
 import TagKeyword from "@/components/common/TagKeyword";
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function Layout({ children }) {
   return (
-    <div className="l-container is-top">
-      <Hero />
-      <div className="l-container--col-2">
+    <div className="l-container">
+      <Breadcrumb />
+      <PageTitle />
+      <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">
           {children}
         </div>

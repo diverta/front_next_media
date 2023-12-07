@@ -1,11 +1,7 @@
 import Breadcrumb from "@/components/common/Breadcrumb";
 import PageTitle from "@/components/common/PageTitle";
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function Layout({ children }) {
   return (
     <div className="l-container">
       <Breadcrumb />
