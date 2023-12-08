@@ -1,0 +1,126 @@
+@use "../media_query" as *;
+
+.c-article {
+  margin-top: var(--spacing-large);
+
+  &__detail {
+    background-color: var(--color-white);
+    @include pc() {
+      padding: var(--spacing-large);
+    }
+    @include sp() {
+      padding: var(--spacing);
+    }
+    &__mainImage {
+      margin: 0 0 var(--spacing);
+    }
+    &__date {
+      display: block;
+      text-align: right;
+      margin-bottom: var(--spacing-small);
+    }
+    &__intro {
+      border: 2px solid var(--color-base);
+      position: relative;
+      @include pc() {
+        padding: calc( var(--spacing) * 1.5 );
+      }
+      @include sp() {
+        padding: var(--spacing);
+      }
+      &::after, &::before {
+        position: absolute;
+        content: "";
+        display: block;
+        background-color: var(--color-white)
+      }
+      &::after {
+        top: 15px;
+        bottom: 15px;
+        left: -2px;
+        right: -2px;
+      }
+      &::before {
+        top: -2px;
+        bottom: -2px;
+        left: 15px;
+        right: 15px;
+      }
+      &__text {
+        margin: 0;
+        position: relative;
+        z-index: 1;
+      }
+    }
+    &__image {
+      margin: var(--spacing-large) 0 0;
+      figcaption {
+        margin-top: var(--spacing-small);
+        @include pc() {
+          font-size: var(--font-size-small);
+        }
+        @include sp() {
+          font-size: var(--font-size-x-small);
+        }
+      }
+    }
+    &__contents {
+      margin-top: var(--spacing-large);
+      line-height: 1.7;
+      h1:not([class]) {
+        @extend .c-heading--lv1;
+      }
+      h2:not([class]) {
+        @extend .c-heading--lv4;
+      }
+      h3:not([class]) {
+        @extend .c-heading--lv3;
+      }
+      h4:not([class]) {
+        @extend .c-heading--lv4;
+      }
+      p:not([class]) {
+        @extend .c-text;
+      }
+      dl:not([class]) {
+        display: flex;
+        border-bottom: 1px solid var(--color-border);
+        dt {
+          flex: 0 0 25%;
+          padding: var(--spacing) 0;
+          color: var(--color-gray);
+        }
+        dd {
+          flex: 0 0 75%;
+          padding: var(--spacing) 0 var(--spacing) var(--spacing);
+        }
+      }
+      a:not([class]) {
+        color: var(--color-primary);
+        text-decoration: underline;
+      }
+      ul,
+      ol {
+        margin: var(--spacing) 0;
+        padding-left: var(--spacing);
+      }
+      ul li {
+        list-style: disc;
+      }
+      ol li {
+        list-style: decimal;
+      }
+      li {
+        padding: var(--spacing-small) 0;
+      }
+    }
+    &__block {
+      @include pc() {
+        margin-top: calc( var(--spacing-large) * 2 );
+      }
+      @include sp() {
+        margin-top: var(--spacing-large);
+      }
+    }
+  }
+}

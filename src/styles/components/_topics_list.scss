@@ -1,0 +1,29 @@
+.c-topics-list {
+  margin-bottom: var(--spacing-large);
+  border-top: 1px solid var(--color-border);
+}
+.c-topics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: var(--spacing-large) 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-base);
+  &__date {
+    flex: 0 0 auto;
+    margin-right: var(--spacing);
+    font-size: var(--font-size-x-small);
+  }
+  &__title {
+    flex: 1 1 100%;
+    margin: 0;
+    padding-top: var(--spacing-small);
+    transition: var(--transition-seconds) color;
+  }
+  &:hover {
+    .c-topics__title {
+      color: var(--color-primary);
+    }
+  }
+}

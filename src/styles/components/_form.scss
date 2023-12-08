@@ -1,0 +1,44 @@
+.c-form {
+  &-group {
+    display: block;
+    margin-bottom: var(--spacing-large);
+  }
+  &-label {
+    display: inline-block;
+    margin-bottom: var(--spacing-small);
+    font-size: var(--font-size-small);
+    font-weight: bold;
+    &__required {
+      color: var(--color-error);
+    }
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="email"],
+  textarea,
+  select {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-small);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+  }
+  a:not(.c-button) {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  input[type="radio"],
+  input[type="checkbox"] {
+    width: var(--font-size-base);
+    height: var(--font-size-base);
+    vertical-align: middle;
+    cursor: pointer;
+    & + label {
+      display: inline-block;
+      margin: 0;
+      padding: var(--spacing-small);
+      cursor: pointer;
+    }
+  }
+}

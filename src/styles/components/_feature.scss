@@ -1,0 +1,64 @@
+@use "../media_query" as *;
+
+.c-feature {
+  &__intro {
+    margin-top: var(--spacing);
+    @include sp() {
+      font-size: var(--font-size-small);
+    }
+  }
+  &__item {
+    margin-top: calc(var(--spacing-large) * 1.5);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-base);
+    @include pc() {
+      padding: var(--spacing-large);
+    }
+    @include sp() {
+      padding: var(--spacing);
+    }
+  }
+  &__contents {
+    @include pc() {
+      display: flex;
+      margin-top: calc(var(--spacing) * 1.5);
+    }
+    @include sp() {
+      margin-top: var(--spacing);
+    }
+  }
+  &__detail {
+    @include pc() {
+      position: relative;
+    }
+  }
+  &__image {
+    @include pc() {
+      margin: 0 var(--spacing) 0 0;
+      flex: 0 0 30%;
+    }
+    @include sp() {
+      margin: 0;
+    }
+  }
+  &__text {
+    @include pc() {
+      margin-bottom: var(--spacing);
+    }
+    @include sp() {
+      font-size: var(--font-size-small);
+      margin: var(--spacing-small) 0;
+    }
+  }
+  &__link {
+    margin: 0;
+    @include pc() {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    @include sp() {
+      text-align: right;
+    }
+  }
+}

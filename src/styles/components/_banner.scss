@@ -1,0 +1,10 @@
+.c-banner {
+  &__item {
+    &:not(:first-child) {
+      margin-top: var(--spacing);
+    }
+    img {
+      position:  relative !important;
+    }
+  }
+}

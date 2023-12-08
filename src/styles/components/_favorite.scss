@@ -1,0 +1,26 @@
+.c-favorite {
+  .c-card__item & {
+    font-size: var(--font-size-small);
+    flex: 0 0 auto;
+    margin: 0;
+  }
+  .c-article & {
+    text-align: right;
+    margin: 0 0 var(--spacing) 0;
+  }
+  a {
+    transition: var(--transition-seconds);
+    &:hover {
+      opacity: .5;
+    }
+  }
+  &__icon {
+    position: relative;
+    top: 2px;
+    right: 2px;
+    &.-active {
+      fill: var(--color-primary);
+      stroke: none;
+    }
+  }
+}

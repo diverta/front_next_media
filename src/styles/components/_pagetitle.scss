@@ -1,0 +1,56 @@
+@use "../media_query" as *;
+
+.c-page-title {
+  text-align: center;
+  overflow: hidden;
+  @include pc() {
+    padding: 30px 0 65px;
+  }
+  @include sp() {
+    padding: var(--spacing-vertical-sp) 0;
+  }
+  &__heading {
+    font-size: var(--font-size-h1);
+    font-weight: bold;
+    z-index: 10;
+    @include sp () {
+      font-size: var(--font-size-h1-sp);
+    }
+  }
+  &::before,
+  &::after {
+    position: absolute;
+    top: var(--header-height-pc);
+    right: 0;
+    display: block;
+    width: 100%;
+    height: calc( var(--font-size-h1) + (var(--spacing-vertical-pc) * 2) + var(--spacing)  + var(--font-size-x-small)  + var(--font-size-small));
+    content: "";
+    @include sp() {
+      top: var(--header-height-sp);
+      height: calc( var(--font-size-h1-sp) + (var(--spacing-vertical-sp) * 2) + var(--spacing) + var(--font-size-small));
+    }
+  }
+  &::before {
+    background: url(/images/top-hero.png) no-repeat center;
+    background-size: cover;
+    opacity: .7;
+    z-index: -2;
+  }
+  &::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: rgba(241,237,233,.2);
+    transform: skewY(6deg);
+    z-index: -1;
+  }
+  .c-heading--sub {
+    @include pc() {
+      margin-top: calc( var(--spacing) * 1.5);
+    }
+    @include sp() {
+      margin-top: var(--spacing);
+    }
+  }
+}

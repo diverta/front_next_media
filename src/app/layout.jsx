@@ -1,15 +1,20 @@
-import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import '@/styles/style.scss'
+import Header from "@/components/layouts/Header";
+import Footer from "@/components/layouts/Footer";
+
+export const metadata = {
+  title: "kuroco Trip",
+  description: "Let's Travel and Enjoy!",
+}
 
 export default function RootLayout({ children }) {
   return (
-    <section>
-      <Header />
-      <div className="l-container">
-        <main>{children}</main>
-      </div>
-      <Footer />
-    </section>
-  );
+    <html>
+      <body>
+        <Header />
+          {children}
+        <Footer />
+      </body>
+    </html>
+  )
 }

@@ -1,0 +1,196 @@
+@use "../media_query" as *;
+@use "badge" as *;
+
+.c-card {
+  background: #fff;
+  border: 1px solid #666;
+  padding: 10px;
+  box-shadow: 0 10px 8px -6px #bebebe;
+  position: relative;
+  display: block;
+  transition: 0.5s;
+  &:hover {
+    opacity: .8;
+  }
+  &__image {
+    overflow: hidden;
+    position: relative;
+    img { 
+      position: relative !important;
+      width: 100%;
+      transition: var(--transition-seconds) ease-in;
+      .c-card:hover & {
+        transform: scale(1.1);
+      }
+    }
+    &__badge {
+      @extend .c-badge;
+      position: absolute;
+      top: -16px;
+      left: 13px;
+      padding: var(--spacing-small) var(--spacing);
+      z-index: 1;
+      transform: rotate(-4deg);
+      border-right: 2px dotted rgba(0,0,0,.1);
+      border-left: 2px dotted rgba(0,0,0,.1);
+      box-shadow: 0 0 5px rgba(0,0,0,.2);
+    }
+    &__badge02 {
+      position: absolute;
+      top: 5px;
+      left: -7px;
+      z-index: 1;
+      width: 25px;
+      height: 25px;
+      color: var(--color-white);
+      background: var(--color-primary);
+      text-align: center;
+      &::before {
+        position: absolute;
+        content: '';
+        top: 100%;
+        left: 0;
+        border: none;
+        border-bottom: solid 7px transparent;
+        border-right: solid 6px #ab5f21;
+      }
+    }
+  }
+  &__date {
+    font-size: var(--font-size-x-small);
+    margin: 0;
+    padding: 0 var(--spacing-small);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,.8);
+  }
+  &__heading {
+    margin: 0 0 .3em;
+    line-height: 1.3;
+    font-weight: bold;
+    transition: var(--transition-seconds) color;
+    .c-card:hover & {
+      color: var(--color-primary);
+    }
+  }
+  &__text {
+    margin: 0;
+    font-size: var(--font-size-x-small);
+  }
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing);
+  }
+  &__category {
+    font-size: .75em;
+    margin: 0;
+    background: var(--color-gray);
+    color: #fff;
+    line-height: 1;
+    padding: 4px 6px;
+  }
+  &__area {
+    margin: 0;
+    font-size: .75em;
+    display: flex;
+    align-items: center;
+  }
+  &-list {
+    @include pc {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &--col-3 {
+      .c-card__item {
+        @include pc {
+          flex: 0 0 calc( (100% - ( var(--spacing-large) * 2 )) / 3 );
+          &:not(:nth-of-type(3n+1)) { margin-left: var(--spacing-large); }
+          &:nth-child(n+4) {
+            margin-top: 3em;
+          }
+        }
+        @include sp {
+          &:not(:first-child) { margin-top: calc( var(--spacing-large) * 1.5 ); }
+        }
+      }
+      .c-card__heading {
+        padding-top: var(--spacing-small);
+        @include pc {
+          font-size: var(--font-size-h4-sp);
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+        @include sp {
+          font-size: var(--font-size-medium);
+        }
+      }
+      .c-card__text {
+        @include pc {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+      }
+    }
+    &--col-2 {
+      @include pc {
+        justify-content: space-between;
+      }
+      .c-card__item {
+        @include pc {
+          flex: 0 0 calc( (100% -  var(--spacing-large)) / 2 );
+          &:nth-child(n+3) {
+            margin-top: 2em;
+          }
+        }
+        @include sp {
+          &:not(:first-child) { margin-top: var(--spacing); }
+        }
+      }
+      .c-card {
+        display: flex;
+      }
+      .c-card__image {
+        flex: 0 0 30%;
+        @include pc {
+          margin-right: var(--spacing);
+        }
+        @include sp {
+          margin-right: var(--spacing-small);
+        }
+        img {
+          object-fit: cover;
+        }
+      }
+      .c-card__heading {
+        @include pc {
+          font-size: var(--font-size-medium);
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+        }
+        @include sp {
+          font-size: var(--font-size-small);
+        }
+      }
+      .c-card__text {
+        @include pc {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+        @include sp {
+          font-size: .75em;
+        }
+      }
+    }
+  }
+}
