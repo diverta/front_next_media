@@ -1,6 +1,14 @@
 import Image from 'next/image'
+import CardList from '@/components/ui/CardList'
 
-export default function Home() {
+export async function newContentList() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list`, { cache: "no-store" })
+  const data = await res.json()
+  return data.list;
+}
+
+export default async function Home() {
+  const data = await newContentList();
   return (
     <div>
 
@@ -14,41 +22,7 @@ export default function Home() {
             <a href="/article/" className="c-button">View All</a>
           </div>
         </div>
-        <ul className="c-card-list c-card-list--col-3">
-          <li className="c-card__item">
-            <a href="/article/detail/" className="c-card">
-              <span className="c-card__image__badge">FOOD</span>
-              <div className="c-card__image"> 
-                <Image
-                  alt="dummy picture"
-                  src="/images/dummy.png" 
-                  fill
-                />
-                <span className="c-card__date">2023/10/19</span>
-              </div>
-              <h3 className="c-card__heading">大阪・難波 人気食べ歩きスポット10選！</h3>
-              <p className="c-card__text">昔ながらの名店から今年イチオシのスポットまで。大阪食い倒れツアーのご紹介です。</p>
-              <div className="c-card__bottom">
-                <div className="c-tag">
-                  <svg className="c-tag__icon c-svg">
-                    <use xlinkHref="/svg/icon.svg#icon-tag"/>
-                  </svg>
-                  <ul className="c-tag-card__list">
-                    <li className="c-tag-card__item">大阪</li>
-                    <li className="c-tag-card__item">スイーツ</li>
-                    <li className="c-tag-card__item">食べ歩き</li>
-                  </ul>
-                </div>
-                <p className="c-favorite">
-                  <svg className="c-favorite__icon c-svg">
-                    <use xlinkHref="../svg/icon.svg#icon-heart"/>
-                  </svg>
-                  <span>5</span>
-                </p>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <CardList data={data}/>
       </section>
 
       {/* ↓ RANKING  */}
