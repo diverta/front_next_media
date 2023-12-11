@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Pager from "@/components/common/Pager";
-import { newContentList } from '@/app/(top)/page';
 import CardList from '@/components/ui/CardList';
+import { newContentList } from '@/components/common/fetchData';
 
 export default async function Culture () {
   const data = await newContentList('CULTURE');

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Pager from "@/components/common/Pager";
-import { newContentList } from '@/app/(top)/page';
+import { newContentList } from '@/components/common/fetchData';
 import CardList from '@/components/ui/CardList';
 
 export default async function Sightseeing () {
