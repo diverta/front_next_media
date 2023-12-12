@@ -1,4 +1,6 @@
 @use "../media_query" as *;
+@use "heading" as *;
+@use "text" as *;
 
 .c-article {
   margin-top: var(--spacing-large);
