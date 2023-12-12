@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import CardList from '@/components/ui/CardList'
-import { newContentList } from '@/components/common/fetchData';
+import { getContentList } from '@/components/common/fetchData';
 
 export default async function Home() {
-  const data = await newContentList();
+  const data = await getContentList();
   return (
     <div>
 

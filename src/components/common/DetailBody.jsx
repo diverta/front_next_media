@@ -1,36 +1,76 @@
 import Image from "next/image";
 
-const DetailBody = () => {
+const DetailBody = ({ data }) => {
+  console.log(data);
   return (
     <div>
-        <div class="l-container">
-<div class="l-container--col-2 c-article">
-  <div class="l-container--col-2__main">
-    <article class="c-article__detail">
-      <div class="c-article__detail__contents">
-        <div class="c-article__detail__intro">
-          <p class="c-article__detail__intro__text">大阪の人気エリア難波。昔ながらの名店から今年イチオシのおすすめスポットまで。大阪食い倒れツアーをご紹介します。</p>
-        </div>
-        <div class="c-article__detail__block">
-          <h2>小見出し小見出し</h2>
-          <div class="c-article__detail__free">
-            <p>せっかく旅行に訪れたなら、その土地の名物料理をたくさん味わいたいですよね。今回は観光を楽しみながら味わえるグルメや豆腐やおばんざいなど歴史あるグルメが盛りだくさんの「京都」をご紹介します。京都の味を食べ歩きましょう！</p>
+      <div className="l-container--col c-article">
+        <article className="c-article__detail">
+          <header>
+            <figure className="c-article__detail__mainImage">
+              <Image
+                alt="dummy main image"
+                src={data.ext_1.url}
+                width="1200"
+                height="400"
+              />
+            </figure>
+            <time className="c-article__detail__date">{data.ymd}</time>
+            <h1 className="c-heading--lv1">{data.subject}</h1>
+            <p className="c-favorite">
+              <a href="#">
+                <svg className="c-favorite__icon c-svg">
+                  <use xlinkHref="../svg/icon.svg#icon-heart" />
+                </svg>
+                <span>5</span>
+              </a>
+            </p>
+            <div className="c-tag">
+              <svg className="c-tag__icon c-svg">
+                <use xlinkHref="/svg/icon.svg#icon-tag" />
+              </svg>
+              <ul className="c-tag__list">
+                {data.tags.map((tag, index) => (
+                  <li className="c-tag__item" key={index}>
+                    <a href="/mock/" className="c-tag__link">
+                      {tag.tag_nm}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </header>
+          <div className="c-article__detail__contents">
+            <div className="c-article__detail__intro">
+              <p className="c-article__detail__intro__text">{data.ext_2}</p>
+            </div>
+            <div className="c-article__detail__block">
+              <h2>{data.ext_3.ext_3}</h2>
+              <div className="c-article__detail__free">
+                <p>{data.ext_3.ext_4}</p>
+              </div>
+            </div>
+            <div className="c-article__detail__block">
+              <h2>小見出し小見出し小見出し小見出し小見出し小見出し</h2>
+              <div className="c-article__detail__free">
+                <p>
+                  せっかく旅行に訪れたなら、その土地の名物料理をたくさん味わいたいですよね。今回は観光を楽しみながら味わえるグルメや豆腐やおばんざいなど歴史あるグルメが盛りだくさんの「京都」をご紹介します。京都の味を食べ歩きましょう！
+                </p>
+              </div>
+            </div>
+            {data.ext_3.map((item, index) => (
+              <div key={index} className="c-article__detail__block">
+                <h2>{item.ext_3}</h2>
+                <div
+                  className="c-article__detail__free"
+                  dangerouslySetInnerHTML={{ __html: item.ext_4 }}
+                />
+              </div>
+            ))}
           </div>
-        </div>
-        <div class="c-article__detail__block">
-          <h2>小見出し小見出し小見出し小見出し小見出し小見出し</h2>
-          <div class="c-article__detail__free">
-            <p>せっかく旅行に訪れたなら、その土地の名物料理をたくさん味わいたいですよね。今回は観光を楽しみながら味わえるグルメや豆腐やおばんざいなど歴史あるグルメが盛りだくさんの「京都」をご紹介します。京都の味を食べ歩きましょう！</p>
-          </div>
-        </div>
+        </article>
       </div>
-    </article>
-  </div>
-</div>
-
-</div>
     </div>
-
   );
 };
 

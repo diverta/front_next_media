@@ -4,15 +4,13 @@ import Banner from "@/components/common/Banner";
 import Feature from "@/components/common/Feature";
 import TagArea from "@/components/common/TagArea";
 import TagKeyword from "@/components/common/TagKeyword";
-import { newContentList } from "@/components/common/fetchData";
+import { getContentList } from "@/components/common/fetchData";
 import { getCategoryList } from "@/components/common/fetchData";
 import { use } from "react";
 
 export default async function TowColumnLayout({ children }) {
-  console.log(children);
+  // console.log(children);
   const segment = children.props.childProp.segment;
-  // const data = use(getData());
-  // console.log(data);
   return (
     <div className="l-container">
       <Breadcrumb />

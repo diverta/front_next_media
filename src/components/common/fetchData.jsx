@@ -1,4 +1,4 @@
-export async function newContentList(contentCategory) {
+export async function getContentList(contentCategory, pageID = 1) {
     const categoryMap = {
       FOOD: 1,
       SHOPPING: 15,
@@ -8,7 +8,7 @@ export async function newContentList(contentCategory) {
     };
   
     const categoryID = categoryMap[contentCategory] || '';
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list?contents_type=${categoryID}`, { cache: "no-store" })
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list?pageID=${pageID}&contents_type=${categoryID}`, { cache: "no-store" })
     const data = await res.json();
     return data.list;
   }
