@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const DetailBody = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <div className="l-container--col c-article">

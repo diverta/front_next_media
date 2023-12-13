@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function CardList({data}) {
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <ul className="c-card-list c-card-list--col-3">
