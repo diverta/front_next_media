@@ -3,8 +3,7 @@ import Image from "next/image";
 const DetailBody = ({ data }) => {
   // console.log(data);
   return (
-    <div>
-      <div className="l-container--col c-article">
+    <div className="l-container--col c-article">
         <article className="c-article__detail">
           <header>
             <figure className="c-article__detail__mainImage">
@@ -70,7 +69,6 @@ const DetailBody = ({ data }) => {
           </div>
         </article>
       </div>
-    </div>
   );
 };
 

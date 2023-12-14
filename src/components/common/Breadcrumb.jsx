@@ -1,4 +1,4 @@
-const Breadcrumb = () => {
+const Breadcrumb = ({data}) => {
   return (
     <nav className="l-breadcrumb is-pc">
       <div className="l-container--large">
@@ -6,7 +6,7 @@ const Breadcrumb = () => {
           <li>
             <a href="/">トップ</a>
           </li>
-          <li>ページタイトルを表示させてください</li>
+          <li>{data[0].contents_type_ext_col_01}</li>
         </ul>
       </div>
     </nav>

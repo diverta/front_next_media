@@ -4,15 +4,17 @@ import { getContentList } from "@/components/common/fetchData";
 import TwoColumnTop from "@/components/common/TwoColumn/TwoColumnTop";
 import TwoColumnSide from "@/components/common/TwoColumn/TwoColumnSide";
 
-export default async function Culture() {
+export default async function Layout({children}) {
   const data = await getContentList("CULTURE");
   return (
-    <section className="c-article__list">
-      <h2 className="c-heading--lv2 u-mb-50">
-        カルチャー<span>記事一覧</span>
-      </h2>
-      <CardList data={data} />
-      <Pager />
-    </section>
+    <div className="l-container">
+      <TwoColumnTop data={data} />
+      <div className="l-container--col-2 l-container--contents">
+        <div className="l-container--col-2__main">
+        {children}
+        </div>
+        <TwoColumnSide />
+      </div>
+    </div>
   );
 }

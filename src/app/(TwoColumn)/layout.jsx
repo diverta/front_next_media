@@ -14,20 +14,8 @@ export default async function TwoColumnLayout({ children }) {
   const data = await getContentList(segment);
   console.log(children);
   return (
-    <div className="l-container">
-      <Breadcrumb />
-      <PageTitle data={data}/>
-      <div className="l-container--col-2 l-container--contents">
-        <div className="l-container--col-2__main">
-          {children}
-        </div>
-        <div className="l-container--col-2__side">
-          <Banner />
-          <Feature />
-          <TagArea />
-          <TagKeyword />
-        </div>
-      </div>
+    <div>
+      {children}
     </div>
   )
 }
