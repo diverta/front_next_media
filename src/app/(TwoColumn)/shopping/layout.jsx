@@ -1,19 +1,27 @@
 import Pager from "@/components/common/Pager";
 import CardList from "@/components/ui/CardList";
 import { getContentList } from "@/components/common/fetchData";
-import TwoColumnTop from "@/components/common/TwoColumn/TwoColumnTop";
-import TwoColumnSide from "@/components/common/TwoColumn/TwoColumnSide";
+import Breadcrumb from "@/components/common/Breadcrumb";
+import PageTitle from "@/components/common/PageTitle";
+import Banner from "@/components/common/Banner";
+import Feature from "@/components/section/feature/Feature";
+import TagArea from "@/components/common/TagArea";
+import TagKeyword from "@/components/common/TagKeyword";
 
-export default async function Layout({children}) {
+export default async function Layout({ children }) {
   const data = await getContentList("SHOPPING");
   return (
     <div className="l-container">
-      <TwoColumnTop data={data} />
+      <Breadcrumb data={data} />
+      <PageTitle data={data} />
       <div className="l-container--col-2 l-container--contents">
-        <div className="l-container--col-2__main">
-        {children}
+        <div className="l-container--col-2__main">{children}</div>
+        <div className="l-container--col-2__side">
+          <Banner />
+          <Feature />
+          <TagArea />
+          <TagKeyword />
         </div>
-        <TwoColumnSide />
       </div>
     </div>
   );

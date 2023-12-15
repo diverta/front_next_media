@@ -1,4 +1,4 @@
-import DetailBody from "@/components/common/DetailBody";
+import DetailBody from "@/components/section/twoColumn/DetailBody";
 import { getDetails } from "@/components/common/fetchData";
 
 export default async function Event({ params }) {

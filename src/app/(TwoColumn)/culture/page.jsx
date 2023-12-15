@@ -1,8 +1,6 @@
 import Pager from "@/components/common/Pager";
 import CardList from "@/components/ui/CardList";
 import { getContentList } from "@/components/common/fetchData";
-import TwoColumnTop from "@/components/common/TwoColumn/TwoColumnTop";
-import TwoColumnSide from "@/components/common/TwoColumn/TwoColumnSide";
 
 export default async function Culture() {
   const data = await getContentList("CULTURE");

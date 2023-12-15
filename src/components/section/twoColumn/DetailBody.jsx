@@ -49,14 +49,6 @@ const DetailBody = ({ data }) => {
                 <p>{data.ext_3.ext_4}</p>
               </div>
             </div>
-            <div className="c-article__detail__block">
-              <h2>小見出し小見出し小見出し小見出し小見出し小見出し</h2>
-              <div className="c-article__detail__free">
-                <p>
-                  せっかく旅行に訪れたなら、その土地の名物料理をたくさん味わいたいですよね。今回は観光を楽しみながら味わえるグルメや豆腐やおばんざいなど歴史あるグルメが盛りだくさんの「京都」をご紹介します。京都の味を食べ歩きましょう！
-                </p>
-              </div>
-            </div>
             {data.ext_3.map((item, index) => (
               <div key={index} className="c-article__detail__block">
                 <h2>{item.ext_3}</h2>
