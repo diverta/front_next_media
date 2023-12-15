@@ -1,8 +1,6 @@
+import {Banner, TagArea, TagKeyword} from "@/components/common";
 import Hero from "@/components/section/top/Hero";
-import Banner from "@/components/common/Banner";
 import Feature from "@/components/section/feature/Feature";
-import TagArea from "@/components/common/TagArea";
-import TagKeyword from "@/components/common/TagKeyword";
 
 export default function Layout({ children }) {
   return (

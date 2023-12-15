@@ -1,12 +1,6 @@
-import Pager from "@/components/common/Pager";
-import CardList from "@/components/ui/CardList";
-import { getContentList } from "@/components/common/fetchData";
-import Breadcrumb from "@/components/common/Breadcrumb";
-import PageTitle from "@/components/common/PageTitle";
-import Banner from "@/components/common/Banner";
+import {Banner, Breadcrumb, PageTitle, TagArea, TagKeyword} from "@/components/common";
+import {getContentList} from "@/components/common/fetchData";
 import Feature from "@/components/section/feature/Feature";
-import TagArea from "@/components/common/TagArea";
-import TagKeyword from "@/components/common/TagKeyword";
 
 export default async function Layout({ children }) {
   const data = await getContentList("FOOD");
