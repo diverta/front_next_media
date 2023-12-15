@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/common/Breadcrumb";
 import PageTitle from "@/components/common/PageTitle";
 import Banner from "@/components/common/Banner";
-import Feature from "@/components/common/Feature";
+import Feature from "@/components/section/feature/Feature";
 import TagArea from "@/components/common/TagArea";
 import TagKeyword from "@/components/common/TagKeyword";
 import { getContentList } from "@/components/common/fetchData";

@@ -25,5 +25,17 @@ export async function getDetails(id) {
     return data.details;
   }
 
+  export async function getFeatureList() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/pickup/list`, { cache: "no-store" })
+    const data = await res.json();
+    return data.list;
+}
+
+export async function getFeatureDetails(id) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/pickup/details/${id}`, { cache: "no-store" });
+  const data = await res.json();
+  return data.details;
+}
+
 
 

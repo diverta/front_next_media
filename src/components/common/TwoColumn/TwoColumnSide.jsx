@@ -1,5 +1,5 @@
 import Banner from "../Banner";
-import Feature from "../Feature";
+import Feature from "../../section/feature/Feature";
 import TagArea from "../TagArea";
 import TagKeyword from "../TagKeyword";
 
