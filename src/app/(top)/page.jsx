@@ -1,12 +1,14 @@
 import Image from 'next/image'
 import CardList from '@/components/ui/CardList'
 import { getContentList } from '@/components/common/fetchData';
+import Pager from '@/components/common/Pager';
 
-export default async function Home() {
-  const data = await getContentList();
+export default async function Home({searchParams}) {
+  const page = Number(searchParams && searchParams.page ? searchParams.page : 1);
+  const {list, pageInfo} = await getContentList("ALL",page);
+
   return (
     <div>
-
       <section className="c-newInfo">
         <div className="u-display-flex u-display-flex-align-items-center u-mb-40">
           <div className="u-display-flex-grow-1">
@@ -17,7 +19,8 @@ export default async function Home() {
             <a href="/article/" className="c-button">View All</a>
           </div>
         </div>
-        <CardList data={data}/>
+        <CardList data={list}/>
+        <Pager page={page} pageInfo={pageInfo}/>
       </section>
 
       {/* ↓ RANKING  */}
@@ -77,7 +80,6 @@ export default async function Home() {
           </li>
         </ul>
       </section>
-
     </div>
   )
 }
