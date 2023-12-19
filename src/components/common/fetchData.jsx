@@ -10,7 +10,7 @@ export async function getContentList(contentCategory, pageID = 1) {
     const categoryID = categoryMap[contentCategory] || '';
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list?pageID=${pageID}&contents_type=${categoryID}`, { cache: "no-store" })
     const data = await res.json();
-    return data.list;
+    return data;
   }
 
 export async function getCategoryList() {
