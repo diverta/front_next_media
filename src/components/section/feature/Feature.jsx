@@ -4,7 +4,7 @@ import { getFeatureList } from '../../common/fetchData';
 
 export default async function Feature(){
   const data = await getFeatureList();
-  console.log(data);
+  
   return (
 
     <section className="l-container--contents-side">
