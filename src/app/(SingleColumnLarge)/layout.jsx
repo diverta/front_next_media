@@ -3,7 +3,7 @@ import {Breadcrumb, PageTitle} from "@/components/common";
 export default function SingleLargeLayout({ children }) {
   const content = {
     text: "プライバシーポリシー",
-    text_en: "privacy"
+    text_en: "PRIVACY POLICY"
   };
   return (
     <div className="l-container">
