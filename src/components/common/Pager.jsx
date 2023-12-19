@@ -1,4 +1,8 @@
-const Pager = () => {
+export default async function Pager ({ data, pageInfo}) {
+  // const { list, pageInfo } = await getContentList('SIGHTSEEING');
+  // const { pageNo, totalPageCnt } = pageInfo;
+  // console.log(pageNo);
+  // console.log(totalPageCnt);
   return (
     <ul className="c-pager">
       <li className="c-pager__item"><a className="c-pager__link" href="/DUMMY">&laquo;</a></li>
@@ -12,5 +16,3 @@ const Pager = () => {
 
   );
 };
-
-export default Pager;
