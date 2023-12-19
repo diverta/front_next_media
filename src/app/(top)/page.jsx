@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import CardList from '@/components/ui/CardList'
 import { getContentList } from '@/components/common/fetchData';
-import Pager from '@/components/common/Pager';
 
-export default async function Home({searchParams}) {
-  const page = Number(searchParams && searchParams.page ? searchParams.page : 1);
-  const {list, pageInfo} = await getContentList("ALL",page);
+export default async function Home() {
+  const {list} = await getContentList();
 
   return (
     <div>
@@ -20,7 +18,6 @@ export default async function Home({searchParams}) {
           </div>
         </div>
         <CardList data={list}/>
-        <Pager page={page} pageInfo={pageInfo}/>
       </section>
 
       {/* ↓ RANKING  */}

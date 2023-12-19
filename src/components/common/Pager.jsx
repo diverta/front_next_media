@@ -6,7 +6,7 @@ export default function Pager({ page, pageInfo }) {
 
   const navigateToPage = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= pageInfo.totalPageCnt) {
-      window.location.href = `/?page=${pageNumber}`;
+      window.location.href = `/article?page=${pageNumber}`;
     }
   };
   return (
