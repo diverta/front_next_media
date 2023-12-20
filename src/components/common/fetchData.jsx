@@ -1,4 +1,4 @@
-export async function getContentList(contentCategory, pageID = 1, tag_id="") {
+export async function getContentList(contentCategory, pageID = 1, tag_id="", search="") {
     const categoryMap = {
       FOOD: 1,
       SHOPPING: 15,
@@ -8,7 +8,9 @@ export async function getContentList(contentCategory, pageID = 1, tag_id="") {
     };
   
     const categoryID = categoryMap[contentCategory] || '';
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list?pageID=${pageID}&contents_type=${categoryID}&tag_id=${tag_id}`;
+    var url = `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list?pageID=${pageID}&contents_type=${categoryID}&tag_id=${tag_id}`;
+    if(search) url+=`&filter=keyword%20contains%20${search}`;
+    console.log(url);
     const res = await fetch(url , { cache: "no-store" })
     const data = await res.json();
     return data;

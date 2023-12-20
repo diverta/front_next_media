@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from "next/link";
+import Search from '../ui/Search';
 
 const Header = () => {
   return (
@@ -30,14 +31,15 @@ const Header = () => {
               <li className="l-header__nav__list__item"><Link href="/event/">EVENT</Link></li>
               <li className="l-header__nav__list__item"><Link href="/culture/">CULTURE</Link></li>
             </ul>
-            <div className="l-header__nav__search">
+            {/* <div className="l-header__nav__search">
               <form action="/search/" method="GET">
                 <button type="submit" aria-label="検索" className="l-header__nav__searchButton"></button>
                 <label>
                   <input type="text" placeholder="キーワードを入力" className="l-header__nav__searchText" />
                 </label>
               </form>
-            </div>
+            </div> */}
+            <Search />
             <div className="l-header__nav__options">
               {/* 未ログイン
               <Link href="/login/" className="l-header__nav__options__button u-display-flex u-display-flex-align-items-center">

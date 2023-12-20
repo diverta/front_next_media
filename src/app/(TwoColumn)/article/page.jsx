@@ -11,10 +11,11 @@ export default async function Event({ searchParams }) {
     searchParams && searchParams.page ? searchParams.page : 1
   );
   const tag_id = Number(
-    searchParams && searchParams.tag_id ? searchParams.tag_id : null
+    searchParams && searchParams.tag_id ? searchParams.tag_id : ""
   );
-
-  const { list, pageInfo } = await getContentList("ALL", page, tag_id);
+  const search = searchParams && searchParams.search ? searchParams.search : "";
+  
+  const { list, pageInfo } = await getContentList("ALL", page, tag_id, search);
   console.log("SearchParams");
   console.log(searchParams);
 
