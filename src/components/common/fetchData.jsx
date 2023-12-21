@@ -52,5 +52,31 @@ export async function getTagKeyword() {
   return data.list;
 }
 
+export function getLabels() {
+  const contentDirectory = {
+    article: {
+      text: "記事",
+      text_en: "ARTICLE",
+    },
+    search: {
+      text: "サーチ",
+      text_en: "SEARCH",
+    },
+    tag_id: {
+      5: {
+        text: "タグエリア",
+        text_en: "TAG AREA",
+      },
+      6: {
+        text: "タグキーワード",
+        text_en: "TAG KEYWORD",
+      },
+    },
+  };
+
+  return contentDirectory;
+}
+
+
 
 
