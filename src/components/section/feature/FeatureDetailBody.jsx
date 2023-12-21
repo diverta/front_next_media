@@ -31,7 +31,7 @@ const FeatureDetailBody = ({ data }) => {
                     {details.ext_2}
                   </div>
                   <p className="c-feature__link">
-                    <a href={`../../${details.contents_type_nm.toLowerCase()}/${details.topics_id}`} className="c-button">MORE</a>
+                    <a href={`../../article/${details.topics_id}`} className="c-button">MORE</a>
                   </p>
                 </div>
               </div>

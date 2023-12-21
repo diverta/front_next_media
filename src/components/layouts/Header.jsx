@@ -25,11 +25,11 @@ const Header = () => {
           </button>
           <div className="l-header__nav__inner">
             <ul className="l-header__nav__list">
-              <li className="l-header__nav__list__item"><Link href="/food/">FOOD</Link></li>
-              <li className="l-header__nav__list__item"><Link href="/shopping/">SHOPPING</Link></li>
-              <li className="l-header__nav__list__item"><Link href="/sightseeing/">SIGHTSEEING</Link></li>
-              <li className="l-header__nav__list__item"><Link href="/event/">EVENT</Link></li>
-              <li className="l-header__nav__list__item"><Link href="/culture/">CULTURE</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=food">FOOD</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=shopping">SHOPPING</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=sightseeing">SIGHTSEEING</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=event">EVENT</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=culture">CULTURE</Link></li>
             </ul>
             {/* <div className="l-header__nav__search">
               <form action="/search/" method="GET">

@@ -1,6 +1,6 @@
-const PageTitle = ({data, content}) => {
-  const title = content?content.text:data[0].contents_type_ext_col_01;
-  const title_en = content?content.text_en:data[0].contents_type_nm;
+const PageTitle = ({content}) => {
+  const title = content.text?content.text:content[0].contents_type_ext_col_01;
+  const title_en = content.text?content.text_en:content[0].contents_type_nm;
   return (
 
     <div className="c-page-title">

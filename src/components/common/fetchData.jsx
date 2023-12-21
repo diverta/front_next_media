@@ -1,10 +1,10 @@
 export async function getContentList(contentCategory, pageID = 1, tag_id="", search="") {
     const categoryMap = {
-      FOOD: 1,
-      SHOPPING: 15,
-      SIGHTSEEING: 16,
-      EVENT: 18,
-      CULTURE: 19,
+      food: 1,
+      shopping: 15,
+      sightseeing: 16,
+      event: 18,
+      culture: 19,
     };
   
     const categoryID = categoryMap[contentCategory] || '';

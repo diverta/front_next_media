@@ -2,7 +2,7 @@ import Pager from "@/components/common/Pager";
 import { getContentList } from "@/components/common/fetchData";
 import CardList from "@/components/ui/CardList";
 import Feature from "@/components/section/feature/Feature";
-import { getLabels } from "@/components/common/fetchData"; 
+import { getLabels } from "@/components/common/fetchData";
 
 import {
   Banner,
@@ -13,6 +13,7 @@ import {
 } from "@/components/common";
 
 export default async function Event({ searchParams }) {
+  console.log(searchParams);
   const page = Number(
     searchParams && searchParams.page ? searchParams.page : 1
   );
@@ -25,20 +26,23 @@ export default async function Event({ searchParams }) {
       : ""
   );
   const search = searchParams && searchParams.search ? searchParams.search : "";
+  const topic = searchParams && searchParams.topic ? searchParams.topic : "";
   const contentDirectory = getLabels();
 
+  const { list, pageInfo } = await getContentList(topic, page, tag_id, search);
+
   let content;
-  if (search) {
+  console.log(topic);
+  if (topic) {
+    content = list;
+  } else if (search) {
     content = contentDirectory.search;
   } else if (tag_id) {
     content = contentDirectory.tag_id[tag_category_id];
   } else {
     content = contentDirectory.article;
   }
-
-  const { list, pageInfo } = await getContentList("ALL", page, tag_id, search);
-  console.log("SearchParams");
-  console.log(searchParams);  
+  console.log(content);
 
   return (
     <div className="l-container">

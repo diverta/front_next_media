@@ -6,8 +6,8 @@ export default async function Layout({ children }) {
   const data = await getFeatureList();
   return (
     <div className="l-container">
-      <Breadcrumb data={data} />
-      <PageTitle data={data} />
+      <Breadcrumb content={data} />
+      <PageTitle content={data} />
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">{children}</div>
         <div className="l-container--col-2__side">
