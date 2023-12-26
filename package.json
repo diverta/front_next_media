@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "next": "latest",
+    "next-auth": "^4.24.5",
     "react": "latest",
     "react-dom": "latest",
     "textlint": "^13.4.1"
