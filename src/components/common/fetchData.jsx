@@ -40,6 +40,12 @@ export async function getFeatureDetails(id) {
   return data.details;
 }
 
+export async function getLimitedContent() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/limited-content`, { cache: "no-store" });
+  const data = await res.json();
+  return data.list;
+}
+
 export async function getTagArea() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/tag/area`, { cache: "no-store" });
   const data = await res.json();
@@ -62,6 +68,14 @@ export function getLabels() {
       text: "サーチ",
       text_en: "SEARCH",
     },
+    login: {
+      text: "ログイン",
+      text_en: "Login",
+    },
+    mypage: {
+      text: "マイページ",
+      text_en: "My page",
+    },
     tag_id: {
       5: {
         text: "タグエリア",
@@ -76,7 +90,3 @@ export function getLabels() {
 
   return contentDirectory;
 }
-
-
-
-
