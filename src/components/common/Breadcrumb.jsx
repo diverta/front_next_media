@@ -1,4 +1,4 @@
-const Breadcrumb = ({data, content}) => {
+const Breadcrumb = ({content}) => {
   const path = content.text?content.text:content[0].contents_type_ext_col_01;
   return (
     <nav className="l-breadcrumb is-pc">
