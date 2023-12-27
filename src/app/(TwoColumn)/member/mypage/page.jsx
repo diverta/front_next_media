@@ -1,15 +1,25 @@
-'use client'
-import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { getMemberInfo } from "@/components/common/fetchData";
 
-const Mypage = () => {
-    const { data: session} = useSession({ required: true,
-        onUnauthenticated() {
-            return { redirect: { destination: '/login', permanent: false } }
-        }});
-    console.log(session);   
+export default async function Mypage(){
+
+    const session = await getServerSession();
+    console.log("session");
+    console.log(session);
+    const data = await getMemberInfo();
+    console.log(data);
+    if(session){
+        return (
+            <div>
+                {session?.user?.name}さん、こんにちは！ <br />
+                {/* {data} */}
+                <a href="/api/auth/signout">ログアウト</a>
+            </div>
+        )
+    }
     return (
-        <div></div>
+        <div>
+            <a href="/api/auth/signin">ログイン</a>
+        </div>
     )
 }
-
-export default Mypage;

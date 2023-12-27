@@ -1,22 +1,24 @@
 import "@/styles/style.scss";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
-import Provider from "@/components/layouts/Provider";
+import SessionProvider from "@/components/layouts/SessionProvider";
+import { getServerSession } from "next-auth";
 
 export const metadata = {
   title: "kuroco Trip",
   description: "Let's Travel and Enjoy!",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession();
   return (
     <html>
       <body>
-        <Provider>
+        <SessionProvider>
           <Header />
           {children}
           <Footer />
-        </Provider>
+        </SessionProvider>
       </body>
     </html>
   );

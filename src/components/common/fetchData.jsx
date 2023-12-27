@@ -46,6 +46,12 @@ export async function getLimitedContent() {
   return data.list;
 }
 
+export async function getMemberInfo() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/profile`, { cache: "no-store" });
+  const data = await res.json();
+  return data;
+}
+
 export async function getTagArea() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/tag/area`, { cache: "no-store" });
   const data = await res.json();
