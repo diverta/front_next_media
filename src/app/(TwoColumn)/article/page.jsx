@@ -25,7 +25,7 @@ export default async function Event({ searchParams }) {
       ? searchParams.tag_category_id
       : ""
   );
-  const search = searchParams && searchParams.search ? searchParams.search : "";
+  const search = searchParams && searchParams.search ? `%22${searchParams.search.replace(/\s/g, "%20")}%22` : "";
   const topic = searchParams && searchParams.topic ? searchParams.topic : "";
   const contentDirectory = getLabels();
 
