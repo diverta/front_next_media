@@ -52,6 +52,12 @@ export async function getTagKeyword() {
   return data.list;
 }
 
+export async function getRanking() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/ranking`, { cache: "no-store" });
+  const data = await res.json();
+  return data.list;
+}
+
 export function getLabels() {
   const contentDirectory = {
     article: {

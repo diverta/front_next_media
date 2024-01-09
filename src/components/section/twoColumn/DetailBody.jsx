@@ -21,7 +21,7 @@ const DetailBody = ({ data }) => {
                 <svg className="c-favorite__icon c-svg">
                   <use xlinkHref="../svg/icon.svg#icon-heart" />
                 </svg>
-                <span>5</span>
+                <span>{data.favorite_cnt}</span>
               </a>
             </p>
             <div className="c-tag">
