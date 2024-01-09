@@ -1,11 +1,14 @@
-import Breadcrumb from "@/components/common/Breadcrumb";
-import PageTitle from "@/components/common/PageTitle";
+import {Breadcrumb, PageTitle} from "@/components/common";
 
 export default function SingleLargeLayout({ children }) {
+  const content = {
+    text: "プライバシーポリシー",
+    text_en: "PRIVACY POLICY"
+  };
   return (
     <div className="l-container">
-      <Breadcrumb />
-      <PageTitle />
+      <Breadcrumb content={content}/>
+      <PageTitle content={content}/>
       <div className="l-container--large l-container--contents">
         {children}
       </div>
