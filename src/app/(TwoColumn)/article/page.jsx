@@ -13,7 +13,6 @@ import {
 } from "@/components/common";
 
 export default async function Event({ searchParams }) {
-  console.log(searchParams);
   const page = Number(
     searchParams && searchParams.page ? searchParams.page : 1
   );
@@ -28,11 +27,10 @@ export default async function Event({ searchParams }) {
   const search = searchParams && searchParams.search ? `%22${searchParams.search.replace(/\s/g, "%20")}%22` : "";
   const topic = searchParams && searchParams.topic ? searchParams.topic : "";
   const contentDirectory = getLabels();
-
   const { list, pageInfo } = await getContentList(topic, page, tag_id, search);
 
   let content;
-  console.log(topic);
+  
   if (topic) {
     content = list;
   } else if (search) {
@@ -42,7 +40,6 @@ export default async function Event({ searchParams }) {
   } else {
     content = contentDirectory.article;
   }
-  console.log(content);
 
   return (
     <div className="l-container">
@@ -56,7 +53,7 @@ export default async function Event({ searchParams }) {
               <span>記事一覧</span>
             </h2>
             <CardList data={list} />
-            <Pager page={page} pageInfo={pageInfo} />
+            <Pager page={page} pageInfo={pageInfo} searchParams={searchParams}/>
           </section>
         </div>
         <div className="l-container--col-2__side">
