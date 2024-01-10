@@ -20,8 +20,8 @@ export default async function Food({ params }) {
   return (
     <div className="l-container">
       <Breadcrumb content={content} />
-      <PageTitle content={content} />
-      <div className="l-container--col-2 l-container--contents">
+      {/* <PageTitle content={content} /> */}
+      <div className="l-container--col-2 c-article">
         <div className="l-container--col-2__main">
           <div>
             <DetailBody data={item} />
