@@ -1,11 +1,41 @@
+'use client';
+
 import Image from 'next/image';
 import Link from "next/link";
 import Search from '../ui/Search';
+import { useEffect } from 'react';
 
-const Header = () => {
+const Header = (topPage=null) => {
+  const headerClasses = topPage.topPage ? 'l-header is-top' : 'l-header';
+  const dataJsAttribute = topPage.topPage ? 'header-scroll' : null;
+
+  useEffect(() => {
+    const header = document.querySelector('[data-js="header-scroll"]');
+
+    if (header) {
+      const handleScroll = () => {
+        header.classList.toggle("-scrolled", window.scrollY > 100);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      const toggleButton = document.querySelector(".l-header__nav__toggle");
+
+      const handleToggleClick = () => {
+        header.classList.toggle("is-open");
+      };
+
+      toggleButton.addEventListener("click", handleToggleClick);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        toggleButton.removeEventListener("click", handleToggleClick);
+      };
+    }
+  }, []);
+
   return (
 
-    <header className="l-header" data-js="header-scroll">
+    <header className={headerClasses} data-js={dataJsAttribute}>
       <div className="l-header__inner">
         <div className="l-header__logo">
           <Link href="/">
@@ -31,14 +61,6 @@ const Header = () => {
               <li className="l-header__nav__list__item"><Link href="/article?topic=event">EVENT</Link></li>
               <li className="l-header__nav__list__item"><Link href="/article?topic=culture">CULTURE</Link></li>
             </ul>
-            {/* <div className="l-header__nav__search">
-              <form action="/search/" method="GET">
-                <button type="submit" aria-label="検索" className="l-header__nav__searchButton"></button>
-                <label>
-                  <input type="text" placeholder="キーワードを入力" className="l-header__nav__searchText" />
-                </label>
-              </form>
-            </div> */}
             <Search />
             <div className="l-header__nav__options">
               {/* 未ログイン
