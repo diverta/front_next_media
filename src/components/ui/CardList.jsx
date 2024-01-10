@@ -32,7 +32,7 @@ export default function CardList({data}) {
                   <svg className="c-favorite__icon c-svg">
                     <use xlinkHref="../svg/icon.svg#icon-heart" />
                   </svg>
-                  {/* <span>{card.likes}</span> */}
+                  <span>{card.favorite_cnt}</span>
                 </p>
               </div>
             </a>

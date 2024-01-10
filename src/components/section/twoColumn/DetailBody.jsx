@@ -31,7 +31,7 @@ const DetailBody = ({ data }) => {
               <ul className="c-tag__list">
                 {data.tags.map((tag, index) => (
                   <li className="c-tag__item" key={index}>
-                    <a href="/mock/" className="c-tag__link">
+                    <a href={`/article?tag_category_id=${tag.tag_category_id}&tag_id=${tag.tag_id}`} className="c-tag__link">
                       {tag.tag_nm}
                     </a>
                   </li>
