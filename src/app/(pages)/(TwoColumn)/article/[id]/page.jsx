@@ -13,8 +13,8 @@ export default async function Food({ params }) {
   const item = await getDetails(params.id);
 
   const content = {
-    text: item.contents_type_ext_col_01,
-    text_en: item.contents_type_nm,
+    text: '記事詳細',
+    text_en: 'Article details',
   };
 
   return (
