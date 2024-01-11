@@ -39,9 +39,8 @@ export default function Mypage() {
                     credentials: 'include'
                 }
             );
-            const user = await res.json();
-            const userRef2 = await userRef.json();
-            console.log(user, userRef2);
+            await res.json();
+            const user = await userRef.json();
 
             // TODO
             // Now you can fetch both user data then store it into Provider, then you can use it everywhere.
