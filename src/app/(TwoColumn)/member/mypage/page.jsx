@@ -1,13 +1,15 @@
 'use client';
 
-import { getServerSession } from "next-auth";
 import { getMemberInfo } from "@/components/common/fetchData";
 import { useCallback, useRef } from "react";
+import { useUser } from "@/components/common/userContext";
 
 export default function Mypage() {
 
     const email = useRef('');
     const password = useRef('');
+    const { storeUser } = useUser();
+    console.log('storeUser', storeUser);
 
     const login = useCallback(
         async (event) => {
@@ -48,12 +50,13 @@ export default function Mypage() {
 
             // If no error and we have user data, return it
             if (res.ok && user) {
+                storeUser(user);
                 return user;
             }
             // Return null if user data could not be retrieved
             return null;
         },
-        []
+        [storeUser]
     );
 
     return (

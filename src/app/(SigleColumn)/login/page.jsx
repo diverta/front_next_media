@@ -1,4 +1,9 @@
+'use client';
+import { useUser } from "@/components/common/userContext";
+
 export default function Login () {
+  const {user} = useUser();
+  console.log(user);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <form className="c-form">
