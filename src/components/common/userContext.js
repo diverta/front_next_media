@@ -1,11 +1,10 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect } from 'react';
-import { parseJSON } from '@/utils/parseJson';
 
 const UserContext = createContext();
 
-const USER_KEY = 'user';
+const USER_MEMBER_ID_KEY = 'member_id';
 
 function fetchProfile() {
   return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/profile`, {
@@ -21,26 +20,32 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const storeUser = (userData) => {
-    window.localStorage.setItem(USER_KEY, JSON.stringify(userData))
+    if (!userData?.member_id) {
+      console.warn('No member_id found in user data');
+      return;
+    }
+    window.localStorage.setItem(USER_MEMBER_ID_KEY, userData.member_id)
     setUser(userData);
   };
 
   useEffect(() => {
-    const item = window.localStorage.getItem(USER_KEY);
-    const user = item ?? parseJSON(item);
+    const memberId = window.localStorage.getItem(USER_MEMBER_ID_KEY);
 
-    if (user) {
-      // make sure the user is still valid
-      fetchProfile()
-        .then((data) => {
-          window.localStorage.setItem(USER_KEY, JSON.stringify(data))
-          setUser(data);
-        })
-        .catch((err) => {
-          console.warn(err);
-        })
-        .finally(() => setLoading(false));
+    if (!memberId || isNaN(memberId)) {
+      setLoading(false);
+      return;
     }
+
+    // make sure the user is still valid
+    fetchProfile()
+      .then((data) => {
+        window.localStorage.setItem(USER_MEMBER_ID_KEY, data.member_id)
+        setUser(data);
+      })
+      .catch((err) => {
+        console.warn(err);
+      })
+      .finally(() => setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
