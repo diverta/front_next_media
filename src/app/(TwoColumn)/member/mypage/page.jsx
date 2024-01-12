@@ -1,76 +1,38 @@
-'use client';
+"use client";
 
 import { getMemberInfo } from "@/components/common/fetchData";
 import { useCallback, useRef } from "react";
 import { useUser } from "@/components/common/userContext";
+import { logout } from "@/components/common/fetchData";
+import { useRouter } from "next/navigation";
 
 export default function Mypage() {
+  const { user, storeUser } = useUser();
+  const router = useRouter();
+  console.log(user);
 
-    const email = useRef('');
-    const password = useRef('');
-    const { storeUser } = useUser();
-    console.log('storeUser', storeUser);
+  const handleLogout = async (event) => {
+    event.preventDefault();
+    const user = await logout();
+    console.log(user);
+    storeUser(null);
 
-    const login = useCallback(
-        async (event) => {
-            console.log('EVENT', event)
-            event.preventDefault();
-            const credentials = {
-                email: email.current.value,
-                password: password.current.value
-            };
-            console.log(credentials);
+    if (user == null) {
+      // window.location.href = "/"
+      router.push("/");
+    }
+  };
 
-            const res = await fetch(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/login`,
-                {
-                    method: "POST",
-                    body: JSON.stringify(credentials),
-                    headers: { "Content-Type": "application/json" },
-                    credentials: 'include'
-                }
-            );
-            const userRef = await fetch(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/profile`,
-                {
-                    method: "GET",
-                    //   body: JSON.stringify(credentials),
-                    headers: { "Content-Type": "application/json" },
-                    credentials: 'include'
-                }
-            );
-            await res.json();
-            const user = await userRef.json();
-
-            // TODO
-            // Now you can fetch both user data then store it into Provider, then you can use it everywhere.
-            // Besides, we should retrieve that user data for initial access with requesting Profile API.
-            // (maybe layout.jsx is the best place to do that.)
-
-            // If no error and we have user data, return it
-            if (res.ok && user) {
-                storeUser(user);
-                return user;
-            }
-            // Return null if user data could not be retrieved
-            return null;
-        },
-        [storeUser]
-    );
-
-    return (
-        <form className="c-form" onSubmit={login}>
-            <div className="c-form-group">
-                <label htmlFor="email" className="c-form-label">メールアドレス</label>
-                <input name="email" type="email" id="email" ref={email} />
-            </div>
-            <div className="c-form-group">
-                <label htmlFor="password" className="c-form-label">パスワード</label>
-                <input name="password" type="password" ref={password} />
-            </div>
-            <div className="c-form-group">
-                <button type="submit" className="c-button--primary u-width-100">ログイン</button>
-            </div>
-        </form>
-    )
+  return (
+    <div>
+      <p>Hello</p>
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="c-button--primary u-width-100"
+      >
+        Logout
+      </button>
+    </div>
+  );
 }
