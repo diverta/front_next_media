@@ -1,7 +1,7 @@
 export async function getContentList(
   contentCategory,
   pageID = 1,
-  tag_id = "",
+  tag_id = null,
   search = ""
 ) {
   const categoryMap = {
