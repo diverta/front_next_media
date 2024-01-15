@@ -3,14 +3,11 @@ import { getContentList } from "@/components/common/fetchData";
 import CardList from "@/components/ui/CardList";
 import Feature from "@/components/section/feature/Feature";
 import { getLabels } from "@/components/common/fetchData";
-
-import {
-  Banner,
-  Breadcrumb,
-  PageTitle,
-  TagArea,
-  TagKeyword,
-} from "@/components/common";
+import Banner from "@/components/common/Banner";
+import Breadcrumb from "@/components/common/Breadcrumb";
+import PageTitle from "@/components/common/PageTitle";
+import TagArea from "@/components/common/TagArea";
+import TagKeyword from "@/components/common/TagKeyword";
 
 export default async function Event({ searchParams }) {
   const page = Number(

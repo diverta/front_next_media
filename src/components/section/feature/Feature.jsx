@@ -1,4 +1,3 @@
-import { get } from 'http';
 import Image from 'next/image'
 import { getFeatureList } from '../../common/fetchData';
 import Link from 'next/link';

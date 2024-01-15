@@ -1,4 +1,5 @@
-import {Breadcrumb, PageTitle} from "@/components/common";
+import Breadcrumb from "@/components/common/Breadcrumb";
+import PageTitle from "@/components/common/PageTitle";
 
 export default function SingleLayout({ children }) {
   return (
