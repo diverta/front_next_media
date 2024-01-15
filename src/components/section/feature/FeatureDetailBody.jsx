@@ -2,6 +2,7 @@
 
 import { getDetails } from "@/components/common/fetchData";
 import Image from "next/image";
+import Link from "next/link";
 
 const FeatureDetailBody = ({ data }) => {
 
@@ -31,7 +32,7 @@ const FeatureDetailBody = ({ data }) => {
                     {details.ext_2}
                   </div>
                   <p className="c-feature__link">
-                    <a href={`../../article/${details.topics_id}`} className="c-button">MORE</a>
+                    <Link href={`../../article/${details.topics_id}`} className="c-button">MORE</Link>
                   </p>
                 </div>
               </div>

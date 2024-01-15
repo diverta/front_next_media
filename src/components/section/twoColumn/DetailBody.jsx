@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const DetailBody = ({ data }) => {
   // console.log(data);
@@ -17,16 +18,16 @@ const DetailBody = ({ data }) => {
             <time className="c-article__detail__date">{data.ymd}</time>
             <h1 className="c-heading--lv1">{data.subject}</h1>
             <p className="c-favorite">
-              <a href="#">
+              <Link href="#">
                 <svg className="c-favorite__icon c-svg">
-                  <use xlinkHref="../svg/icon.svg#icon-heart" />
+                  <use href="../svg/icon.svg#icon-heart" />
                 </svg>
                 <span>{data.favorite_cnt}</span>
-              </a>
+              </Link>
             </p>
             <div className="c-tag">
               <svg className="c-tag__icon c-svg">
-                <use xlinkHref="/svg/icon.svg#icon-tag" />
+                <use href="/svg/icon.svg#icon-tag" />
               </svg>
               <ul className="c-tag__list">
                 {data.tags.map((tag, index) => (

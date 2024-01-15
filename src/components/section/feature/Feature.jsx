@@ -1,6 +1,7 @@
 import { get } from 'http';
 import Image from 'next/image'
 import { getFeatureList } from '../../common/fetchData';
+import Link from 'next/link';
 
 export default async function Feature(){
   const data = await getFeatureList();
@@ -12,13 +13,13 @@ export default async function Feature(){
       <ul className="c-banner__list">
         {data.map((item, index) => (
           <li key={index} className="c-banner__item">
-            <a href={`/feature/${item.topics_id}`}>
+            <Link href={`/feature/${item.topics_id}`}>
               <Image
                 alt={`Image ${index + 1}`}
                 src={item.ext_1.url} /* Assuming imageUrl is a property in each data item */
                 fill
               />
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

@@ -1,4 +1,5 @@
 import { getTagKeyword } from "./fetchData";
+import Link from "next/link";
 
 export default async function TagKeyword() {
   const data = await getTagKeyword();
@@ -9,9 +10,9 @@ export default async function TagKeyword() {
       <ul className="c-tag__list">
         {data.map((tag, index) => (
           <li key={index} className="c-tag__item">
-            <a href={`/article?tag_category_id=${tag.tag_category_id}&tag_id=${tag.tag_id}`} className="c-tag__link">
+            <Link href={`/article?tag_category_id=${tag.tag_category_id}&tag_id=${tag.tag_id}`} className="c-tag__link">
               {tag.tag_nm}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
