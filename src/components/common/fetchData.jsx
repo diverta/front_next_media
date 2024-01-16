@@ -121,6 +121,33 @@ export async function login(email, password) {
   return null;
 }
 
+export async function register(name1, name2, email, login_pwd) {
+  const credentials = {
+    name1,
+    name2,
+    email,
+    login_pwd,
+  };
+
+  console.log("BHAI IDHAR", credentials);
+
+  await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/member/register`,
+    {
+      method: "POST",
+      body: JSON.stringify(credentials),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+
+  const user = await login(email, login_pwd);
+  if (user) {
+    return user;
+  }
+  return null;
+}
+
 export async function logout() {
   await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/logout`, {
     method: "POST",
@@ -162,6 +189,10 @@ export function getLabels() {
     login: {
       text: "ログイン",
       text_en: "Login",
+    },
+    register: {
+      text: "会員登録",
+      text_en: "Register",
     },
     mypage: {
       text: "マイページ",
