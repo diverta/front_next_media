@@ -95,6 +95,44 @@ export async function getTagKeyword() {
   return data.list;
 }
 
+export async function getMyFavoriteList() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/my_favorite_list`,
+    {
+      method: "GET",
+      // body: JSON.stringify(params),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+  const data = await res.json();
+  return data;
+}
+
+export async function postFavorite(module_type, module_id) {
+  const params = {
+    module_type,
+    module_id,
+  };
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/favorite/register`,
+    {
+      method: "POST",
+      body: JSON.stringify(params),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+
+  await res.json();
+  if (res.ok) {
+    return res;
+  }
+
+  return null;
+}
+
 export async function login(email, password) {
   const credentials = {
     email,

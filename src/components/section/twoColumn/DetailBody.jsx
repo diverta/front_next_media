@@ -1,6 +1,32 @@
+'use client';
+
 import Image from "next/image";
+import { useState } from "react";
+import { postFavorite } from "@/components/common/fetchData";
+import { useUser } from "@/components/common/userContext";
 
 const DetailBody = ({ data }) => {
+  const { user } = useUser();
+  if(user){
+    console.log("User",user.member_id);
+  }
+  console.log(data);
+
+  const [likesCount, setLikesCount] = useState(data.favorite_cnt);
+
+  const handleLikeClick = async () => {
+    try {
+      const response = await postFavorite("topics", data.topics_id); 
+      console.log(response);
+      if(response.ok){
+        setLikesCount(data.favorite_cnt + 1);
+      }
+      console.log(response);
+    } catch (error) {
+      // Handle the error
+      console.error('Error updating likes:', error);
+    }
+  };
   // console.log(data);
   return (
     <div className="l-container--col c-article">
@@ -17,12 +43,18 @@ const DetailBody = ({ data }) => {
             <time className="c-article__detail__date">{data.ymd}</time>
             <h1 className="c-heading--lv1">{data.subject}</h1>
             <p className="c-favorite">
-              <a href="#">
+            <button type="button" onClick={handleLikeClick} >
+            <svg className="c-favorite__icon c-svg">
+                  <use xlinkHref="../svg/icon.svg#icon-heart" />
+                </svg>
+                <span>{likesCount}</span>
+            </button>
+              {/* <a href="#">
                 <svg className="c-favorite__icon c-svg">
                   <use xlinkHref="../svg/icon.svg#icon-heart" />
                 </svg>
                 <span>5</span>
-              </a>
+              </a> */}
             </p>
             <div className="c-tag">
               <svg className="c-tag__icon c-svg">
