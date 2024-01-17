@@ -68,15 +68,6 @@ export async function getLimitedContent() {
   return data.list;
 }
 
-export async function getMemberInfo() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/profile`,
-    { cache: "no-store" }
-  );
-  const data = await res.json();
-  return data;
-}
-
 export async function getTagArea() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/tag/area`,
@@ -150,8 +141,13 @@ export async function login(email, password) {
   );
 
   await res.json();
-  const user = await profile();
 
+  if(!res.ok){
+    console.log("Wrong credentials");
+    return null;
+  }
+
+  const user = await profile();
   if (res.ok && user) {
     return user;
   }
@@ -214,6 +210,44 @@ export async function profile() {
   return null;
 }
 
+export async function getMemberInfo() {
+  const userRef = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/member/me`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+
+  const user = await userRef.json();
+  if (user) {
+    return user;
+  }
+  return null;
+}
+
+export async function updateMemberInfo(name1, name2, email, login_pwd) {
+  const credentials = {
+    name1,
+    name2,
+    email,
+    login_pwd,
+  };
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/member/update`,
+    {
+      method: "POST",
+      body: JSON.stringify(credentials),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+
+  const status = await res.json();
+  return status.messages;
+}
+
 export function getLabels() {
   const contentDirectory = {
     article: {
@@ -235,6 +269,10 @@ export function getLabels() {
     mypage: {
       text: "マイページ",
       text_en: "My page",
+    },
+    editProfile: {
+      text: "会員情報",
+      text_en: "Edit Profile",
     },
     tag_id: {
       5: {

@@ -1,6 +1,4 @@
 "use client";
-
-import { getMemberInfo } from "@/components/common/fetchData";
 import { useCallback, useRef } from "react";
 import { useUser } from "@/components/common/userContext";
 import { logout } from "@/components/common/fetchData";
@@ -9,12 +7,17 @@ import { getMyFavoriteList } from "@/components/common/fetchData";
 import CardList from "@/components/ui/CardList";
 import { useState, useEffect } from "react";
 import Pager from "@/components/common/Pager";
+import { getLabels } from "@/components/common/fetchData";
+import {Banner, Breadcrumb, PageTitle, TagArea, TagKeyword} from "@/components/common";
+import Menu from "@/components/common/Menu";
 
 export default function Mypage() {
   const { user, storeUser } = useUser();
   const router = useRouter();
   const [myFavourites, setMyFavourites] = useState([]);
   const [myFavouritesPageInfo, setMyFavouritesPageInfo] = useState([]);
+  const contentDirectory = getLabels();
+  const content = contentDirectory.mypage;
   console.log(user);
 
   const handleLogout = async (event) => {
@@ -36,7 +39,6 @@ export default function Mypage() {
       setMyFavouritesPageInfo(favorites.pageInfo);
       console.log("Bhai", favorites);
       console.log("Bhairr", myFavouritesPageInfo);
-      
     } catch (error) {
       console.error("Error fetching favorite list:", error);
     }
@@ -47,23 +49,27 @@ export default function Mypage() {
   }, [favoriteList]);
 
   return (
-    <div>
-      {user && user.name1 && <p>Hello {user.name1}</p>}
-      <button
-        type="button"
-        onClick={handleLogout}
-        className="c-button--primary u-width-100"
-      >
-        Logout
-      </button>
-      <section className="c-favoriteList l-container--contents">
-        <h2 className="c-heading--lv1">お気に入り記事</h2>
-        <p className="c-heading--sub">Favorite articles</p>
-        <div className="u-mt-40">
-          <CardList data={myFavourites} />
-          {/* <Pager pageInfo={myFavouritesPageInfo} /> */}
+    <div className="l-container">
+      <Breadcrumb content={content} />
+      <PageTitle content={content} />
+      <div className="l-container--col-2 l-container--contents">
+        <div className="l-container--col-2__main">
+          <div>
+            {/* {user && user.name1 && <p>Hello {user.name1}</p>} */}
+            <section className="c-favoriteList l-container--contents">
+              <h2 className="c-heading--lv1">お気に入り記事</h2>
+              <p className="c-heading--sub">Favorite articles</p>
+              <div className="u-mt-40">
+                <CardList data={myFavourites} />
+                {/* <Pager pageInfo={myFavouritesPageInfo} /> */}
+              </div>
+            </section>
+          </div>
         </div>
-      </section>
+        <div className="l-container--col-2__side">
+          <Menu />
+        </div>
+      </div>
     </div>
   );
 }
