@@ -27,6 +27,7 @@
   border-color: var(--color-base);
   svg {
     transition: var(--transition-seconds);
+    vertical-align: top;
   }
   &::after {
     display: inline-block;
