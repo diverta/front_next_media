@@ -43,11 +43,8 @@
     position: relative;
     width: 100%;
     margin: 0 auto;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-base);
     @include pc() {
       max-width: 560px;
-      padding: var(--spacing-horizontal-pc);
     }
     @include sp() {
       padding: var(--spacing-horizontal-sp);
