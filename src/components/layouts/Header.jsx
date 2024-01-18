@@ -6,11 +6,10 @@ import Search from '../ui/Search';
 import { useEffect } from 'react';
 
 const Header = (topPage=null) => {
-  const headerClasses = topPage.topPage ? 'l-header is-top' : 'l-header';
-  const dataJsAttribute = topPage.topPage ? 'header-scroll' : null;
+  const headerClasses = topPage.topPage ? 'l-header is-top header-scroll' : 'l-header';
 
   useEffect(() => {
-    const header = document.querySelector('[data-js="header-scroll"]');
+    const header = document.querySelector('header.header-scroll');
 
     if (header) {
       const handleScroll = () => {
@@ -31,11 +30,11 @@ const Header = (topPage=null) => {
         toggleButton.removeEventListener("click", handleToggleClick);
       };
     }
-  }, []);
+  }, [topPage]);
 
   return (
 
-    <header className={headerClasses} data-js={dataJsAttribute}>
+    <header className={headerClasses}>
       <div className="l-header__inner">
         <div className="l-header__logo">
           <Link href="/">
