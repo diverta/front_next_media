@@ -245,7 +245,11 @@ export async function updateMemberInfo(name1, name2, email, login_pwd) {
   );
 
   const status = await res.json();
-  return status.messages;
+  if(status.messages == "Updated"){
+    console.log("Updated");
+    return true;
+  }
+  return null;
 }
 
 export async function deleteMember() {

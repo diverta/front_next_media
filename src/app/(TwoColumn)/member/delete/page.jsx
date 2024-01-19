@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useUser } from "@/components/common/userContext";
 import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import AlertSuccess from "@/components/ui/AlertSuccess";
 
 export default function Delete() {
   const contentDirectory = getLabels();
@@ -18,6 +19,7 @@ export default function Delete() {
   const [memberInfo, setMemberInfo] = useState([]);
   const { user, storeUser } = useUser();
   const router = useRouter();
+  const [alert, setAlert] = useState(false);
 
   const memberInfoFunction = useCallback(async () => {
     try {
@@ -40,7 +42,7 @@ export default function Delete() {
 
     if (userStatus) {
       storeUser(null);
-      router.push("/");
+      setAlert(true);
     }
   };
 
@@ -68,28 +70,44 @@ export default function Delete() {
                   {memberInfo && <dd>{memberInfo.email}</dd>}
                 </dl>
               </div>
-              <div className="c-form-group u-text-align-center">
-                <p>
-                  本当に退会してよろしいですか？<br></br>
-                  退会の処理が完了すると自動的にログアウトします。
-                </p>
-              </div>
-              <div className="c-form-group u-text-align-center">
-                <button type="submit" className="c-button--primary u-width-50">
-                  退会
-                </button>
-              </div>
-              <div className="c-form-group u-text-align-center">
-                <Link href="/member/mypage" className="">
-                  マイページへ戻る
-                </Link>
-              </div>
+              {alert ? (
+                <div>
+                  <AlertSuccess message="退会が完了しました" />
+                  <div className="c-form-group u-text-align-center">
+                    <Link href="/" className="">
+                      トップへ戻る
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="c-form-group u-text-align-center">
+                    <p>
+                      本当に退会してよろしいですか？<br></br>
+                      退会の処理が完了すると自動的にログアウトします。
+                    </p>
+                  </div>
+                  <div className="c-form-group u-text-align-center">
+                    <button
+                      type="submit"
+                      className="c-button--primary u-width-50"
+                    >
+                      退会
+                    </button>
+                  </div>
+                  <div className="c-form-group u-text-align-center">
+                    <Link href="/member/mypage" className="">
+                      マイページへ戻る
+                    </Link>
+                  </div>
+                </div>
+              )}
             </form>
           </div>
         </div>
-        <div className="l-container--col-2__side">
+        {!alert && <div className="l-container--col-2__side">
           <Menu />
-        </div>
+        </div>}
       </div>
     </div>
   );

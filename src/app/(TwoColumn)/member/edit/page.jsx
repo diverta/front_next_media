@@ -9,6 +9,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { getMemberInfo } from "@/components/common/fetchData";
 import { updateMemberInfo } from "@/components/common/fetchData";
 import { useRouter } from "next/navigation";
+import AlertSuccess from "@/components/ui/AlertSuccess";
 
 export default function Edit() {
   const { user, storeUser } = useUser();
@@ -16,6 +17,7 @@ export default function Edit() {
   const content = contentDirectory.editProfile;
   const [memberInfo, setMemberInfo] = useState([]);
   const router = useRouter();
+  const [alert, setAlert] = useState(false);
 
   const memberInfoFunction = useCallback(async () => {
     try {
@@ -37,6 +39,10 @@ export default function Edit() {
   const email = useRef("");
   const login_pwd = useRef("");
 
+  const handleChange = () => {
+    setAlert(false);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(name1.current.value);
@@ -44,18 +50,16 @@ export default function Edit() {
     console.log(email.current.value);
     console.log(login_pwd.current.value);
 
-    const userInfo = await updateMemberInfo(
+    const userStatus = await updateMemberInfo(
       name1.current.value,
       name2.current.value,
       email.current.value,
       login_pwd.current.value
     );
-    console.log(userInfo);
 
-    // if (user) {
-    //     storeUser(user);
-    //     router.push("member/mypage");
-    //   }
+    if(userStatus){
+      setAlert(true);
+    }
   };
 
   return (
@@ -65,7 +69,7 @@ export default function Edit() {
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">
           <div>
-            <form className="c-form c-box" onSubmit={handleSubmit}>
+            <form className="c-form c-box" onSubmit={handleSubmit} onChange={handleChange}>
               <div className="c-form-group">
                 <label htmlFor="name1" className="c-form-label">
                   名前（姓）
@@ -115,6 +119,7 @@ export default function Edit() {
                 </div>
                 <input name="login_pwd" type="password" id="login_pwd" ref={login_pwd}/>
               </div>
+              {alert && <AlertSuccess message="会員情報を更新しました。"/>}
               <div className="c-form-group u-text-align-center">
                 <button type="submit" className="c-button--primary u-width-50">
                   更新する
