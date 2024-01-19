@@ -33,7 +33,7 @@ const Menu = () => {
           </li>
           <li className="l-side__nav__list__item">
             <Link
-              href="/mock/member/delete/index.html"
+              href="/member/delete"
               className="c-button u-display-flex u-display-flex-justify-content-between u-width-100"
             >
               退会

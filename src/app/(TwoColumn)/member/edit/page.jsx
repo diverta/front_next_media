@@ -22,7 +22,7 @@ export default function Edit() {
       const info = await getMemberInfo();
       //   console.log(info);
       setMemberInfo(info.details);
-      console.log("Bhai", memberInfo.name1);
+      console.log("Bhaiiiiii", memberInfo.name1);
     } catch (error) {
       console.error("Error fetching member information", error);
     }

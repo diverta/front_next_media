@@ -248,6 +248,25 @@ export async function updateMemberInfo(name1, name2, email, login_pwd) {
   return status.messages;
 }
 
+export async function deleteMember() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/member/delete`,
+    {
+      method: "POST",
+      body: JSON.stringify({}),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+
+  const status = await res.json();
+  if(status.messages == "Deleted"){
+    console.log("Deleted");
+    return true;
+  }
+  return null;
+}
+
 export function getLabels() {
   const contentDirectory = {
     article: {
@@ -273,6 +292,10 @@ export function getLabels() {
     editProfile: {
       text: "会員情報",
       text_en: "Edit Profile",
+    },
+    deleteProfile: {
+      text: "退会",
+      text_en: "Unsubscribe",
     },
     tag_id: {
       5: {
