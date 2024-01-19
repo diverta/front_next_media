@@ -4,16 +4,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>会員情報</title>
-<link rel="stylesheet" href="../../../css/style.css" media="all" title="no title" charset="utf-8">
-<script src="../../../js/scripts.js" charset="utf-8"></script>
+<title>会員限定記事</title>
+<link rel="stylesheet" href="../../../../css/style.css" media="all" title="no title" charset="utf-8">
+<script src="../../../../js/scripts.js" charset="utf-8"></script>
 </head>
 <body>
  
 <header class="l-header">
   <div class="l-header__inner">
     <div class="l-header__logo">
-      <a href="/mock/top.html"><img src="../../../images/logo.png" alt="Company Name"></a>
+      <a href="/mock/top.html"><img src="../../../../images/logo.png" alt="Company Name"></a>
     </div>
     <nav class="l-header__nav">
       <button type="button" class="l-header__nav__toggle">
@@ -53,7 +53,7 @@
           -->
           <!--ログイン時-->
           <p class="is-sp c-text--small u-mt-0">ようこそ！クロコさん</p>
-          <a href="/mock/member/mypage/index.html" class="l-header__nav__options__button c-button">マイページ</a
+          <a href="/mock/member/mypage/" class="l-header__nav__options__button c-button">マイページ</a
           >
           <button
             type="button"
@@ -102,48 +102,55 @@
     <div class="l-container--large">
       <ul>
         <li>
-          <a href="/mock/">トップ</a>
+          <a href="/mock/top.html">トップ</a>
         </li>
-        <li>会員情報</li>
+        <li>
+          <a href="/mock/mypage/index.html">マイページ</a>
+        </li>
+        <li>会員限定記事</li>
       </ul>
     </div>
   </nav>
   <div class="c-page-title">
     <div class="l-container--large">
-      <h1 class="c-page-title__heading">会員情報</h1>
-      <p class="c-heading--sub">Edit Profile</p>
+      <h1 class="c-page-title__heading">会員限定記事</h1>
+      <p class="c-heading--sub">Member Only Article</p>
     </div>
   </div>
 
   <div class="l-container--col-2 l-container--contents">
     <div class="l-container--col-2__main">
-      <form class="c-form c-box">
-        <div class="c-form-group">
-          <label for="name1" class="c-form-label">名前（姓）</label> <span class="c-form-label__required">*</span>
-          <input name="name1" type="text" id="name1">
+      <section class="c-box c-memberArticle">
+        <div class="c-heading--box__outer -oneLine">
+          <h2 class="c-heading--box">今月の会員限定記事</h2>
         </div>
-        <div class="c-form-group">
-          <label for="name2" class="c-form-label">名前（名）</label>
-          <input name="name2" type="text" id="name2">
+        <h2 class="c-heading--lv2">店内お食事でドリンク1杯無料</h2>
+        
+        <div class="c-memberArticle__type">
+          <p class="c-card__category">SHOPPING</p>
+          <p class="c-card__area">
+            <svg class="c-map__icon c-svg">
+              <use xlink:href="../../../../svg/icon.svg#icon-map"/>
+            </svg>沖縄
+          </p>
+          <time class="c-memberArticle__date">2023/10/30</time>
         </div>
-        <div class="c-form-group">
-          <label for="email" class="c-form-label">メールアドレス</label>
-          <input name="email" type="email">
+        <div class="c-memberArticle__detail">
+          WYSIWYGの中身を表示WYSIWYGの中身を表示WYSIWYGの中身を表示<br><br>
+          <p>
+            <img src="https://placehold.jp/1200x400.png">
+          </p>
+          <p>
+              メディアサンプルサイトはKurocoとNext.jsで作られています。メディアサンプルサイトはKurocoとNext.jsで作られています。メディアサンプルサイトはKurocoとNext.jsで作られています。メディアサンプルサイトはKurocoとNext.jsで作られています。
+          </p>
         </div>
-        <div class="c-form-group">
-          <div class="u-display-flex">
-            <div class="u-display-flex-grow-1">
-              <label for="login_pwd" class="c-form-label">パスワード</label> <span class="c-form-label__required">*</span>
-            </div>
-            <p class="u-ma-0 c-text--small">半角英数8文字以上</p>
-          </div>
-          <input name="login_pwd" type="password" id="login_pwd">
+        <div class="c-memberArticle__coupon">
+          <dl class="c-memberArticle__coupon__info">
+            <dt class="c-memberArticle__coupon__title">Coupon</dt>
+            <dd class="c-memberArticle__coupon__url"><a href="/" target="_blnak" class="c-memberArticle__coupon__link">お得なクーポン詳細はこちら</a></dd>
+          </dl>
         </div>
-        <div class="c-form-group u-text-align-center">
-          <button type="submit" class="c-button--primary u-width-50">更新する</button>
-        </div>
-        <div class="c-form-group u-text-align-center"><a href="/mock/member/mypage/index.html" class="">マイページへ戻る</a></div>
-      </form>
+      </section>
     </div>
     <div class="l-container--col-2__side">
       <h2 class="c-heading--lv3-b -memberMenu">会員メニュー</h2>
@@ -165,7 +172,7 @@
       </nav>
     </div>
   </div>
-  
+
 </div><!--//l-container-->
 
 <footer class="l-footer">
