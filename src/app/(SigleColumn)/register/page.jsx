@@ -3,21 +3,27 @@
 import { Breadcrumb, PageTitle } from "@/components/common";
 import { getLabels } from "@/components/common/fetchData";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { register } from "@/components/common/fetchData";
 import { useUser } from "@/components/common/userContext";
 import { useRouter } from "next/navigation";
+import AlertError from "@/components/ui/AlertError";
 
 export default function Register() {
   const contentDirectory = getLabels();
   const content = contentDirectory.register;
+  const { user, loading, storeUser } = useUser();
+  const router = useRouter();
+  const [alert, setAlert] = useState(false);
 
   const name1 = useRef("");
   const name2 = useRef("");
   const email = useRef("");
   const login_pwd = useRef("");
-  const { user, loading, storeUser } = useUser();
-    const router = useRouter();
+
+  const handleChange = () => {
+    setAlert(false);
+  };
 
   const handleRegister = async (event) => {
     event.preventDefault();
@@ -35,9 +41,12 @@ export default function Register() {
     console.log(user);
 
     if (user) {
-        storeUser(user);
-        router.push("member/mypage");
-      }
+      setAlert(false);
+      storeUser(user);
+      router.push("member/mypage");
+    } else {
+      setAlert(true);
+    }
   };
 
   return (
@@ -50,7 +59,7 @@ export default function Register() {
             <span className="c-form-label__required">*</span>は必須項目です。
           </p>
         </div>
-        <form className="c-form" onSubmit={handleRegister}>
+        <form className="c-form" onSubmit={handleRegister} onChange={handleChange}>
           <div className="c-form-group">
             <label htmlFor="name1" className="c-form-label">
               名前（姓）
@@ -104,6 +113,7 @@ export default function Register() {
             に同意したこととなります。
           </p>
         </form>
+      {alert && <AlertError message="エントリー内容を再度ご確認ください。" />}
       </div>
     </div>
   );

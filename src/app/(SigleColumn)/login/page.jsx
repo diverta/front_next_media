@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {Breadcrumb, PageTitle} from "@/components/common";
 import { getLabels } from "@/components/common/fetchData";
+import AlertError from "@/components/ui/AlertError";
+import { useState } from "react";
 
 
 export default function Login() {
@@ -16,6 +18,11 @@ export default function Login() {
   const router = useRouter();
   const contentDirectory = getLabels();
   const content = contentDirectory.login;
+  const [alert, setAlert] = useState(false);
+
+  const handleChange = () => {
+    setAlert(false);
+  };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -23,8 +30,12 @@ export default function Login() {
     console.log(user);
 
     if (user) {
+      setAlert(false);
       storeUser(user);
       router.push("member/mypage");
+    }
+    else{
+      setAlert(true);
     }
   };
 
@@ -39,7 +50,7 @@ export default function Login() {
           ) : user ? (
             <div>You have already logged in.</div>
           ) : (
-            <form className="c-form" onSubmit={handleLogin}>
+            <form className="c-form" onSubmit={handleLogin} onChange={handleChange}>
               <div className="c-form-group">
                 <label htmlFor="email" className="c-form-label">
                   メールアドレス
@@ -73,8 +84,11 @@ export default function Login() {
               </div>
             </form>
           )}
+          
         </div>
+        {alert && <AlertError message="メールアドレスまたはパスワードが間違っています。" />}
       </div>
+      
     </div>
   );
 }

@@ -165,7 +165,7 @@ export async function register(name1, name2, email, login_pwd) {
 
   console.log("BHAI IDHAR", credentials);
 
-  await fetch(
+  const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/member/register`,
     {
       method: "POST",
@@ -174,6 +174,13 @@ export async function register(name1, name2, email, login_pwd) {
       credentials: "include",
     }
   );
+
+  await res.json();
+  if(!res.ok){
+    console.log("Bhai scene ho gaya");
+    console.log(res);
+    return null;
+  }
 
   const user = await login(email, login_pwd);
   if (user) {
