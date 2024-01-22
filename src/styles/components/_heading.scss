@@ -198,12 +198,23 @@
 }
 
 .c-heading__wrapper {
-  display: flex;
-  align-items: center;
-  padding-bottom: var(--spacing-small);
-  border-bottom: 1px solid var(--color-base);
+  @include pc () {
+    display: flex;
+    align-items: center;
+    padding-bottom: var(--spacing-small);
+    border-bottom: 1px solid var(--color-base);
+    margin-bottom: 50px;
+  }
+  @include sp () {
+    margin-bottom: 25px;
+  }
   .c-heading--lv2 {
     border-bottom: none;
     padding-bottom: 0;
+    @include sp () {
+      padding-bottom: var(--spacing-small);
+      margin-bottom: var(--spacing-small);
+      border-bottom: 1px solid var(--color-base);
+    }
   }
 }

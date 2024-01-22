@@ -5,7 +5,12 @@ export default function Food () {
   return (
 
     <section className="c-article__list">
-      <h2 className="c-heading--lv2 u-mb-50">ショッピング<span>記事一覧</span></h2>
+      <div class="c-heading__wrapper">
+        <h2 class="c-heading--lv2 u-display-flex-grow-1">ショッピング<span>記事一覧</span></h2>
+        <div class="u-display-flex-shrink-0 u-text-align-right">
+          <a href="/article/" class="c-button">View All</a>
+        </div>
+      </div>
       <ul className="c-card-list c-card-list--col-3">
         <li className="c-card__item">
           <a href="/article/detail/" className="c-card">
