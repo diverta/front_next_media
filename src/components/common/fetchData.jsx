@@ -35,7 +35,13 @@ export async function getCategoryList() {
 export async function getDetails(id) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/details/${id}`,
-    { cache: "no-store" }
+    { 
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      cache: "no-store", 
+      revalidate: 0,
+    }
   );
   const data = await res.json();
   return data.details;
@@ -94,6 +100,7 @@ export async function getMyFavoriteList() {
       // body: JSON.stringify(params),
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      cache: "no-store",
     }
   );
   const data = await res.json();
@@ -108,6 +115,31 @@ export async function postFavorite(module_type, module_id) {
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/favorite/register`,
+    {
+      method: "POST",
+      body: JSON.stringify(params),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      cache: "no-store",
+    }
+  );
+
+  await res.json();
+  if (res.ok) {
+    return res;
+  }
+
+  return null;
+}
+
+export async function deleteFavorite(module_type, module_id) {
+  const params = {
+    module_type,
+    module_id,
+  };
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/favorite/delete`,
     {
       method: "POST",
       body: JSON.stringify(params),
