@@ -1,19 +1,34 @@
 'use client';
 
 import Image from "next/image";
-import { useState } from "react";
-import { postFavorite, deleteFavorite } from "@/components/common/fetchData";
+import { useState, useCallback, useEffect } from "react";
+import { postFavorite, deleteFavorite, getDetails } from "@/components/common/fetchData";
 import { useUser } from "@/components/common/userContext";
 
-const DetailBody = ({ data }) => {
+const DetailBody = ({ data, params }) => {
   const { user } = useUser();
+  const [data1, setData] = useState(data);
+  const [likesCount, setLikesCount] = useState(data.favorite_cnt);
+  const [isLiked, setIsLiked] = useState(data1.my_favorite_flg);
+
+  console.log("Bhaiii data 1 ki baat", data1.my_favorite_flg);
+  console.log("Bhaiii liked hai na", isLiked);
   if(user){
     console.log("User",user.member_id);
   }
-  console.log(data);
 
-  const [likesCount, setLikesCount] = useState(data.favorite_cnt);
-  const [isLiked, setIsLiked] = useState(data.my_favorite_flg);
+  const updateDataList = useCallback(async () => {
+    try {
+      const data2 = await getDetails(params.id);
+      setData(data2);
+      setIsLiked(data2.my_favorite_flg);
+
+      console.log("Bhairr", data2);
+    } catch (error) {
+      console.error("Error fetching favorite list:", error);
+    }
+  }, [params.id]);
+  
 
   const handleLikeClick = async () => {
     try {
@@ -35,12 +50,17 @@ const DetailBody = ({ data }) => {
           setLikesCount(data.favorite_cnt);
         }
       }
+      // updateDataList();
     } catch (error) {
       // Handle the error
       console.error('Error updating likes:', error);
     }
   };
-  // console.log(data);
+
+  useEffect(() => {
+    updateDataList();
+  }, [updateDataList]);
+  
   return (
     <div className="l-container--col c-article">
         <article className="c-article__detail">
@@ -56,7 +76,7 @@ const DetailBody = ({ data }) => {
             <time className="c-article__detail__date">{data.ymd}</time>
             <h1 className="c-heading--lv1">{data.subject}</h1>
             <p className="c-favorite">
-            <button type="button" onClick={handleLikeClick} >
+            <button type="button" onClick={user ? handleLikeClick : null} disabled={!user}>
             <svg className={`c-svg c-favorite__icon ${isLiked ? '-active' : ''}`}>
                   <use xlinkHref="../svg/icon.svg#icon-heart" />
                 </svg>
