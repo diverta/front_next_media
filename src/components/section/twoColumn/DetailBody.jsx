@@ -22,7 +22,8 @@ const DetailBody = ({ data }) => {
         console.log(response);
         if(response.ok){
           setIsLiked(true);
-          setLikesCount(data.favorite_cnt + 1);
+          data.favorite_cnt = data.favorite_cnt + 1;
+          setLikesCount(data.favorite_cnt);
         }
       }
       else{
@@ -30,7 +31,8 @@ const DetailBody = ({ data }) => {
         console.log(response);
         if(response.ok){
           setIsLiked(false);
-          setLikesCount(data.favorite_cnt - 1);
+          data.favorite_cnt = data.favorite_cnt - 1;
+          setLikesCount(data.favorite_cnt);
         }
       }
     } catch (error) {
