@@ -1,0 +1,11 @@
+.l-side {
+  &__nav {
+    &__list {
+      &__item {
+        &:not(:first-child) {
+          margin-top: var(--spacing-small);
+        }
+      }
+    }
+  }
+}
