@@ -2,9 +2,9 @@ import Image from 'next/image'
 import { getFeatureList } from '../../common/fetchData';
 import Link from 'next/link';
 
-export default async function Feature(){
+export default async function Feature() {
   const data = await getFeatureList();
-  
+
   return (
 
     <section className="l-container--contents-side">
@@ -15,7 +15,7 @@ export default async function Feature(){
             <Link href={`/feature/${item.topics_id}`}>
               <Image
                 alt={`Image ${index + 1}`}
-                src={item.ext_1.url} /* Assuming imageUrl is a property in each data item */
+                src={item.image.url} /* Assuming imageUrl is a property in each data item */
                 fill
               />
             </Link>

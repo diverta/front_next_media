@@ -36,11 +36,11 @@ export default async function Home() {
               <Link href={`/article/${item.topics_id}`} className="c-card">
                 <span className="c-card__image__badge02">{index + 1}</span>
                 <div className="c-card__image">
-                  <Image alt="dummy picture" src={item.ext_1.url} fill />
+                  <Image alt="dummy picture" src={item.image.url} fill />
                 </div>
                 <div className="c-card__info">
                   <h3 className="c-card__heading">{item.subject}</h3>
-                  <p className="c-card__text">{item.ext_2}</p>
+                  <p className="c-card__text">{item.introduction}</p>
                   <div className="c-card__bottom">
                     <p className="c-card__area">
                       <svg className="c-map__icon c-svg">
@@ -52,7 +52,7 @@ export default async function Home() {
                           <span key={tag_index} className="c-tag-card__item">
                             {tag.tag_nm}
                           </span>
-                        ) : null 
+                        ) : null
                       )}
                     </p>
                     <p className="c-card__category">{item.contents_type_nm}</p>
