@@ -1,11 +1,15 @@
 import Image from "next/image";
 
-export default function CardList({data}) {
-  // console.log(data);
+export default function CardList({ data }) {
+
+  if (!data || !Array.isArray(data)) {
+    return null;
+  }
+
   return (
     <div>
       <ul className="c-card-list c-card-list--col-3">
-      {data.map((card, index) => (
+        {data.map((card, index) => (
           <li key={index} className="c-card__item">
             <a href={`/article/${card.topics_id}`} className="c-card">
               <span className="c-card__image__badge">{card.contents_type_nm}</span>
