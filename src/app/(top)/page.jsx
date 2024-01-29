@@ -36,7 +36,7 @@ export default async function Home() {
               <Link href={`/article/${item.topics_id}`} className="c-card">
                 <span className="c-card__image__badge02">{index + 1}</span>
                 <div className="c-card__image">
-                  <Image alt="dummy picture" src={item.image.url} fill />
+                  <Image alt={item.image.desc || 'dummy'} src={item.image.url} fill />
                 </div>
                 <div className="c-card__info">
                   <h3 className="c-card__heading">{item.subject}</h3>

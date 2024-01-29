@@ -15,7 +15,7 @@ export default function CardList({ data }) {
             <Link href={`/article/${card.topics_id}`} className="c-card">
               <span className="c-card__image__badge">{card.contents_type_nm}</span>
               <div className="c-card__image">
-                <Image alt="dummy picture" src={card.image.url} fill />
+                <Image alt={card.image.desc || 'dummy'} src={card.image.url} fill />
                 <span className="c-card__date">{card.ymd}</span>
               </div>
               <h3 className="c-card__heading">{card.subject}</h3>
