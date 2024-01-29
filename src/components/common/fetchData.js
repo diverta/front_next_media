@@ -15,7 +15,7 @@ export async function getContentList(
   const categoryID = categoryMap[contentCategory] || "";
   var url = `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list?pageID=${pageID}`;
   if (contentCategory) url += `&contents_type=${categoryID}`;
-  if (tag_id) url += `&tag_id=${tag_id}`;
+  if (tag_id) url += `&tag_id[]=${tag_id}`;
   if (search) url += `&filter=keyword%20contains%20${search}`;
   console.log(url);
   const res = await fetch(url);
