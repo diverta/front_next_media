@@ -1,28 +1,9 @@
 'use client'
 
-import { getDetails } from "@/components/common/fetchData";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
 
-const fetchDetails = async (moduleId) => {
-  const details = await getDetails(moduleId);
-  return details;
-};
-
-const FeatureDetailBody = ({ data }) => {
-  const [detailsList, setDetailsList] = useState([]);
-
-  const fetchDetailsForItems = useCallback(async () => {
-    const detailsPromises = data.ext_3.map((item) => fetchDetails(item.module_id));
-    const details = await Promise.all(detailsPromises);
-    setDetailsList(details);
-  }, [data.ext_3]);
-
-  useEffect(() => {
-    fetchDetailsForItems();
-  }, [fetchDetailsForItems]);
-
+const FeatureDetailBody = ({ data, details }) => {
   return (
     <section className="c-feature">
       <h2 className="c-heading--lv2">{data.subject}</h2>
@@ -30,7 +11,7 @@ const FeatureDetailBody = ({ data }) => {
         {data.ext_2}
       </div>
       <ul className="c-feature__list">
-        {detailsList.map((details, index) => (
+        {details.map((details, index) => (
           <li key={index} className="c-feature__item">
             <h3 className="c-heading--lv4">{details.subject}</h3>
             <div className="c-feature__contents">
