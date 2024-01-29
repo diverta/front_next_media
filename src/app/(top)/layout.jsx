@@ -1,4 +1,6 @@
-import {Banner, TagArea, TagKeyword} from "@/components/common";
+import Banner from "@/components/common/Banner";
+import TagArea from "@/components/common/TagArea";
+import TagKeyword from "@/components/common/TagKeyword";
 import Hero from "@/components/section/top/Hero";
 import Feature from "@/components/section/feature/Feature";
 import Header from "@/components/layouts/Header";

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import CardList from "@/components/ui/CardList";
 import { getContentList, getRanking } from "@/components/common/fetchData";
+import Link from "next/link";
 
 export default async function Home() {
   const { list } = await getContentList();
@@ -15,9 +16,9 @@ export default async function Home() {
             <p className="c-heading--sub">New articles</p>
           </div>
           <div className="u-display-flex-shrink-0">
-            <a href="/article/" className="c-button">
+            <Link href="/article/" className="c-button">
               View All
-            </a>
+            </Link>
           </div>
         </div>
         <CardList data={list} />
@@ -32,7 +33,7 @@ export default async function Home() {
         <ul className="c-card-list c-card-list--col-2">
           {topRankedList.map((item, index) => (
             <li className="c-card__item" key={index}>
-              <a href={`/article/${item.topics_id}`} className="c-card">
+              <Link href={`/article/${item.topics_id}`} className="c-card">
                 <span className="c-card__image__badge02">{index + 1}</span>
                 <div className="c-card__image">
                   <Image alt="dummy picture" src={item.ext_1.url} fill />
@@ -43,7 +44,7 @@ export default async function Home() {
                   <div className="c-card__bottom">
                     <p className="c-card__area">
                       <svg className="c-map__icon c-svg">
-                        <use xlinkHref="../svg/icon.svg#icon-map" />
+                        <use href="../svg/icon.svg#icon-map" />
                       </svg>
                       {item.tags.map((tag, tag_index) =>
                         // Check for area tag
@@ -57,7 +58,7 @@ export default async function Home() {
                     <p className="c-card__category">{item.contents_type_nm}</p>
                   </div>
                 </div>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

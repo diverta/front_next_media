@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import constants from "./constants";
 
 export default function Pager({ page, pageInfo, searchParams }) {
   const isFirstPage = page === 1;
@@ -26,9 +27,9 @@ export default function Pager({ page, pageInfo, searchParams }) {
     <ul className="c-pager">
       {!isFirstPage && (
         <>
-          <li className="c-pager__item">{navigateToPage(1, "&laquo;")}</li>
+          <li className="c-pager__item">{navigateToPage(1, constants.DOUBLE_LEFT_POINTING_ANGLE_BRACKET)}</li>
           <li className="c-pager__item">
-            {navigateToPage(page - 1, "&lsaquo;")}
+            {navigateToPage(page - 1, constants.LEFT_POINTING_ANGLE_BRACKET)}
           </li>
           {isLastPage && pageInfo.totalPageCnt != 2 && (
             <>
@@ -52,10 +53,10 @@ export default function Pager({ page, pageInfo, searchParams }) {
             </>
           )}
           <li className="c-pager__item">
-            {navigateToPage(page + 1, "&rsaquo;")}
+            {navigateToPage(page + 1, constants.RIGHT_POINTING_ANGLE_BRACKET)}
           </li>
           <li className="c-pager__item">
-            {navigateToPage(page + 1, "&raquo;")}
+            {navigateToPage(pageInfo.totalPageCnt , constants.DOUBLE_RIGHT_POINTING_ANGLE_BRACKET)}
           </li>
         </>
       )}

@@ -1,6 +1,10 @@
-import {Banner, Breadcrumb, PageTitle, TagArea, TagKeyword} from "@/components/common";
 import {getFeatureList} from "@/components/common/fetchData";
 import Feature from "@/components/section/feature/Feature";
+import Banner from "@/components/common/Banner";
+import Breadcrumb from "@/components/common/Breadcrumb";
+import PageTitle from "@/components/common/PageTitle";
+import TagArea from "@/components/common/TagArea";
+import TagKeyword from "@/components/common/TagKeyword";
 
 export default async function Layout({ children }) {
   const data = await getFeatureList();

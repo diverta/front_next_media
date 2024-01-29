@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>マイページ</title>
+<title>会員情報</title>
 <link rel="stylesheet" href="../../../css/style.css" media="all" title="no title" charset="utf-8">
 <script src="../../../js/scripts.js" charset="utf-8"></script>
 </head>
@@ -53,7 +53,7 @@
           -->
           <!--ログイン時-->
           <p class="is-sp c-text--small u-mt-0">ようこそ！クロコさん</p>
-          <a href="/mock/member/mypage/" class="l-header__nav__options__button c-button">マイページ</a
+          <a href="/mock/member/mypage/index.html" class="l-header__nav__options__button c-button">マイページ</a
           >
           <button
             type="button"
@@ -104,157 +104,46 @@
         <li>
           <a href="/mock/">トップ</a>
         </li>
-        <li>マイページ</li>
+        <li>会員情報</li>
       </ul>
     </div>
   </nav>
   <div class="c-page-title">
     <div class="l-container--large">
-      <h1 class="c-page-title__heading">マイページ</h1>
-      <p class="c-heading--sub">Mypage</p>
+      <h1 class="c-page-title__heading">会員情報</h1>
+      <p class="c-heading--sub">Edit Profile</p>
     </div>
   </div>
 
   <div class="l-container--col-2 l-container--contents">
     <div class="l-container--col-2__main">
-      <section class="c-box">
-        <div class="c-heading--box__outer -oneLine">
-          <h2 class="c-heading--box">今月の会員限定記事</h2>
+      <form class="c-form c-box">
+        <div class="c-form-group">
+          <label for="name1" class="c-form-label">名前（姓）</label> <span class="c-form-label__required">*</span>
+          <input name="name1" type="text" id="name1">
         </div>
-        <ul class="c-card-list c-card-list--col-2">
-          <li class="c-card__item">
-            <a href="/mock/member/mypage/article/index.html" class="c-card">
-              <div class="c-card__image">
-                <img alt="dummy picture" src="https://placehold.jp/333/ffffff/300x300.png">
-              </div>
-              <div class="c-card__info">
-                <h3 class="c-card__heading">HP限定クーポン配布中！</h3>
-                <p class="c-card__text">会員様限定で、お店で使えるお得なクーポン配布中です。この機会にぜひお越しください！</p>
-                <div class="c-card__bottom">
-                  <p class="c-card__area">
-                    <svg class="c-map__icon c-svg">
-                      <use xlink:href="../../../svg/icon.svg#icon-map"/>
-                    </svg>沖縄
-                  </p>
-                  <p class="c-card__category">SHOPPING</p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="c-card__item">
-            <a href="/mock/member/mypage/article/index.html" class="c-card">
-              <div class="c-card__image">
-                <img alt="dummy picture" src="https://placehold.jp/333/ffffff/300x300.png">
-              </div>
-              <div class="c-card__info">
-                <h3 class="c-card__heading">店内お食事でドリンク1杯無料</h3>
-                <p class="c-card__text">［期間限定］セットドリンクを無料プレゼント！12月いっぱいまで。</p>
-                <div class="c-card__bottom">
-                  <p class="c-card__area">
-                    <svg class="c-map__icon c-svg">
-                      <use xlink:href="../../../svg/icon.svg#icon-map"/>
-                    </svg>韓国
-                  </p>
-                  <p class="c-card__category">FOOD</p>
-                </div>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </section>
-      <section class="c-favoriteList l-container--contents">
-        <h2 class="c-heading--lv1">お気に入り記事</h2>
-        <p class="c-heading--sub">Favorite articles</p>
-        <ul class="c-card-list c-card-list--col-3 u-mt-40">
-          <li class="c-card__item">
-            <a href="/mock/article/detail/index.html" class="c-card">
-              <span class="c-card__image__badge">FOOD</span>
-              <div class="c-card__image"> 
-                <img alt="dummy picture" src="https://placehold.jp/333/ffffff/300x200.png">
-                <span class="c-card__date">2023/10/19</span>
-              </div>
-              <h3 class="c-card__heading">大阪・難波 人気食べ歩きスポット10選！</h3>
-              <p class="c-card__text">昔ながらの名店から今年イチオシのスポットまで。大阪食い倒れツアーのご紹介です。</p>
-              <div class="c-card__bottom">
-                <div class="c-tag">
-                  <svg class="c-tag__icon c-svg">
-                    <use xlink:href="../../../svg/icon.svg#icon-tag"/>
-                  </svg>
-                  <ul class="c-tag-card__list">
-                    <li class="c-tag-card__item">大阪</li>
-                    <li class="c-tag-card__item">スイーツ</li>
-                    <li class="c-tag-card__item">食べ歩き</li>
-                  </ul>
-                </div>
-                <p class="c-favorite">
-                  <svg class="c-favorite__icon c-svg">
-                    <use xlink:href="../../../svg/icon.svg#icon-heart"/>
-                  </svg>
-                  <span>5</span>
-                </p>
-              </div>
-            </a>
-          </li>
-          <li class="c-card__item">
-            <a href="/mock/article/detail/index.html" class="c-card">
-              <span class="c-card__image__badge">SIGHTSEEING</span>
-              <div class="c-card__image"> 
-                <img alt="dummy picture" src="https://placehold.jp/333/ffffff/300x200.png">
-                <span class="c-card__date">2023/10/24</span>
-              </div>
-              <h3 class="c-card__heading">台湾の人気おしゃれホテル5選！</h3>
-              <p class="c-card__text">観光に便利な大人気ホテルをご紹介。宿泊体験レポレートも。</p>
-              <div class="c-card__bottom">
-                <div class="c-tag">
-                  <svg class="c-tag__icon c-svg">
-                    <use xlink:href="../../../svg/icon.svg#icon-tag"/>
-                  </svg>
-                  <ul class="c-tag-card__list">
-                    <li class="c-tag-card__item">香港</li>
-                    <li class="c-tag-card__item">ホテル</li>
-                    <li class="c-tag-card__item">女子旅</li>
-                  </ul>
-                </div>
-                <p class="c-favorite">
-                  <svg class="c-favorite__icon c-svg">
-                    <use xlink:href="../../../svg/icon.svg#icon-heart"/>
-                  </svg>           
-                  <span>5</span>
-                </p>
-              </div>
-            </a>
-          </li>
-          <li class="c-card__item">
-            <a href="/mock/article/detail/index.html" class="c-card">
-              <span class="c-card__image__badge">FOOD</span>
-              <div class="c-card__image"> 
-                <img alt="dummy picture" src="https://placehold.jp/333/ffffff/300x200.png">
-                <span class="c-card__date">2023/10/19</span>
-              </div>
-              <h3 class="c-card__heading">大阪・難波 人気食べ歩きスポット10選！</h3>
-              <p class="c-card__text">昔ながらの名店から今年イチオシのスポットまで。大阪食い倒れツアーのご紹介です。</p>
-              <div class="c-card__bottom">
-                <div class="c-tag">
-                  <svg class="c-tag__icon c-svg">
-                    <use xlink:href="../../../svg/icon.svg#icon-tag"/>
-                  </svg>
-                  <ul class="c-tag-card__list">
-                    <li class="c-tag-card__item">大阪</li>
-                    <li class="c-tag-card__item">スイーツ</li>
-                    <li class="c-tag-card__item">食べ歩き</li>
-                  </ul>
-                </div>
-                <p class="c-favorite">
-                  <svg class="c-favorite__icon c-svg">
-                    <use xlink:href="../../../svg/icon.svg#icon-heart"/>
-                  </svg>
-                  <span>5</span>
-                </p>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </section>
+        <div class="c-form-group">
+          <label for="name2" class="c-form-label">名前（名）</label>
+          <input name="name2" type="text" id="name2">
+        </div>
+        <div class="c-form-group">
+          <label for="email" class="c-form-label">メールアドレス</label>
+          <input name="email" type="email">
+        </div>
+        <div class="c-form-group">
+          <div class="u-display-flex">
+            <div class="u-display-flex-grow-1">
+              <label for="login_pwd" class="c-form-label">パスワード</label> <span class="c-form-label__required">*</span>
+            </div>
+            <p class="u-ma-0 c-text--small">半角英数8文字以上</p>
+          </div>
+          <input name="login_pwd" type="password" id="login_pwd">
+        </div>
+        <div class="c-form-group u-text-align-center">
+          <button type="submit" class="c-button--primary u-width-50">更新する</button>
+        </div>
+        <div class="c-form-group u-text-align-center"><a href="/mock/member/mypage/index.html" class="">マイページへ戻る</a></div>
+      </form>
     </div>
     <div class="l-container--col-2__side">
       <h2 class="c-heading--lv3-b -memberMenu">会員メニュー</h2>
@@ -276,7 +165,7 @@
       </nav>
     </div>
   </div>
-
+  
 </div><!--//l-container-->
 
 <footer class="l-footer">

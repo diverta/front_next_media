@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.4.10",
+    "next": "14.0.4",
     "react": "latest",
     "react-dom": "latest",
     "textlint": "^13.4.1"
@@ -22,8 +22,8 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
+    "prettier": "^3.2.4",
     "sass": "^1.69.5",
-    "tailwindcss": "latest",
-    "typescript": "latest"
+    "tailwindcss": "latest"
   }
 }

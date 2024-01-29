@@ -53,7 +53,7 @@
           -->
           <!--ログイン時-->
           <p class="is-sp c-text--small u-mt-0">ようこそ！クロコさん</p>
-          <a href="/mock/member/mypage/" class="l-header__nav__options__button c-button">マイページ</a
+          <a href="/mock/member/mypage/index.html" class="l-header__nav__options__button c-button">マイページ</a
           >
           <button
             type="button"
@@ -95,47 +95,73 @@
     </nav>
   </div>
 </header>
+
 <div class="l-container">
 
-<nav class="l-breadcrumb is-pc">
-  <div class="l-container--large">
-    <ul>
-      <li>
-        <a href="/mock/">トップ</a>
-      </li>
-      <li>退会</li>
-    </ul>
+  <nav class="l-breadcrumb is-pc">
+    <div class="l-container--large">
+      <ul>
+        <li>
+          <a href="/mock/">トップ</a>
+        </li>
+        <li>退会</li>
+      </ul>
+    </div>
+  </nav>
+  <div class="c-page-title">
+    <div class="l-container--large">
+      <h1 class="c-page-title__heading">退会</h1>
+      <p class="c-heading--sub">Unsubscribe</p>
+    </div>
   </div>
-</nav>
-<div class="c-page-title">
-  <div class="l-container--large">
-    <h1 class="c-page-title__heading">退会</h1>
-    <p class="c-heading--sub">Unsubscribe</p>
-  </div>
-</div>
 
-<div class="l-container--small l-container--contents">
-  <form class="c-form">
-    <div class="c-form-group">
-      <dl>
-        <dt class="c-form-label">名前</dt>
-        <dd>ディバータ 太郎</dd>
-      </dl>
+  <div class="l-container--col-2 l-container--contents">
+    <div class="l-container--col-2__main">
+      <form class="c-form c-box">
+        <div class="c-form-group">
+          <dl>
+            <dt class="c-form-label">名前</dt>
+            <dd>ディバータ 太郎</dd>
+          </dl>
+        </div>
+        <div class="c-form-group">
+          <dl>
+            <dt class="c-form-label">メールアドレス</dt>
+            <dd>example@example.com</dd>
+          </dl>
+        </div>
+        <div class="c-form-group u-text-align-center">
+          <p>本当に退会してよろしいですか？<br>退会の処理が完了すると自動的にログアウトします。</p>
+        </div>
+        <div class="c-form-group u-text-align-center">
+          <button type="submit" class="c-button--primary u-width-50">退会</button>
+        </div>
+        <div class="c-form-group u-text-align-center"><a href="/mock/member/mypage/index.html" class="">マイページへ戻る</a></div>
+      </form>
     </div>
-    <div class="c-form-group">
-      <dl>
-        <dt class="c-form-label">メールアドレス</dt>
-        <dd>example@example.com</dd>
-      </dl>
+    <div class="l-container--col-2__side">
+      <h2 class="c-heading--lv3-b -memberMenu">会員メニュー</h2>
+      <nav class="l-side__nav">
+        <ul class="l-side__nav__list">
+          <li class="l-side__nav__list__item">
+            <a href="/mock/member/mypage/index.html" class="c-button u-display-flex u-display-flex-justify-content-between u-width-100">マイページトップ</a>
+          </li>
+          <li class="l-side__nav__list__item">
+            <a href="/mock/member/edit/index.html" class="c-button u-display-flex u-display-flex-justify-content-between u-width-100">会員情報の更新</a>
+          </li>
+          <li class="l-side__nav__list__item">
+            <a href="/mock/member/delete/index.html" class="c-button u-display-flex u-display-flex-justify-content-between u-width-100">退会</a>
+          </li>
+          <li class="l-side__nav__list__item">
+            <button type="button" class="c-button u-display-flex u-display-flex-justify-content-between u-width-100"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="u-mr-5"><path d="M6 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33333C2 2.97971 2.14048 2.64057 2.39052 2.39052C2.64057 2.14048 2.97971 2 3.33333 2H6" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.6667 11.3333L14.0001 7.99996L10.6667 4.66663" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 8H6" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path></svg> ログアウト </span></button>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <div class="c-form-group u-text-align-center">
-      <p>本当に退会してよろしいですか？<br>退会の処理が完了すると自動的にログアウトします。</p>
-    </div>
-    <button type="submit" class="c-button--primary u-width-100">退会</button>
-  </form>
-</div>
+  </div>
 
 </div><!--//l-container-->
+
 <footer class="l-footer">
   <div class="l-container--large">
     <nav class="l-footer__nav">

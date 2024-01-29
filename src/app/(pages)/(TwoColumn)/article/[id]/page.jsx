@@ -1,13 +1,19 @@
-import DetailBody from "@/components/section/twoColumn/DetailBody";
-import { getDetails } from "@/components/common/fetchData";
-import {
-  Banner,
-  Breadcrumb,
-  PageTitle,
-  TagArea,
-  TagKeyword,
-} from "@/components/common";
-import Feature from "@/components/section/feature/Feature";
+import DetailBody from '@/components/section/twoColumn/DetailBody'
+import { getDetails, getAllContentList } from '@/components/common/fetchData'
+import Banner from '@/components/common/Banner'
+import Breadcrumb from '@/components/common/Breadcrumb'
+import TagArea from '@/components/common/TagArea'
+import TagKeyword from '@/components/common/TagKeyword'
+import Feature from '@/components/section/feature/Feature'
+
+export async function generateStaticParams() {
+  const items = await getAllContentList()
+  const paramID = items.map((item) => ({
+    id: item.topics_id.toString(),
+  }))
+  console.log(paramID);
+  return paramID;
+}
 
 export default async function Food({ params }) {
   const item = await getDetails(params.id);
@@ -20,7 +26,6 @@ export default async function Food({ params }) {
   return (
     <div className="l-container">
       <Breadcrumb content={content} />
-      {/* <PageTitle content={content} /> */}
       <div className="l-container--col-2 c-article">
         <div className="l-container--col-2__main">
           <div>
@@ -35,5 +40,5 @@ export default async function Food({ params }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
