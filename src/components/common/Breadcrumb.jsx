@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-const Breadcrumb = ({content}) => {
-  const path = content.text?content.text:content[0].contents_type_ext_col_01;
+const Breadcrumb = ({ paths }) => {
   return (
     <nav className="l-breadcrumb is-pc">
       <div className="l-container--large">
@@ -9,7 +8,11 @@ const Breadcrumb = ({content}) => {
           <li>
             <Link href="/">トップ</Link>
           </li>
-          <li>{path}</li>
+          {paths.map(({ href, label }) => (
+            <li key={label}>
+              {href ? (<Link href={href}>{label}</Link>) : label}
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

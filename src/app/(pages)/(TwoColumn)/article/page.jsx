@@ -41,7 +41,7 @@ export default async function Event({ searchParams }) {
 
   return (
     <div className="l-container">
-      <Breadcrumb content={content} />
+      <Breadcrumb paths={[{ label: content.text }]} />
       <PageTitle content={content} />
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">

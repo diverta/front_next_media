@@ -13,10 +13,10 @@ export default async function Event({ params }) {
   const item = await getFeatureDetails(params.id);
 
   const fetchDetailsForItems = async () => {
-    if (!item?.ext_3 || item.ext_3.length === 0) {
+    if (!item?.relatedContents || item.relatedContents.length === 0) {
       return [];
     }
-    const ids = item.ext_3
+    const ids = item.relatedContents
       .map((item) => item.module_id)
       .filter(id => id)
     return await Promise.all(ids.map((id) => getDetails(id)));

@@ -8,8 +8,8 @@ export default function SingleLayout({ children }) {
   };
   return (
     <div className="l-container">
-      <Breadcrumb content={content}/>
-      <PageTitle content={content}/>
+      <Breadcrumb paths={[{ label: content.text }]} />
+      <PageTitle content={content} />
       <div className="l-container--small l-container--contents">
         {children}
       </div>

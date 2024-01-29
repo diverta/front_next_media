@@ -11,21 +11,21 @@ export async function generateStaticParams() {
   const paramID = items.map((item) => ({
     id: item.topics_id.toString(),
   }))
-  console.log(paramID);
   return paramID;
 }
 
 export default async function Food({ params }) {
   const item = await getDetails(params.id);
 
-  const content = {
-    text: '記事詳細',
-    text_en: 'Article details',
-  };
+
+  const paths = [
+    { href: `/article?topic=${item.contents_type_nm.toLowerCase()}`, label: item.contents_type_ext_col_01 },
+    { label: '記事詳細' }
+  ]
 
   return (
     <div className="l-container">
-      <Breadcrumb content={content} />
+      <Breadcrumb paths={paths} />
       <div className="l-container--col-2 c-article">
         <div className="l-container--col-2__main">
           <div>
