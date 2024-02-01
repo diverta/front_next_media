@@ -46,13 +46,13 @@ export default async function Event({ searchParams }) {
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">
           <section className="c-article__list">
-            <div class="c-heading__wrapper">
-              <h2 class="c-heading--lv2 u-display-flex-grow-1">
+            <div className="c-heading__wrapper">
+              <h2 className="c-heading--lv2 u-display-flex-grow-1">
                 {content.text}
                 <span>記事一覧</span>
               </h2>
-              <div class="u-display-flex-shrink-0 u-text-align-right">
-                <a href="/article" class="c-button">
+              <div className="u-display-flex-shrink-0 u-text-align-right">
+                <a href="/article" className="c-button">
                   View All
                 </a>
               </div>
