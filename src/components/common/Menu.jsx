@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useUser } from "./userContext";
 import { logout } from "@/components/common/fetchData";
@@ -6,23 +6,31 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const Menu = () => {
-    const { user, storeUser } = useUser();
-    const router = useRouter();
-    const handleLogout = async (event) => {
-        event.preventDefault();
-        const user = await logout();
-        console.log(user);
-        storeUser(null);
-    
-        if (user == null) {
-          router.push("/");
-        }
-      };
+  const { user, storeUser } = useUser();
+  const router = useRouter();
+  const handleLogout = async (event) => {
+    event.preventDefault();
+    const user = await logout();
+    console.log(user);
+    storeUser(null);
+
+    if (user == null) {
+      router.push("/");
+    }
+  };
   return (
     <div>
       <h2 className="c-heading--lv3-b -memberMenu">会員メニュー</h2>
       <nav className="l-side__nav">
         <ul className="l-side__nav__list">
+          <li className="l-side__nav__list__item">
+            <Link
+              href="/member/mypage"
+              className="c-button u-display-flex u-display-flex-justify-content-between u-width-100"
+            >
+              マイページトップ
+            </Link>
+          </li>
           <li className="l-side__nav__list__item">
             <Link
               href="/member/edit"

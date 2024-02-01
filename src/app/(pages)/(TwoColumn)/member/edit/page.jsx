@@ -2,7 +2,8 @@
 
 import { useUser } from "@/components/common/userContext";
 import { getLabels } from "@/components/common/fetchData";
-import { Breadcrumb, PageTitle } from "@/components/common";
+import Breadcrumb from '@/components/common/Breadcrumb'
+import PageTitle from '@/components/common/PageTitle'
 import Menu from "@/components/common/Menu";
 import Link from "next/link";
 import { useState, useCallback, useEffect, useRef } from "react";
@@ -64,7 +65,7 @@ export default function Edit() {
 
   return (
     <div className="l-container">
-      <Breadcrumb content={content} />
+      <Breadcrumb paths={[{ label: content.text }]} />
       <PageTitle content={content} />
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">

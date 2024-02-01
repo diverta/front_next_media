@@ -8,7 +8,8 @@ import CardList from "@/components/ui/CardList";
 import { useState, useEffect } from "react";
 import Pager from "@/components/common/Pager";
 import { getLabels } from "@/components/common/fetchData";
-import {Banner, Breadcrumb, PageTitle, TagArea, TagKeyword} from "@/components/common";
+import Breadcrumb from '@/components/common/Breadcrumb'
+import PageTitle from '@/components/common/PageTitle'
 import Menu from "@/components/common/Menu";
 
 export default function Mypage() {
@@ -50,7 +51,7 @@ export default function Mypage() {
 
   return (
     <div className="l-container">
-      <Breadcrumb content={content} />
+      <Breadcrumb paths={[{ label: content.text }]} />
       <PageTitle content={content} />
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">

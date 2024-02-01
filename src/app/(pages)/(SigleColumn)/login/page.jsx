@@ -5,7 +5,8 @@ import { login } from "@/components/common/fetchData";
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import {Breadcrumb, PageTitle} from "@/components/common";
+import Breadcrumb from "@/components/common/Breadcrumb";
+import PageTitle from "@/components/common/PageTitle";
 import { getLabels } from "@/components/common/fetchData";
 import AlertError from "@/components/ui/AlertError";
 import { useState } from "react";
@@ -40,8 +41,8 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <Breadcrumb content={content} />
+    <div className="l-container">
+      <Breadcrumb paths={[{ label: content.text }]} />
       <PageTitle content={content} />
       <div className="l-container--small l-container--contents">
         <div className="flex min-h-screen flex-col items-center justify-between p-24">

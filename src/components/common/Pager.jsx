@@ -5,7 +5,8 @@ import constants from "./constants";
 
 export default function Pager({ page, pageInfo, searchParams }) {
   const isFirstPage = page === 1;
-  const isLastPage = page === pageInfo.totalPageCnt;
+  const lastPage = pageInfo.totalPageCnt;
+  const isLastPage = page === lastPage;
   // console.log("Idhar searchParams pagination me: ", searchParams);
 
   const navigateToPage = (page, label, className) => (
@@ -44,7 +45,7 @@ export default function Pager({ page, pageInfo, searchParams }) {
         {navigateToPage(page, page, "is-current")}
       </li>
 
-      {!isLastPage && (
+      {lastPage!=0 && !isLastPage && (
         <>
           <li className="c-pager__item">{navigateToPage(page + 1)}</li>
           {isFirstPage && pageInfo.totalPageCnt != 2 && (

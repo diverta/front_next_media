@@ -1,9 +1,11 @@
-import Image from 'next/image'
-import CardList from '@/components/ui/CardList'
-import { getContentList } from '@/components/common/fetchData';
+import Image from "next/image";
+import CardList from "@/components/ui/CardList";
+import { getContentList, getRanking } from "@/components/common/fetchData";
+import Link from "next/link";
 
 export default async function Home() {
-  const {list} = await getContentList();
+  const { list } = await getContentList();
+  const topRankedList = await getRanking();
 
   return (
     <div>
@@ -14,69 +16,53 @@ export default async function Home() {
             <p className="c-heading--sub">New articles</p>
           </div>
           <div className="u-display-flex-shrink-0">
-            <a href="/article/" className="c-button">View All</a>
+            <Link href="/article/" className="c-button">
+              View All
+            </Link>
           </div>
         </div>
-        <CardList data={list}/>
+        <CardList data={list} />
       </section>
 
       {/* ↓ RANKING  */}
       <section className="c-box l-container--contents">
         <div className="c-heading--box__outer">
-            <h2 className="c-heading--box -en">RANKING</h2>
-            <p className="c-heading--boxSub">お気に入りランキング</p>
+          <h2 className="c-heading--box -en">RANKING</h2>
+          <p className="c-heading--boxSub">お気に入りランキング</p>
         </div>
         <ul className="c-card-list c-card-list--col-2">
-          <li className="c-card__item">
-            <a href="/article/detail/" className="c-card">
-              <span className="c-card__image__badge02">1</span>
-              <div className="c-card__image">
-                <Image
-                    alt="dummy picture"
-                    src="/images/dummy.png" 
-                    fill
-                  />
-              </div>
-              <div className="c-card__info">
-                <h3 className="c-card__heading">台湾のおすすめホテル5選！</h3>
-                <p className="c-card__text">観光に便利な大人気ホテルをご紹介。宿泊体験レポレートも。</p>
-                <div className="c-card__bottom">
-                  <p className="c-card__area">
-                    <svg className="c-map__icon c-svg">
-                      <use xlinkHref="../svg/icon.svg#icon-map"/>
-                    </svg>台湾
-                  </p>
-                  <p className="c-card__category">CULTURE</p>
+          {topRankedList.map((item, index) => (
+            <li className="c-card__item" key={index}>
+              <Link href={`/article/${item.topics_id}`} className="c-card">
+                <span className="c-card__image__badge02">{index + 1}</span>
+                <div className="c-card__image">
+                  <Image alt={item.image.desc || 'dummy'} src={item.image.url} fill />
                 </div>
-              </div>
-            </a>
-          </li>
-          <li className="c-card__item">
-            <a href="/article/detail/" className="c-card">
-              <span className="c-card__image__badge02">2</span>
-              <div className="c-card__image">
-                <Image
-                    alt="dummy picture"
-                    src="/images/dummy.png" 
-                    fill
-                  />
-              </div>
-              <div className="c-card__info">
-                <h3 className="c-card__heading">台湾のおすすめホテル5選！</h3>
-                <p className="c-card__text">観光に便利な大人気ホテルをご紹介。宿泊体験レポレートも。</p>
-                <div className="c-card__bottom">
-                  <p className="c-card__area">
-                    <svg className="c-map__icon c-svg">
-                      <use xlinkHref="../svg/icon.svg#icon-map"/>
-                    </svg>韓国
-                  </p>
-                  <p className="c-card__category">EVENT</p>
+                <div className="c-card__info">
+                  <h3 className="c-card__heading">{item.subject}</h3>
+                  <p className="c-card__text">{item.introduction}</p>
+                  <div className="c-card__bottom">
+                    <p className="c-card__area">
+                      <svg className="c-map__icon c-svg">
+                        <use href="../svg/icon.svg#icon-map" />
+                      </svg>
+                      {item.tags.map((tag, tag_index) =>
+                        // Check for area tag
+                        tag.tag_category_id === 5 ? (
+                          <span key={tag_index} className="c-tag-card__item">
+                            {tag.tag_nm}
+                          </span>
+                        ) : null
+                      )}
+                    </p>
+                    <p className="c-card__category">{item.contents_type_nm}</p>
+                  </div>
                 </div>
-              </div>
-            </a>
-          </li>
+              </Link>
+            </li>
+          ))}
         </ul>
       </section>
     </div>
-  )
+  );
 }

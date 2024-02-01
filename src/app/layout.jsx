@@ -1,6 +1,4 @@
 import "@/styles/style.scss";
-import Header from "@/components/layouts/Header";
-import Footer from "@/components/layouts/Footer";
 import { UserProvider } from "../components/common/userContext";
 
 export const metadata = {
@@ -12,11 +10,7 @@ export default async function RootLayout({ children, initialUser }) {
   return (
     <html>
       <body>
-        <UserProvider>
-          <Header />
-          {children}
-          <Footer />
-          </UserProvider>  
+        <UserProvider>{children}</UserProvider>
       </body>
     </html>
   );

@@ -100,6 +100,15 @@ export async function getTagKeyword() {
   return data.list;
 }
 
+export async function getRanking() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/ranking`,
+    { cache: "no-store" } // might need to fetch everytime due to dyanmic update of favorite_cnt
+  );
+  const data = await res.json();
+  return data.list;
+}
+
 export async function getMyFavoriteList() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/my_favorite_list`,

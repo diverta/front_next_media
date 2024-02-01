@@ -1,6 +1,7 @@
 "use client";
 
-import { Breadcrumb, PageTitle } from "@/components/common";
+import Breadcrumb from "@/components/common/Breadcrumb";
+import PageTitle from "@/components/common/PageTitle";
 import { getLabels } from "@/components/common/fetchData";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -50,8 +51,8 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <Breadcrumb content={content} />
+    <div className="l-container">
+      <Breadcrumb paths={[{ label: content.text }]} />
       <PageTitle content={content} />
       <div className="l-container--small l-container--contents">
         <div className="c-form-group u-text-align-center">

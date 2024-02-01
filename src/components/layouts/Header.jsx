@@ -4,13 +4,39 @@ import Image from "next/image";
 import Link from "next/link";
 import Search from "../ui/Search";
 import { useUser } from "@/components/common/userContext";
+import { useEffect } from "react";
 
-const Header = () => {
+const Header = (topPage=null) => {
+  const headerClasses = topPage.topPage ? 'l-header is-top header-scroll' : 'l-header';
   const { user } = useUser();
-  console.log("Header waala user", user);
+  // console.log("Header waala user", user);
+
+  useEffect(() => {
+    const header = document.querySelector('header.header-scroll');
+
+    if (header) {
+      const handleScroll = () => {
+        header.classList.toggle("-scrolled", window.scrollY > 100);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      const toggleButton = document.querySelector(".l-header__nav__toggle");
+
+      const handleToggleClick = () => {
+        header.classList.toggle("is-open");
+      };
+
+      toggleButton.addEventListener("click", handleToggleClick);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        toggleButton.removeEventListener("click", handleToggleClick);
+      };
+    }
+  }, [topPage]);
 
   return (
-    <header className="l-header" data-js="header-scroll">
+    <header className={headerClasses}>
       <div className="l-header__inner">
         <div className="l-header__logo">
           <Link href="/">
