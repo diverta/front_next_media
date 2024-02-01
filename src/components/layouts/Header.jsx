@@ -1,10 +1,40 @@
+'use client';
+
 import Image from 'next/image';
 import Link from "next/link";
+import Search from '../ui/Search';
+import { useEffect } from 'react';
 
-const Header = () => {
+const Header = (topPage=null) => {
+  const headerClasses = topPage.topPage ? 'l-header is-top header-scroll' : 'l-header';
+
+  useEffect(() => {
+    const header = document.querySelector('header.header-scroll');
+
+    if (header) {
+      const handleScroll = () => {
+        header.classList.toggle("-scrolled", window.scrollY > 100);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      const toggleButton = document.querySelector(".l-header__nav__toggle");
+
+      const handleToggleClick = () => {
+        header.classList.toggle("is-open");
+      };
+
+      toggleButton.addEventListener("click", handleToggleClick);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        toggleButton.removeEventListener("click", handleToggleClick);
+      };
+    }
+  }, [topPage]);
+
   return (
 
-    <header className="l-header" data-js="header-scroll">
+    <header className={headerClasses}>
       <div className="l-header__inner">
         <div className="l-header__logo">
           <Link href="/">
@@ -24,20 +54,13 @@ const Header = () => {
           </button>
           <div className="l-header__nav__inner">
             <ul className="l-header__nav__list">
-              <li className="l-header__nav__list__item"><Link href="/food/">FOOD</Link></li>
-              <li className="l-header__nav__list__item"><Link href="/shopping/">SHOPPING</Link></li>
-              <li className="l-header__nav__list__item"><Link href="/sightseeing/">SIGHTSEEING</Link></li>
-              <li className="l-header__nav__list__item"><Link href="/event/">EVENT</Link></li>
-              <li className="l-header__nav__list__item"><Link href="/culture/">CULTURE</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=food">FOOD</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=shopping">SHOPPING</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=sightseeing">SIGHTSEEING</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=event">EVENT</Link></li>
+              <li className="l-header__nav__list__item"><Link href="/article?topic=culture">CULTURE</Link></li>
             </ul>
-            <div className="l-header__nav__search">
-              <form action="/search/" method="GET">
-                <button type="submit" aria-label="検索" className="l-header__nav__searchButton"></button>
-                <label>
-                  <input type="text" placeholder="キーワードを入力" className="l-header__nav__searchText" />
-                </label>
-              </form>
-            </div>
+            <Search />
             <div className="l-header__nav__options">
               {/* 未ログイン
               <Link href="/login/" className="l-header__nav__options__button u-display-flex u-display-flex-align-items-center">
@@ -69,23 +92,23 @@ const Header = () => {
                   <path
                     d="M6 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33333C2 2.97971 2.14048 2.64057 2.39052 2.39052C2.64057 2.14048 2.97971 2 3.33333 2H6"
                     stroke="white"
-                    stroke-width="1.33333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.33333"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M10.6667 11.3333L14.0001 7.99996L10.6667 4.66663"
                     stroke="white"
-                    stroke-width="1.33333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.33333"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M14 8H6"
                     stroke="white"
-                    stroke-width="1.33333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.33333"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </button>

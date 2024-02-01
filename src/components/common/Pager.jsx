@@ -1,16 +1,65 @@
-const Pager = () => {
+"use client";
+
+import Link from "next/link";
+import constants from "./constants";
+
+export default function Pager({ page, pageInfo, searchParams }) {
+  const isFirstPage = page === 1;
+  const isLastPage = page === pageInfo.totalPageCnt;
+  // console.log("Idhar searchParams pagination me: ", searchParams);
+
+  const navigateToPage = (page, label, className) => (
+    <Link
+      href={{
+        pathname: "/article",
+        query: {
+          ...searchParams,
+          page: page,
+        },
+      }}
+      className={`c-pager__link ${className}`}
+      key={page}
+    >
+      {label ? <span dangerouslySetInnerHTML={{ __html: label }} /> : page}
+    </Link>
+  );
   return (
     <ul className="c-pager">
-      <li className="c-pager__item"><a className="c-pager__link" href="/DUMMY">&laquo;</a></li>
-      <li className="c-pager__item"><a className="c-pager__link" href="/DUMMY">&lsaquo;</a></li>
-      <li className="c-pager__item"><a className="c-pager__link" href="/DUMMY">1</a></li>
-      <li className="c-pager__item"><a className="c-pager__link is-current" href="/DUMMY">2</a></li>
-      <li className="c-pager__item"><a className="c-pager__link" href="/DUMMY">3</a></li>
-      <li className="c-pager__item"><a className="c-pager__link" href="/DUMMY">&rsaquo;</a></li>
-      <li className="c-pager__item"><a className="c-pager__link" href="/DUMMY">&raquo;</a></li>
-  </ul>
+      {!isFirstPage && (
+        <>
+          <li className="c-pager__item">{navigateToPage(1, constants.DOUBLE_LEFT_POINTING_ANGLE_BRACKET)}</li>
+          <li className="c-pager__item">
+            {navigateToPage(page - 1, constants.LEFT_POINTING_ANGLE_BRACKET)}
+          </li>
+          {isLastPage && pageInfo.totalPageCnt != 2 && (
+            <>
+              <li className="c-pager__item">{navigateToPage(page - 2)}</li>
+            </>
+          )}
+          <li className="c-pager__item">{navigateToPage(page - 1)}</li>
+        </>
+      )}
 
+      <li className="c-pager__item">
+        {navigateToPage(page, page, "is-current")}
+      </li>
+
+      {!isLastPage && (
+        <>
+          <li className="c-pager__item">{navigateToPage(page + 1)}</li>
+          {isFirstPage && pageInfo.totalPageCnt != 2 && (
+            <>
+              <li className="c-pager__item">{navigateToPage(page + 2)}</li>
+            </>
+          )}
+          <li className="c-pager__item">
+            {navigateToPage(page + 1, constants.RIGHT_POINTING_ANGLE_BRACKET)}
+          </li>
+          <li className="c-pager__item">
+            {navigateToPage(pageInfo.totalPageCnt , constants.DOUBLE_RIGHT_POINTING_ANGLE_BRACKET)}
+          </li>
+        </>
+      )}
+    </ul>
   );
-};
-
-export default Pager;
+}

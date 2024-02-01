@@ -1,4 +1,6 @@
 import "@/styles/style.scss";
+import Header from "@/components/layouts/Header";
+import Footer from "@/components/layouts/Footer";
 
 export const metadata = {
   title: "kuroco Trip",
@@ -7,8 +9,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html>
-      <body>{children}</body>
-    </html>
+    <span>
+      <Header />
+      {children}
+      <Footer />
+    </span>
   );
 }
