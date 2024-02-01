@@ -1,13 +1,18 @@
-const Breadcrumb = ({data, content}) => {
-  const path = content.text?content.text:content[0].contents_type_ext_col_01;
+import Link from "next/link";
+
+const Breadcrumb = ({ paths }) => {
   return (
     <nav className="l-breadcrumb is-pc">
       <div className="l-container--large">
         <ul>
           <li>
-            <a href="/">トップ</a>
+            <Link href="/">トップ</Link>
           </li>
-          <li>{path}</li>
+          {paths.map(({ href, label }) => (
+            <li key={label}>
+              {href ? (<Link href={href}>{label}</Link>) : label}
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

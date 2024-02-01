@@ -15,12 +15,20 @@ export async function getContentList(
   const categoryID = categoryMap[contentCategory] || "";
   var url = `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list?pageID=${pageID}`;
   if (contentCategory) url += `&contents_type=${categoryID}`;
-  if (tag_id) url += `&tag_id=${tag_id}`;
+  if (tag_id) url += `&tag_id[]=${tag_id}`;
   if (search) url += `&filter=keyword%20contains%20${search}`;
   console.log(url);
   const res = await fetch(url, { cache: "no-store" });
   const data = await res.json();
   return data;
+}
+
+export async function getAllContentList() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/all`,{ cache: "no-store" }
+  );
+  const data = await res.json();
+  return data.list;
 }
 
 export async function getCategoryList() {

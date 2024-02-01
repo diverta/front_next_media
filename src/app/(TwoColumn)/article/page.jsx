@@ -1,62 +1,68 @@
-import Pager from "@/components/common/Pager";
-import { getContentList } from "@/components/common/fetchData";
-import CardList from "@/components/ui/CardList";
-import Feature from "@/components/section/feature/Feature";
-import { getLabels } from "@/components/common/fetchData";
-
-import {
-  Banner,
-  Breadcrumb,
-  PageTitle,
-  TagArea,
-  TagKeyword,
-} from "@/components/common";
+import Pager from '@/components/common/Pager'
+import { getContentList } from '@/components/common/fetchData'
+import CardList from '@/components/ui/CardList'
+import Feature from '@/components/section/feature/Feature'
+import { getLabels } from '@/components/common/fetchData'
+import Banner from '@/components/common/Banner'
+import Breadcrumb from '@/components/common/Breadcrumb'
+import PageTitle from '@/components/common/PageTitle'
+import TagArea from '@/components/common/TagArea'
+import TagKeyword from '@/components/common/TagKeyword'
 
 export default async function Event({ searchParams }) {
-  console.log(searchParams);
-  const page = Number(
-    searchParams && searchParams.page ? searchParams.page : 1
-  );
+  const page = Number(searchParams && searchParams.page ? searchParams.page : 1)
   const tag_id = Number(
-    searchParams && searchParams.tag_id ? searchParams.tag_id : ""
-  );
+    searchParams && searchParams.tag_id ? searchParams.tag_id : '',
+  )
   const tag_category_id = Number(
     searchParams && searchParams.tag_category_id
       ? searchParams.tag_category_id
-      : ""
-  );
-  const search = searchParams && searchParams.search ? searchParams.search : "";
-  const topic = searchParams && searchParams.topic ? searchParams.topic : "";
-  const contentDirectory = getLabels();
+      : '',
+  )
+  const search =
+    searchParams && searchParams.search
+      ? `%22${searchParams.search.replace(/\s/g, '%20')}%22`
+      : ''
+  const topic = searchParams && searchParams.topic ? searchParams.topic : ''
+  const contentDirectory = getLabels()
+  const { list, pageInfo } = await getContentList(topic, page, tag_id, search)
 
-  const { list, pageInfo } = await getContentList(topic, page, tag_id, search);
+  let content
 
-  let content;
-  console.log(topic);
   if (topic) {
-    content = list;
+    content = list
   } else if (search) {
-    content = contentDirectory.search;
+    content = contentDirectory.search
   } else if (tag_id) {
-    content = contentDirectory.tag_id[tag_category_id];
+    content = contentDirectory.tag_id[tag_category_id]
   } else {
-    content = contentDirectory.article;
+    content = contentDirectory.article
   }
-  console.log(content);
 
   return (
     <div className="l-container">
-      <Breadcrumb content={content} />
+      <Breadcrumb paths={[{ label: content.text }]} />
       <PageTitle content={content} />
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">
           <section className="c-article__list">
-            <h2 className="c-heading--lv2 u-mb-50">
-              {content.text}
-              <span>記事一覧</span>
-            </h2>
+            <div className="c-heading__wrapper">
+              <h2 className="c-heading--lv2 u-display-flex-grow-1">
+                {content.text}
+                <span>記事一覧</span>
+              </h2>
+              <div className="u-display-flex-shrink-0 u-text-align-right">
+                <a href="/article" className="c-button">
+                  View All
+                </a>
+              </div>
+            </div>
             <CardList data={list} />
-            <Pager page={page} pageInfo={pageInfo} />
+            <Pager
+              page={page}
+              pageInfo={pageInfo}
+              searchParams={searchParams}
+            />
           </section>
         </div>
         <div className="l-container--col-2__side">
@@ -67,5 +73,5 @@ export default async function Event({ searchParams }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

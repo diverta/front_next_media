@@ -62,13 +62,12 @@ const DetailBody = ({ data, params }) => {
   }, [updateDataList]);
   
   return (
-    <div className="l-container--col c-article">
         <article className="c-article__detail">
           <header>
             <figure className="c-article__detail__mainImage">
               <Image
                 alt="dummy main image"
-                src={data.ext_1.url}
+                src={data.image.url}
                 width="1200"
                 height="400"
               />
@@ -105,27 +104,20 @@ const DetailBody = ({ data, params }) => {
             </div>
           </header>
           <div className="c-article__detail__contents">
-            <div className="c-article__detail__intro">
-              <p className="c-article__detail__intro__text">{data.ext_2}</p>
-            </div>
-            <div className="c-article__detail__block">
-              <h2>{data.ext_3.ext_3}</h2>
-              <div className="c-article__detail__free">
-                <p>{data.ext_3.ext_4}</p>
-              </div>
-            </div>
-            {data.ext_3.map((item, index) => (
-              <div key={index} className="c-article__detail__block">
-                <h2>{item.ext_3}</h2>
-                <div
-                  className="c-article__detail__free"
-                  dangerouslySetInnerHTML={{ __html: item.ext_4 }}
-                />
-              </div>
-            ))}
+          <div className="c-article__detail__intro">
+            <p className="c-article__detail__intro__text">{data.introduction}</p>
           </div>
+          {data.contentItems.map((item, index) => (
+            <div key={index} className="c-article__detail__block">
+              <h2>{item.header}</h2>
+              <div
+                className="c-article__detail__free"
+                dangerouslySetInnerHTML={{ __html: item.body }}
+              />
+            </div>
+          ))}
+        </div>
         </article>
-      </div>
   );
 };
 
