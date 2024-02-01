@@ -6,7 +6,7 @@ import constants from "./constants";
 export default function Pager({ page, pageInfo, searchParams }) {
   const isFirstPage = page === 1;
   const isLastPage = page === pageInfo.totalPageCnt;
-  console.log("Idhar searchParams pagination me: ", searchParams);
+  // console.log("Idhar searchParams pagination me: ", searchParams);
 
   const navigateToPage = (page, label, className) => (
     <Link

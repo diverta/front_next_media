@@ -17,7 +17,6 @@ export async function getContentList(
   if (contentCategory) url += `&contents_type=${categoryID}`;
   if (tag_id) url += `&tag_id[]=${tag_id}`;
   if (search) url += `&filter=keyword%20contains%20${search}`;
-  console.log(url);
   const res = await fetch(url,{ cache: "no-store" });
   const data = await res.json();
   return data;
