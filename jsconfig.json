@@ -16,12 +16,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./",  // Added baseUrl for path mapping
     "paths": {
       "@/*": [
         "./src/*"
@@ -31,12 +27,11 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "**/*.js",    // Change to include JavaScript files
+    "**/*.jsx",   // Include JSX files
     ".next/types/**/*.ts",
-    "src/**/*.jsx"
-, "src/components/common/fetchData.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "src/**/*.jsx",
+    "src/components/common/fetchData.js",
+  ],
+  "exclude": ["node_modules"]
 }

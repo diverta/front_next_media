@@ -32,7 +32,7 @@
     }
   }
   &::before {
-    background: url(/images/top-hero.png) no-repeat center;
+    background: url(/images/top-hero.jpg) no-repeat center;
     background-size: cover;
     opacity: .7;
     z-index: -2;
@@ -41,7 +41,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    background-color: rgba(241,237,233,.2);
+    background-color: rgba(239,230,222,.3);
     transform: skewY(6deg);
     z-index: -1;
   }
