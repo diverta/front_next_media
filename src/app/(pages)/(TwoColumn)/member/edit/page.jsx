@@ -23,9 +23,7 @@ export default function Edit() {
   const memberInfoFunction = useCallback(async () => {
     try {
       const info = await getMemberInfo();
-      //   console.log(info);
       setMemberInfo(info.details);
-      console.log("Bhaiiiiii", memberInfo.name1);
     } catch (error) {
       console.error("Error fetching member information", error);
     }
@@ -46,10 +44,6 @@ export default function Edit() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(name1.current.value);
-    console.log(name2.current.value);
-    console.log(email.current.value);
-    console.log(login_pwd.current.value);
 
     const userStatus = await updateMemberInfo(
       name1.current.value,

@@ -28,10 +28,6 @@ export default function Register() {
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    console.log(name1.current.value);
-    console.log(name2.current.value);
-    console.log(email.current.value);
-    console.log(login_pwd.current.value);
 
     const user = await register(
       name1.current.value,

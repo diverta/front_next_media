@@ -16,7 +16,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",  // Added baseUrl for path mapping
     "paths": {
       "@/*": [

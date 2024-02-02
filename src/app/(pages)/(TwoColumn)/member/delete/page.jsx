@@ -26,7 +26,6 @@ export default function Delete() {
     try {
       const info = await getMemberInfo();
       setMemberInfo(info.details);
-      console.log("Bhai", memberInfo.name1);
     } catch (error) {
       console.error("Error fetching member information", error);
     }

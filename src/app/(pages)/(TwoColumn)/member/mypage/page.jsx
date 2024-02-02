@@ -38,8 +38,6 @@ export default function Mypage() {
       const favorites = await getMyFavoriteList();
       setMyFavourites(favorites.list);
       setMyFavouritesPageInfo(favorites.pageInfo);
-      console.log("Bhai", favorites);
-      console.log("Bhairr", myFavouritesPageInfo);
     } catch (error) {
       console.error("Error fetching favorite list:", error);
     }
