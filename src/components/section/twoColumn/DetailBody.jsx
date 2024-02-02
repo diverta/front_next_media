@@ -6,6 +6,7 @@ import { postFavorite, deleteFavorite, getDetails } from "@/components/common/fe
 import { useUser } from "@/components/common/userContext";
 
 const DetailBody = ({ data, params }) => {
+  console.log('Ekdum starting',data.topics_id);
   const { user } = useUser();
   const [data1, setData] = useState(data);
   const [likesCount, setLikesCount] = useState(data.favorite_cnt);
@@ -27,13 +28,14 @@ const DetailBody = ({ data, params }) => {
     } catch (error) {
       console.error("Error fetching favorite list:", error);
     }
-  }, [params.id]);
+  }, [params.id, data1.my_favorite_flg]);
   
 
   const handleLikeClick = async () => {
     try {
       if(!isLiked){
-        const response = await postFavorite("topics", data.topics_id); 
+        console.log("Bhaiii iidhar ", data.topics_id);
+        const response = await postFavorite(data.topics_id); 
         console.log(response);
         if(response.ok){
           setIsLiked(true);
@@ -42,7 +44,7 @@ const DetailBody = ({ data, params }) => {
         }
       }
       else{
-        const response = await deleteFavorite("topics", data.topics_id); 
+        const response = await deleteFavorite(data.topics_id); 
         console.log(response);
         if(response.ok){
           setIsLiked(false);

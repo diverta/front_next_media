@@ -124,10 +124,9 @@ export async function getMyFavoriteList() {
   return data;
 }
 
-export async function postFavorite(module_type, module_id) {
+export async function postFavorite(module_id) {
   const params = {
-    module_type,
-    module_id,
+    module_id
   };
 
   const res = await fetch(
@@ -142,6 +141,7 @@ export async function postFavorite(module_type, module_id) {
   );
 
   await res.json();
+  console.log('Bhai',res);
   if (res.ok) {
     return res;
   }
@@ -149,10 +149,9 @@ export async function postFavorite(module_type, module_id) {
   return null;
 }
 
-export async function deleteFavorite(module_type, module_id) {
+export async function deleteFavorite(module_id) {
   const params = {
-    module_type,
-    module_id,
+    module_id
   };
 
   const res = await fetch(
