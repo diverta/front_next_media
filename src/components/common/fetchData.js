@@ -46,8 +46,7 @@ export async function getDetails(id) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      cache: "no-store", 
-      revalidate: 0,
+      cache: "no-store",
     }
   );
   const data = await res.json();

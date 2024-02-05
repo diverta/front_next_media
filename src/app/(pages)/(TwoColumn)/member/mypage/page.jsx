@@ -41,7 +41,6 @@ export default function Mypage() {
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">
           <div>
-            {/* {user && user.name1 && <p>Hello {user.name1}</p>} */}
             <section className="c-favoriteList l-container--contents">
               <h2 className="c-heading--lv1">お気に入り記事</h2>
               <p className="c-heading--sub">Favorite articles</p>
