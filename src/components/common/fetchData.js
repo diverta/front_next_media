@@ -17,7 +17,6 @@ export async function getContentList(
   if (contentCategory) url += `&contents_type=${categoryID}`;
   if (tag_id) url += `&tag_id[]=${tag_id}`;
   if (search) url += `&filter=keyword%20contains%20${search}`;
-  console.log(url);
   const res = await fetch(url, { cache: "no-store" });
   const data = await res.json();
   return data;
@@ -141,7 +140,6 @@ export async function postFavorite(module_id) {
   );
 
   await res.json();
-  console.log('Bhai',res);
   if (res.ok) {
     return res;
   }
@@ -191,7 +189,6 @@ export async function login(email, password) {
   await res.json();
 
   if(!res.ok){
-    console.log("Wrong credentials");
     return null;
   }
 
@@ -211,8 +208,6 @@ export async function register(name1, name2, email, login_pwd) {
     login_pwd,
   };
 
-  console.log("BHAI IDHAR", credentials);
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/member/register`,
     {
@@ -225,8 +220,6 @@ export async function register(name1, name2, email, login_pwd) {
 
   await res.json();
   if(!res.ok){
-    console.log("Bhai scene ho gaya");
-    console.log(res);
     return null;
   }
 
@@ -301,7 +294,6 @@ export async function updateMemberInfo(name1, name2, email, login_pwd) {
 
   const status = await res.json();
   if(status.messages == "Updated"){
-    console.log("Updated");
     return true;
   }
   return null;
@@ -320,7 +312,6 @@ export async function deleteMember() {
 
   const status = await res.json();
   if(status.messages == "Deleted"){
-    console.log("Deleted");
     return true;
   }
   return null;

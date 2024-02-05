@@ -6,17 +6,10 @@ import { postFavorite, deleteFavorite, getDetails } from "@/components/common/fe
 import { useUser } from "@/components/common/userContext";
 
 const DetailBody = ({ data, params }) => {
-  console.log('Ekdum starting',data.topics_id);
   const { user } = useUser();
   const [data1, setData] = useState(data);
   const [likesCount, setLikesCount] = useState(data.favorite_cnt);
   const [isLiked, setIsLiked] = useState(data1.my_favorite_flg);
-
-  console.log("Bhaiii data 1 ki baat", data1.my_favorite_flg);
-  console.log("Bhaiii liked hai na", isLiked);
-  if(user){
-    console.log("User",user.member_id);
-  }
 
   const updateDataList = useCallback(async () => {
     try {
@@ -24,7 +17,6 @@ const DetailBody = ({ data, params }) => {
       setData(data2);
       setIsLiked(data2.my_favorite_flg);
 
-      console.log("Bhairr", data2);
     } catch (error) {
       console.error("Error fetching favorite list:", error);
     }
@@ -34,9 +26,7 @@ const DetailBody = ({ data, params }) => {
   const handleLikeClick = async () => {
     try {
       if(!isLiked){
-        console.log("Bhaiii iidhar ", data.topics_id);
-        const response = await postFavorite(data.topics_id); 
-        console.log(response);
+        const response = await postFavorite(data.topics_id);
         if(response.ok){
           setIsLiked(true);
           data.favorite_cnt = data.favorite_cnt + 1;
@@ -44,8 +34,7 @@ const DetailBody = ({ data, params }) => {
         }
       }
       else{
-        const response = await deleteFavorite(data.topics_id); 
-        console.log(response);
+        const response = await deleteFavorite(data.topics_id);
         if(response.ok){
           setIsLiked(false);
           data.favorite_cnt = data.favorite_cnt - 1;

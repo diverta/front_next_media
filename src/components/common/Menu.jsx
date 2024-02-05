@@ -11,7 +11,6 @@ const Menu = () => {
   const handleLogout = async (event) => {
     event.preventDefault();
     const user = await logout();
-    console.log(user);
     storeUser(null);
 
     if (user == null) {

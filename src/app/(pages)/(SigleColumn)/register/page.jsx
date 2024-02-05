@@ -35,7 +35,6 @@ export default function Register() {
       email.current.value,
       login_pwd.current.value
     );
-    console.log(user);
 
     if (user) {
       setAlert(false);

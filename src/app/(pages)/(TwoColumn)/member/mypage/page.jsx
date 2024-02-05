@@ -19,19 +19,6 @@ export default function Mypage() {
   const [myFavouritesPageInfo, setMyFavouritesPageInfo] = useState([]);
   const contentDirectory = getLabels();
   const content = contentDirectory.mypage;
-  console.log(user);
-
-  const handleLogout = async (event) => {
-    event.preventDefault();
-    const user = await logout();
-    console.log(user);
-    storeUser(null);
-
-    if (user == null) {
-      // window.location.href = "/"
-      router.push("/");
-    }
-  };
 
   const favoriteList = useCallback(async () => {
     try {

@@ -20,7 +20,6 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const storeUser = (userData) => {
-    console.log('storing user data', userData);
     if (!userData?.member_id) {
       window.localStorage.setItem(USER_MEMBER_ID_KEY, null);
       setUser(null);

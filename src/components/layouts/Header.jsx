@@ -9,7 +9,6 @@ import { useEffect } from "react";
 const Header = (topPage=null) => {
   const headerClasses = topPage.topPage ? 'l-header is-top header-scroll' : 'l-header';
   const { user } = useUser();
-  // console.log("Header waala user", user);
 
   useEffect(() => {
     const header = document.querySelector('header.header-scroll');

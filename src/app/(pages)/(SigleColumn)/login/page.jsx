@@ -28,7 +28,6 @@ export default function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     const user = await login(email.current.value, password.current.value);
-    console.log(user);
 
     if (user) {
       setAlert(false);

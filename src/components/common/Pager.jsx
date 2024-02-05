@@ -7,7 +7,6 @@ export default function Pager({ page, pageInfo, searchParams }) {
   const isFirstPage = page === 1;
   const lastPage = pageInfo.totalPageCnt;
   const isLastPage = page === lastPage;
-  // console.log("Idhar searchParams pagination me: ", searchParams);
 
   const navigateToPage = (page, label, className) => (
     <Link
