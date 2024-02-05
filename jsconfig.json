@@ -29,8 +29,6 @@
     "**/*.js",    // Change to include JavaScript files
     "**/*.jsx",   // Include JSX files
     ".next/types/**/*.ts",
-    "src/**/*.jsx",
-    "src/components/common/fetchData.js",
   ],
   "exclude": ["node_modules"]
 }
