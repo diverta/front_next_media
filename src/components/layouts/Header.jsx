@@ -4,32 +4,30 @@ import Image from "next/image";
 import Link from "next/link";
 import Search from "../ui/Search";
 import { useUser } from "@/components/common/userContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Header = (topPage=null) => {
-  const headerClasses = topPage.topPage ? 'l-header is-top header-scroll' : 'l-header';
+  const [isNavToggleActive, setIsNavToggleActive] = useState(false);
+  const headerClasses = `l-header ${topPage.topPage ? 'is-top header-scroll' : ''} ${isNavToggleActive ? 'is-open' : ''}`;
+
   const { user } = useUser();
 
-  useEffect(() => {
-    const header = document.querySelector('header.header-scroll');
+  const handleNavToggleClick = () => {
+    setIsNavToggleActive((prev) => !prev);
+  };
 
-    if (header) {
+  useEffect(() => {
+    const headerScroll = document.querySelector('header.header-scroll');
+
+    if (headerScroll) {
       const handleScroll = () => {
-        header.classList.toggle("-scrolled", window.scrollY > 100);
+        headerScroll.classList.toggle("-scrolled", window.scrollY > 100);
       };
 
       window.addEventListener("scroll", handleScroll);
-      const toggleButton = document.querySelector(".l-header__nav__toggle");
-
-      const handleToggleClick = () => {
-        header.classList.toggle("is-open");
-      };
-
-      toggleButton.addEventListener("click", handleToggleClick);
 
       return () => {
         window.removeEventListener("scroll", handleScroll);
-        toggleButton.removeEventListener("click", handleToggleClick);
       };
     }
   }, [topPage]);
@@ -43,7 +41,7 @@ const Header = (topPage=null) => {
           </Link>
         </div>
         <nav className="l-header__nav">
-          <button type="button" className="l-header__nav__toggle">
+          <button type="button" className="l-header__nav__toggle" onClick={handleNavToggleClick}>
             <div className="l-header__nav__toggle__icon">
               <span></span>
               <span></span>
@@ -69,12 +67,12 @@ const Header = (topPage=null) => {
               </li>
             </ul>
             <Search />
-            <div className="l-header__nav__options">
+            <div>
               {user ? (
-                <div>
+                <div className="l-header__nav__options">
                   {/* ログイン時 */}
                   <p className="is-sp c-text--small u-mt-0">
-                    ようこそ！クロコさん
+                    ようこそ！{user.name1} さん
                   </p>
                   <Link
                     href="/member/mypage/"
@@ -119,7 +117,7 @@ const Header = (topPage=null) => {
                   </button>
                 </div>
               ) : (
-                <div>
+                <div className="l-header__nav__options">
                   {/* 未ログイン */}
                   <Link
                     href="/login/"
