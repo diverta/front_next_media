@@ -263,6 +263,33 @@ export async function reminder(email) {
   return null;
 }
 
+export async function reset(token, temp_pwd, login_pwd) {
+  const credentials = {
+    token,
+    temp_pwd,
+    login_pwd
+  };
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/reminder`,
+    {
+      method: "POST",
+      body: JSON.stringify(credentials),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+
+  const response = await res.json();
+  console.log(response);
+  
+  if(res.ok){
+    return response.messages;
+  }
+
+  return null;
+}
+
 export async function profile() {
   const userRef = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/profile`,
