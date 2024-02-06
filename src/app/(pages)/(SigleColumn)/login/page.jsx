@@ -78,7 +78,7 @@ export default function Login() {
                   会員登録
                 </Link>
                 または
-                <Link href="/mock/login/reminder/index.html" className="">
+                <Link href="/reminder" className="">
                   パスワードをお忘れの方
                 </Link>
               </div>

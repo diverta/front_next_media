@@ -239,6 +239,30 @@ export async function logout() {
   return null;
 }
 
+export async function reminder(email) {
+  const credentials = {
+    email,
+  };
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/reminder`,
+    {
+      method: "POST",
+      body: JSON.stringify(credentials),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+
+  const response = await res.json();
+  console.log(response);
+  if(res.ok){
+    return response.messages;
+  }
+
+  return null;
+}
+
 export async function profile() {
   const userRef = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/profile`,
@@ -333,6 +357,10 @@ export function getLabels() {
     register: {
       text: "会員登録",
       text_en: "Register",
+    },
+    reminder: {
+      text: "パスワード再発行",
+      text_en: "Password Reset",
     },
     mypage: {
       text: "マイページ",
