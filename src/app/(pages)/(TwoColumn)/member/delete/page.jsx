@@ -10,8 +10,7 @@ import {
 import Menu from "@/components/common/Menu";
 import Link from "next/link";
 import { useUser } from "@/components/common/userContext";
-import { useState, useCallback, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import AlertSuccess from "@/components/ui/AlertSuccess";
 
 export default function Delete() {
@@ -19,21 +18,20 @@ export default function Delete() {
   const content = contentDirectory.deleteProfile;
   const [memberInfo, setMemberInfo] = useState([]);
   const { user, storeUser } = useUser();
-  const router = useRouter();
   const [alert, setAlert] = useState(false);
 
-  const memberInfoFunction = useCallback(async () => {
+  useEffect(() => {
+    const memberInfoFunction = async () => {
     try {
       const info = await getMemberInfo();
       setMemberInfo(info.details);
     } catch (error) {
       console.error("Error fetching member information", error);
     }
-  }, []);
-
-  useEffect(() => {
+  };
+  
     memberInfoFunction();
-  }, [memberInfoFunction]);
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

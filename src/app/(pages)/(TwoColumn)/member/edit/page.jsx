@@ -6,10 +6,9 @@ import Breadcrumb from '@/components/common/Breadcrumb'
 import PageTitle from '@/components/common/PageTitle'
 import Menu from "@/components/common/Menu";
 import Link from "next/link";
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getMemberInfo } from "@/components/common/fetchData";
 import { updateMemberInfo } from "@/components/common/fetchData";
-import { useRouter } from "next/navigation";
 import AlertSuccess from "@/components/ui/AlertSuccess";
 
 export default function Edit() {
@@ -17,21 +16,20 @@ export default function Edit() {
   const contentDirectory = getLabels();
   const content = contentDirectory.editProfile;
   const [memberInfo, setMemberInfo] = useState([]);
-  const router = useRouter();
   const [alert, setAlert] = useState(false);
 
-  const memberInfoFunction = useCallback(async () => {
+  useEffect(() => {
+    const memberInfoFunction = async () => {
     try {
       const info = await getMemberInfo();
       setMemberInfo(info.details);
     } catch (error) {
       console.error("Error fetching member information", error);
     }
-  }, []);
-
-  useEffect(() => {
+  };
+  
     memberInfoFunction();
-  }, [memberInfoFunction]);
+  }, []);
 
   const name1 = useRef("");
   const name2 = useRef("");
