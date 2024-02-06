@@ -59,7 +59,7 @@ export default function Register() {
           <div className="c-form-group">
             <label htmlFor="name1" className="c-form-label">
               名前（姓）
-            </label>{" "}
+            </label>
             <span className="c-form-label__required">*</span>
             <input name="name1" type="text" id="name1" ref={name1} />
           </div>
@@ -80,8 +80,8 @@ export default function Register() {
               <div className="u-display-flex-grow-1">
                 <label htmlFor="login_pwd" className="c-form-label">
                   パスワード
-                </label>{" "}
-                <span className="c-form-label__required">*</span>
+                </label>
+                <span className="c-form-label__required u-ml-5">*</span>
               </div>
               <p className="u-ma-0 c-text--small">半角英数8文字以上</p>
             </div>

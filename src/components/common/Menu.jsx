@@ -82,8 +82,10 @@ const Menu = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   ></path>
-                </svg>{" "}
-                ログアウト{" "}
+                </svg>
+                <span className="u-ml-5 u-mr-5">
+                ログアウト
+                </span>
               </span>
             </button>
           </li>
