@@ -343,7 +343,7 @@ export async function updateMemberInfo(name1, name2, email, login_pwd) {
   );
 
   const status = await res.json();
-  if(status.messages == "Updated"){
+  if(status.messages){
     return true;
   }
   return null;
@@ -361,7 +361,7 @@ export async function deleteMember() {
   );
 
   const status = await res.json();
-  if(status.messages == "Deleted"){
+  if(status.messages){
     return true;
   }
   return null;
