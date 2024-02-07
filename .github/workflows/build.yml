@@ -68,25 +68,14 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
-        with:
-          ref: ${{ env.BRANCH }}
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
       - name: Install dependencies
         run: npm ci
-      # - name: Copy .env prod file
-      #   run: cp .env.prod .env
       - name: Build
-        env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 60
-          max_attempts: 3
-          retry_on: error
-          command: npm run build
+        run: npm run build
       - name: Zip artifact for upload
         run: cd out && zip ../out.zip . -r
       - name: Archive Production Artifact
