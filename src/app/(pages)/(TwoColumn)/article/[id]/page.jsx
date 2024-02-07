@@ -6,7 +6,6 @@ import TagArea from '@/components/common/TagArea'
 import TagKeyword from '@/components/common/TagKeyword'
 import Feature from '@/components/section/feature/Feature'
 
-export const dynamic = 'force-static';
 export async function generateStaticParams() {
   const items = await getAllContentList()
   const paramID = items.map((item) => ({
