@@ -2,7 +2,7 @@ name: Build and deploy to Kuroco front
 on:
   push:
     branches:
-      - '*'
+      - main
   issue_comment:
     types: [created, edited]
   workflow_dispatch:
@@ -67,7 +67,7 @@ jobs:
   #for Push
   pushed_build:
     name: Build(pushed)
-    # if: (github.repository == 'diverta/front_next_media' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch'))
+    if: (github.repository == 'diverta/front_next_media' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
