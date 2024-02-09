@@ -377,6 +377,10 @@ export function getLabels() {
       text: "サーチ",
       text_en: "SEARCH",
     },
+    contact: {
+      text: "お問い合わせ",
+      text_en: "Contact",
+    },
     login: {
       text: "ログイン",
       text_en: "Login",
