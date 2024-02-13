@@ -50,7 +50,9 @@ export default function Login() {
           ) : user ? (
             <div>You have already logged in.</div>
           ) : (
-            <form className="c-form" onSubmit={handleLogin} onChange={handleChange}>
+            <form className="c-form c-box" onSubmit={handleLogin} onChange={handleChange}>
+              
+              {alert && <AlertError message="メールアドレスまたはパスワードが間違っています。" />}
               <div className="c-form-group">
                 <label htmlFor="email" className="c-form-label">
                   メールアドレス
@@ -86,7 +88,6 @@ export default function Login() {
           )}
           
         </div>
-        {alert && <AlertError message="メールアドレスまたはパスワードが間違っています。" />}
       </div>
       
     </div>

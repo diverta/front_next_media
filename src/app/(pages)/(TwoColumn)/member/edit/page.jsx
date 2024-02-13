@@ -76,6 +76,8 @@ export default function Edit() {
         <div className="l-container--col-2__main">
           <div>
             <form className="c-form c-box" onSubmit={handleSubmit} onChange={handleChange}>
+              {successAlert && <AlertSuccess message={alertMessage}/>}
+              {errorAlert && <AlertError errors={alertMessage}/>}
               <div className="c-form-group">
                 <label htmlFor="name1" className="c-form-label">
                   名前（姓）
@@ -134,8 +136,6 @@ export default function Edit() {
                 </div>
                 <input name="login_pwd" type="password" id="login_pwd" ref={login_pwd}/>
               </div>
-              {successAlert && <AlertSuccess message={alertMessage}/>}
-              {errorAlert && <AlertError errors={alertMessage}/>}
               <div className="c-form-group u-text-align-center">
                 <button type="submit" className="c-button--primary u-width-50">
                   更新する
