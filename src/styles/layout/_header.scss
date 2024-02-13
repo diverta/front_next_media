@@ -38,7 +38,7 @@
     flex: 0 1 auto;
     min-width: 100px;
     @include pc() {
-      max-width: 190px;
+      max-width: 200px;
     }
     a { 
       display: block;
@@ -49,11 +49,11 @@
     }
     img,
     svg {
-      display: block;
-      width:  auto !important;
-      position: relative !important;
+      object-fit: contain;
+      object-position: left center;
       @include sp() {
         max-height: calc(var(--header-height-sp) - var(--spacing));
+        width: auto;
       }
     }
   }

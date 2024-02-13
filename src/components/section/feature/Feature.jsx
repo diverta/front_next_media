@@ -16,7 +16,8 @@ export default async function Feature() {
               <Image
                 alt={`Image ${index + 1}`}
                 src={item.image.url} /* Assuming imageUrl is a property in each data item */
-                fill
+                width={400}
+                height={180}
               />
             </Link>
           </li>

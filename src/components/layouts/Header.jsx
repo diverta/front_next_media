@@ -37,7 +37,12 @@ const Header = (topPage=null) => {
       <div className="l-header__inner">
         <div className="l-header__logo">
           <Link href="/">
-            <Image src="/images/logo.png" alt="Company Name" fill />
+            <Image
+              src="/images/logo.png"
+              alt="Company Name"
+              width={200}
+              height={60}
+            />
           </Link>
         </div>
         <nav className="l-header__nav">
