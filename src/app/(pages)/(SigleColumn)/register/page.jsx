@@ -50,12 +50,13 @@ export default function Register() {
       <Breadcrumb paths={[{ label: content.text }]} />
       <PageTitle content={content} />
       <div className="l-container--small l-container--contents">
-        <div className="c-form-group u-text-align-center">
-          <p className="c-text--small">
-            <span className="c-form-label__required">*</span>は必須項目です。
-          </p>
-        </div>
-        <form className="c-form" onSubmit={handleRegister} onChange={handleChange}>
+        <form className="c-form c-box" onSubmit={handleRegister} onChange={handleChange}>
+          <div className="c-form-group u-text-align-center">
+            <p className="c-text--small">
+              <span className="c-form-label__required">*</span>は必須項目です。
+            </p>
+          </div>
+          {alert && <AlertError message="エントリー内容を再度ご確認ください。" />}
           <div className="c-form-group">
             <label htmlFor="name1" className="c-form-label">
               名前（姓）
@@ -109,7 +110,7 @@ export default function Register() {
             に同意したこととなります。
           </p>
         </form>
-      {alert && <AlertError message="エントリー内容を再度ご確認ください。" />}
+
       </div>
     </div>
   );

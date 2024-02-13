@@ -325,11 +325,12 @@ export async function getMemberInfo() {
   return null;
 }
 
-export async function updateMemberInfo(name1, name2, email, login_pwd) {
+export async function updateMemberInfo(name1, name2, email, current_password, login_pwd) {
   const credentials = {
     name1,
     name2,
     email,
+    current_password,
     login_pwd,
   };
   const res = await fetch(
@@ -343,10 +344,7 @@ export async function updateMemberInfo(name1, name2, email, login_pwd) {
   );
 
   const status = await res.json();
-  if(status.messages){
-    return true;
-  }
-  return null;
+  return status;
 }
 
 export async function deleteMember() {

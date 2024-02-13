@@ -10,13 +10,17 @@ import { useState, useEffect, useRef } from "react";
 import { getMemberInfo } from "@/components/common/fetchData";
 import { updateMemberInfo } from "@/components/common/fetchData";
 import AlertSuccess from "@/components/ui/AlertSuccess";
+import AlertError from "@/components/ui/AlertError";
 
 export default function Edit() {
   const { user, storeUser } = useUser();
   const contentDirectory = getLabels();
   const content = contentDirectory.editProfile;
   const [memberInfo, setMemberInfo] = useState([]);
-  const [alert, setAlert] = useState(false);
+
+  const [successAlert, setSuccessAlert] = useState(false);
+  const [errorAlert, setErrorAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
     const memberInfoFunction = async () => {
@@ -34,10 +38,13 @@ export default function Edit() {
   const name1 = useRef("");
   const name2 = useRef("");
   const email = useRef("");
+  const current_password = useRef("");
   const login_pwd = useRef("");
 
   const handleChange = () => {
-    setAlert(false);
+    setSuccessAlert(false);
+    setErrorAlert(false);
+    setAlertMessage("");
   };
 
   const handleSubmit = async (event) => {
@@ -47,11 +54,17 @@ export default function Edit() {
       name1.current.value,
       name2.current.value,
       email.current.value,
+      current_password.current.value,
       login_pwd.current.value
     );
 
-    if(userStatus){
-      setAlert(true);
+    if(userStatus.messages){
+      setAlertMessage(userStatus.messages);
+      setSuccessAlert(true);
+    }
+    else{
+      setAlertMessage(userStatus.errors);
+      setErrorAlert(true);
     }
   };
 
@@ -63,6 +76,8 @@ export default function Edit() {
         <div className="l-container--col-2__main">
           <div>
             <form className="c-form c-box" onSubmit={handleSubmit} onChange={handleChange}>
+              {successAlert && <AlertSuccess message={alertMessage}/>}
+              {errorAlert && <AlertError errors={alertMessage}/>}
               <div className="c-form-group">
                 <label htmlFor="name1" className="c-form-label">
                   名前（姓）
@@ -103,16 +118,24 @@ export default function Edit() {
               <div className="c-form-group">
                 <div className="u-display-flex">
                   <div className="u-display-flex-grow-1">
-                    <label htmlFor="login_pwd" className="c-form-label">
-                      パスワード
+                    <label htmlFor="current_password" className="c-form-label">
+                    現在のパスワード
                     </label>
-                    <span className="c-form-label__required u-ml-5">*</span>
+                  </div>
+                </div>
+                <input name="current_password" type="password" id="current_password" ref={current_password}/>
+              </div>
+              <div className="c-form-group">
+                <div className="u-display-flex">
+                  <div className="u-display-flex-grow-1">
+                    <label htmlFor="login_pwd" className="c-form-label">
+                    新しいパスワード
+                    </label>
                   </div>
                   <p className="u-ma-0 c-text--small">半角英数8文字以上</p>
                 </div>
                 <input name="login_pwd" type="password" id="login_pwd" ref={login_pwd}/>
               </div>
-              {alert && <AlertSuccess message="会員情報を更新しました。"/>}
               <div className="c-form-group u-text-align-center">
                 <button type="submit" className="c-button--primary u-width-50">
                   更新する

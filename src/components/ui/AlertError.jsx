@@ -1,4 +1,4 @@
-export default function AlertError({ message }) {
+export default function AlertError({ errors, message }) {
   return (
     <div className="c-alert c-alert--error">
       <div className="u-display-flex">
@@ -28,9 +28,16 @@ export default function AlertError({ message }) {
             />
           </svg>
         </div>
-        <p className="c-alert__heading">エラーが発生しました</p>
-        <p className="c-alert__message">{message}</p>
+        <div>
+          <p className="c-alert__heading">エラーが発生しました</p>
+          <p className="c-alert__message">{message}</p>
+          <p className="c-alert__message">
+            {errors && errors.map((item, index) => (
+              <span key={index}>{item.message}<br/></span>
+            ))}
+          </p>
+        </div>
       </div>
     </div>
-  );
+  )
 }
