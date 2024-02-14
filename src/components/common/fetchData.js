@@ -269,7 +269,6 @@ export async function reminder(email) {
   );
 
   const response = await res.json();
-  console.log(response);
   if(res.ok){
     return response.messages;
   }
@@ -295,7 +294,6 @@ export async function reset(token, temp_pwd, login_pwd) {
   );
 
   const response = await res.json();
-  console.log(response);
   
   if(res.ok){
     return response.messages;
