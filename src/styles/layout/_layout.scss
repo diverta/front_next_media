@@ -44,10 +44,9 @@
     width: 100%;
     margin: 0 auto;
     @include pc() {
-      max-width: 560px;
+      max-width: 580px;
     }
     @include sp() {
-      padding: var(--spacing-horizontal-sp);
       width: calc(100% - var(--spacing-horizontal-sp) * 2);
     }
   }

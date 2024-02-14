@@ -29,7 +29,7 @@ export default async function Food({ params }) {
       <div className="l-container--col-2 c-article">
         <div className="l-container--col-2__main">
           <div>
-            <DetailBody data={item} />
+            <DetailBody data={item} params={params}/>
           </div>
         </div>
         <div className="l-container--col-2__side">

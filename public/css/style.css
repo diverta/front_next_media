@@ -931,8 +931,8 @@ table {
     display: flex;
     position: relative;
     -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
     z-index: 1; }
   .c-memberArticle__coupon__title {
     margin-right: 10px;

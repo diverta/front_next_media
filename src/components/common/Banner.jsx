@@ -8,11 +8,12 @@ const Banner = () => {
       <li className="c-banner__item">
         <Link href="/">
           <Image
-              alt="dummy banner"
-              src="/images/banner.png" 
-              fill
-            />
-          </Link>
+            alt="dummy banner"
+            src="/images/banner.png" 
+            width={240}
+            height={240}
+          />
+        </Link>
       </li>
     </ul>
 
