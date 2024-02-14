@@ -13,6 +13,8 @@ export default function Contact() {
   const contentDirectory = getLabels()
   const content = contentDirectory.contact
   const formData = useRef({})
+  const date = useRef({})
+  const matrixSingle = useRef({})
   const [formErrors, setFormErrors] = useState(false)
   const [conditionCheck, setConditionCheck] = useState(false)
   const [selectedChoices, setSelectedChoices] = useState([]);
@@ -43,6 +45,31 @@ export default function Contact() {
     setConditionCheck(e.target.checked)
   }
 
+  const handleDateChange = (e) => {
+    const { name, value } = e.target
+    date.current = {
+      ...date.current,
+      [name]: value,
+    }
+  }
+
+  const handleFileUpload = (e) => {
+    const { name } = e.target
+    setFormErrors(false)
+    formData.current = {
+      ...formData.current,
+      [name]: e.target.files[0],
+    }
+  }
+
+  const handleMatrixSingleChange = (e) => {
+    const { name, value } = e.target
+    matrixSingle.current = {
+      ...matrixSingle.current,
+      [name]: value,
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     window.scrollTo(0, 0)
@@ -54,6 +81,20 @@ export default function Contact() {
       formData.current = {
         ...formData.current,
         ext_06: selectedChoices
+      }
+    }
+
+    if(date.current.year && date.current.month && date.current.date) {
+      formData.current = {
+        ...formData.current,
+        ext_02: `${date.current.year}-${date.current.month}-${date.current.date}`
+      }
+    }
+
+    if(matrixSingle.current) {
+      formData.current = {
+        ...formData.current,
+        ext_07: matrixSingle.current
       }
     }
 
@@ -74,6 +115,7 @@ export default function Contact() {
       return
     }
 
+    console.log(formData.current)
     const status = await inquiry(formData.current);
 
     if(status.errors.length > 0) {
@@ -267,50 +309,17 @@ export default function Contact() {
             </ul>
           </div>
           <div className="c-form-group">
-            <label htmlFor="ext_04" className="c-form-label">
+            <label htmlFor="date" className="c-form-label">
               デモンストレーション希望日
             </label>{' '}
             <div className="u-display-flex u-display-flex-align-items-center">
               <select
-                name="ext_04_y"
-                id="ext_04_y"
-                onChange={handleCheckboxChange}
+                name="year"
+                id="year"
+                onChange={handleDateChange}
               >
                 <option label="選択なし" value="">
                   選択なし
-                </option>
-                <option label="2013" value="2013">
-                  2013
-                </option>
-                <option label="2014" value="2014">
-                  2014
-                </option>
-                <option label="2015" value="2015">
-                  2015
-                </option>
-                <option label="2016" value="2016">
-                  2016
-                </option>
-                <option label="2017" value="2017">
-                  2017
-                </option>
-                <option label="2018" value="2018">
-                  2018
-                </option>
-                <option label="2019" value="2019">
-                  2019
-                </option>
-                <option label="2020" value="2020">
-                  2020
-                </option>
-                <option label="2021" value="2021">
-                  2021
-                </option>
-                <option label="2022" value="2022">
-                  2022
-                </option>
-                <option label="2023" value="2023">
-                  2023
                 </option>
                 <option label="2024" value="2024">
                   2024
@@ -343,10 +352,10 @@ export default function Contact() {
                   2033
                 </option>
               </select>
-              <label htmlFor="ext_04_y" className="u-pa-10">
+              <label htmlFor="year" className="u-pa-10">
                 年
               </label>
-              <select name="ext_04_m" onChange={handleInputChange}>
+              <select name="month" onChange={handleDateChange}>
                 <option label="選択なし" value="">
                   選択なし
                 </option>
@@ -387,10 +396,10 @@ export default function Contact() {
                   12
                 </option>
               </select>
-              <label htmlFor="ext_04_m" className="u-pa-10">
+              <label htmlFor="month" className="u-pa-10">
                 月
               </label>
-              <select name="ext_04_d" onChange={handleInputChange}>
+              <select name="date" onChange={handleDateChange}>
                 <option label="選択なし" value="">
                   選択なし
                 </option>
@@ -488,20 +497,20 @@ export default function Contact() {
                   31
                 </option>
               </select>
-              <label htmlFor="ext_04_d" className="u-pa-10">
+              <label htmlFor="date" className="u-pa-10">
                 日
               </label>
             </div>
           </div>
           <div className="c-form-group">
-            <label htmlFor="ext_05" className="c-form-label u-mr-5">
+            <label htmlFor="ext_08" className="c-form-label u-mr-5">
               添付ファイル
             </label>
             <input
               type="file"
-              name="ext_05"
-              id="ext_05"
-              onChange={handleInputChange}
+              name="ext_08"
+              id="ext_08"
+              onChange={handleFileUpload}
             />
           </div>
           <div className="c-form-group">
@@ -519,7 +528,7 @@ export default function Contact() {
             ></textarea>
           </div>
           <div className="c-form-group">
-            <label htmlFor="ext_06" className="c-form-label">
+            <label htmlFor="ext_07" className="c-form-label">
               マトリックス(単一選択)
             </label>{' '}
             <table className="u-width-100">
@@ -539,41 +548,41 @@ export default function Contact() {
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[1]"
+                      name="1"
                       value="1"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[1]"
+                      name="1"
                       value="2"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[1]"
+                      name="1"
                       value="3"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[1]"
+                      name="1"
                       value="4"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[1]"
+                      name="1"
                       value="5"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                 </tr>
@@ -582,41 +591,41 @@ export default function Contact() {
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[2]"
+                      name="2"
                       value="1"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[2]"
+                      name="2"
                       value="2"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[2]"
+                      name="2"
                       value="3"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[2]"
+                      name="2"
                       value="4"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="radio"
-                      name="ext_06[2]"
+                      name="2"
                       value="5"
-                      onChange={handleInputChange}
+                      onChange={handleMatrixSingleChange}
                     />
                   </td>
                 </tr>
