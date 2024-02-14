@@ -5,7 +5,9 @@ import PageTitle from '@/components/common/PageTitle'
 import { getLabels } from '@/components/common/fetchData'
 import { useRef, useState } from 'react'
 import AlertError from '@/components/ui/AlertError'
+import AlertSuccess from '@/components/ui/AlertSuccess'
 import Link from 'next/link'
+import { inquiry } from '@/components/common/fetchData'
 
 export default function Contact() {
   const contentDirectory = getLabels()
@@ -13,6 +15,8 @@ export default function Contact() {
   const formData = useRef({})
   const [formErrors, setFormErrors] = useState(false)
   const [conditionCheck, setConditionCheck] = useState(false)
+  const [selectedChoices, setSelectedChoices] = useState([]);
+  const [submittedText, setSubmittedText] = useState('')
 
   const handleInputChange = (e) => {
     setFormErrors(false)
@@ -23,16 +27,35 @@ export default function Contact() {
     }
   }
 
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+    setSelectedChoices((prevChoices) => {
+      if (checked) {
+        return [...prevChoices, value];
+      } else {
+        return prevChoices.filter((choice) => choice !== value);
+      }
+    });
+  };
+
   const handleConditionCheck = (e) => {
     setFormErrors(false)
     setConditionCheck(e.target.checked)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    window.scrollTo(0, 0)
 
     const requiredFields = ['name', 'email', 'body']
     const errors = []
+
+    if(selectedChoices.length != 0) {
+      formData.current = {
+        ...formData.current,
+        ext_06: selectedChoices
+      }
+    }
 
     if (!conditionCheck) {
       errors.push({ message: '利用規約に同意してください' })
@@ -51,7 +74,15 @@ export default function Contact() {
       return
     }
 
-    console.log(formData.current)
+    const status = await inquiry(formData.current);
+
+    if(status.errors.length > 0) {
+      setFormErrors(status.errors)
+    } else {
+      setSubmittedText(status.messages)
+      console.log("Bhai waapas")
+      console.log(status.messages)
+    }
   }
 
   return (
@@ -59,6 +90,10 @@ export default function Contact() {
       <Breadcrumb paths={[{ label: content.text }]} />
       <PageTitle content={content} />
       <div className="l-container--small l-container--contents">
+        {submittedText ? <div>
+          <AlertSuccess message="Submitted" />
+          <p>{submittedText}</p>
+        </div> : <div>
         <div className="c-form-group">
           <p className="c-text c-text--pre u-ma-0">
             通常は2営業日以内に返信いたします。
@@ -69,6 +104,7 @@ export default function Contact() {
           </p>
         </div>
         <form className="c-form" onSubmit={handleSubmit}>
+        {formErrors && <AlertError errors={formErrors} />}
           <div className="c-form-group">
             <label htmlFor="name" className="c-form-label">
               お名前
@@ -94,50 +130,50 @@ export default function Contact() {
             />
           </div>
           <div className="c-form-group">
-            <label htmlFor="ext_01" className="c-form-label">
+            <label htmlFor="ext_05" className="c-form-label">
               性別
             </label>
             <ul>
               <li>
                 <input
                   type="radio"
-                  name="ext_01"
-                  id="ext_01-1"
+                  name="ext_05"
+                  id="ext_05-1"
                   className="c-form-toggle__radio"
                   value="1"
                   onChange={handleInputChange}
                 />
-                <label htmlFor="ext_01-1">男性</label>
+                <label htmlFor="ext_05-1">男性</label>
               </li>
               <li>
                 <input
                   type="radio"
-                  name="ext_01"
-                  id="ext_01-2"
+                  name="ext_05"
+                  id="ext_05-2"
                   className="c-form-toggle__radio"
                   value="2"
                   onChange={handleInputChange}
                 />
-                <label htmlFor="ext_01-2">女性</label>
+                <label htmlFor="ext_05-2">女性</label>
               </li>
               <li>
                 <input
                   type="radio"
-                  name="ext_01"
-                  id="ext_01-3"
+                  name="ext_05"
+                  id="ext_05-3"
                   className="c-form-toggle__radio"
                   value="3"
                   onChange={handleInputChange}
                 />
-                <label htmlFor="ext_01-3">その他</label>
+                <label htmlFor="ext_05-3">その他</label>
               </li>
             </ul>
           </div>
           <div className="c-form-group">
-            <label htmlFor="ext_02" className="c-form-label">
+            <label htmlFor="ext_04" className="c-form-label">
               業種
             </label>
-            <select name="ext_02" id="ext_02" onChange={handleInputChange}>
+            <select name="ext_04" id="ext_04" onChange={handleInputChange}>
               <option label="選択なし" value="">
                 選択なし
               </option>
@@ -180,53 +216,53 @@ export default function Contact() {
             </select>
           </div>
           <div className="c-form-group">
-            <label htmlFor="ext_03" className="c-form-label">
+            <label htmlFor="ext_06" className="c-form-label">
               お問い合わせ内容
             </label>
             <ul>
               <li>
                 <input
                   type="checkbox"
-                  name="ext_03[]"
+                  name="ext_06"
                   id="ext_03-1"
                   className="c-form-toggle__checkbox"
                   value="1"
-                  onChange={handleInputChange}
+                  onChange={handleCheckboxChange}
                 />
-                <label htmlFor="ext_03-1">資料請求</label>
+                <label htmlFor="ext_06-1">資料請求</label>
               </li>
               <li>
                 <input
                   type="checkbox"
-                  name="ext_03[]"
-                  id="ext_03-2"
+                  name="ext_06"
+                  id="ext_06-2"
                   className="c-form-toggle__checkbox"
                   value="2"
-                  onChange={handleInputChange}
+                  onChange={handleCheckboxChange}
                 />
-                <label htmlFor="ext_03-2">見積もり依頼</label>
+                <label htmlFor="ext_06-2">見積もり依頼</label>
               </li>
               <li>
                 <input
                   type="checkbox"
-                  name="ext_03[]"
-                  id="ext_03-3"
+                  name="ext_06"
+                  id="ext_06-3"
                   className="c-form-toggle__checkbox"
                   value="3"
-                  onChange={handleInputChange}
+                  onChange={handleCheckboxChange}
                 />
-                <label htmlFor="ext_03-3">デモンストレーション依頼</label>
+                <label htmlFor="ext_06-3">デモンストレーション依頼</label>
               </li>
               <li>
                 <input
                   type="checkbox"
-                  name="ext_03[]"
-                  id="ext_03-4"
+                  name="ext_06"
+                  id="ext_06-4"
                   className="c-form-toggle__checkbox"
                   value="4"
-                  onChange={handleInputChange}
+                  onChange={handleCheckboxChange}
                 />
-                <label htmlFor="ext_03-4">その他</label>
+                <label htmlFor="ext_06-4">その他</label>
               </li>
             </ul>
           </div>
@@ -238,7 +274,7 @@ export default function Contact() {
               <select
                 name="ext_04_y"
                 id="ext_04_y"
-                onChange={handleInputChange}
+                onChange={handleCheckboxChange}
               >
                 <option label="選択なし" value="">
                   選択なし
@@ -716,7 +752,6 @@ export default function Contact() {
               <Link href="/privacy">プライバシーポリシー</Link>に同意する
             </label>
           </div>
-          {formErrors && <AlertError errors={formErrors} />}
           <button
             type="submit"
             id="inquiry_item_button_confirm"
@@ -725,6 +760,7 @@ export default function Contact() {
             確認する
           </button>
         </form>
+        </div>}
       </div>
     </div>
   )
