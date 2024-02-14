@@ -15,6 +15,11 @@ export default function Contact() {
   const formData = useRef({})
   const date = useRef({})
   const matrixSingle = useRef({})
+  const matrixMultiple = useRef({})
+  const [selectedChoices1, setSelectedChoices1] = useState([]);
+  const [selectedChoices2, setSelectedChoices2] = useState([]);
+  const [selectedChoices3, setSelectedChoices3] = useState([]);
+
   const [formErrors, setFormErrors] = useState(false)
   const [conditionCheck, setConditionCheck] = useState(false)
   const [selectedChoices, setSelectedChoices] = useState([]);
@@ -70,6 +75,37 @@ export default function Contact() {
     }
   }
 
+  const handleMatrixMultipleChange = (e, field) => {
+    const { value, checked } = e.target
+
+    let selectedChoices, setSelectedChoices;
+    if(field === '1'){
+      selectedChoices = selectedChoices1;
+      setSelectedChoices = setSelectedChoices1;
+    }
+    else if(field === '2'){
+      selectedChoices = selectedChoices2;
+      setSelectedChoices = setSelectedChoices2;
+    }
+    else if(field === '3'){
+      selectedChoices = selectedChoices3;
+      setSelectedChoices = setSelectedChoices3;
+    }
+
+    setSelectedChoices((prevChoices) => {
+      if (checked) {
+        return [...prevChoices, value];
+      } else {
+        return prevChoices.filter((choice) => choice !== value);
+      }
+    });
+
+    matrixMultiple.current = {
+      ...matrixMultiple.current,
+      [field]: selectedChoices,
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     window.scrollTo(0, 0)
@@ -95,6 +131,13 @@ export default function Contact() {
       formData.current = {
         ...formData.current,
         ext_07: matrixSingle.current
+      }
+    }
+
+    if(matrixMultiple.current) {
+      formData.current = {
+        ...formData.current,
+        ext_09: matrixMultiple.current
       }
     }
 
@@ -633,7 +676,7 @@ export default function Contact() {
             </table>
           </div>
           <div className="c-form-group">
-            <label htmlFor="ext_07" className="c-form-label">
+            <label htmlFor="ext_09" className="c-form-label">
               マトリックス(複数選択)
             </label>{' '}
             <table className="u-width-100">
@@ -651,31 +694,31 @@ export default function Contact() {
                   <td className="u-text-align-center">
                     <input
                       type="checkbox"
-                      name="ext_07[1]"
+                      name="1"
                       id="1"
                       className="c-form-toggle__checkbox"
                       value="1"
-                      onChange={handleInputChange}
+                      onChange={(e) => handleMatrixMultipleChange(e, '1')}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="checkbox"
-                      name="ext_07[1]"
+                      name="1"
                       id="2"
                       className="c-form-toggle__checkbox"
                       value="2"
-                      onChange={handleInputChange}
+                      onChange={(e) => handleMatrixMultipleChange(e, '1')}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="checkbox"
-                      name="ext_07[1]"
+                      name="1"
                       id="3"
                       className="c-form-toggle__checkbox"
                       value="3"
-                      onChange={handleInputChange}
+                      onChange={(e) => handleMatrixMultipleChange(e, '1')}
                     />
                   </td>
                 </tr>
@@ -684,31 +727,31 @@ export default function Contact() {
                   <td className="u-text-align-center">
                     <input
                       type="checkbox"
-                      name="ext_07[2]"
+                      name="2"
                       id="1"
                       className="c-form-toggle__checkbox"
                       value="1"
-                      onChange={handleInputChange}
+                      onChange={(e) => handleMatrixMultipleChange(e, '2')}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="checkbox"
-                      name="ext_07[2]"
+                      name="2"
                       id="2"
                       className="c-form-toggle__checkbox"
                       value="2"
-                      onChange={handleInputChange}
+                      onChange={(e) => handleMatrixMultipleChange(e, '2')}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="checkbox"
-                      name="ext_07[2]"
+                      name="2"
                       id="3"
                       className="c-form-toggle__checkbox"
                       value="3"
-                      onChange={handleInputChange}
+                      onChange={(e) => handleMatrixMultipleChange(e, '2')}
                     />
                   </td>
                 </tr>
@@ -717,31 +760,31 @@ export default function Contact() {
                   <td className="u-text-align-center">
                     <input
                       type="checkbox"
-                      name="ext_07[3]"
+                      name="3"
                       id="1"
                       className="c-form-toggle__checkbox"
                       value="1"
-                      onChange={handleInputChange}
+                      onChange={(e) => handleMatrixMultipleChange(e, '3')}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="checkbox"
-                      name="ext_07[3]"
+                      name="3"
                       id="2"
                       className="c-form-toggle__checkbox"
                       value="2"
-                      onChange={handleInputChange}
+                      onChange={(e) => handleMatrixMultipleChange(e, '3')}
                     />
                   </td>
                   <td className="u-text-align-center">
                     <input
                       type="checkbox"
-                      name="ext_07[3]"
+                      name="3"
                       id="3"
                       className="c-form-toggle__checkbox"
                       value="3"
-                      onChange={handleInputChange}
+                      onChange={(e) => handleMatrixMultipleChange(e, '3')}
                     />
                   </td>
                 </tr>
