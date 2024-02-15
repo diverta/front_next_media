@@ -7,7 +7,7 @@ import { useRef, useState } from 'react'
 import AlertError from '@/components/ui/AlertError'
 import AlertSuccess from '@/components/ui/AlertSuccess'
 import Link from 'next/link'
-import { inquiry } from '@/components/common/fetchData'
+import { inquiry, uploadFile } from '@/components/common/fetchData'
 
 export default function Contact() {
   const contentDirectory = getLabels()
@@ -58,13 +58,19 @@ export default function Contact() {
     }
   }
 
-  const handleFileUpload = (e) => {
-    const { name } = e.target
-    setFormErrors(false)
-    formData.current = {
-      ...formData.current,
-      [name]: e.target.files[0],
-    }
+  const handleFileUpload = async (e) => {
+    // const { name } = e.target
+    // setFormErrors(false)
+    // formData.current = {
+    //   ...formData.current,
+    //   [name]: e.target.files[0],
+  // }
+    const fileData = new FormData();
+    fileData.append(e.target.name, e.target.files[0]);
+    
+    const status = await uploadFile(fileData);
+    console.log(status);
+    
   }
 
   const handleMatrixSingleChange = (e) => {
@@ -156,6 +162,7 @@ export default function Contact() {
       return
     }
 
+    console.log(formData.current)
     const status = await inquiry(formData.current)
 
     if (status.errors.length > 0) {

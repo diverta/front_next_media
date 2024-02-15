@@ -213,6 +213,20 @@ export async function inquiry(formData) {
   return status;
 }
 
+export async function uploadFile(fileData) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/inquiry/1`,
+    {
+      method: "POST",
+      body: fileData,
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+
+  const status = await res.json();
+  return status;
+}
+
 export async function register(name1, name2, email, login_pwd) {
   const credentials = {
     name1,
