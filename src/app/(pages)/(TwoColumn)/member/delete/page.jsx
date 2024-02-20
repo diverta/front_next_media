@@ -1,48 +1,48 @@
-"use client";
+"use client"
 
-import Breadcrumb from '@/components/common/Breadcrumb'
-import PageTitle from '@/components/common/PageTitle'
+import Breadcrumb from "@/components/common/Breadcrumb"
+import PageTitle from "@/components/common/PageTitle"
 import {
   getLabels,
   getMemberInfo,
   deleteMember,
-} from "@/components/common/fetchData";
-import Menu from "@/components/common/Menu";
-import Link from "next/link";
-import { useUser } from "@/components/common/userContext";
-import { useState, useEffect } from "react";
-import AlertSuccess from "@/components/ui/AlertSuccess";
+} from "@/components/common/fetchData"
+import Menu from "@/components/common/Menu"
+import Link from "next/link"
+import { useUser } from "@/components/common/userContext"
+import { useState, useEffect } from "react"
+import AlertSuccess from "@/components/ui/AlertSuccess"
 
 export default function Delete() {
-  const contentDirectory = getLabels();
-  const content = contentDirectory.deleteProfile;
-  const [memberInfo, setMemberInfo] = useState([]);
-  const { user, storeUser } = useUser();
-  const [alert, setAlert] = useState(false);
+  const contentDirectory = getLabels()
+  const content = contentDirectory.deleteProfile
+  const [memberInfo, setMemberInfo] = useState([])
+  const { user, storeUser } = useUser()
+  const [alert, setAlert] = useState(false)
 
   useEffect(() => {
     const memberInfoFunction = async () => {
-    try {
-      const info = await getMemberInfo();
-      setMemberInfo(info.details);
-    } catch (error) {
-      console.error("Error fetching member information", error);
+      try {
+        const info = await getMemberInfo()
+        setMemberInfo(info.details)
+      } catch (error) {
+        console.error("Error fetching member information", error)
+      }
     }
-  };
-  
-    memberInfoFunction();
-  }, []);
+
+    memberInfoFunction()
+  }, [])
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const userStatus = await deleteMember();
+    const userStatus = await deleteMember()
 
     if (userStatus) {
-      storeUser(null);
-      setAlert(true);
+      storeUser(null)
+      setAlert(true)
     }
-  };
+  }
 
   return (
     <div className="l-container">
@@ -103,10 +103,12 @@ export default function Delete() {
             </form>
           </div>
         </div>
-        {!alert && <div className="l-container--col-2__side">
-          <Menu />
-        </div>}
+        {!alert && (
+          <div className="l-container--col-2__side">
+            <Menu />
+          </div>
+        )}
       </div>
     </div>
-  );
+  )
 }

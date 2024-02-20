@@ -36,5 +36,5 @@ export default function Privacy() {
         改定日：2023年7月1日
       </p>
     </article>
-  );
+  )
 }

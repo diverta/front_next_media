@@ -23,7 +23,7 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "sass": "^1.69.5",
     "tailwindcss": "latest"
   }
