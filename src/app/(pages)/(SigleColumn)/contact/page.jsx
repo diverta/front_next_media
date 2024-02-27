@@ -3,11 +3,15 @@
 import Breadcrumb from '@/components/common/Breadcrumb'
 import PageTitle from '@/components/common/PageTitle'
 import { getLabels } from '@/components/common/fetchData'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import AlertError from '@/components/ui/AlertError'
 import AlertSuccess from '@/components/ui/AlertSuccess'
 import Link from 'next/link'
-import { inquiry, uploadFile } from '@/components/common/fetchData'
+import {
+  inquiry,
+  uploadFile,
+  getInquiryColumns,
+} from '@/components/common/fetchData'
 
 export default function Contact() {
   const contentDirectory = getLabels()
@@ -24,6 +28,20 @@ export default function Contact() {
   const [conditionCheck, setConditionCheck] = useState(false)
   const [selectedChoices, setSelectedChoices] = useState([])
   const [submittedText, setSubmittedText] = useState('')
+  const [columns, setColumns] = useState([])
+
+  useEffect(() => {
+    const getColumns = async () => {
+      try {
+        const cols = await getInquiryColumns()
+        console.log(cols.cols)
+        setColumns(cols.cols)
+      } catch (error) {
+        console.error('Error fetching column list :', error)
+      }
+    }
+    getColumns()
+  }, [])
 
   const handleInputChange = (e) => {
     setFormErrors(false)
@@ -64,13 +82,12 @@ export default function Contact() {
     // formData.current = {
     //   ...formData.current,
     //   [name]: e.target.files[0],
-  // }
-    const fileData = new FormData();
-    fileData.append(e.target.name, e.target.files[0]);
-    
-    const status = await uploadFile(fileData);
-    console.log(status);
-    
+    // }
+    const fileData = new FormData()
+    fileData.append(e.target.name, e.target.files[0])
+
+    const status = await uploadFile(fileData)
+    console.log(status)
   }
 
   const handleMatrixSingleChange = (e) => {
@@ -114,7 +131,7 @@ export default function Contact() {
     e.preventDefault()
     window.scrollTo(0, 0)
 
-    const requiredFields = ['name', 'email', 'body']
+    const requiredFields = ['name', 'from_mail', 'body']
     const errors = []
 
     if (selectedChoices.length != 0) {
@@ -196,7 +213,147 @@ export default function Contact() {
             </div>
             <form className="c-form" onSubmit={handleSubmit}>
               {formErrors && <AlertError errors={formErrors} />}
-              <div className="c-form-group">
+              {Object.values(columns).map((col) => (
+                <div key={col.key} className="c-form-group">
+                  {col.title}
+                  {col.required == 2 && (
+                    <span className="c-form-label__required">*</span>
+                  )}
+                  {col.type === 1 && (
+                    <input
+                      type="text"
+                      name={col.key}
+                      id={col.key}
+                      onChange={handleInputChange}
+                    />
+                  )}
+                  {col.type === 2 && (
+                    <textarea
+                      rows="4"
+                      cols="60"
+                      name={col.key}
+                      id={col.key}
+                      onChange={handleInputChange}
+                    />
+                  )}
+                  {col.type === 3 && (
+                    <ul>
+                      {col.options.map((option) => (
+                        <li key={option.key}>
+                          <input
+                            type="radio"
+                            name={col.key}
+                            id={col.key + option.key}
+                            className="c-form-toggle__radio"
+                            value={option.key}
+                            onChange={handleInputChange}
+                          />
+                          <label htmlFor={col.key + option.key}>
+                            {option.value}
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {col.type === 4 && (
+                    <select
+                      name={col.key}
+                      id={col.key}
+                      onChange={handleInputChange}
+                    >
+                      <option label="選択なし" value="">
+                        選択なし
+                      </option>
+                      {col.options.map((option) => (
+                        <option key={option.key} value={option.key}>
+                          {option.value}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                  {col.type === 5 && (
+                    <ul>
+                      {col.options.map((option) => (
+                        <li key={option.key}>
+                          <input
+                            type="checkbox"
+                            name={col.key}
+                            id={col.key + option.key}
+                            className="c-form-toggle__checkbox"
+                            value={option.key}
+                            onChange={handleCheckboxChange}
+                          />
+                          <label htmlFor={col.key + option.key}>
+                            {option.value}
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {col.type === 6 && (
+                    <div className="u-display-flex u-display-flex-align-items-center">
+                      <select name="year" onChange={handleDateChange}>
+                        <option label="選択なし" value="">
+                          選択なし
+                        </option>
+                        {Array.from(
+                          {
+                            length:
+                              parseInt(col.options[1].value, 10) -
+                              parseInt(col.options[0].value, 10) +
+                              1,
+                          },
+                          (_, i) => parseInt(col.options[0].value, 10) + i,
+                        ).map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </select>
+                      <label htmlFor={col.key + '_year'} className="u-pa-10">
+                        年
+                      </label>
+                      <select name="month" onChange={handleDateChange}>
+                        <option label="選択なし" value="">
+                          選択なし
+                        </option>
+                        {Array.from({ length: 12 }, (_, i) => i + 1).map(
+                          (number) => (
+                            <option
+                              key={number}
+                              value={number.toString().padStart(2, '0')}
+                            >
+                              {number.toString().padStart(2, '0')}
+                            </option>
+                          ),
+                        )}
+                      </select>
+                      <label htmlFor={col.key + '_month'} className="u-pa-10">
+                        月
+                      </label>
+                      <select name="date" onChange={handleDateChange}>
+                        <option label="選択なし" value="">
+                          選択なし
+                        </option>
+                        {Array.from({ length: 31 }, (_, i) => i + 1).map(
+                          (number) => (
+                            <option
+                              key={number}
+                              value={number.toString().padStart(2, '0')}
+                            >
+                              {number.toString().padStart(2, '0')}
+                            </option>
+                          ),
+                        )}
+                      </select>
+                      <label htmlFor={col.key + '_date'} className="u-pa-10">
+                        日
+                      </label>
+                    </div>
+                  )}
+                </div>
+              ))}
+              {/* <div className="c-form-group">
                 <label htmlFor="name" className="c-form-label">
                   お名前
                 </label>{' '}
@@ -207,8 +364,8 @@ export default function Contact() {
                   type="text"
                   onChange={handleInputChange}
                 />
-              </div>
-              <div className="c-form-group">
+              </div> */}
+              {/* <div className="c-form-group">
                 <label htmlFor="email" className="c-form-label">
                   メールアドレス
                 </label>
@@ -219,8 +376,8 @@ export default function Contact() {
                   type="text"
                   onChange={handleInputChange}
                 />
-              </div>
-              <div className="c-form-group">
+              </div> */}
+              {/* <div className="c-form-group">
                 <label htmlFor="ext_05" className="c-form-label">
                   性別
                 </label>
@@ -259,8 +416,8 @@ export default function Contact() {
                     <label htmlFor="ext_05-3">その他</label>
                   </li>
                 </ul>
-              </div>
-              <div className="c-form-group">
+              </div> */}
+              {/* <div className="c-form-group">
                 <label htmlFor="ext_04" className="c-form-label">
                   業種
                 </label>
@@ -305,8 +462,8 @@ export default function Contact() {
                     スポーツ関連
                   </option>
                 </select>
-              </div>
-              <div className="c-form-group">
+              </div> */}
+              {/* <div className="c-form-group">
                 <label htmlFor="ext_06" className="c-form-label">
                   お問い合わせ内容
                 </label>
@@ -356,8 +513,8 @@ export default function Contact() {
                     <label htmlFor="ext_06-4">その他</label>
                   </li>
                 </ul>
-              </div>
-              <div className="c-form-group">
+              </div> */}
+              {/* <div className="c-form-group">
                 <label htmlFor="date" className="c-form-label">
                   デモンストレーション希望日
                 </label>{' '}
@@ -546,7 +703,7 @@ export default function Contact() {
                     日
                   </label>
                 </div>
-              </div>
+              </div> */}
               <div className="c-form-group">
                 <label htmlFor="ext_08" className="c-form-label u-mr-5">
                   添付ファイル
@@ -558,7 +715,7 @@ export default function Contact() {
                   onChange={handleFileUpload}
                 />
               </div>
-              <div className="c-form-group">
+              {/* <div className="c-form-group">
                 <label htmlFor="body" className="c-form-label">
                   メッセージ
                 </label>
@@ -571,7 +728,7 @@ export default function Contact() {
                   placeholder=""
                   onChange={handleInputChange}
                 ></textarea>
-              </div>
+              </div> */}
               <div className="c-form-group">
                 <label htmlFor="ext_07" className="c-form-label">
                   マトリックス(単一選択)
