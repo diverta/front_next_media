@@ -85,6 +85,7 @@ export default function Contact() {
     // }
     const fileData = new FormData()
     fileData.append(e.target.name, e.target.files[0])
+    console.log(e.target.files[0])
 
     const status = await uploadFile(fileData)
     console.log(status)
@@ -101,29 +102,30 @@ export default function Contact() {
   const handleMatrixMultipleChange = (e, field) => {
     const { value, checked } = e.target
 
-    let selectedChoices, setSelectedChoices
+    let setSelectedChoices
     if (field === '1') {
-      selectedChoices = selectedChoices1
       setSelectedChoices = setSelectedChoices1
     } else if (field === '2') {
-      selectedChoices = selectedChoices2
       setSelectedChoices = setSelectedChoices2
     } else if (field === '3') {
-      selectedChoices = selectedChoices3
       setSelectedChoices = setSelectedChoices3
     }
 
-    setSelectedChoices((prevChoices) => {
-      if (checked) {
-        return [...prevChoices, value]
-      } else {
-        return prevChoices.filter((choice) => choice !== value)
-      }
-    })
+    if (setSelectedChoices) {
+      setSelectedChoices((prevChoices) => {
+        let newChoices
+        if (checked) {
+          newChoices = [...prevChoices, value]
+        } else {
+          newChoices = prevChoices.filter((choice) => choice !== value)
+        }
 
-    matrixMultiple.current = {
-      ...matrixMultiple.current,
-      [field]: selectedChoices,
+        matrixMultiple.current = {
+          ...matrixMultiple.current,
+          [field]: newChoices,
+        }
+        return newChoices
+      })
     }
   }
 
@@ -215,7 +217,7 @@ export default function Contact() {
               {formErrors && <AlertError errors={formErrors} />}
               {Object.values(columns).map((col) => (
                 <div key={col.key} className="c-form-group">
-                  {col.title}
+                  <label className="c-form-label">{col.title}</label>
                   {col.required == 2 && (
                     <span className="c-form-label__required">*</span>
                   )}
@@ -351,6 +353,96 @@ export default function Contact() {
                       </label>
                     </div>
                   )}
+                  {col.type === 7 && (
+                    <input
+                      type="file"
+                      name={col.key}
+                      id={col.key}
+                      onChange={handleFileUpload}
+                    />
+                  )}
+                  {col.type === 10 &&
+                    col.attribute.selection_type === 'single' && (
+                      <table className="u-width-100">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            {Object.entries(col.options[0].value).map(
+                              ([key, option]) => (
+                                <th key={key} scope="col">
+                                  {option}
+                                </th>
+                              ),
+                            )}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Object.entries(col.options[1].value).map(
+                            ([row_key, row_option]) => (
+                              <tr key={row_key}>
+                                <th scope="row">{row_option}</th>
+                                {Object.entries(col.options[0].value).map(
+                                  ([key, option]) => (
+                                    <td
+                                      key={key}
+                                      className="u-text-align-center"
+                                    >
+                                      <input
+                                        type="radio"
+                                        name={row_key}
+                                        value={key}
+                                        onChange={handleMatrixSingleChange}
+                                      />
+                                    </td>
+                                  ),
+                                )}
+                              </tr>
+                            ),
+                          )}
+                        </tbody>
+                      </table>
+                    )}
+                  {col.type === 10 &&
+                    col.attribute.selection_type === 'multiple' && (
+                      <table className="u-width-100">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            {Object.entries(col.options[0].value).map(
+                              ([key, option]) => (
+                                <th key={key}>{option}</th>
+                              ),
+                            )}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Object.entries(col.options[1].value).map(
+                            ([row_key, row_option]) => (
+                              <tr key={row_key}>
+                                <th scope="row">{row_option}</th>
+                                {Object.entries(col.options[0].value).map(
+                                  ([key, option]) => (
+                                    <td
+                                      key={key}
+                                      className="u-text-align-center"
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        name={row_key}
+                                        value={key}
+                                        onChange={(e) =>
+                                          handleMatrixMultipleChange(e, row_key)
+                                        }
+                                      />
+                                    </td>
+                                  ),
+                                )}
+                              </tr>
+                            ),
+                          )}
+                        </tbody>
+                      </table>
+                    )}
                 </div>
               ))}
               {/* <div className="c-form-group">
@@ -704,7 +796,7 @@ export default function Contact() {
                   </label>
                 </div>
               </div> */}
-              <div className="c-form-group">
+              {/* <div className="c-form-group">
                 <label htmlFor="ext_08" className="c-form-label u-mr-5">
                   添付ファイル
                 </label>
@@ -714,7 +806,7 @@ export default function Contact() {
                   id="ext_08"
                   onChange={handleFileUpload}
                 />
-              </div>
+              </div> */}
               {/* <div className="c-form-group">
                 <label htmlFor="body" className="c-form-label">
                   メッセージ
@@ -729,7 +821,7 @@ export default function Contact() {
                   onChange={handleInputChange}
                 ></textarea>
               </div> */}
-              <div className="c-form-group">
+              {/* <div className="c-form-group">
                 <label htmlFor="ext_07" className="c-form-label">
                   マトリックス(単一選択)
                 </label>{' '}
@@ -833,8 +925,8 @@ export default function Contact() {
                     </tr>
                   </tbody>
                 </table>
-              </div>
-              <div className="c-form-group">
+              </div> */}
+              {/* <div className="c-form-group">
                 <label htmlFor="ext_09" className="c-form-label">
                   マトリックス(複数選択)
                 </label>{' '}
@@ -949,7 +1041,7 @@ export default function Contact() {
                     </tr>
                   </tbody>
                 </table>
-              </div>
+              </div> */}
               <div className="c-form-group">
                 <input
                   type="checkbox"

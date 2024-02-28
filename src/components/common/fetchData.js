@@ -249,11 +249,10 @@ export async function inquiry(formData) {
 
 export async function uploadFile(fileData) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/inquiry/1`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/upload`,
     {
       method: "POST",
       body: fileData,
-      headers: { "Content-Type": "application/json" },
     }
   );
 
