@@ -77,18 +77,20 @@ export default function Contact() {
   }
 
   const handleFileUpload = async (e) => {
-    // const { name } = e.target
-    // setFormErrors(false)
-    // formData.current = {
-    //   ...formData.current,
-    //   [name]: e.target.files[0],
-    // }
     const fileData = new FormData()
-    fileData.append(e.target.name, e.target.files[0])
-    console.log(e.target.files[0])
+    fileData.append('file', e.target.files[0])
 
     const status = await uploadFile(fileData)
-    console.log(status)
+
+    if(status.errors.length > 0){
+      setFormErrors(status.errors)
+    } else {
+    const file_id = status.file_id
+    formData.current = {
+      ...formData.current,
+      ext_08: { file_id },
+    }
+  }
   }
 
   const handleMatrixSingleChange = (e) => {
@@ -359,6 +361,7 @@ export default function Contact() {
                       name={col.key}
                       id={col.key}
                       onChange={handleFileUpload}
+                      accept={col.options.map((option) => option.value).join(',') || '*'}
                     />
                   )}
                   {col.type === 10 &&
