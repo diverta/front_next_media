@@ -1,7 +1,7 @@
 import Menu from '@/components/common/Menu'
 import Breadcrumb from '@/components/common/Breadcrumb'
 import PageTitle from '@/components/common/PageTitle'
-import { getLabels, getLimitedContentDetails, getAllContentList } from '@/components/common/fetchData'
+import { getLabels } from '@/components/common/fetchData'
 import LimitedContentBody from '@/components/section/twoColumn/LimitedContentBody';
 
 export async function generateStaticParams() {
