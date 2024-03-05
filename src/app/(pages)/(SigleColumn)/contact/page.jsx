@@ -135,7 +135,13 @@ export default function Contact() {
     e.preventDefault()
     window.scrollTo(0, 0)
 
-    const requiredFields = ['name', 'from_mail', 'body']
+    const requiredFields = Object.values(columns).reduce((acc, col) => {
+      if (col.required == 2) {
+        acc[col.key] = col.title;
+      }
+      return acc;
+    }, {});
+
     const errors = []
 
     if (selectedChoices.length != 0) {
@@ -170,13 +176,13 @@ export default function Contact() {
       errors.push({ message: '利用規約に同意してください' })
     }
 
-    requiredFields.forEach((field) => {
+    Object.entries(requiredFields).forEach(([field, title]) => {
       if (!formData.current[field]) {
         errors.push({
-          message: `${field.charAt(0).toUpperCase() + field.slice(1)} is required`,
-        })
+          message: `${title.charAt(0).toUpperCase() + title.slice(1)} is required`,
+        });
       }
-    })
+    });
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors)
