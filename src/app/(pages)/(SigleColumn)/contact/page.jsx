@@ -190,7 +190,6 @@ export default function Contact() {
       return
     }
 
-    console.log(formData.current)
     const status = await inquiry(formData.current)
 
     if (status.errors.length > 0) {
