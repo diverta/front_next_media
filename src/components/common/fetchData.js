@@ -219,6 +219,47 @@ export async function login(email, password) {
   return null
 }
 
+export async function getInquiryColumns() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/inquiry/1`,
+    {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    }
+  );
+
+  const data = await res.json()
+  return data.details
+}
+
+export async function inquiry(formData) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/inquiry/1`,
+    {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+
+  const status = await res.json();
+  return status;
+}
+
+export async function uploadFile(fileData) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/upload`,
+    {
+      method: "POST",
+      body: fileData,
+    }
+  );
+
+  const status = await res.json();
+  return status;
+}
+
 export async function register(name1, name2, email, login_pwd) {
   const credentials = {
     name1,
@@ -274,10 +315,9 @@ export async function reminder(email) {
     },
   )
 
-  const response = await res.json()
-  console.log(response)
-  if (res.ok) {
-    return response.messages
+  const response = await res.json();
+  if(res.ok){
+    return response.messages;
   }
 
   return null
@@ -300,11 +340,10 @@ export async function reset(token, temp_pwd, login_pwd) {
     },
   )
 
-  const response = await res.json()
-  console.log(response)
-
-  if (res.ok) {
-    return response.messages
+  const response = await res.json();
+  
+  if(res.ok){
+    return response.messages;
   }
 
   return null
@@ -394,6 +433,10 @@ export function getLabels() {
     search: {
       text: 'サーチ',
       text_en: 'SEARCH',
+    },
+    contact: {
+      text: "お問い合わせ",
+      text_en: "Contact",
     },
     login: {
       text: 'ログイン',
