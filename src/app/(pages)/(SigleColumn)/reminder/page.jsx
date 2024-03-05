@@ -4,12 +4,20 @@ import Breadcrumb from '@/components/common/Breadcrumb'
 import PageTitle from '@/components/common/PageTitle'
 import { getLabels } from '@/components/common/fetchData'
 import Link from 'next/link'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { reminder, reset } from '@/components/common/fetchData'
 import AlertSuccess from '@/components/ui/AlertSuccess'
 
-export default function Reminder({ searchParams }) {
-  const token = searchParams && searchParams.token ? searchParams.token : null
+export default function Reminder() {
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const tokenParam = queryParams.get('token');
+    if (tokenParam) {
+      setToken(tokenParam);
+    }
+  }, []);
+
   const contentDirectory = getLabels()
   const content = contentDirectory.reminder
   const mail = useRef('')
