@@ -9,6 +9,7 @@ import PageTitle from '@/components/common/PageTitle'
 import TagArea from '@/components/common/TagArea'
 import TagKeyword from '@/components/common/TagKeyword'
 
+export const dynamic = 'force-static';
 export default async function Event({ searchParams }) {
   const page = Number(searchParams && searchParams.page ? searchParams.page : 1)
   const tag_id = Number(

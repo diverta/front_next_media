@@ -16,12 +16,11 @@ const DetailBody = ({ data, params }) => {
       const data2 = await getDetails(params.id);
       setData(data2);
       setIsLiked(data2.my_favorite_flg);
-
+  
     } catch (error) {
       console.error("Error fetching favorite list:", error);
     }
-  }, [params.id, data1.my_favorite_flg]);
-  
+  }, [params.id]);  
 
   const handleLikeClick = async () => {
     try {
