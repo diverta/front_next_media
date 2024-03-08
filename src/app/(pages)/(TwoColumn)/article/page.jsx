@@ -1,29 +1,29 @@
-import Pager from '@/components/common/Pager'
-import { getContentList } from '@/components/common/fetchData'
-import CardList from '@/components/ui/CardList'
-import Feature from '@/components/section/feature/Feature'
-import { getLabels } from '@/components/common/fetchData'
-import Banner from '@/components/common/Banner'
-import Breadcrumb from '@/components/common/Breadcrumb'
-import PageTitle from '@/components/common/PageTitle'
-import TagArea from '@/components/common/TagArea'
-import TagKeyword from '@/components/common/TagKeyword'
+import Pager from "@/components/common/Pager"
+import { getContentList } from "@/components/common/fetchData"
+import CardList from "@/components/ui/CardList"
+import Feature from "@/components/section/feature/Feature"
+import { getLabels } from "@/components/common/fetchData"
+import Banner from "@/components/common/Banner"
+import Breadcrumb from "@/components/common/Breadcrumb"
+import PageTitle from "@/components/common/PageTitle"
+import TagArea from "@/components/common/TagArea"
+import TagKeyword from "@/components/common/TagKeyword"
 
 export default async function Event({ searchParams }) {
   const page = Number(searchParams && searchParams.page ? searchParams.page : 1)
   const tag_id = Number(
-    searchParams && searchParams.tag_id ? searchParams.tag_id : '',
+    searchParams && searchParams.tag_id ? searchParams.tag_id : "",
   )
   const tag_category_id = Number(
     searchParams && searchParams.tag_category_id
       ? searchParams.tag_category_id
-      : '',
+      : "",
   )
   const search =
     searchParams && searchParams.search
-      ? `%22${searchParams.search.replace(/\s/g, '%20')}%22`
-      : ''
-  const topic = searchParams && searchParams.topic ? searchParams.topic : ''
+      ? `%22${searchParams.search.replace(/\s/g, "%20")}%22`
+      : ""
+  const topic = searchParams && searchParams.topic ? searchParams.topic : ""
   const contentDirectory = getLabels()
   const { list, pageInfo } = await getContentList(topic, page, tag_id, search)
 

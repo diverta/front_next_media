@@ -1,21 +1,21 @@
-'use client'
-import { useCallback, useRef } from 'react'
-import { useUser } from '@/components/common/userContext'
-import { logout } from '@/components/common/fetchData'
-import { useRouter } from 'next/navigation'
+"use client"
+import { useCallback, useRef } from "react"
+import { useUser } from "@/components/common/userContext"
+import { logout } from "@/components/common/fetchData"
+import { useRouter } from "next/navigation"
 import {
   getMyFavoriteList,
   getLimitedContent,
-} from '@/components/common/fetchData'
-import CardList from '@/components/ui/CardList'
-import { useState, useEffect } from 'react'
-import Pager from '@/components/common/Pager'
-import { getLabels } from '@/components/common/fetchData'
-import Breadcrumb from '@/components/common/Breadcrumb'
-import PageTitle from '@/components/common/PageTitle'
-import Menu from '@/components/common/Menu'
-import Link from 'next/link'
-import Image from 'next/image'
+} from "@/components/common/fetchData"
+import CardList from "@/components/ui/CardList"
+import { useState, useEffect } from "react"
+import Pager from "@/components/common/Pager"
+import { getLabels } from "@/components/common/fetchData"
+import Breadcrumb from "@/components/common/Breadcrumb"
+import PageTitle from "@/components/common/PageTitle"
+import Menu from "@/components/common/Menu"
+import Link from "next/link"
+import Image from "next/image"
 
 export default function Mypage() {
   const { user, storeUser } = useUser()
@@ -32,7 +32,7 @@ export default function Mypage() {
       setMyFavourites(favorites.list)
       setMyFavouritesPageInfo(favorites.pageInfo)
     } catch (error) {
-      console.error('Error fetching favorite list:', error)
+      console.error("Error fetching favorite list:", error)
     }
   }, [])
 
@@ -47,7 +47,7 @@ export default function Mypage() {
         setLimitedContent(limitedContent)
         console.log(limitedContent)
       } catch (error) {
-        console.error('Error fetching member-only list:', error)
+        console.error("Error fetching member-only list:", error)
       }
     }
 
@@ -76,7 +76,7 @@ export default function Mypage() {
                       >
                         <div className="c-card__image">
                           <Image
-                            alt={item.bannerImage.desc || 'dummy'}
+                            alt={item.bannerImage.desc || "dummy"}
                             src={item.bannerImage.url}
                             fill
                           />

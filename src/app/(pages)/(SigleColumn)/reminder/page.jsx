@@ -1,23 +1,23 @@
-'use client'
+"use client"
 
-import Breadcrumb from '@/components/common/Breadcrumb'
-import PageTitle from '@/components/common/PageTitle'
-import { getLabels } from '@/components/common/fetchData'
-import Link from 'next/link'
-import { useRef, useState } from 'react'
-import { reminder, reset } from '@/components/common/fetchData'
-import AlertSuccess from '@/components/ui/AlertSuccess'
+import Breadcrumb from "@/components/common/Breadcrumb"
+import PageTitle from "@/components/common/PageTitle"
+import { getLabels } from "@/components/common/fetchData"
+import Link from "next/link"
+import { useRef, useState } from "react"
+import { reminder, reset } from "@/components/common/fetchData"
+import AlertSuccess from "@/components/ui/AlertSuccess"
 
 export default function Reminder({ searchParams }) {
   const token = searchParams && searchParams.token ? searchParams.token : null
   const contentDirectory = getLabels()
   const content = contentDirectory.reminder
-  const mail = useRef('')
-  const temp_pwd = useRef('')
-  const login_pwd = useRef('')
+  const mail = useRef("")
+  const temp_pwd = useRef("")
+  const login_pwd = useRef("")
 
   const [alert, setAlert] = useState(false)
-  const [alertMessage, setAlertMessage] = useState('')
+  const [alertMessage, setAlertMessage] = useState("")
 
   const handleChange = () => {
     setAlert(false)

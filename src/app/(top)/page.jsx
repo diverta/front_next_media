@@ -1,11 +1,11 @@
-import Image from "next/image";
-import CardList from "@/components/ui/CardList";
-import { getContentList, getRanking } from "@/components/common/fetchData";
-import Link from "next/link";
+import Image from "next/image"
+import CardList from "@/components/ui/CardList"
+import { getContentList, getRanking } from "@/components/common/fetchData"
+import Link from "next/link"
 
 export default async function Home() {
-  const { list } = await getContentList();
-  const topRankedList = await getRanking();
+  const { list } = await getContentList()
+  const topRankedList = await getRanking()
 
   return (
     <div>
@@ -36,7 +36,11 @@ export default async function Home() {
               <Link href={`/article/${item.topics_id}`} className="c-card">
                 <span className="c-card__image__badge02">{index + 1}</span>
                 <div className="c-card__image">
-                  <Image alt={item.image.desc || 'dummy'} src={item.image.url} fill />
+                  <Image
+                    alt={item.image.desc || "dummy"}
+                    src={item.image.url}
+                    fill
+                  />
                 </div>
                 <div className="c-card__info">
                   <h3 className="c-card__heading">{item.subject}</h3>
@@ -52,7 +56,7 @@ export default async function Home() {
                           <span key={tag_index} className="c-tag-card__item">
                             {tag.tag_nm}
                           </span>
-                        ) : null
+                        ) : null,
                       )}
                     </p>
                     <p className="c-card__category">{item.contents_type_nm}</p>
@@ -64,5 +68,5 @@ export default async function Home() {
         </ul>
       </section>
     </div>
-  );
+  )
 }

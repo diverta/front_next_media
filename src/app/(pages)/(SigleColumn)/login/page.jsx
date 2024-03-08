@@ -1,43 +1,41 @@
-"use client";
+"use client"
 
-import { useUser } from "@/components/common/userContext";
-import { login } from "@/components/common/fetchData";
-import { useRef } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import Breadcrumb from "@/components/common/Breadcrumb";
-import PageTitle from "@/components/common/PageTitle";
-import { getLabels } from "@/components/common/fetchData";
-import AlertError from "@/components/ui/AlertError";
-import { useState } from "react";
-
+import { useUser } from "@/components/common/userContext"
+import { login } from "@/components/common/fetchData"
+import { useRef } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
+import Breadcrumb from "@/components/common/Breadcrumb"
+import PageTitle from "@/components/common/PageTitle"
+import { getLabels } from "@/components/common/fetchData"
+import AlertError from "@/components/ui/AlertError"
+import { useState } from "react"
 
 export default function Login() {
-  const email = useRef("");
-  const password = useRef("");
-  const { user, loading, storeUser } = useUser();
-  const router = useRouter();
-  const contentDirectory = getLabels();
-  const content = contentDirectory.login;
-  const [alert, setAlert] = useState(false);
+  const email = useRef("")
+  const password = useRef("")
+  const { user, loading, storeUser } = useUser()
+  const router = useRouter()
+  const contentDirectory = getLabels()
+  const content = contentDirectory.login
+  const [alert, setAlert] = useState(false)
 
   const handleChange = () => {
-    setAlert(false);
-  };
+    setAlert(false)
+  }
 
   const handleLogin = async (event) => {
-    event.preventDefault();
-    const user = await login(email.current.value, password.current.value);
+    event.preventDefault()
+    const user = await login(email.current.value, password.current.value)
 
     if (user) {
-      setAlert(false);
-      storeUser(user);
-      router.push("member/mypage");
+      setAlert(false)
+      storeUser(user)
+      router.push("member/mypage")
+    } else {
+      setAlert(true)
     }
-    else{
-      setAlert(true);
-    }
-  };
+  }
 
   return (
     <div className="l-container">
@@ -50,9 +48,14 @@ export default function Login() {
           ) : user ? (
             <div>You have already logged in.</div>
           ) : (
-            <form className="c-form c-box" onSubmit={handleLogin} onChange={handleChange}>
-              
-              {alert && <AlertError message="メールアドレスまたはパスワードが間違っています。" />}
+            <form
+              className="c-form c-box"
+              onSubmit={handleLogin}
+              onChange={handleChange}
+            >
+              {alert && (
+                <AlertError message="メールアドレスまたはパスワードが間違っています。" />
+              )}
               <div className="c-form-group">
                 <label htmlFor="email" className="c-form-label">
                   メールアドレス
@@ -86,10 +89,8 @@ export default function Login() {
               </div>
             </form>
           )}
-          
         </div>
       </div>
-      
     </div>
-  );
+  )
 }

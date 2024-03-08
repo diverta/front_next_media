@@ -1,62 +1,68 @@
-"use client";
+"use client"
 
-import Breadcrumb from "@/components/common/Breadcrumb";
-import PageTitle from "@/components/common/PageTitle";
-import { getLabels } from "@/components/common/fetchData";
-import Link from "next/link";
-import { useRef, useState } from "react";
-import { register } from "@/components/common/fetchData";
-import { useUser } from "@/components/common/userContext";
-import { useRouter } from "next/navigation";
-import AlertError from "@/components/ui/AlertError";
+import Breadcrumb from "@/components/common/Breadcrumb"
+import PageTitle from "@/components/common/PageTitle"
+import { getLabels } from "@/components/common/fetchData"
+import Link from "next/link"
+import { useRef, useState } from "react"
+import { register } from "@/components/common/fetchData"
+import { useUser } from "@/components/common/userContext"
+import { useRouter } from "next/navigation"
+import AlertError from "@/components/ui/AlertError"
 
 export default function Register() {
-  const contentDirectory = getLabels();
-  const content = contentDirectory.register;
-  const { user, loading, storeUser } = useUser();
-  const router = useRouter();
-  const [alert, setAlert] = useState(false);
+  const contentDirectory = getLabels()
+  const content = contentDirectory.register
+  const { user, loading, storeUser } = useUser()
+  const router = useRouter()
+  const [alert, setAlert] = useState(false)
 
-  const name1 = useRef("");
-  const name2 = useRef("");
-  const email = useRef("");
-  const login_pwd = useRef("");
+  const name1 = useRef("")
+  const name2 = useRef("")
+  const email = useRef("")
+  const login_pwd = useRef("")
 
   const handleChange = () => {
-    setAlert(false);
-  };
+    setAlert(false)
+  }
 
   const handleRegister = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     const user = await register(
       name1.current.value,
       name2.current.value,
       email.current.value,
-      login_pwd.current.value
-    );
+      login_pwd.current.value,
+    )
 
     if (user) {
-      setAlert(false);
-      storeUser(user);
-      router.push("member/mypage");
+      setAlert(false)
+      storeUser(user)
+      router.push("member/mypage")
     } else {
-      setAlert(true);
+      setAlert(true)
     }
-  };
+  }
 
   return (
     <div className="l-container">
       <Breadcrumb paths={[{ label: content.text }]} />
       <PageTitle content={content} />
       <div className="l-container--small l-container--contents">
-        <form className="c-form c-box" onSubmit={handleRegister} onChange={handleChange}>
+        <form
+          className="c-form c-box"
+          onSubmit={handleRegister}
+          onChange={handleChange}
+        >
           <div className="c-form-group u-text-align-center">
             <p className="c-text--small">
               <span className="c-form-label__required">*</span>は必須項目です。
             </p>
           </div>
-          {alert && <AlertError message="エントリー内容を再度ご確認ください。" />}
+          {alert && (
+            <AlertError message="エントリー内容を再度ご確認ください。" />
+          )}
           <div className="c-form-group">
             <label htmlFor="name1" className="c-form-label">
               名前（姓）
@@ -110,8 +116,7 @@ export default function Register() {
             に同意したこととなります。
           </p>
         </form>
-
       </div>
     </div>
-  );
+  )
 }
