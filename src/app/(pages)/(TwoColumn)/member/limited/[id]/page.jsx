@@ -1,7 +1,6 @@
-import Menu from '@/components/common/Menu'
-import Breadcrumb from '@/components/common/Breadcrumb'
-import PageTitle from '@/components/common/PageTitle'
-import { getLabels } from '@/components/common/fetchData'
+import Breadcrumb from '@/components/common/Breadcrumb';
+import Menu from '@/components/common/Menu';
+import PageTitle from '@/components/common/PageTitle';
 import LimitedContentBody from '@/components/section/twoColumn/LimitedContentBody';
 
 export async function generateStaticParams() {
@@ -13,22 +12,21 @@ export async function generateStaticParams() {
 }
 
 export default async function limitedContent({ params }) {
-  
-  const contentDirectory = getLabels()
-  const content = contentDirectory.limitedContent
-
   return (
-      <div className="l-container">
-        <Breadcrumb paths={[{ label: content.text }]} />
-        <PageTitle content={content} />
-        <div className="l-container--col-2 l-container--contents">
-          <div className="l-container--col-2__main">
-            <LimitedContentBody params={params}/>
-          </div>
-          <div className="l-container--col-2__side">
-            <Menu />
-          </div>
+    <div className="l-container">
+      <Breadcrumb paths={[{ label: "会員限定記事" }]} />
+      <PageTitle
+        title="会員限定記事"
+        subTitle="Member Only Article"
+      />
+      <div className="l-container--col-2 l-container--contents">
+        <div className="l-container--col-2__main">
+          <LimitedContentBody params={params} />
+        </div>
+        <div className="l-container--col-2__side">
+          <Menu />
         </div>
       </div>
+    </div>
   )
 }

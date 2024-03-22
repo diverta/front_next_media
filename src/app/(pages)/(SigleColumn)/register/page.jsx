@@ -2,18 +2,15 @@
 
 import Breadcrumb from "@/components/common/Breadcrumb";
 import PageTitle from "@/components/common/PageTitle";
-import { getLabels } from "@/components/common/fetchData";
-import Link from "next/link";
-import { useRef, useState } from "react";
 import { register } from "@/components/common/fetchData";
 import { useUser } from "@/components/common/userContext";
-import { useRouter } from "next/navigation";
 import AlertError from "@/components/ui/AlertError";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
 
 export default function Register() {
-  const contentDirectory = getLabels();
-  const content = contentDirectory.register;
-  const { user, loading, storeUser } = useUser();
+  const { storeUser } = useUser();
   const router = useRouter();
   const [alert, setAlert] = useState(false);
 
@@ -47,8 +44,11 @@ export default function Register() {
 
   return (
     <div className="l-container">
-      <Breadcrumb paths={[{ label: content.text }]} />
-      <PageTitle content={content} />
+      <Breadcrumb paths={[{ label: "会員登録" }]} />
+      <PageTitle
+        title="会員登録"
+        subTitle="Register"
+      />
       <div className="l-container--small l-container--contents">
         <form className="c-form c-box" onSubmit={handleRegister} onChange={handleChange}>
           <div className="c-form-group u-text-align-center">

@@ -2,11 +2,10 @@
 
 import Breadcrumb from '@/components/common/Breadcrumb'
 import PageTitle from '@/components/common/PageTitle'
-import { getLabels } from '@/components/common/fetchData'
-import Link from 'next/link'
-import { useRef, useState, useEffect } from 'react'
 import { reminder, reset } from '@/components/common/fetchData'
 import AlertSuccess from '@/components/ui/AlertSuccess'
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Reminder() {
   const [token, setToken] = useState(null);
@@ -18,8 +17,6 @@ export default function Reminder() {
     }
   }, []);
 
-  const contentDirectory = getLabels()
-  const content = contentDirectory.reminder
   const mail = useRef('')
   const temp_pwd = useRef('')
   const login_pwd = useRef('')
@@ -55,8 +52,11 @@ export default function Reminder() {
 
   return (
     <div className="l-container">
-      <Breadcrumb paths={[{ label: content.text }]} />
-      <PageTitle content={content} />
+      <Breadcrumb paths={[{ label: "パスワード再発行" }]} />
+      <PageTitle
+        title="パスワード再発行"
+        subTitle="Password Reset"
+      />
       <div className="l-container--small l-container--contents">
         <div class="c-box">
           {alert && <AlertSuccess message={alertMessage} />}

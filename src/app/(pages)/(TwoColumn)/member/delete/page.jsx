@@ -1,35 +1,32 @@
 "use client";
 
-import Breadcrumb from '@/components/common/Breadcrumb'
-import PageTitle from '@/components/common/PageTitle'
-import {
-  getLabels,
-  getMemberInfo,
-  deleteMember,
-} from "@/components/common/fetchData";
+import Breadcrumb from '@/components/common/Breadcrumb';
 import Menu from "@/components/common/Menu";
-import Link from "next/link";
+import PageTitle from '@/components/common/PageTitle';
+import {
+  deleteMember,
+  getMemberInfo
+} from "@/components/common/fetchData";
 import { useUser } from "@/components/common/userContext";
-import { useState, useEffect } from "react";
 import AlertSuccess from "@/components/ui/AlertSuccess";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Delete() {
-  const contentDirectory = getLabels();
-  const content = contentDirectory.deleteProfile;
   const [memberInfo, setMemberInfo] = useState([]);
   const { storeUser } = useUser();
   const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     const memberInfoFunction = async () => {
-    try {
-      const info = await getMemberInfo();
-      setMemberInfo(info.details);
-    } catch (error) {
-      console.error("Error fetching member information", error);
-    }
-  };
-  
+      try {
+        const info = await getMemberInfo();
+        setMemberInfo(info.details);
+      } catch (error) {
+        console.error("Error fetching member information", error);
+      }
+    };
+
     memberInfoFunction();
   }, []);
 
@@ -46,8 +43,11 @@ export default function Delete() {
 
   return (
     <div className="l-container">
-      <Breadcrumb paths={[{ label: content.text }]} />
-      <PageTitle content={content} />
+      <Breadcrumb paths={[{ label: "退会" }]} />
+      <PageTitle
+        title="退会"
+        subTitle="Unsubscribe"
+      />
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">
           <div>

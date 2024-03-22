@@ -1,23 +1,21 @@
 'use client'
+
+import Breadcrumb from '@/components/common/Breadcrumb'
+import Menu from '@/components/common/Menu'
+import PageTitle from '@/components/common/PageTitle'
 import {
-  getMyFavoriteList,
   getLimitedContent,
+  getMyFavoriteList,
 } from '@/components/common/fetchData'
 import CardList from '@/components/ui/CardList'
-import { useState, useEffect } from 'react'
-import { getLabels } from '@/components/common/fetchData'
-import Breadcrumb from '@/components/common/Breadcrumb'
-import PageTitle from '@/components/common/PageTitle'
-import Menu from '@/components/common/Menu'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function Mypage() {
   const [myFavourites, setMyFavourites] = useState([])
   const [setMyFavouritesPageInfo] = useState([])
   const [limitedContent, setLimitedContent] = useState([])
-  const contentDirectory = getLabels()
-  const content = contentDirectory.mypage
 
   useEffect(() => {
     const favoriteList = async () => {
@@ -47,8 +45,11 @@ export default function Mypage() {
 
   return (
     <div className="l-container">
-      <Breadcrumb paths={[{ label: content.text }]} />
-      <PageTitle content={content} />
+      <Breadcrumb paths={[{ label: "マイページ" }]} />
+      <PageTitle
+        title="マイページ"
+        subTitle="My page"
+      />
       <div className="l-container--col-2 l-container--contents">
         <div className="l-container--col-2__main">
           <div>

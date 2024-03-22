@@ -2,7 +2,6 @@
 
 import Breadcrumb from '@/components/common/Breadcrumb'
 import PageTitle from '@/components/common/PageTitle'
-import { getLabels } from '@/components/common/fetchData'
 import { useEffect, useRef, useState, useCallback } from 'react'
 import AlertError from '@/components/ui/AlertError'
 import AlertSuccess from '@/components/ui/AlertSuccess'
@@ -14,8 +13,6 @@ import {
 } from '@/components/common/fetchData'
 
 export default function Contact() {
-  const contentDirectory = getLabels()
-  const content = contentDirectory.contact
   const formData = useRef({})
   const date = useRef({})
   const matrixSingle = useRef({})
@@ -83,15 +80,15 @@ export default function Contact() {
 
     const status = await uploadFile(fileData)
 
-    if(status.errors.length > 0){
+    if (status.errors.length > 0) {
       setFormErrors(status.errors)
     } else {
-    const file_id = status.file_id
-    formData.current = {
-      ...formData.current,
-      ext_08: { file_id },
+      const file_id = status.file_id
+      formData.current = {
+        ...formData.current,
+        ext_08: { file_id },
+      }
     }
-  }
   }
 
   const handleMatrixSingleChange = (e) => {
@@ -201,8 +198,11 @@ export default function Contact() {
 
   return (
     <div className="l-container">
-      <Breadcrumb paths={[{ label: content.text }]} />
-      <PageTitle content={content} />
+      <Breadcrumb paths={[{ label: 'お問い合わせ' }]} />
+      <PageTitle
+        title="お問い合わせ"
+        subTitle="Contact"
+      />
       <div className="l-container--small l-container--contents">
         {submittedText ? (
           <div>

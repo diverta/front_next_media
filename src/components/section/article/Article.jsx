@@ -1,11 +1,12 @@
 'use client'
 
+import Breadcrumb from '@/components/common/Breadcrumb'
+import PageTitle from '@/components/common/PageTitle'
 import Pager from '@/components/common/Pager'
 import { getContentList } from '@/components/common/fetchData'
 import CardList from '@/components/ui/CardList'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { getFeatureList } from "@/components/common/fetchData";
 
 export default function Article({ children }) {
     const searchParams = useSearchParams();
@@ -14,7 +15,7 @@ export default function Article({ children }) {
     const [title, setTitle] = useState('');
     const [list, setList] = useState([]);
     const [pageInfo, setPageInfo] = useState({});
-    const [features, setFeatures] = useState([]);
+
     useEffect(() => {
         searchParams.get('topic') && setTitle('記事');
         searchParams.get('search') && setTitle('検索結果');
@@ -32,13 +33,15 @@ export default function Article({ children }) {
             setPageInfo(pageInfo);
         };
         fetchData();
-        getFeatureList().then(setFeatures);
     }, [searchParams, title]);
 
     return (
         <>
-            {/* <Breadcrumb paths={[{ label: content.text }]} /> */}
-            {/* TODO <PageTitle content={content} */}
+            <Breadcrumb paths={[{ label: list?.[0]?.contents_type_ext_col_01 }]} />
+            <PageTitle
+                title={list?.[0]?.contents_type_ext_col_01}
+                subTitle={list?.[0]?.contents_type_nm}
+            />
             <div className="l-container--col-2 l-container--contents">
                 <div className="l-container--col-2__main">
                     <section className="c-article__list">
