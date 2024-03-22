@@ -1,18 +1,13 @@
 import { category } from '@/constants/category'
 
-export async function getContentList(
-  {
+export async function getContentList(params) {
+  const {
     topic = null,
     page = 1,
     tag_id = null,
-    search = '',
-  } = {
-      topic: null,
-      page: 1,
-      tag_id: null,
-      search: '',
-    }
-) {
+    search = ''
+  } = (params || {});
+
   const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list`);
 
   url.searchParams.append('pageID', page);
