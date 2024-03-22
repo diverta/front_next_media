@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const Menu = () => {
-  const { user, storeUser } = useUser();
+  const { storeUser } = useUser();
   const router = useRouter();
   const handleLogout = async (event) => {
     event.preventDefault();

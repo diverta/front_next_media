@@ -40,9 +40,7 @@ const DetailBody = ({ data, params }) => {
           setLikesCount(data.favorite_cnt);
         }
       }
-      // updateDataList();
     } catch (error) {
-      // Handle the error
       console.error('Error updating likes:', error);
     }
   };

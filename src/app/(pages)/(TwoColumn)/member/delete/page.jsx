@@ -17,7 +17,7 @@ export default function Delete() {
   const contentDirectory = getLabels();
   const content = contentDirectory.deleteProfile;
   const [memberInfo, setMemberInfo] = useState([]);
-  const { user, storeUser } = useUser();
+  const { storeUser } = useUser();
   const [alert, setAlert] = useState(false);
 
   useEffect(() => {

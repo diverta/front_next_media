@@ -47,7 +47,6 @@ export default async function Home() {
                         <use href="../svg/icon.svg#icon-map" />
                       </svg>
                       {item.tags.map((tag, tag_index) =>
-                        // Check for area tag
                         tag.tag_category_id === 5 ? (
                           <span key={tag_index} className="c-tag-card__item">
                             {tag.tag_nm}

@@ -13,7 +13,6 @@ import AlertSuccess from "@/components/ui/AlertSuccess";
 import AlertError from "@/components/ui/AlertError";
 
 export default function Edit() {
-  const { user, storeUser } = useUser();
   const contentDirectory = getLabels();
   const content = contentDirectory.editProfile;
   const [memberInfo, setMemberInfo] = useState([]);

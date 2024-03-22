@@ -18,10 +18,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export default function Mypage() {
-  const { user, storeUser } = useUser()
-  const router = useRouter()
   const [myFavourites, setMyFavourites] = useState([])
-  const [myFavouritesPageInfo, setMyFavouritesPageInfo] = useState([])
+  const [setMyFavouritesPageInfo] = useState([])
   const [limitedContent, setLimitedContent] = useState([])
   const contentDirectory = getLabels()
   const content = contentDirectory.mypage
@@ -45,7 +43,6 @@ export default function Mypage() {
       try {
         const limitedContent = await getLimitedContent()
         setLimitedContent(limitedContent)
-        console.log(limitedContent)
       } catch (error) {
         console.error('Error fetching member-only list:', error)
       }

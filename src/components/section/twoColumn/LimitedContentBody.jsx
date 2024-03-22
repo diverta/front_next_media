@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const LimitedContentBody = ({ params }) => {
-  const { user } = useUser()
   const [data, setData] = useState([])
   const [couponLink, setCouponLink] = useState([])
 
@@ -22,7 +21,7 @@ const LimitedContentBody = ({ params }) => {
     }
 
     fetchMemberOnlyData() // Fetch member-only list initially
-  }, [])
+  }, [params])
 
   return (
     <div>
