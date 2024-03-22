@@ -1,25 +1,28 @@
-export async function getContentList(
-  contentCategory,
-  pageID = 1,
-  tag_id = null,
-  search = '',
-) {
-  const categoryMap = {
-    food: 1,
-    shopping: 15,
-    sightseeing: 16,
-    event: 18,
-    culture: 19,
-  }
+import { category } from '@/constants/category'
 
-  const categoryID = categoryMap[contentCategory] || "";
-  var url = `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list?pageID=${pageID}`;
-  if (contentCategory) url += `&contents_type=${categoryID}`;
-  if (tag_id) url += `&tag_id[]=${tag_id}`;
-  if (search) url += `&filter=keyword%20contains%20${search}`;
+export async function getContentList(
+  {
+    topic = null,
+    page = 1,
+    tag_id = null,
+    search = '',
+  } = {
+      topic: null,
+      page: 1,
+      tag_id: null,
+      search: '',
+    }
+) {
+  const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/list`);
+
+  url.searchParams.append('pageID', page);
+  const categoryID = category[topic] || "";
+  categoryID && url.searchParams.append('contents_type', categoryID);
+  tag_id && url.searchParams.append('tag_id[]', tag_id);
+  search && url.searchParams.append('filter', `keyword contains ${search}`);
+
   const res = await fetch(url);
-  const data = await res.json();
-  return data;
+  return await res.json();
 }
 
 export async function getAllContentList() {
@@ -41,7 +44,7 @@ export async function getCategoryList() {
 export async function getDetails(id) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/content/details/${id}`,
-    { 
+    {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include"
@@ -304,7 +307,7 @@ export async function reminder(email) {
   )
 
   const response = await res.json();
-  if(res.ok){
+  if (res.ok) {
     return response.messages;
   }
 
@@ -329,8 +332,8 @@ export async function reset(token, temp_pwd, login_pwd) {
   )
 
   const response = await res.json();
-  
-  if(res.ok){
+
+  if (res.ok) {
     return response.messages;
   }
 

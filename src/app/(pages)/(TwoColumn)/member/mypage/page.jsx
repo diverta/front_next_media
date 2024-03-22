@@ -1,15 +1,10 @@
 'use client'
-import { useCallback, useRef } from 'react'
-import { useUser } from '@/components/common/userContext'
-import { logout } from '@/components/common/fetchData'
-import { useRouter } from 'next/navigation'
 import {
   getMyFavoriteList,
   getLimitedContent,
 } from '@/components/common/fetchData'
 import CardList from '@/components/ui/CardList'
 import { useState, useEffect } from 'react'
-import Pager from '@/components/common/Pager'
 import { getLabels } from '@/components/common/fetchData'
 import Breadcrumb from '@/components/common/Breadcrumb'
 import PageTitle from '@/components/common/PageTitle'
@@ -24,19 +19,18 @@ export default function Mypage() {
   const contentDirectory = getLabels()
   const content = contentDirectory.mypage
 
-  const favoriteList = useCallback(async () => {
-    try {
-      const favorites = await getMyFavoriteList()
-      setMyFavourites(favorites.list)
-      setMyFavouritesPageInfo(favorites.pageInfo)
-    } catch (error) {
-      console.error('Error fetching favorite list:', error)
-    }
-  }, [])
-
   useEffect(() => {
+    const favoriteList = async () => {
+      try {
+        const favorites = await getMyFavoriteList()
+        setMyFavourites(favorites.list)
+        setMyFavouritesPageInfo(favorites.pageInfo)
+      } catch (error) {
+        console.error('Error fetching favorite list:', error)
+      }
+    };
     favoriteList()
-  }, [favoriteList])
+  }, [myFavourites, setMyFavouritesPageInfo])
 
   useEffect(() => {
     const fetchMemberOnlyList = async () => {
@@ -103,7 +97,6 @@ export default function Mypage() {
               <p className="c-heading--sub">Favorite articles</p>
               <div className="u-mt-40">
                 <CardList data={myFavourites} />
-                {/* <Pager pageInfo={myFavouritesPageInfo} /> */}
               </div>
             </section>
           </div>

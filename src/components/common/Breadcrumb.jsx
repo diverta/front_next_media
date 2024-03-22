@@ -8,8 +8,8 @@ const Breadcrumb = ({ paths }) => {
           <li>
             <Link href="/">トップ</Link>
           </li>
-          {paths.map(({ href, label }) => (
-            <li key={label}>
+          {paths.map(({ href, label }, idx) => (
+            <li key={`${idx}_${label}`}>
               {href ? (<Link href={href}>{label}</Link>) : label}
             </li>
           ))}

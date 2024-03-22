@@ -25,6 +25,11 @@
     font-weight: bold;
     line-height: 1;
 
+    &-current {
+      opacity: 0.5;
+      cursor: default;
+    }
+
     @include pc() {
       width: 42px;
       height: 42px;
