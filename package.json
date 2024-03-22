@@ -20,6 +20,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "clsx": "^2.1.0",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",

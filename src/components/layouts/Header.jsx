@@ -1,14 +1,14 @@
 "use client";
 
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import Search from "../ui/Search";
 import { useUser } from "@/components/common/userContext";
 import { useEffect, useState } from "react";
 
-const Header = (topPage=null) => {
+const Header = (topPage = null) => {
   const [isNavToggleActive, setIsNavToggleActive] = useState(false);
-  const headerClasses = `l-header ${topPage.topPage ? 'is-top header-scroll' : ''} ${isNavToggleActive ? 'is-open' : ''}`;
 
   const { user } = useUser();
 
@@ -33,7 +33,7 @@ const Header = (topPage=null) => {
   }, [topPage]);
 
   return (
-    <header className={headerClasses}>
+    <header className={clsx('l-header', topPage.topPage && 'is-top header-scroll', isNavToggleActive && 'is-open')}>
       <div className="l-header__inner">
         <div className="l-header__logo">
           <Link href="/">
