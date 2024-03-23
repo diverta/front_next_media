@@ -6,8 +6,12 @@ import Link from "next/link";
 import Search from "../ui/Search";
 import { useUser } from "@/components/common/userContext";
 import { useEffect, useState } from "react";
+import { usePathname } from 'next/navigation'
 
-const Header = (topPage = null) => {
+const Header = () => {
+  const pathname = usePathname();
+  const [isTopPage, setIsTopPage] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const [isNavToggleActive, setIsNavToggleActive] = useState(false);
 
   const { loading, user } = useUser();
@@ -17,23 +21,23 @@ const Header = (topPage = null) => {
   };
 
   useEffect(() => {
-    const headerScroll = document.querySelector('header.header-scroll');
+    const isTopPage = pathname === '/';
+    setIsTopPage(isTopPage);
 
-    if (headerScroll) {
-      const handleScroll = () => {
-        headerScroll.classList.toggle("-scrolled", window.scrollY > 100);
-      };
-
-      window.addEventListener("scroll", handleScroll);
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, [topPage]);
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [pathname]);
 
   return (
-    <header className={clsx('l-header', topPage.topPage && 'is-top header-scroll', isNavToggleActive && 'is-open')}>
+    <header className={clsx(
+      'l-header',
+      isTopPage && 'is-top header-scroll',
+      isTopPage && scrollY > 100 && '-scrolled',
+      isNavToggleActive && 'is-open'
+    )}>
       <div className="l-header__inner">
         <div className="l-header__logo">
           <Link href="/">

@@ -1,5 +1,7 @@
 import "@/styles/style.scss";
 import { UserProvider } from "../components/common/userContext";
+import Header from "@/components/layouts/Header";
+import Footer from "@/components/layouts/Footer";
 
 export const metadata = {
   title: "kuroco Trip",
@@ -10,7 +12,11 @@ export default async function RootLayout({ children, initialUser }) {
   return (
     <html>
       <body>
-        <UserProvider>{children}</UserProvider>
+        <UserProvider>
+          <Header />
+          {children}
+          <Footer />
+        </UserProvider>
       </body>
     </html>
   );
