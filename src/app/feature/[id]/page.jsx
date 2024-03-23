@@ -8,24 +8,21 @@ import { getFeatureDetails, getFeatureList, getDetails } from "@/components/comm
 import FeatureDetailBody from "@/components/section/feature/FeatureDetailBody";
 
 export async function generateStaticParams() {
-  const items = await getFeatureList();
-  const paramID = items.map((item) => ({
+  const features = await getFeatureList();
+  return features.map((item) => ({
     id: item.topics_id.toString(),
-  }))
-  return paramID;
+  }));
 }
 
 export default async function Event({ params }) {
   const features = await getFeatureDetails(params.id);
 
   const fetchDetailsForItems = async () => {
-    if (!features?.relatedContents || features.relatedContents.length === 0) {
-      return [];
-    }
-    const ids = features.relatedContents
+    const contentsPromises = features.relatedContents
       .map((item) => item.module_id)
       .filter(id => id)
-    return await Promise.all(ids.map((id) => getDetails(id)));
+      .map(getDetails);
+    return await Promise.all(contentsPromises);
   };
   const details = await fetchDetailsForItems();
 
