@@ -8,12 +8,12 @@ export default function Event() {
   return (
     <div className="l-container">
       <Article>
-        <>
+        <div className="l-container--col-2__side">
           <Banner />
           <Feature />
           <TagArea />
           <TagKeyword />
-        </>
+        </div>
       </Article>
     </div>
   )

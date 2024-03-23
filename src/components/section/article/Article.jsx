@@ -64,9 +64,7 @@ export default function Article({ children }) {
                         )}
                     </section>
                 </div>
-                <div className="l-container--col-2__side">
-                    {children}
-                </div>
+                {children}
             </div>
         </>
     )
