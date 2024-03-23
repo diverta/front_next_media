@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.0.4",
+    "next": "^14.1.4",
     "next-auth": "^4.24.5",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "textlint": "^13.4.1"
   },
   "devDependencies": {
@@ -22,7 +22,7 @@
     "autoprefixer": "latest",
     "clsx": "^2.1.0",
     "eslint": "latest",
-    "eslint-config-next": "latest",
+    "eslint-config-next": "^14.1.4",
     "postcss": "latest",
     "prettier": "^3.2.4",
     "sass": "^1.69.5",
