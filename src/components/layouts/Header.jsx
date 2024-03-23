@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 const Header = (topPage = null) => {
   const [isNavToggleActive, setIsNavToggleActive] = useState(false);
 
-  const { user } = useUser();
+  const { loading, user } = useUser();
 
   const handleNavToggleClick = () => {
     setIsNavToggleActive((prev) => !prev);
@@ -72,7 +72,7 @@ const Header = (topPage = null) => {
               </li>
             </ul>
             <Search />
-            <div>
+            {!loading && (<div>
               {user ? (
                 <div className="l-header__nav__options">
                   {/* ログイン時 */}
@@ -167,7 +167,7 @@ const Header = (topPage = null) => {
                   </Link>
                 </div>
               )}
-            </div>
+            </div>)}
           </div>
         </nav>
       </div>
