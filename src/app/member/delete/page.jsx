@@ -10,7 +10,7 @@ import AlertSuccess from "@/components/ui/AlertSuccess";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function Delete() {
+export default function Page() {
   const [memberInfo, setMemberInfo] = useState([]);
   const { storeUser } = useUser();
   const [alert, setAlert] = useState(false);

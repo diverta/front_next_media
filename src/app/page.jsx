@@ -9,7 +9,7 @@ import getContentList from "@/fetch/getContentList";
 import getRanking from "@/fetch/getRanking";
 import Link from "next/link";
 
-export default async function Home() {
+export default async function Page() {
   const { list } = await getContentList();
   const topRankedList = await getRanking();
 

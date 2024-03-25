@@ -10,7 +10,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-export default function Mypage() {
+export default function Page() {
   const [myFavourites, setMyFavourites] = useState([])
   const [setMyFavouritesPageInfo] = useState([])
   const [limitedContent, setLimitedContent] = useState([])

@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
-export default function Login() {
+export default function Page() {
   const email = useRef("");
   const password = useRef("");
   const { user, loading, storeUser } = useUser();

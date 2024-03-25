@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/common/Breadcrumb";
 import PageTitle from "@/components/common/PageTitle";
 
-export default function Privacy() {
+export default function Page() {
   return (
     <div className="l-container">
       <Breadcrumb paths={[{ label: "プライバシーポリシー" }]} />

@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   return paramID;
 }
 
-export default async function Food({ params }) {
+export default async function Page({ params }) {
   const item = await getDetails(params.id);
 
 

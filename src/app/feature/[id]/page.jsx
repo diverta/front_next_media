@@ -16,7 +16,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Event({ params }) {
+export default async function Page({ params }) {
   const features = await getFeatureDetails(params.id);
 
   const fetchDetailsForItems = async () => {

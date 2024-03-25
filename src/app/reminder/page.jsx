@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import postReminder from '@/fetch/postReminder'
 
-export default function Reminder() {
+export default function Page() {
   const [token, setToken] = useState(null);
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);

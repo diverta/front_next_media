@@ -10,7 +10,7 @@ import AlertSuccess from "@/components/ui/AlertSuccess";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-export default function Edit() {
+export default function Page() {
   const [memberInfo, setMemberInfo] = useState([]);
 
   const [successAlert, setSuccessAlert] = useState(false);

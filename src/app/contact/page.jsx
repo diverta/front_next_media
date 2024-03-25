@@ -10,7 +10,7 @@ import postUpload from '@/fetch/postUpload';
 import postInquiry from '@/fetch/postInquiry';
 import getInquiryColumns from '@/fetch/getInquiryColumns';
 
-export default function Contact() {
+export default function Page() {
   const formData = useRef({})
   const date = useRef({})
   const matrixSingle = useRef({})

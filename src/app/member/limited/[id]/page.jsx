@@ -11,7 +11,7 @@ export async function generateStaticParams() {
   return [{ id: '18' }, { id: '19' }]
 }
 
-export default async function limitedContent({ params }) {
+export default async function Page({ params }) {
   return (
     <div className="l-container">
       <Breadcrumb paths={[{ label: "会員限定記事" }]} />
