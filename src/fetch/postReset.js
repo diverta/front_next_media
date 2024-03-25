@@ -1,4 +1,4 @@
-export async function postReset(token, temp_pwd, login_pwd) {
+export default async function postReset(token, temp_pwd, login_pwd) {
     const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/reminder`,
         {

@@ -1,4 +1,4 @@
-export async function postRegister(name1, name2, email, login_pwd) {
+export default async function postRegister(name1, name2, email, login_pwd) {
     const credentials = {
         name1,
         name2,
