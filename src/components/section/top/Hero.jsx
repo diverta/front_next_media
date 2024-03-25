@@ -1,6 +1,5 @@
 const Hero = () => {
   return (
-
     <section className="c-hero">
       <div className="c-hero__body">
         <p className="c-hero__body__lead">Let&apos;s Travel and Enjoy!</p>
@@ -9,7 +8,6 @@ const Hero = () => {
         </p>
       </div>
     </section>
-
   );
 };
 

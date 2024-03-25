@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from "../../contexts/user";
+import { useUser } from "@/contexts/user";
 import postLogout from "@/fetch/postLogout";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
