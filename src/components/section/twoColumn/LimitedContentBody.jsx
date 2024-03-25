@@ -1,7 +1,6 @@
 'use client'
 
-import { useUser } from '@/components/common/userContext'
-import { getLimitedContentDetails } from '@/components/common/fetchData'
+import getLimitedContentDetails from '@/fetch/getLimitedContent'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 

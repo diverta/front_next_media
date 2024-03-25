@@ -2,10 +2,11 @@
 
 import Breadcrumb from '@/components/common/Breadcrumb'
 import PageTitle from '@/components/common/PageTitle'
-import { reminder, reset } from '@/components/common/fetchData'
+import postReset from '@/fetch/postReset'
 import AlertSuccess from '@/components/ui/AlertSuccess'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import postReminder from '@/fetch/postReminder'
 
 export default function Reminder() {
   const [token, setToken] = useState(null);
@@ -30,7 +31,7 @@ export default function Reminder() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const response = await reminder(mail.current.value)
+    const response = await postReminder(mail.current.value)
     if (response) {
       setAlert(true)
       setAlertMessage(response)
@@ -39,7 +40,7 @@ export default function Reminder() {
 
   const handleReset = async (event) => {
     event.preventDefault()
-    const response = await reset(
+    const response = await postReset(
       token,
       temp_pwd.current.value,
       login_pwd.current.value,

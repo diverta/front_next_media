@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import Search from "../ui/Search";
-import { useUser } from "@/components/common/userContext";
+import { useUser } from "@/contexts/user";
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation'
 

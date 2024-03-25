@@ -6,11 +6,9 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import AlertError from '@/components/ui/AlertError'
 import AlertSuccess from '@/components/ui/AlertSuccess'
 import Link from 'next/link'
-import {
-  inquiry,
-  uploadFile,
-  getInquiryColumns,
-} from '@/components/common/fetchData'
+import postUpload from '@/fetch/postUpload';
+import postInquiry from '@/fetch/postInquiry';
+import getInquiryColumns from '@/fetch/getInquiryColumns';
 
 export default function Contact() {
   const formData = useRef({})
@@ -78,7 +76,7 @@ export default function Contact() {
     const fileData = new FormData()
     fileData.append('file', e.target.files[0])
 
-    const status = await uploadFile(fileData)
+    const status = await postUpload(fileData)
 
     if (status.errors.length > 0) {
       setFormErrors(status.errors)
@@ -187,7 +185,7 @@ export default function Contact() {
       return
     }
 
-    const status = await inquiry(formData.current)
+    const status = await postInquiry(formData.current);
 
     if (status.errors.length > 0) {
       setFormErrors(status.errors)

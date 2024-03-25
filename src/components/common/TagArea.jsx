@@ -1,4 +1,4 @@
-import { getTagArea } from "./fetchData";
+import getTagArea from "@/fetch/getTagArea";
 import Link from "next/link";
 
 export default async function TagArea() {

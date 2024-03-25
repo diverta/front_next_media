@@ -1,7 +1,7 @@
 "use client";
 
-import { useUser } from "./userContext";
-import { logout } from "@/components/common/fetchData";
+import { useUser } from "../../contexts/user";
+import postLogout from "@/fetch/postLogout";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ const Menu = () => {
   const router = useRouter();
   const handleLogout = async (event) => {
     event.preventDefault();
-    const user = await logout();
+    const user = await postLogout();
     storeUser(null);
 
     if (user == null) {

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { getFeatureList } from '../../common/fetchData';
+import getFeatureList from '../../common/getFeatureList';
 import Link from 'next/link';
 
 export default async function Feature() {

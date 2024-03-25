@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { useState, useCallback, useEffect } from "react";
-import { postFavorite, deleteFavorite, getDetails } from "@/components/common/fetchData";
-import { useUser } from "@/components/common/userContext";
+import getDetails from '@/fetch/getDetails';
+import postFavorite from '@/fetch/postFavorite';
+import deleteFavorite from "@/fetch/deleteFavorite";
+import { useUser } from "@/contexts/user";
 
 const DetailBody = ({ data, params }) => {
   const { user } = useUser();

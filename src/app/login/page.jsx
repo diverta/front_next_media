@@ -2,8 +2,9 @@
 
 import Breadcrumb from "@/components/common/Breadcrumb";
 import PageTitle from "@/components/common/PageTitle";
-import { login } from "@/components/common/fetchData";
-import { useUser } from "@/components/common/userContext";
+import postLogin from "@/fetch/postLogin";
+import getProfile from "@/fetch/getProfile";
+import { useUser } from "@/contexts/user";
 import AlertError from "@/components/ui/AlertError";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,7 +23,8 @@ export default function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    const user = await login(email.current.value, password.current.value);
+    await postLogin(email.current.value, password.current.value);
+    const user = await getProfile();
 
     if (user) {
       setAlert(false);

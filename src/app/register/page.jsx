@@ -2,8 +2,9 @@
 
 import Breadcrumb from "@/components/common/Breadcrumb";
 import PageTitle from "@/components/common/PageTitle";
-import { register } from "@/components/common/fetchData";
-import { useUser } from "@/components/common/userContext";
+import postRegister from "@/fetch/postRegister";
+import postLogin from "@/fetch/postLogin";
+import { useUser } from "@/contexts/user";
 import AlertError from "@/components/ui/AlertError";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -26,20 +27,25 @@ export default function Register() {
   const handleRegister = async (event) => {
     event.preventDefault();
 
-    const user = await register(
+    await postRegister(
       name1.current.value,
       name2.current.value,
       email.current.value,
       login_pwd.current.value
     );
+    const user = await postLogin(
+      email.current.value,
+      login_pwd.current.value
+    )
 
-    if (user) {
-      setAlert(false);
-      storeUser(user);
-      router.push("member/mypage");
-    } else {
+    if (!user) {
       setAlert(true);
+      return;
     }
+
+    setAlert(false);
+    storeUser(user);
+    router.push("member/mypage");
   };
 
   return (

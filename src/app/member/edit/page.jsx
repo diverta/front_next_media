@@ -3,7 +3,8 @@
 import Breadcrumb from '@/components/common/Breadcrumb';
 import Menu from "@/components/common/Menu";
 import PageTitle from '@/components/common/PageTitle';
-import { getMemberInfo, updateMemberInfo } from "@/components/common/fetchData";
+import postMemberUpdate from '@/fetch/postMemberUpdate';
+import getMemberMe from '@/fetch/getMemberMe';
 import AlertError from "@/components/ui/AlertError";
 import AlertSuccess from "@/components/ui/AlertSuccess";
 import Link from "next/link";
@@ -19,7 +20,7 @@ export default function Edit() {
   useEffect(() => {
     const memberInfoFunction = async () => {
       try {
-        const info = await getMemberInfo();
+        const info = await getMemberMe();
         setMemberInfo(info.details);
       } catch (error) {
         console.error("Error fetching member information", error);
@@ -44,7 +45,7 @@ export default function Edit() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const userStatus = await updateMemberInfo(
+    const userStatus = await postMemberUpdate(
       name1.current.value,
       name2.current.value,
       email.current.value,

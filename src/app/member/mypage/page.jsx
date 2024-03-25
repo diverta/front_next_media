@@ -3,10 +3,8 @@
 import Breadcrumb from '@/components/common/Breadcrumb'
 import Menu from '@/components/common/Menu'
 import PageTitle from '@/components/common/PageTitle'
-import {
-  getLimitedContent,
-  getMyFavoriteList,
-} from '@/components/common/fetchData'
+import getMyFavoriteList from '@/fetch/getMyFavoriteList'
+import getLimitedContent from '@/fetch/getLimitedContent'
 import CardList from '@/components/ui/CardList'
 import Image from 'next/image'
 import Link from 'next/link'

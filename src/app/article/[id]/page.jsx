@@ -1,5 +1,6 @@
 import DetailBody from '@/components/section/twoColumn/DetailBody'
-import { getDetails, getAllContentList } from '@/components/common/fetchData'
+import getAllContentList from '@/fetch/getAllContentList'
+import getDetails from '@/fetch/getDetails'
 import Banner from '@/components/common/Banner'
 import Breadcrumb from '@/components/common/Breadcrumb'
 import TagArea from '@/components/common/TagArea'

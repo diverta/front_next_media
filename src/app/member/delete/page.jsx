@@ -3,11 +3,9 @@
 import Breadcrumb from '@/components/common/Breadcrumb';
 import Menu from "@/components/common/Menu";
 import PageTitle from '@/components/common/PageTitle';
-import {
-  deleteMember,
-  getMemberInfo
-} from "@/components/common/fetchData";
-import { useUser } from "@/components/common/userContext";
+import postMemberDelete from '@/fetch/postMemberDelete';
+import getMemberMe from '@/fetch/getMemberMe';
+import { useUser } from "@/contexts/user";
 import AlertSuccess from "@/components/ui/AlertSuccess";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -20,7 +18,7 @@ export default function Delete() {
   useEffect(() => {
     const memberInfoFunction = async () => {
       try {
-        const info = await getMemberInfo();
+        const info = await getMemberMe();
         setMemberInfo(info.details);
       } catch (error) {
         console.error("Error fetching member information", error);
@@ -33,7 +31,7 @@ export default function Delete() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const userStatus = await deleteMember();
+    const userStatus = await postMemberDelete();
 
     if (userStatus) {
       storeUser(null);

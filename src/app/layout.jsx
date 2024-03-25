@@ -1,5 +1,5 @@
 import "@/styles/style.scss";
-import { UserProvider } from "../components/common/userContext";
+import { UserProvider } from "../contexts/user";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 

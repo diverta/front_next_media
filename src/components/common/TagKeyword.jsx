@@ -1,4 +1,4 @@
-import { getTagKeyword } from "./fetchData";
+import getTagKeyword from "@/fetch/getTagKeyword";
 import Link from "next/link";
 
 export default async function TagKeyword() {

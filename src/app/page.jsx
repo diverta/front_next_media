@@ -5,7 +5,8 @@ import Hero from "@/components/section/top/Hero";
 import Feature from "@/components/section/feature/Feature";
 import Image from "next/image";
 import CardList from "@/components/ui/CardList";
-import { getContentList, getRanking } from "@/components/common/fetchData";
+import getContentList from "@/fetch/getContentList";
+import getRanking from "@/fetch/getRanking";
 import Link from "next/link";
 
 export default async function Home() {

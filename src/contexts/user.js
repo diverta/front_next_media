@@ -1,19 +1,11 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect } from 'react';
+import getProfile from '@/fetch/getProfile';
 
 const UserContext = createContext();
 
 const USER_MEMBER_ID_KEY = 'member_id';
-
-function fetchProfile() {
-  return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/rcms-api/1/profile`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-    credentials: 'include'
-  })
-    .then((res) => res.json())
-}
 
 export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -38,14 +30,12 @@ export const UserProvider = ({ children }) => {
     }
 
     // make sure the user is still valid
-    fetchProfile()
+    getProfile()
       .then((data) => {
         window.localStorage.setItem(USER_MEMBER_ID_KEY, data.member_id)
         setUser(data);
       })
-      .catch((err) => {
-        console.warn(err);
-      })
+      .catch(console.warn)
       .finally(() => setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

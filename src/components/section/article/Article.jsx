@@ -3,7 +3,7 @@
 import Breadcrumb from '@/components/common/Breadcrumb'
 import PageTitle from '@/components/common/PageTitle'
 import Pager from '@/components/common/Pager'
-import { getContentList } from '@/components/common/fetchData'
+import getContentList from '@/fetch/getContentList'
 import CardList from '@/components/ui/CardList'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'

@@ -4,7 +4,9 @@ import PageTitle from '@/components/common/PageTitle';
 import TagArea from "@/components/common/TagArea";
 import TagKeyword from "@/components/common/TagKeyword";
 import Feature from "@/components/section/feature/Feature";
-import { getFeatureDetails, getFeatureList, getDetails } from "@/components/common/fetchData";
+import getDetails from '@/fetch/getDetails'
+import getFeatureList from '@/fetch/getFeatureList'
+import getFeatureDetails from "@/fetch/getFeatureDetails";
 import FeatureDetailBody from "@/components/section/feature/FeatureDetailBody";
 
 export async function generateStaticParams() {
