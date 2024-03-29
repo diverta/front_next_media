@@ -6,6 +6,7 @@ import getDetails from '@/fetch/getDetails';
 import postFavorite from '@/fetch/postFavorite';
 import deleteFavorite from "@/fetch/deleteFavorite";
 import { useUser } from "@/contexts/user";
+import Link from 'next/link';
 
 const DetailBody = ({ data, params }) => {
   const { user } = useUser();
@@ -85,9 +86,9 @@ const DetailBody = ({ data, params }) => {
               <ul className="c-tag__list">
                 {data.tags.map((tag, index) => (
                   <li className="c-tag__item" key={index}>
-                    <a href="/mock/" className="c-tag__link">
+                    <Link href="/mock/" className="c-tag__link">
                       {tag.tag_nm}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

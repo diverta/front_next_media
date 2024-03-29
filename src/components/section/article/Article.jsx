@@ -7,6 +7,7 @@ import getContentList from '@/fetch/getContentList'
 import CardList from '@/components/ui/CardList'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 
 export default function Article({ children }) {
     const searchParams = useSearchParams();
@@ -50,9 +51,9 @@ export default function Article({ children }) {
                                 <span>{title}一覧</span>
                             </h2>
                             <div className="u-display-flex-shrink-0 u-text-align-right">
-                                <a href="/article" className="c-button">
+                                <Link href="/article" className="c-button">
                                     View All
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <CardList data={list} />
