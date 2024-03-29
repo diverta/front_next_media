@@ -1,7 +1,6 @@
 /*
  foundation
 -------------------------------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Secular+One&display=swap");
 :root {
   --color-base: #222;
   --color-primary: #d5772a;
@@ -26,8 +25,8 @@
   --font-size-medium: 1em;
   --font-size-small: .9em;
   --font-size-x-small: .8em ;
-  --font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', Meiryo, 'MS UI Gothic', Helvetica, Arial, sans-serif;
-  --font-en: 'Secular One', sans-serif;
+  --font-family: var(--font-noto-sans-jp), 'Hiragino Kaku Gothic Pro', Meiryo, 'MS UI Gothic', Helvetica, Arial, sans-serif;
+  --font-en: var(--font-secular-one), sans-serif;
   --border-radius: 4px;
   --border-radius-large: calc( var(--border-radius) * 2 );
   --spacing: 1em;
