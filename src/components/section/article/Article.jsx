@@ -14,7 +14,7 @@ export default function Article({ children }) {
 
     const [params, setParams] = useState({});
     const [title, setTitle] = useState('');
-    const [list, setList] = useState([]);
+    const [list, setList] = useState(null);
     const [pageInfo, setPageInfo] = useState({});
 
     useEffect(() => {
@@ -36,37 +36,57 @@ export default function Article({ children }) {
         fetchData();
     }, [searchParams, title]);
 
+    const Wrapper = ({ children }) => (
+        <section className="c-article__list">
+            <div className="c-heading__wrapper">
+                <h2 className="c-heading--lv2 u-display-flex-grow-1">
+                    <span>{title ? `${title}一覧` : ''}</span>
+                </h2>
+                <div className="u-display-flex-shrink-0 u-text-align-right">
+                    <Link href="/article" className="c-button">
+                        View All
+                    </Link>
+                </div>
+            </div>
+            {children}
+        </section>
+    )
+
     return (
         <>
             <Breadcrumb paths={[{ label: list?.[0]?.contents_type_ext_col_01 }]} />
             <PageTitle
-                title={list?.[0]?.contents_type_ext_col_01}
+                title={list?.[0]?.contents_type_ext_col_01 || '検索結果'}
                 subTitle={list?.[0]?.contents_type_nm}
             />
             <div className="l-container--col-2 l-container--contents">
                 <div className="l-container--col-2__main">
-                    <section className="c-article__list">
-                        <div className="c-heading__wrapper">
-                            <h2 className="c-heading--lv2 u-display-flex-grow-1">
-                                <span>{title}一覧</span>
-                            </h2>
-                            <div className="u-display-flex-shrink-0 u-text-align-right">
-                                <Link href="/article" className="c-button">
-                                    View All
-                                </Link>
-                            </div>
-                        </div>
-                        <CardList data={list} />
-                        {Object.keys(pageInfo).length > 0 && (
-                            <Pager
-                                pageInfo={pageInfo}
-                                searchParams={params}
-                            />
-                        )}
-                    </section>
+                    <Wrapper>
+                        <>
+                            {list === null && (
+                                <div className="c-spinner">
+                                    <div className="c-spinner__circle"></div>
+                                </div>
+                            )}
+                            {list?.length === 0 && (
+                                <p>記事がありません。</p>
+                            )}
+                            {list?.length > 0 && (
+                                <>
+                                    <CardList data={list} />
+                                    {Object.keys(pageInfo).length > 0 && (
+                                        <Pager
+                                            pageInfo={pageInfo}
+                                            searchParams={params}
+                                        />
+                                    )}
+                                </>
+                            )}
+                        </>
+                    </Wrapper>
                 </div>
                 {children}
-            </div>
+            </div >
         </>
     )
 }

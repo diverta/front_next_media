@@ -40,6 +40,10 @@
     @include sp() {
       margin: 0;
     }
+    overflow: hidden;
+    img {
+      object-fit: cover;
+    }
   }
   &__text {
     @include pc() {
