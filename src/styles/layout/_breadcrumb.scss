@@ -10,13 +10,13 @@
         &::after {
           flex: 0 0 auto;
           display: block;
-          width: .4em;
-          height: .4em;
+          width: 0.4em;
+          height: 0.4em;
           margin: 0 1em;
           border-top: 1px solid;
           border-right: 1px solid;
           transform: rotate(45deg);
-          content: "";
+          content: '';
         }
       }
       a {

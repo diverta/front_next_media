@@ -7,7 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src",
-    "format": "prettier './**/*.{js,jsx,ts,tsx,json}'"
+    "format": "prettier './**/*.{js,jsx,ts,tsx,json,scss,css}'"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "npm run lint -- --fix",
+      "npm run format -- --write"
+    ]
   },
   "dependencies": {
     "next": "^14.1.4",
@@ -24,6 +30,9 @@
     "clsx": "^2.1.0",
     "eslint": "latest",
     "eslint-config-next": "^14.1.4",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "postcss": "latest",
     "prettier": "^3.2.4",
     "sass": "^1.69.5",

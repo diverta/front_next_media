@@ -2,7 +2,7 @@
 
 import Breadcrumb from '@/components/common/Breadcrumb';
 import PageTitle from '@/components/common/PageTitle';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import AlertError from '@/components/ui/AlertError';
 import AlertSuccess from '@/components/ui/AlertSuccess';
 import Link from 'next/link';
@@ -15,9 +15,9 @@ export default function Page() {
   const date = useRef({});
   const matrixSingle = useRef({});
   const matrixMultiple = useRef({});
-  const [selectedChoices1, setSelectedChoices1] = useState([]);
-  const [selectedChoices2, setSelectedChoices2] = useState([]);
-  const [selectedChoices3, setSelectedChoices3] = useState([]);
+  const [setSelectedChoices1] = useState([]);
+  const [setSelectedChoices2] = useState([]);
+  const [setSelectedChoices3] = useState([]);
 
   const [formErrors, setFormErrors] = useState(false);
   const [conditionCheck, setConditionCheck] = useState(false);
@@ -386,7 +386,7 @@ export default function Page() {
                               <tr key={row_key}>
                                 <th scope='row'>{row_option}</th>
                                 {Object.entries(col.options[0].value).map(
-                                  ([key, option]) => (
+                                  ([key]) => (
                                     <td
                                       key={key}
                                       className='u-text-align-center'
@@ -425,7 +425,7 @@ export default function Page() {
                               <tr key={row_key}>
                                 <th scope='row'>{row_option}</th>
                                 {Object.entries(col.options[0].value).map(
-                                  ([key, option]) => (
+                                  ([key]) => (
                                     <td
                                       key={key}
                                       className='u-text-align-center'

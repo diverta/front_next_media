@@ -1,4 +1,4 @@
-@use "../media_query" as *;
+@use '../media_query' as *;
 
 .l-container {
   @include pc() {
@@ -68,7 +68,7 @@
       position: relative;
       @include pc() {
         width: 240px;
-        margin-left: calc( var(--spacing-horizontal-pc) * 2 );
+        margin-left: calc(var(--spacing-horizontal-pc) * 2);
       }
       @include sp() {
         width: 100%;
@@ -100,11 +100,10 @@
   }
 }
 
-
-[class*=" l-container"],
-[class^="l-container"] {
+[class*=' l-container'],
+[class^='l-container'] {
   &:after {
-    content: "";
+    content: '';
     clear: both;
     display: block;
   }

@@ -25,7 +25,7 @@ export const metadata = {
   description: "Let's Travel and Enjoy!",
 };
 
-export default async function RootLayout({ children, initialUser }) {
+export default async function RootLayout({ children }) {
   return (
     <html className={clsx(notoSansJP.variable, secularOne.variable)}>
       <body>

@@ -1,4 +1,4 @@
-@use "../media_query" as *;
+@use '../media_query' as *;
 
 %heading {
   font-weight: bold;
@@ -7,7 +7,7 @@
 .c-heading--lv1 {
   @extend %heading;
   font-size: var(--font-size-h1);
-  @include sp () {
+  @include sp() {
     font-size: var(--font-size-h1-sp);
   }
 }
@@ -16,7 +16,7 @@
   padding-bottom: var(--spacing-small);
   border-bottom: 1px solid var(--color-base);
   font-size: var(--font-size-h2);
-  @include sp () {
+  @include sp() {
     font-size: var(--font-size-h2-sp);
   }
   span {
@@ -36,16 +36,16 @@
   font-size: var(--font-size-h3);
   position: relative;
   margin-bottom: 1.5em;
-  @include sp () {
+  @include sp() {
     font-size: var(--font-size-h3-sp);
   }
   &:before {
-      content: "";
-      position: absolute;
-      bottom: -12px;
-      height: 3px;
-      background-color: var(--color-primary);
-      width: 30px;
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    height: 3px;
+    background-color: var(--color-primary);
+    width: 30px;
   }
   &:not(:first-child) {
     @include pc() {
@@ -68,9 +68,10 @@
       display: none;
     }
   }
-  &::before, &::after {
-    content: "";
-    flex-grow:1;
+  &::before,
+  &::after {
+    content: '';
+    flex-grow: 1;
     border-top: 1px solid var(--color-base);
   }
   &::before {
@@ -79,7 +80,7 @@
   &::after {
     margin-left: 0.6em;
   }
-  @include sp () {
+  @include sp() {
     font-size: var(--font-size-h3-sp);
   }
   &:not(:first-child) {
@@ -96,14 +97,14 @@
   font-size: var(--font-size-h3);
   display: inline;
   background: linear-gradient(transparent 60%, #e4d5c7 60%);
-  @include sp () {
+  @include sp() {
     font-size: var(--font-size-h3-sp);
   }
 }
 .c-heading--lv5 {
   @extend %heading;
   font-size: var(--font-size-h4);
-  @include sp () {
+  @include sp() {
     font-size: var(--font-size-h4-sp);
   }
   &:not(:first-child) {
@@ -115,7 +116,7 @@
   color: var(--color-primary);
   font-size: var(--font-size-small);
   font-family: var(--font-en);
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   .c-section--dark-block & {
     color: #f9f001;
   }
@@ -123,51 +124,52 @@
 
 .c-heading--box {
   font-weight: bold;
-  @include pc () {
+  @include pc() {
     font-size: var(--font-size-h2);
   }
-  @include sp () {
+  @include sp() {
     font-size: var(--font-size-h2-sp);
   }
   &.-en {
     font-family: var(--font-en);
-    letter-spacing: .05em;
-    @include pc () {
+    letter-spacing: 0.05em;
+    @include pc() {
       font-size: var(--font-size-h1);
     }
-    @include sp () {
+    @include sp() {
       font-size: var(--font-size-h1-sp);
     }
   }
   &Sub {
     font-weight: bold;
-    @include pc () {
+    @include pc() {
       margin: 0 0 0 var(--spacing);
     }
-    @include sp () {
-      font-size: .8em;
+    @include sp() {
+      font-size: 0.8em;
       margin: 0;
     }
   }
   &__outer {
-    @include pc () {
+    @include pc() {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-bottom: var(--spacing-large);
     }
-    @include sp () {
+    @include sp() {
       position: relative;
       text-align: center;
       margin-bottom: var(--spacing);
     }
-    &::before, &::after {
+    &::before,
+    &::after {
       background-color: var(--color-base);
       border-radius: 5px;
-      content: "";
+      content: '';
       height: 3px;
       width: 34px;
-      @include sp () {
+      @include sp() {
         position: absolute;
         top: 20px;
       }
@@ -175,20 +177,21 @@
     &::before {
       margin-right: 10px;
       transform: rotate(60deg);
-      @include sp () {
+      @include sp() {
         left: 15px;
       }
     }
     &::after {
       margin-left: 10px;
       transform: rotate(-60deg);
-      @include sp () {
+      @include sp() {
         right: 15px;
       }
     }
     &.-oneLine {
-      @include sp () {
-        &::before, &::after {
+      @include sp() {
+        &::before,
+        &::after {
           width: 26px;
           top: 12px;
         }
@@ -198,20 +201,20 @@
 }
 
 .c-heading__wrapper {
-  @include pc () {
+  @include pc() {
     display: flex;
     align-items: center;
     padding-bottom: var(--spacing-small);
     border-bottom: 1px solid var(--color-base);
     margin-bottom: 50px;
   }
-  @include sp () {
+  @include sp() {
     margin-bottom: 25px;
   }
   .c-heading--lv2 {
     border-bottom: none;
     padding-bottom: 0;
-    @include sp () {
+    @include sp() {
       padding-bottom: var(--spacing-small);
       margin-bottom: var(--spacing-small);
       border-bottom: 1px solid var(--color-base);

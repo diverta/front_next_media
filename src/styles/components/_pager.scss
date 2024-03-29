@@ -1,9 +1,9 @@
-@use "../media_query" as *;
+@use '../media_query' as *;
 
 .c-pager {
-		text-align: center;
-    margin-top: var(--spacing-large);
-	&__item {
+  text-align: center;
+  margin-top: var(--spacing-large);
+  &__item {
     display: inline-block;
     @include pc() {
       width: 42px;
@@ -14,10 +14,13 @@
       width: 36px;
       height: 36px;
     }
-	}
-	&__link {
-		display: block;
-		transition: .4s border, .4s background-color, .4s color;
+  }
+  &__link {
+    display: block;
+    transition:
+      0.4s border,
+      0.4s background-color,
+      0.4s color;
     text-decoration: none;
     border-radius: 100%;
     box-sizing: border-box;
@@ -40,10 +43,11 @@
       height: 36px;
       padding: 8px 0;
     }
-		&:hover, &.is-current {
-			background-color: var(--color-primary);
-			color: var(--color-white);
-			text-decoration: none;
-		}
-	}
+    &:hover,
+    &.is-current {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      text-decoration: none;
+    }
+  }
 }

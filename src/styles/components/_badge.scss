@@ -1,15 +1,15 @@
 .c-badge {
-  padding: calc( var(--spacing) / 4 ) var(--spacing);
+  padding: calc(var(--spacing) / 4) var(--spacing);
   background-color: var(--color-gray);
   color: var(--color-gray);
   font-size: var(--font-size-x-small);
   text-align: center;
   .c-card & {
-    background-color: rgba(143, 157, 181, .95);
+    background-color: rgba(143, 157, 181, 0.95);
     color: var(--color-white);
   }
   .c-card-list--col-2 & {
-    font-size: .7em;
-    letter-spacing: .05em;
-  } 
+    font-size: 0.7em;
+    letter-spacing: 0.05em;
+  }
 }
