@@ -29,7 +29,7 @@ export default function Page() {
     if (user) {
       setAlert(false);
       storeUser(user);
-      router.push("member/mypage");
+      router.push("/member/mypage");
     }
     else {
       setAlert(true);

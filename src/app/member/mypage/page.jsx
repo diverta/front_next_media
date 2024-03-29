@@ -11,22 +11,22 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function Page() {
-  const [myFavourites, setMyFavourites] = useState([])
-  const [setMyFavouritesPageInfo] = useState([])
+  const [myFavorites, setMyFavorites] = useState([])
+  const [setMyFavoritesPageInfo] = useState([])
   const [limitedContent, setLimitedContent] = useState([])
 
   useEffect(() => {
     const favoriteList = async () => {
       try {
         const favorites = await getMyFavoriteList()
-        setMyFavourites(favorites.list)
-        setMyFavouritesPageInfo(favorites.pageInfo)
+        setMyFavorites(favorites.list)
+        setMyFavoritesPageInfo(favorites.pageInfo)
       } catch (error) {
         console.error('Error fetching favorite list:', error)
       }
     };
     favoriteList()
-  }, [myFavourites, setMyFavouritesPageInfo])
+  }, [setMyFavoritesPageInfo])
 
   useEffect(() => {
     const fetchMemberOnlyList = async () => {
@@ -61,7 +61,7 @@ export default function Page() {
                   limitedContent.map((item, index) => (
                     <li className="c-card__item" key={index}>
                       <Link
-                        href={`limited/${item.topics_id}`}
+                        href={`/member/limited/${item.topics_id}`}
                         className="c-card"
                       >
                         <div className="c-card__image">
@@ -95,7 +95,7 @@ export default function Page() {
               <h2 className="c-heading--lv1">お気に入り記事</h2>
               <p className="c-heading--sub">Favorite articles</p>
               <div className="u-mt-40">
-                <CardList data={myFavourites} />
+                <CardList data={myFavorites} />
               </div>
             </section>
           </div>

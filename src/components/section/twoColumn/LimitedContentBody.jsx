@@ -1,26 +1,36 @@
 'use client'
 
-import getLimitedContentDetails from '@/fetch/getLimitedContent'
+import getLimitedContentDetails from '@/fetch/getLimitedContentDetails'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
-const LimitedContentBody = ({ params }) => {
+const LimitedContentBody = () => {
   const [data, setData] = useState([])
   const [couponLink, setCouponLink] = useState([])
+  const pathname = usePathname()
 
   useEffect(() => {
-    const fetchMemberOnlyData = async () => {
+    const segments = pathname.split('/');
+    segments.pop();
+    const slug = segments.pop();
+
+    if (!slug) {
+      throw new Error('Invalid slug. Please check the URL.');
+    }
+
+    const fetchMemberOnlyData = async (slug) => {
       try {
-        const limitedData = await getLimitedContentDetails(params.id)
+        const limitedData = await getLimitedContentDetails(slug);
+        console.log('limitedData', limitedData);
         setData(limitedData)
         setCouponLink(limitedData.couponLink)
       } catch (error) {
         console.error('Error fetching member-only list data :', error)
       }
     }
-
-    fetchMemberOnlyData() // Fetch member-only list initially
-  }, [params])
+    fetchMemberOnlyData(slug) // Fetch member-only list initially
+  }, [pathname])
 
   return (
     <div>
