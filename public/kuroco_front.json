@@ -1,9 +1,7 @@
 {
   "basic": ["next:media"],
-  "redirects": [
-  ],
-  "rewrites": [    
-  ],
+  "redirects": [],
+  "rewrites": [],
   "error_page": {
     "status404": "/404.html"
   }

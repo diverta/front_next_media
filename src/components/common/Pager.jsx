@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Pager({ pageInfo, searchParams }) {
   const page = pageInfo.pageNo;
@@ -7,17 +7,13 @@ export default function Pager({ pageInfo, searchParams }) {
 
   const navigateToPage = (toPage, label) => {
     if (page === toPage) {
-      return (
-        <div className="c-pager__link-current">
-          {toPage}
-        </div>
-      );
+      return <div className='c-pager__link-current'>{toPage}</div>;
     }
     return (
       <Link
-        className="c-pager__link"
+        className='c-pager__link'
         href={{
-          pathname: "/article",
+          pathname: '/article',
           query: {
             ...searchParams,
             page: toPage,
@@ -27,29 +23,35 @@ export default function Pager({ pageInfo, searchParams }) {
         {label ?? toPage}
       </Link>
     );
-  }
+  };
 
   return (
-    <ul className="c-pager">
+    <ul className='c-pager'>
       {!isFirstPage && (
         <>
-          <li className="c-pager__item">{navigateToPage(1, '«')}</li>
-          <li className="c-pager__item">{navigateToPage(page - 1, '‹')}</li>
-          {isLastPage && pageInfo.totalPageCnt != 2 && (<li className="c-pager__item">{navigateToPage(page - 2)}</li>)}
-          <li className="c-pager__item">{navigateToPage(page - 1)}</li>
+          <li className='c-pager__item'>{navigateToPage(1, '«')}</li>
+          <li className='c-pager__item'>{navigateToPage(page - 1, '‹')}</li>
+          {isLastPage && pageInfo.totalPageCnt != 2 && (
+            <li className='c-pager__item'>{navigateToPage(page - 2)}</li>
+          )}
+          <li className='c-pager__item'>{navigateToPage(page - 1)}</li>
         </>
       )}
 
-      <li className="c-pager__item">
-        {navigateToPage(page, page, "is-current")}
+      <li className='c-pager__item'>
+        {navigateToPage(page, page, 'is-current')}
       </li>
 
       {!isLastPage && (
         <>
-          <li className="c-pager__item">{navigateToPage(page + 1)}</li>
-          {isFirstPage && pageInfo.totalPageCnt != 2 && (<li className="c-pager__item">{navigateToPage(page + 2)}</li>)}
-          <li className="c-pager__item">{navigateToPage(page + 1, '›')}</li>
-          <li className="c-pager__item">{navigateToPage(pageInfo.totalPageCnt, '»')}</li>
+          <li className='c-pager__item'>{navigateToPage(page + 1)}</li>
+          {isFirstPage && pageInfo.totalPageCnt != 2 && (
+            <li className='c-pager__item'>{navigateToPage(page + 2)}</li>
+          )}
+          <li className='c-pager__item'>{navigateToPage(page + 1, '›')}</li>
+          <li className='c-pager__item'>
+            {navigateToPage(pageInfo.totalPageCnt, '»')}
+          </li>
         </>
       )}
     </ul>

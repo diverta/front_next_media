@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/image';
 import getFeatureList from '@/fetch/getFeatureList';
 import Link from 'next/link';
 
@@ -6,16 +6,17 @@ export default async function Feature() {
   const data = await getFeatureList();
 
   return (
-
-    <section className="l-container--contents-side">
-      <h2 className="c-heading--lv3-b">特集</h2>
-      <ul className="c-banner__list">
+    <section className='l-container--contents-side'>
+      <h2 className='c-heading--lv3-b'>特集</h2>
+      <ul className='c-banner__list'>
         {data.map((item, index) => (
-          <li key={index} className="c-banner__item">
+          <li key={index} className='c-banner__item'>
             <Link href={`/feature/${item.topics_id}`}>
               <Image
                 alt={`Image ${index + 1}`}
-                src={item.image.url} /* Assuming imageUrl is a property in each data item */
+                src={
+                  item.image.url
+                } /* Assuming imageUrl is a property in each data item */
                 width={400}
                 height={180}
               />
@@ -24,6 +25,5 @@ export default async function Feature() {
         ))}
       </ul>
     </section>
-
   );
-};
+}

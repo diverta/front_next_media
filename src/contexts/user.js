@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
       setUser(null);
       return;
     }
-    window.localStorage.setItem(USER_MEMBER_ID_KEY, userData.member_id)
+    window.localStorage.setItem(USER_MEMBER_ID_KEY, userData.member_id);
     setUser(userData);
   };
 
@@ -32,13 +32,13 @@ export const UserProvider = ({ children }) => {
     // make sure the user is still valid
     getProfile()
       .then((data) => {
-        window.localStorage.setItem(USER_MEMBER_ID_KEY, data.member_id)
+        window.localStorage.setItem(USER_MEMBER_ID_KEY, data.member_id);
         setUser(data);
       })
       .catch(console.warn)
       .finally(() => setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, loading, storeUser }}>

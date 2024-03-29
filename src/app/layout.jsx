@@ -1,11 +1,11 @@
-import "@/styles/style.scss";
+import '@/styles/style.scss';
 
-import { Noto_Sans_JP, Secular_One } from 'next/font/google'
+import { Noto_Sans_JP, Secular_One } from 'next/font/google';
 
-import clsx from "clsx";
-import { UserProvider } from "../contexts/user";
-import Header from "@/components/layouts/Header";
-import Footer from "@/components/layouts/Footer";
+import clsx from 'clsx';
+import { UserProvider } from '../contexts/user';
+import Header from '@/components/layouts/Header';
+import Footer from '@/components/layouts/Footer';
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -21,7 +21,7 @@ const secularOne = Secular_One({
 });
 
 export const metadata = {
-  title: "kuroco Trip",
+  title: 'kuroco Trip',
   description: "Let's Travel and Enjoy!",
 };
 

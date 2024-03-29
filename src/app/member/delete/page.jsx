@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
 import Breadcrumb from '@/components/common/Breadcrumb';
-import Menu from "@/components/common/Menu";
+import Menu from '@/components/common/Menu';
 import PageTitle from '@/components/common/PageTitle';
 import postMemberDelete from '@/fetch/postMemberDelete';
 import getMemberMe from '@/fetch/getMemberMe';
-import { useUser } from "@/contexts/user";
-import AlertSuccess from "@/components/ui/AlertSuccess";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useUser } from '@/contexts/user';
+import AlertSuccess from '@/components/ui/AlertSuccess';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Page() {
   const [memberInfo, setMemberInfo] = useState([]);
@@ -21,7 +21,7 @@ export default function Page() {
         const info = await getMemberMe();
         setMemberInfo(info.details);
       } catch (error) {
-        console.error("Error fetching member information", error);
+        console.error('Error fetching member information', error);
       }
     };
 
@@ -40,19 +40,16 @@ export default function Page() {
   };
 
   return (
-    <div className="l-container">
-      <Breadcrumb paths={[{ label: "退会" }]} />
-      <PageTitle
-        title="退会"
-        subTitle="Unsubscribe"
-      />
-      <div className="l-container--col-2 l-container--contents">
-        <div className="l-container--col-2__main">
+    <div className='l-container'>
+      <Breadcrumb paths={[{ label: '退会' }]} />
+      <PageTitle title='退会' subTitle='Unsubscribe' />
+      <div className='l-container--col-2 l-container--contents'>
+        <div className='l-container--col-2__main'>
           <div>
-            <form className="c-form c-box" onSubmit={handleSubmit}>
-              <div className="c-form-group">
+            <form className='c-form c-box' onSubmit={handleSubmit}>
+              <div className='c-form-group'>
                 <dl>
-                  <dt className="c-form-label">名前</dt>
+                  <dt className='c-form-label'>名前</dt>
                   {memberInfo && (
                     <dd>
                       {memberInfo.name1} {memberInfo.name2}
@@ -60,39 +57,39 @@ export default function Page() {
                   )}
                 </dl>
               </div>
-              <div className="c-form-group">
+              <div className='c-form-group'>
                 <dl>
-                  <dt className="c-form-label">メールアドレス</dt>
+                  <dt className='c-form-label'>メールアドレス</dt>
                   {memberInfo && <dd>{memberInfo.email}</dd>}
                 </dl>
               </div>
               {alert ? (
                 <div>
-                  <AlertSuccess message="退会が完了しました" />
-                  <div className="c-form-group u-text-align-center">
-                    <Link href="/" className="">
+                  <AlertSuccess message='退会が完了しました' />
+                  <div className='c-form-group u-text-align-center'>
+                    <Link href='/' className=''>
                       トップへ戻る
                     </Link>
                   </div>
                 </div>
               ) : (
                 <div>
-                  <div className="c-form-group u-text-align-center">
+                  <div className='c-form-group u-text-align-center'>
                     <p>
                       本当に退会してよろしいですか？<br></br>
                       退会の処理が完了すると自動的にログアウトします。
                     </p>
                   </div>
-                  <div className="c-form-group u-text-align-center">
+                  <div className='c-form-group u-text-align-center'>
                     <button
-                      type="submit"
-                      className="c-button--primary u-width-50"
+                      type='submit'
+                      className='c-button--primary u-width-50'
                     >
                       退会
                     </button>
                   </div>
-                  <div className="c-form-group u-text-align-center">
-                    <Link href="/member/mypage" className="">
+                  <div className='c-form-group u-text-align-center'>
+                    <Link href='/member/mypage' className=''>
                       マイページへ戻る
                     </Link>
                   </div>
@@ -101,9 +98,11 @@ export default function Page() {
             </form>
           </div>
         </div>
-        {!alert && <div className="l-container--col-2__side">
-          <Menu />
-        </div>}
+        {!alert && (
+          <div className='l-container--col-2__side'>
+            <Menu />
+          </div>
+        )}
       </div>
     </div>
   );
