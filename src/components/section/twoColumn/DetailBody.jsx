@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import getDetails from '@/fetch/getDetails';
 import postFavorite from '@/fetch/postFavorite';
 import deleteFavorite from '@/fetch/deleteFavorite';
@@ -13,16 +13,6 @@ const DetailBody = ({ data, params }) => {
   const [data1, setData] = useState(data);
   const [likesCount, setLikesCount] = useState(data.favorite_cnt);
   const [isLiked, setIsLiked] = useState(data1.my_favorite_flg);
-
-  const updateDataList = useCallback(async () => {
-    try {
-      const data2 = await getDetails(params.id);
-      setData(data2);
-      setIsLiked(data2.my_favorite_flg);
-    } catch (error) {
-      console.error('Error fetching favorite list:', error);
-    }
-  }, [params.id]);
 
   const handleLikeClick = async () => {
     try {
@@ -47,8 +37,17 @@ const DetailBody = ({ data, params }) => {
   };
 
   useEffect(() => {
+    const updateDataList = async () => {
+      try {
+        const data2 = await getDetails(params.id);
+        setData(data2);
+        setIsLiked(data2.my_favorite_flg);
+      } catch (error) {
+        console.error('Error fetching favorite list:', error);
+      }
+    };
     updateDataList();
-  }, [updateDataList]);
+  }, [params]);
 
   return (
     <article className='c-article__detail'>
