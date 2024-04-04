@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 
 export default function Page() {
   const [myFavorites, setMyFavorites] = useState([]);
-  const [setMyFavoritesPageInfo] = useState([]);
+  // const [setMyFavoritesPageInfo] = useState([]);
   const [limitedContent, setLimitedContent] = useState([]);
 
   useEffect(() => {
@@ -20,13 +20,13 @@ export default function Page() {
       try {
         const favorites = await getMyFavoriteList();
         setMyFavorites(favorites.list);
-        setMyFavoritesPageInfo(favorites.pageInfo);
+        // setMyFavoritesPageInfo(favorites.pageInfo);
       } catch (error) {
         console.error('Error fetching favorite list:', error);
       }
     };
     favoriteList();
-  }, [setMyFavoritesPageInfo]);
+  }, []);
 
   useEffect(() => {
     const fetchMemberOnlyList = async () => {
@@ -74,7 +74,7 @@ export default function Page() {
                           <div className='c-card__bottom'>
                             <p className='c-card__area'>
                               <svg className='c-map__icon c-svg'>
-                                <use href='../svg/icon.svg#icon-map' />
+                                <use href='/svg/icon.svg#icon-map' />
                               </svg>
                               {item.area}
                             </p>

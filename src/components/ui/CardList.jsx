@@ -40,7 +40,7 @@ export default function CardList({ data }) {
                 </div>
                 <p className='c-favorite'>
                   <svg className='c-favorite__icon c-svg'>
-                    <use href='../svg/icon.svg#icon-heart' />
+                    <use href='/svg/icon.svg#icon-heart' />
                   </svg>
                   <span>{card.favorite_cnt}</span>
                 </p>

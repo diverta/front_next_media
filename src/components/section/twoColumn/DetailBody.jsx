@@ -71,7 +71,7 @@ const DetailBody = ({ data, params }) => {
             <svg
               className={`c-svg c-favorite__icon ${isLiked ? '-active' : ''}`}
             >
-              <use xlinkHref='../svg/icon.svg#icon-heart' />
+              <use xlinkHref='/svg/icon.svg#icon-heart' />
             </svg>
             <span>{likesCount}</span>
           </button>
