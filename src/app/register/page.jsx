@@ -42,7 +42,7 @@ export default function Page() {
 
     setAlert(false);
     storeUser(user);
-    router.push('member/mypage');
+    router.push('/member/mypage');
   };
 
   return (
