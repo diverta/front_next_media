@@ -7,7 +7,7 @@ export default function Pager({ pageInfo, searchParams }) {
 
   const navigateToPage = (toPage, label) => {
     if (page === toPage) {
-      return <div className='c-pager__link-current'>{toPage}</div>;
+      return <div className='c-pager__link is-current'>{toPage}</div>;
     }
     return (
       <Link
