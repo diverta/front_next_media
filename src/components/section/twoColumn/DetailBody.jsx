@@ -11,7 +11,7 @@ import Link from 'next/link';
 const DetailBody = ({ data, params }) => {
   const { user } = useUser();
   const [data1, setData] = useState(data);
-  const [likesCount, setLikesCount] = useState(data.favorite_cnt);
+  const [likesCount, setLikesCount] = useState(data1.favorite_cnt);
   const [isLiked, setIsLiked] = useState(data1.my_favorite_flg);
 
   const handleLikeClick = async () => {
@@ -41,6 +41,7 @@ const DetailBody = ({ data, params }) => {
       try {
         const data2 = await getDetails(params.id);
         setData(data2);
+        setLikesCount(data2.favorite_cnt);
         setIsLiked(data2.my_favorite_flg);
       } catch (error) {
         console.error('Error fetching favorite list:', error);
