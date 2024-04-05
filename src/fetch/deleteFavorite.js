@@ -12,5 +12,11 @@ export default async function deleteFavorite(module_id) {
       credentials: 'include',
     },
   );
-  return await res.json();
+  
+  await res.json();
+  if (res.ok) {
+    return res;
+  }
+
+  return null;
 }
