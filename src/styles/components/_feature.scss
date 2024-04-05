@@ -1,4 +1,4 @@
-@use "../media_query" as *;
+@use '../media_query' as *;
 
 .c-feature {
   &__intro {
@@ -39,6 +39,10 @@
     }
     @include sp() {
       margin: 0;
+    }
+    overflow: hidden;
+    img {
+      object-fit: cover;
     }
   }
   &__text {

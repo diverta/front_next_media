@@ -1,6 +1,6 @@
-@use "../media_query" as *;
-@use "heading" as *;
-@use "text" as *;
+@use '../media_query' as *;
+@use 'heading' as *;
+@use 'text' as *;
 
 .c-article {
   margin-top: var(--spacing-large);
@@ -15,6 +15,10 @@
     }
     &__mainImage {
       margin: 0 0 var(--spacing);
+      overflow: hidden;
+      img {
+        object-fit: cover;
+      }
     }
     &__date {
       display: block;
@@ -25,16 +29,17 @@
       border: 2px solid var(--color-base);
       position: relative;
       @include pc() {
-        padding: calc( var(--spacing) * 1.5 );
+        padding: calc(var(--spacing) * 1.5);
       }
       @include sp() {
         padding: var(--spacing);
       }
-      &::after, &::before {
+      &::after,
+      &::before {
         position: absolute;
-        content: "";
+        content: '';
         display: block;
-        background-color: var(--color-white)
+        background-color: var(--color-white);
       }
       &::after {
         top: 15px;
@@ -118,7 +123,7 @@
     }
     &__block {
       @include pc() {
-        margin-top: calc( var(--spacing-large) * 2 );
+        margin-top: calc(var(--spacing-large) * 2);
       }
       @include sp() {
         margin-top: var(--spacing-large);
@@ -143,12 +148,12 @@
     }
   }
   &__date {
-    font-size: .875em;
+    font-size: 0.875em;
   }
   &__detail {
     margin-top: 35px;
     @include sp() {
-      font-size: .875em;
+      font-size: 0.875em;
     }
   }
   &__coupon {
@@ -156,17 +161,18 @@
     border: 1px solid var(--color-base);
     position: relative;
     @include pc() {
-      padding: calc( var(--spacing) * 1.5 );
+      padding: calc(var(--spacing) * 1.5);
     }
     @include sp() {
       padding: var(--spacing);
-      font-size: .875em;
+      font-size: 0.875em;
     }
-    &::after, &::before {
+    &::after,
+    &::before {
       position: absolute;
-      content: "";
+      content: '';
       display: block;
-      background-color: var(--color-white)
+      background-color: var(--color-white);
     }
     &::after {
       top: 15px;
@@ -196,8 +202,8 @@
     &__link {
       transition: var(--transition-seconds);
       &:hover {
-      opacity: .8;
-      color: var(--color-primary);
+        opacity: 0.8;
+        color: var(--color-primary);
       }
     }
   }

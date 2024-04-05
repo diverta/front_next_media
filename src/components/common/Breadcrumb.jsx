@@ -1,16 +1,16 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const Breadcrumb = ({ paths }) => {
   return (
-    <nav className="l-breadcrumb is-pc">
-      <div className="l-container--large">
+    <nav className='l-breadcrumb is-pc'>
+      <div className='l-container--large'>
         <ul>
           <li>
-            <Link href="/">トップ</Link>
+            <Link href='/'>トップ</Link>
           </li>
-          {paths.map(({ href, label }) => (
-            <li key={label}>
-              {href ? (<Link href={href}>{label}</Link>) : label}
+          {paths.map(({ href, label }, idx) => (
+            <li key={`${idx}_${label}`}>
+              {href ? <Link href={href}>{label}</Link> : label}
             </li>
           ))}
         </ul>

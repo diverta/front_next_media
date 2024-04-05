@@ -1,0 +1,14 @@
+.c-error {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+  align-content: center;
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+}
