@@ -20,15 +20,15 @@ const DetailBody = ({ data, params }) => {
         const response = await postFavorite(data.topics_id);
         if (response.ok) {
           setIsLiked(true);
-          data.favorite_cnt = data.favorite_cnt + 1;
-          setLikesCount(data.favorite_cnt);
+          data1.favorite_cnt = data1.favorite_cnt + 1;
+          setLikesCount(data1.favorite_cnt);
         }
       } else {
         const response = await deleteFavorite(data.topics_id);
         if (response.ok) {
           setIsLiked(false);
-          data.favorite_cnt = data.favorite_cnt - 1;
-          setLikesCount(data.favorite_cnt);
+          data1.favorite_cnt = data1.favorite_cnt - 1;
+          setLikesCount(data1.favorite_cnt);
         }
       }
     } catch (error) {
