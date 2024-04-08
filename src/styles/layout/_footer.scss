@@ -1,4 +1,4 @@
-@use "../media_query" as *;
+@use '../media_query' as *;
 
 .l-footer {
   padding: var(--spacing-large) 0;
@@ -25,7 +25,7 @@
           font-size: var(--font-size-small);
           transition: var(--transition-seconds) opacity;
           &:hover {
-            opacity: .5;
+            opacity: 0.5;
           }
         }
       }
@@ -34,7 +34,7 @@
   &__copyright {
     margin: 0;
     padding-top: var(--spacing);
-    font-size: .75em;
+    font-size: 0.75em;
     text-align: center;
   }
 }

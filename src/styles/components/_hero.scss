@@ -1,4 +1,4 @@
-@use "../media_query" as *;
+@use '../media_query' as *;
 
 .c-hero {
   position: relative;
@@ -9,22 +9,22 @@
   justify-content: center;
   @include pc() {
     height: 70vh;
-    margin-bottom: calc( var(--spacing-vertical-pc) / 2);
+    margin-bottom: calc(var(--spacing-vertical-pc) / 2);
   }
   @include sp() {
     height: 50vh;
-    margin-bottom: calc( var(--spacing-vertical-sp) / 2);
+    margin-bottom: calc(var(--spacing-vertical-sp) / 2);
   }
   &__body {
     text-align: center;
     z-index: 100;
-      @include sp() {
-        bottom: calc( var(--spacing-vertical-sp) * -1 );
-      }
+    @include sp() {
+      bottom: calc(var(--spacing-vertical-sp) * -1);
+    }
     &__lead {
       margin: 0;
       font-size: 5vw;
-      font-family: 'Secular One', sans-serif;
+      font-family: var(--font-secular-one), sans-serif;
       line-height: 1.3;
       @include sp() {
         font-size: 10vw;
@@ -34,14 +34,14 @@
       margin: var(--spacing) 0;
       padding: 0 var(--spacing);
       font-weight: bold;
-      letter-spacing: .05em;
+      letter-spacing: 0.05em;
       @include pc() {
         font-size: var(--font-size-h4);
       }
     }
   }
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 50%;
     top: 0;
@@ -54,13 +54,19 @@
     transform: translateX(-50%) translateY(18px) rotate(2deg);
   }
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 50%;
     top: 0;
     width: 130%;
     height: 95%;
-    background: linear-gradient(to right, rgba(50, 90, 130, 0.7), rgba(190, 210, 220, 0.5)), url(/images/top-hero.jpg) center no-repeat;
+    background:
+      linear-gradient(
+        to right,
+        rgba(50, 90, 130, 0.7),
+        rgba(190, 210, 220, 0.5)
+      ),
+      url(/images/top-hero.jpg) center no-repeat;
     z-index: 0;
     border-radius: 0 0 50% 50%;
     transform: translateX(-50%) rotate(0deg);

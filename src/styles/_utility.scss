@@ -1,4 +1,4 @@
-@use "media_query" as *;
+@use 'media_query' as *;
 
 .is-pc {
   @include pc() {
@@ -55,23 +55,45 @@
       }
     }
     &-justify-content {
-      &-start { justify-content: flex-start; }
-      &-center { justify-content: center; }
-      &-end { justify-content: flex-end; }
-      &-between { justify-content: space-between; }
+      &-start {
+        justify-content: flex-start;
+      }
+      &-center {
+        justify-content: center;
+      }
+      &-end {
+        justify-content: flex-end;
+      }
+      &-between {
+        justify-content: space-between;
+      }
     }
     &-align-items {
-      &-start { align-items: flex-start; }
-      &-center { align-items: center; }
-      &-end { align-items: flex-end; }
+      &-start {
+        align-items: flex-start;
+      }
+      &-center {
+        align-items: center;
+      }
+      &-end {
+        align-items: flex-end;
+      }
     }
     &-grow {
-      &-0 { flex-grow: 0; }
-      &-1 { flex-grow: 1; }
+      &-0 {
+        flex-grow: 0;
+      }
+      &-1 {
+        flex-grow: 1;
+      }
     }
     &-shrink {
-      &-0 { flex-shrink: 0; }
-      &-1 { flex-shrink: 1; }
+      &-0 {
+        flex-shrink: 0;
+      }
+      &-1 {
+        flex-shrink: 1;
+      }
     }
   }
 }
