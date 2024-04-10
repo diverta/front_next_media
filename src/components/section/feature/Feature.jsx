@@ -1,9 +1,27 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import getFeatureList from '@/fetch/getFeatureList';
 import Link from 'next/link';
 
-export default async function Feature() {
-  const data = await getFeatureList();
+export default function Feature() {
+  // const data = await getFeatureList();
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchList = async () => {
+      try {
+        const fetchedlist = await getFeatureList();
+        setData(fetchedlist);
+      } catch (error) {
+        console.error('Error fetching list information', error);
+      }
+    };
+
+    fetchList();
+  }, []);
 
   return (
     <section className='l-container--contents-side'>
