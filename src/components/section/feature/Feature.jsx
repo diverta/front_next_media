@@ -6,8 +6,6 @@ import getFeatureList from '@/fetch/getFeatureList';
 import Link from 'next/link';
 
 export default function Feature() {
-  // const data = await getFeatureList();
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
