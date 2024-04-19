@@ -1,8 +1,25 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 import getTagKeyword from '@/fetch/getTagKeyword';
 import Link from 'next/link';
 
-export default async function TagKeyword() {
-  const data = await getTagKeyword();
+export default function TagKeyword() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchList = async () => {
+      try {
+        const fetchedlist = await getTagKeyword();
+        setData(fetchedlist);
+      } catch (error) {
+        console.error('Error fetching list information', error);
+      }
+    };
+
+    fetchList();
+  }, []);
 
   return (
     <section className='l-container--contents-side'>
