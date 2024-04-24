@@ -2,7 +2,7 @@ name: Build and deploy to Kuroco front
 on:
   push:
     branches:
-      - ** 
+      - '**'
   issue_comment:
     types: [created, edited]
   workflow_dispatch:
