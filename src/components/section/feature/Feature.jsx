@@ -9,6 +9,7 @@ export default function Feature() {
   const [data, setData] = useState([]);
 
   //again test comment
+  //commit 2
 
   useEffect(() => {
     const fetchList = async () => {
