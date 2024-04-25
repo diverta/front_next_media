@@ -1,4 +1,4 @@
-import { category } from '@/constants/category';
+import { category } from '@/constants/config';
 
 export default async function getContentList(params) {
   const { topic = null, page = 1, tag_id = null, search = '' } = params || {};

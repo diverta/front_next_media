@@ -8,21 +8,33 @@ import getContentList from '@/fetch/getContentList';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { contentDirectory } from '@/constants/config';
 
 export default function Article({ children }) {
   const searchParams = useSearchParams();
 
   const [params, setParams] = useState({});
   const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [categoryTitle, setCategoryTitle] = useState('');
   const [list, setList] = useState(null);
   const [pageInfo, setPageInfo] = useState({});
 
   useEffect(() => {
-    searchParams.get('topic') && setTitle('記事');
-    searchParams.get('search') && setTitle('検索結果');
-    searchParams.get('tag_id') && setTitle('タグ検索結果');
-    title === '' && setTitle('記事');
-
+    // searchParams.get('topic') && setContent('') && setTitle('記事');
+    // searchParams.get('search') && setContent(contentDirectory.search);
+    // searchParams.get('tag_id') && setTitle('タグ検索結果') && setContent('');
+    // title === '' && setTitle('記事');
+    if (searchParams.get('topic')) {
+      setContent('');
+      setTitle('記事');
+    } else if (searchParams.get('search')) {
+      setContent(contentDirectory.search);
+    } else if (searchParams.get('tag_id')) {
+      setTitle('タグ検索結果')
+      setContent('');
+    } else setContent(contentDirectory.article);
+    
     // changes the searchParams object to a plain object
     const params = searchParams
       .entries()
@@ -33,15 +45,21 @@ export default function Article({ children }) {
       const { list, pageInfo } = await getContentList(params);
       setList(list);
       setPageInfo(pageInfo);
+      setCategoryTitle(list?.[0]?.contents_type_ext_col_01);
     }
     fetchData();
-  }, [searchParams, title]);
+  }, [searchParams, title, content]);
 
   const Wrapper = ({ children }) => (
     <section className='c-article__list'>
       <div className='c-heading__wrapper'>
         <h2 className='c-heading--lv2 u-display-flex-grow-1'>
-          <span>{title ? `${title}一覧` : ''}</span>
+          {/* <span>{title ? `${title}一覧` : ''}</span> */}
+          <span>
+            {content
+              ? `${content.title}一覧`
+              : `${categoryTitle}  ${title}一覧`}
+          </span>
         </h2>
         <div className='u-display-flex-shrink-0 u-text-align-right'>
           <Link href='/article' className='c-button'>
@@ -55,10 +73,12 @@ export default function Article({ children }) {
 
   return (
     <>
-      <Breadcrumb paths={[{ label: list?.[0]?.contents_type_ext_col_01 }]} />
+      <Breadcrumb
+        paths={[{ label: content ? content.title : categoryTitle }]}
+      />
       <PageTitle
-        title={list?.[0]?.contents_type_ext_col_01 || '検索結果'}
-        subTitle={list?.[0]?.contents_type_nm}
+        title={content ? content.title : categoryTitle}
+        subTitle={content ? content.subtitle : list?.[0]?.contents_type_nm}
       />
       <div className='l-container--col-2 l-container--contents'>
         <div className='l-container--col-2__main'>
