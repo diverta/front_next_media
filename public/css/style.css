@@ -1813,6 +1813,7 @@ table th {
   -webkit-transition: var(--transition-seconds);
   transition: var(--transition-seconds);
 }
+.c-tag__link.is-current,
 .c-tag__link:hover {
   background-color: var(--color-base);
   color: var(--color-white);

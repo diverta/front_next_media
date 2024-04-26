@@ -27,7 +27,7 @@
     display: block;
     margin: 0 var(--spacing-small) 0.8em 0;
     transition: var(--transition-seconds);
-    &:hover {
+    &:hover, &.is-current {
       color: var(--color-white);
       background-color: var(--color-base);
     }
