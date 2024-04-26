@@ -36,7 +36,10 @@ export default function Article({ children }) {
         searchParams.get('tag_category_id'),
         searchParams.get('tag_id'),
       );
-    } else setContent(contentDirectory.article);
+    } else {
+      setSearchKeyWord('');
+      setContent(contentDirectory.article);
+    }
 
     // changes the searchParams object to a plain object
     const params = searchParams
@@ -58,17 +61,21 @@ export default function Article({ children }) {
     fetchData();
   }, [searchParams, title, content]);
 
+  function renderListTitle() {
+    if (searchKeyWord) {
+      return `${content.title}一覧[${searchKeyWord}]`;
+    } else if (content) {
+      return `${content.title}一覧`;
+    } else {
+      return `${categoryTitle} ${title}一覧`;
+    }
+  }
+
   const Wrapper = ({ children }) => (
     <section className='c-article__list'>
       <div className='c-heading__wrapper'>
         <h2 className='c-heading--lv2 u-display-flex-grow-1'>
-          <span>
-            {searchKeyWord
-              ? `${content.title}一覧[${searchKeyWord}]`
-              : content
-                ? `${content.title}一覧`
-                : `${categoryTitle}  ${title}一覧`}
-          </span>
+          <span>{renderListTitle()}</span>
         </h2>
         <div className='u-display-flex-shrink-0 u-text-align-right'>
           <Link href='/article' className='c-button'>
