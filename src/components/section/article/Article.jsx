@@ -30,7 +30,6 @@ export default function Article({ children }) {
     } else if (searchParams.get('search')) {
       setContent(contentDirectory.search);
       setSearchKeyWord(searchParams.get('search'));
-      console.log(searchParams.get('search'));
     } else if (searchParams.get('tag_id')) {
       setContent(contentDirectory.search);
       fetchTagName(
@@ -53,7 +52,6 @@ export default function Article({ children }) {
     async function fetchData() {
       const { list, pageInfo } = await getContentList(params);
       setList(list);
-      console.log(list);
       setPageInfo(pageInfo);
       setCategoryTitle(list?.[0]?.contents_type_ext_col_01);
     }
