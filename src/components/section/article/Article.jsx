@@ -77,11 +77,6 @@ export default function Article({ children }) {
         <h2 className='c-heading--lv2 u-display-flex-grow-1'>
           <span>{renderListTitle()}</span>
         </h2>
-        <div className='u-display-flex-shrink-0 u-text-align-right'>
-          <Link href='/article' className='c-button'>
-            View All
-          </Link>
-        </div>
       </div>
       {children}
     </section>
