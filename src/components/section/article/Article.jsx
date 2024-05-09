@@ -5,23 +5,41 @@ import PageTitle from '@/components/common/PageTitle';
 import Pager from '@/components/common/Pager';
 import CardList from '@/components/ui/CardList';
 import getContentList from '@/fetch/getContentList';
+import getTagName from '@/fetch/getTagName';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { contentDirectory } from '@/constants/config';
 
 export default function Article({ children }) {
   const searchParams = useSearchParams();
 
   const [params, setParams] = useState({});
   const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [categoryTitle, setCategoryTitle] = useState('');
+  const [searchKeyWord, setSearchKeyWord] = useState('');
   const [list, setList] = useState(null);
   const [pageInfo, setPageInfo] = useState({});
 
   useEffect(() => {
-    searchParams.get('topic') && setTitle('記事');
-    searchParams.get('search') && setTitle('検索結果');
-    searchParams.get('tag_id') && setTitle('タグ検索結果');
-    title === '' && setTitle('記事');
+    if (searchParams.get('topic')) {
+      setContent('');
+      setSearchKeyWord('');
+      setTitle('記事');
+    } else if (searchParams.get('search')) {
+      setContent(contentDirectory.search);
+      setSearchKeyWord(searchParams.get('search'));
+    } else if (searchParams.get('tag_id')) {
+      setContent(contentDirectory.search);
+      fetchTagName(
+        searchParams.get('tag_category_id'),
+        searchParams.get('tag_id'),
+      );
+    } else {
+      setSearchKeyWord('');
+      setContent(contentDirectory.article);
+    }
 
     // changes the searchParams object to a plain object
     const params = searchParams
@@ -29,25 +47,36 @@ export default function Article({ children }) {
       .reduce((prev, [key, value]) => ({ ...prev, [key]: value }), {});
     setParams(params);
 
+    async function fetchTagName(categoryid, id) {
+      const data = await getTagName(categoryid, id);
+      setSearchKeyWord('#' + data?.[0]?.tag_nm);
+    }
+
     async function fetchData() {
       const { list, pageInfo } = await getContentList(params);
       setList(list);
       setPageInfo(pageInfo);
+      setCategoryTitle(list?.[0]?.contents_type_ext_col_01);
     }
     fetchData();
-  }, [searchParams, title]);
+  }, [searchParams, title, content]);
+
+  function renderListTitle() {
+    if (searchKeyWord) {
+      return `${content.title}一覧[${searchKeyWord}]`;
+    } else if (content) {
+      return `${content.title}一覧`;
+    } else {
+      return `${categoryTitle} ${title}一覧`;
+    }
+  }
 
   const Wrapper = ({ children }) => (
     <section className='c-article__list'>
       <div className='c-heading__wrapper'>
         <h2 className='c-heading--lv2 u-display-flex-grow-1'>
-          <span>{title ? `${title}一覧` : ''}</span>
+          <span>{renderListTitle()}</span>
         </h2>
-        <div className='u-display-flex-shrink-0 u-text-align-right'>
-          <Link href='/article' className='c-button'>
-            View All
-          </Link>
-        </div>
       </div>
       {children}
     </section>
@@ -55,10 +84,12 @@ export default function Article({ children }) {
 
   return (
     <>
-      <Breadcrumb paths={[{ label: list?.[0]?.contents_type_ext_col_01 }]} />
+      <Breadcrumb
+        paths={[{ label: content ? content.title : categoryTitle }]}
+      />
       <PageTitle
-        title={list?.[0]?.contents_type_ext_col_01 || '検索結果'}
-        subTitle={list?.[0]?.contents_type_nm}
+        title={content ? content.title : categoryTitle}
+        subTitle={content ? content.subtitle : list?.[0]?.contents_type_nm}
       />
       <div className='l-container--col-2 l-container--contents'>
         <div className='l-container--col-2__main'>
