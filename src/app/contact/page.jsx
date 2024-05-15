@@ -15,9 +15,9 @@ export default function Page() {
   const date = useRef({});
   const matrixSingle = useRef({});
   const matrixMultiple = useRef({});
-  const [setSelectedChoices1] = useState([]);
-  const [setSelectedChoices2] = useState([]);
-  const [setSelectedChoices3] = useState([]);
+  const [, setSelectedChoices1] = useState([]);
+  const [, setSelectedChoices2] = useState([]);
+  const [, setSelectedChoices3] = useState([]);
 
   const [formErrors, setFormErrors] = useState(false);
   const [conditionCheck, setConditionCheck] = useState(false);
