@@ -7,6 +7,11 @@ import Feature from '@/components/section/feature/Feature';
 import getFeatureList from '@/fetch/getFeatureList';
 import getFeatureDetails from '@/fetch/getFeatureDetails';
 import FeatureDetailBody from '@/components/section/feature/FeatureDetailBody';
+import { METADATA } from '@/constants/config';
+
+export const metadata = {
+  title: METADATA.FEATURE,
+};
 
 export async function generateStaticParams() {
   const features = await getFeatureList();

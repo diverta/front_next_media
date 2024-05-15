@@ -16,3 +16,13 @@ export const contentDirectory = {
     subtitle: 'SEARCH',
   },
 }
+
+export const METADATA = {
+  TITLE: 'Kuroco Trip',
+  DESCRIPTION: 'Let\'s Travel and Enjoy!',
+  ARTICLES: 'Articles',
+  DETAILS: 'Details',
+  CONTACT: 'Contact',
+  FEATURE: 'Featured',
+  PRIVACY: 'Privacy Policy',
+}

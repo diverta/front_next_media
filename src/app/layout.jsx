@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { UserProvider } from '../contexts/user';
 import Header from '@/components/layouts/Header';
 import Footer from '@/components/layouts/Footer';
+import { METADATA } from '@/constants/config';
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -21,8 +22,12 @@ const secularOne = Secular_One({
 });
 
 export const metadata = {
-  title: 'kuroco Trip',
-  description: "Let's Travel and Enjoy!",
+  // title: 'kuroco Trip',
+  title:{
+    default: METADATA.TITLE,
+    template: `%s | ${METADATA.TITLE}`,
+  },
+  description: METADATA.DESCRIPTION,
 };
 
 export default async function RootLayout({ children }) {

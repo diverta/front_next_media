@@ -7,6 +7,21 @@ import TagArea from '@/components/common/TagArea';
 import TagKeyword from '@/components/common/TagKeyword';
 import Feature from '@/components/section/feature/Feature';
 
+export async function generateMetadata({ params }) {
+  const item = await getDetails(params.id);
+  return {
+    title: item.subject,
+    description: item.introduction,
+    openGraph: {
+      images: [
+        {
+          url: item.image.url,
+        },
+      ],
+    },
+  };
+}
+
 export async function generateStaticParams() {
   const items = await getAllContentList();
   const paramID = items.map((item) => ({
