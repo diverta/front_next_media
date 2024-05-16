@@ -22,7 +22,6 @@ const secularOne = Secular_One({
 });
 
 export const metadata = {
-  // title: 'kuroco Trip',
   title:{
     default: METADATA.TITLE,
     template: `%s | ${METADATA.TITLE}`,
