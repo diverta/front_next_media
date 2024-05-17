@@ -6,7 +6,6 @@ import Pager from '@/components/common/Pager';
 import CardList from '@/components/ui/CardList';
 import getContentList from '@/fetch/getContentList';
 import getTagName from '@/fetch/getTagName';
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { contentDirectory } from '@/constants/config';

@@ -4,6 +4,11 @@ import TagArea from '@/components/common/TagArea';
 import TagKeyword from '@/components/common/TagKeyword';
 import Feature from '@/components/section/feature/Feature';
 import Article from '@/components/section/article/Article';
+import { METADATA } from '@/constants/config';
+
+export const metadata = {
+  title: METADATA.ARTICLES,
+};
 
 export default function Page() {
   return (

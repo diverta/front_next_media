@@ -1,5 +1,10 @@
 import Breadcrumb from '@/components/common/Breadcrumb';
 import PageTitle from '@/components/common/PageTitle';
+import { METADATA } from '@/constants/config';
+
+export const metadata = {
+  title: METADATA.PRIVACY,
+};
 
 export default function Page() {
   return (
