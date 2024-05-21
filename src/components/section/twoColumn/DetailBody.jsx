@@ -63,7 +63,7 @@ const DetailBody = ({ data, params }) => {
         </figure>
         <time className='c-article__detail__date'>{data.ymd}</time>
         <h1 className='c-heading--lv1'>{data.subject}</h1>
-        <p className='c-favorite'>
+        {/* <p className='c-favorite'>
           <button
             type='button'
             onClick={user ? handleLikeClick : null}
@@ -76,13 +76,7 @@ const DetailBody = ({ data, params }) => {
             </svg>
             <span>{likesCount}</span>
           </button>
-          {/* <a href="#">
-                <svg className="c-favorite__icon c-svg">
-                  <use xlinkHref="../svg/icon.svg#icon-heart" />
-                </svg>
-                <span>5</span>
-              </a> */}
-        </p>
+        </p> */}
         <div className='c-tag'>
           <svg className='c-tag__icon c-svg'>
             <use xlinkHref='/svg/icon.svg#icon-tag' />
