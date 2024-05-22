@@ -25,4 +25,5 @@ export const METADATA = {
   CONTACT: 'Contact',
   FEATURE: 'Featured',
   PRIVACY: 'Privacy Policy',
+  LOGIN: 'Login',
 }
