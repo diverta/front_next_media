@@ -26,4 +26,10 @@ export const METADATA = {
   FEATURE: 'Featured',
   PRIVACY: 'Privacy Policy',
   LOGIN: 'Login',
+  REGISTER: 'Register',
+  REMINDER: 'Password Reminder',
+  MEMBER_DELETE: 'Member Delete',
+  MEMBER_UPDATE: 'Member Update',
+  MEMBER_MYPAGE: 'My Page',
+  LIMITED_CONTENT: 'Member Only',
 }

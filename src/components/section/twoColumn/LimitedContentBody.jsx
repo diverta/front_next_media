@@ -4,6 +4,8 @@ import getLimitedContentDetails from '@/fetch/getLimitedContentDetails';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Metadata from '@/components/common/Metadata';
+import { METADATA } from '@/constants/config';
 
 const LimitedContentBody = () => {
   const [data, setData] = useState([]);
@@ -35,6 +37,7 @@ const LimitedContentBody = () => {
   return (
     <div>
       <section className='c-box c-memberArticle'>
+        <Metadata title={METADATA.LIMITED_CONTENT} />
         <div className='c-heading--box__outer -oneLine'>
           <h2 className='c-heading--box'>今月の会員限定記事</h2>
         </div>
