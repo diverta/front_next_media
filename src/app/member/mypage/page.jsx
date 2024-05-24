@@ -9,6 +9,8 @@ import CardList from '@/components/ui/CardList';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Metadata from '@/components/common/Metadata';
+import { METADATA } from '@/constants/config';
 
 export default function Page() {
   const [myFavorites, setMyFavorites] = useState([]);
@@ -43,6 +45,7 @@ export default function Page() {
 
   return (
     <div className='l-container'>
+      <Metadata title={METADATA.MEMBER_MYPAGE} />
       <Breadcrumb paths={[{ label: 'マイページ' }]} />
       <PageTitle title='マイページ' subTitle='My page' />
       <div className='l-container--col-2 l-container--contents'>

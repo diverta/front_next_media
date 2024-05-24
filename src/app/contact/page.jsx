@@ -9,6 +9,8 @@ import Link from 'next/link';
 import postUpload from '@/fetch/postUpload';
 import postInquiry from '@/fetch/postInquiry';
 import getInquiryColumns from '@/fetch/getInquiryColumns';
+import Metadata from '@/components/common/Metadata';
+import { METADATA } from '@/constants/config';
 
 export default function Page() {
   const formData = useRef({});
@@ -196,6 +198,7 @@ export default function Page() {
 
   return (
     <div className='l-container'>
+      <Metadata title={METADATA.CONTACT}/>
       <Breadcrumb paths={[{ label: 'お問い合わせ' }]} />
       <PageTitle title='お問い合わせ' subTitle='Contact' />
       <div className='l-container--small l-container--contents'>

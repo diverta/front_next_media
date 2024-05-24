@@ -9,6 +9,8 @@ import { useUser } from '@/contexts/user';
 import AlertSuccess from '@/components/ui/AlertSuccess';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Metadata from '@/components/common/Metadata';
+import { METADATA } from '@/constants/config';
 
 export default function Page() {
   const [memberInfo, setMemberInfo] = useState([]);
@@ -41,6 +43,7 @@ export default function Page() {
 
   return (
     <div className='l-container'>
+      <Metadata title={METADATA.MEMBER_DELETE} />
       <Breadcrumb paths={[{ label: '退会' }]} />
       <PageTitle title='退会' subTitle='Unsubscribe' />
       <div className='l-container--col-2 l-container--contents'>
