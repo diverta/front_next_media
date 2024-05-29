@@ -7,17 +7,37 @@ import Search from '@/components/ui/Search';
 import { useUser } from '@/contexts/user';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import postLogout from '@/fetch/postLogout';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const pathname = usePathname();
   const [isTopPage, setIsTopPage] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [isNavToggleActive, setIsNavToggleActive] = useState(false);
+  const { storeUser } = useUser();
+  const router = useRouter();
 
   const { loading, user } = useUser();
 
   const handleNavToggleClick = () => {
     setIsNavToggleActive((prev) => !prev);
+  };
+
+  const handleNavClose = () => {
+    if(isNavToggleActive) {
+      setIsNavToggleActive(false);
+    }
+  };
+
+  const handleLogout = async (event) => {
+    event.preventDefault();
+    const user = await postLogout();
+    storeUser(null);
+
+    if (user == null) {
+      router.push('/');
+    }
   };
 
   useEffect(() => {
@@ -64,7 +84,7 @@ const Header = () => {
             </div>
           </button>
           <div className='l-header__nav__inner'>
-            <ul className='l-header__nav__list'>
+            <ul className='l-header__nav__list' onClick={handleNavClose}>
               <li className='l-header__nav__list__item'>
                 <Link href='/article?topic=food'>FOOD</Link>
               </li>
@@ -81,9 +101,9 @@ const Header = () => {
                 <Link href='/article?topic=culture'>CULTURE</Link>
               </li>
             </ul>
-            <Search />
+            <Search onSubmit={handleNavClose}/>
             {!loading && (
-              <div>
+              <div onClickCapture={handleNavClose}>
                 {user ? (
                   <div className='l-header__nav__options'>
                     {/* ログイン時 */}
@@ -99,6 +119,7 @@ const Header = () => {
                     <button
                       type='button'
                       className='-logout l-header__nav__options__button u-display-flex u-display-flex-align-items-center'
+                      onClick={handleLogout}
                     >
                       ログアウト
                       <svg
@@ -171,7 +192,7 @@ const Header = () => {
                       </svg>
                     </Link>
                     <Link
-                      href='/member/regist/'
+                      href='/register/'
                       className='l-header__nav__options__button c-button -regist'
                     >
                       会員登録
