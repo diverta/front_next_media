@@ -23,20 +23,10 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  let page = 1;
-  const paramID = [];
-  let pageLimit;
-
-  do {
-    const { list, pageInfo } = await getAllContentList(page);
-    pageLimit = pageInfo.totalPageCnt;
-    const ids = list.map((item) => ({
-      id: item.topics_id.toString(),
-    }));
-    paramID.push(...ids);
-    page++;
-  } while (page <= pageLimit);
-
+  const items = await getAllContentList();
+  const paramID = items.map((item) => ({
+    id: item.topics_id.toString(),
+  }));
   return paramID;
 }
 
