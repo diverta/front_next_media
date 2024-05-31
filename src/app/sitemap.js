@@ -1,4 +1,5 @@
 import getAllContentList from '@/fetch/getAllContentList';
+import getAllFeatureList from '@/fetch/getAllFeatureList';
 
 export default async function sitemap() {
   const items = await getAllContentList();
@@ -7,7 +8,7 @@ export default async function sitemap() {
     lastModified: new Date(item.update_ymdhi),
   }));
 
-  const features = await getAllContentList();
+  const features = await getAllFeatureList();
   const featureDetails = features.map((item) => ({
     url: `${process.env.NEXT_PUBLIC_BASE_URL}/feature/${item.topics_id}/`,
     lastModified: new Date(item.update_ymdhi),
