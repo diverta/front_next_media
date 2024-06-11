@@ -25,13 +25,8 @@ export default async function Page({ params }) {
 
   return (
     <div className='l-container'>
-      <Breadcrumb
-        paths={[{ label: features?.contents_type_ext_col_01 }]}
-      />
-      <PageTitle
-        title={features?.contents_type_ext_col_01}
-        subTitle={features?.contents_type_nm}
-      />
+      <Breadcrumb paths={[{ label: features?.contents_type_ext_col_01 }]} />
+      <PageTitle title='特集' subTitle='Feature' />
       <div className='l-container--col-2 l-container--contents'>
         <div className='l-container--col-2__main'>
           <div>
