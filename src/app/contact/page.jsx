@@ -198,7 +198,7 @@ export default function Page() {
 
   return (
     <div className='l-container'>
-      <Metadata title={METADATA.CONTACT}/>
+      <Metadata title={METADATA.CONTACT} />
       <Breadcrumb paths={[{ label: 'お問い合わせ' }]} />
       <PageTitle title='お問い合わせ' subTitle='Contact' />
       <div className='l-container--small l-container--contents'>
@@ -357,16 +357,18 @@ export default function Page() {
                     </div>
                   )}
                   {col.type === 7 && (
-                    <input
-                      type='file'
-                      name={col.key}
-                      id={col.key}
-                      onChange={handleFileUpload}
-                      accept={
-                        col.options.map((option) => option.value).join(',') ||
-                        '*'
-                      }
-                    />
+                    <div>
+                      <input
+                        type='file'
+                        name={col.key}
+                        id={col.key}
+                        onChange={handleFileUpload}
+                        accept={
+                          col.options.map((option) => option.value).join(',') ||
+                          '*'
+                        }
+                      />
+                    </div>
                   )}
                   {col.type === 10 &&
                     col.attribute.selection_type === 'single' && (
