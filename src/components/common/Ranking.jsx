@@ -27,24 +27,24 @@ export default function Ranking() {
         <h2 className='c-heading--box -en'>RANKING</h2>
         <p className='c-heading--boxSub'>お気に入りランキング</p>
       </div>
-      <ul className='c-card-list c-card-list--col-2'>
+      <ul className='c-media-list c-media-list--col-2'>
         {data &&
           data.map((item, index) => (
-            <li className='c-card__item' key={index}>
-              <Link href={`/article/${item.topics_id}`} className='c-card'>
-                <span className='c-card__image__badge02'>{index + 1}</span>
-                <div className='c-card__image'>
+            <li className='c-media__item' key={index}>
+              <Link href={`/article/${item.topics_id}`} className='c-media'>
+                <span className='c-media__image__badge'>{index + 1}</span>
+                <div className='c-media__image'>
                   <Image
                     alt={item.image.desc || 'dummy'}
                     src={item.image.url}
                     fill
                   />
                 </div>
-                <div className='c-card__info'>
-                  <h3 className='c-card__heading'>{item.subject}</h3>
-                  <p className='c-card__text'>{item.introduction}</p>
-                  <div className='c-card__bottom'>
-                    <p className='c-card__area'>
+                <div className='c-media__info'>
+                  <h3 className='c-media__heading'>{item.subject}</h3>
+                  <p className='c-media__text'>{item.introduction}</p>
+                  <div className='c-media__bottom'>
+                    <p className='c-media__area'>
                       <svg className='c-map__icon c-svg'>
                         <use href='../svg/icon.svg#icon-map' />
                       </svg>
@@ -56,7 +56,7 @@ export default function Ranking() {
                         ) : null,
                       )}
                     </p>
-                    <p className='c-card__category'>{item.contents_type_nm}</p>
+                    <p className='c-media__category'>{item.contents_type_nm}</p>
                   </div>
                 </div>
               </Link>
