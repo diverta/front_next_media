@@ -54,7 +54,7 @@ export default function Page() {
   };
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
       <Metadata title={METADATA.REMINDER} />
       <Breadcrumb paths={[{ label: 'パスワード再発行' }]} />
       <PageTitle title='パスワード再発行' subTitle='Password Reset' />
@@ -121,6 +121,6 @@ export default function Page() {
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

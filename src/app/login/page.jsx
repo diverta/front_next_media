@@ -38,9 +38,10 @@ export default function Page() {
   };
 
   return (
-    <div className='l-container'>
-      <Metadata title={METADATA.LOGIN}/>
+    <main className='l-container'>
+      <Metadata title={METADATA.LOGIN} />
       <Breadcrumb paths={[{ label: 'ログイン' }]} />
+
       <PageTitle title='ログイン' subTitle='Login' />
       <div className='l-container--small l-container--contents'>
         <div className='flex min-h-screen flex-col items-center justify-between p-24'>
@@ -92,6 +93,6 @@ export default function Page() {
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

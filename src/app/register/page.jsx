@@ -48,7 +48,7 @@ export default function Page() {
   };
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
       <Metadata title={METADATA.REGISTER} />
       <Breadcrumb paths={[{ label: '会員登録' }]} />
       <PageTitle title='会員登録' subTitle='Register' />
@@ -120,6 +120,6 @@ export default function Page() {
           </p>
         </form>
       </div>
-    </div>
+    </main>
   );
 }

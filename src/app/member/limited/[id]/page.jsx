@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 
 export default function Page() {
   return (
-    <div className='l-container'>
+    <main className='l-container'>
       <Breadcrumb paths={[{ label: '会員限定記事' }]} />
       <PageTitle title='会員限定記事' subTitle='Member Only Article' />
       <div className='l-container--col-2 l-container--contents'>
@@ -33,6 +33,6 @@ export default function Page() {
           <Menu />
         </div>
       </div>
-    </div>
+    </main>
   );
 }

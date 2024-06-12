@@ -24,14 +24,13 @@ export default async function Page({ params }) {
   const features = await getFeatureDetails(params.id);
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
       <Breadcrumb paths={[{ label: features?.contents_type_ext_col_01 }]} />
+
       <PageTitle title='特集' subTitle='Feature' />
       <div className='l-container--col-2 l-container--contents'>
         <div className='l-container--col-2__main'>
-          <div>
-            <FeatureDetailBody params={params} />
-          </div>
+          <FeatureDetailBody params={params} />
         </div>
         <div className='l-container--col-2__side'>
           <Banner />
@@ -40,6 +39,6 @@ export default async function Page({ params }) {
           <TagKeyword />
         </div>
       </div>
-    </div>
+    </main>
   );
 }
