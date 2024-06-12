@@ -30,7 +30,7 @@
     width: 100%;
     margin: 0 auto;
     @include pc() {
-      max-width: 1200px;
+      max-width: 1280px;
       padding-right: var(--spacing-horizontal-pc);
       padding-left: var(--spacing-horizontal-pc);
     }
@@ -67,7 +67,7 @@
     &__side {
       position: relative;
       @include pc() {
-        width: 240px;
+        flex: 0 0 240px;
         margin-left: calc(var(--spacing-horizontal-pc) * 2);
       }
       @include sp() {
