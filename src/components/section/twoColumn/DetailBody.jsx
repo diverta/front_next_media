@@ -63,39 +63,52 @@ const DetailBody = ({ data, params }) => {
         </figure>
         <time className='c-article__detail__date'>{data.ymd}</time>
         <h1 className='c-heading--lv1'>{data.subject}</h1>
-        <p className='c-favorite'>
-          <button
-            type='button'
-            onClick={user ? handleLikeClick : null}
-            disabled={!user}
-          >
-            <svg
-              className={`c-svg c-favorite__icon ${isLiked ? '-active' : ''}`}
-            >
-              <use xlinkHref='/svg/icon.svg#icon-heart' />
+        <div class='c-article__detail__head'>
+          <div className='c-tag__outer'>
+            <svg className='c-tag__icon c-svg'>
+              <use xlinkHref='/svg/icon.svg#icon-tag' />
             </svg>
-            <span>{likesCount}</span>
-          </button>
-          {/* <a href="#">
-                <svg className="c-favorite__icon c-svg">
-                  <use xlinkHref="../svg/icon.svg#icon-heart" />
-                </svg>
-                <span>5</span>
-              </a> */}
-        </p>
-        <div className='c-tag'>
-          <svg className='c-tag__icon c-svg'>
-            <use xlinkHref='/svg/icon.svg#icon-tag' />
-          </svg>
-          <ul className='c-tag__list'>
-            {data.tags.map((tag, index) => (
-              <li className='c-tag__item' key={index}>
-                <Link href={`/article?tag_category_id=${tag.tag_category_id}&tag_id=${tag.tag_id}`} className='c-tag__link'>
-                  {tag.tag_nm}
-                </Link>
-              </li>
-            ))}
-          </ul>
+            <ul className='c-tag__list'>
+              {data.tags.map((tag, index) => (
+                <li className='c-tag__item' key={index}>
+                  <Link
+                    href={`/article?tag_category_id=${tag.tag_category_id}&tag_id=${tag.tag_id}`}
+                    className='c-tag'
+                  >
+                    #{tag.tag_nm}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className='c-favorite'>
+            {user ? (
+              <></>
+            ) : (
+              <span class='c-favorite__desc'>
+                ログインすると
+                <br />
+                お気に入りできます
+              </span>
+            )}
+            <button
+              type='button'
+              onClick={user ? handleLikeClick : null}
+              disabled={!user}
+              className={`c-favorite__button ${isLiked ? 'is-active' : ''}`}
+            >
+              <svg className='c-svg c-favorite__icon'>
+                <use xlinkHref='/svg/icon.svg#icon-heart' />
+              </svg>
+              <span>{likesCount}</span>
+            </button>
+            {/* <a href="#">
+                  <svg className="c-favorite__icon c-svg">
+                    <use xlinkHref="../svg/icon.svg#icon-heart" />
+                  </svg>
+                  <span>5</span>
+                </a> */}
+          </div>
         </div>
       </header>
       <div className='c-article__detail__contents'>

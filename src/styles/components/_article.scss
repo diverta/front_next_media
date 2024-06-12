@@ -25,6 +25,11 @@
       text-align: right;
       margin-bottom: var(--spacing-small);
     }
+    &__head {
+      display: flex;
+      justify-content: space-between;
+      margin-top: var(--spacing-large);
+    }
     &__intro {
       border: 2px solid var(--color-base);
       position: relative;
@@ -119,6 +124,10 @@
       }
       li {
         padding: var(--spacing-small) 0;
+      }
+      figure {
+        margin-right: 0;
+        margin-left: 0;
       }
     }
     &__block {
