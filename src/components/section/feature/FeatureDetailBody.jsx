@@ -29,7 +29,6 @@ const FeatureDetailBody = ({ params }) => {
     };
 
     fetchList();
-
   }, [params]);
 
   return (
@@ -51,6 +50,18 @@ const FeatureDetailBody = ({ params }) => {
               </figure>
               <div className='c-feature__detail'>
                 <div className='c-feature__text'>{details.introduction}</div>
+                <div className='c-tag__outer'>
+                  <svg className='c-tag__icon c-svg'>
+                    <use href='/svg/icon.svg#icon-tag' />
+                  </svg>
+                  <ul className='c-tag__list'>
+                    {details.tags.map((tag, tag_index) => (
+                      <li key={tag_index} className='c-tag__item'>
+                        #{tag.tag_nm}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
                 <p className='c-feature__link'>
                   <Link
                     href={`../../article/${details.topics_id}`}
