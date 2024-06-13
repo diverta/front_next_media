@@ -40,7 +40,7 @@ export default function Ranking() {
                     fill
                   />
                 </div>
-                <div className='c-media__info'>
+                <div>
                   <h3 className='c-media__heading'>{item.subject}</h3>
                   <p className='c-media__text'>{item.introduction}</p>
                   <div className='c-media__bottom'>
