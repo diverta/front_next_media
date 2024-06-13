@@ -4,6 +4,7 @@
   display: inline-block;
   position: relative;
   line-height: 1;
+  padding: var(--spacing);
   border: 1px solid;
   border-radius: var(--border-radius);
   transition:
@@ -12,11 +13,9 @@
     var(--transition-seconds) color;
   cursor: pointer;
   @include pc() {
-    padding: var(--spacing);
     font-size: var(--font-size-small);
   }
   @include sp() {
-    padding: 0.8em;
     font-size: var(--font-size-x-small);
   }
 }

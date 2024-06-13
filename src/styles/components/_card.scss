@@ -7,12 +7,12 @@
   height: 100%;
   background: #fff;
   border: 1px solid #666;
-  padding: 10px;
+  padding: var(--spacing-small);
   box-shadow: 0 10px 8px -6px #bebebe;
   position: relative;
-  transition: 0.5s;
+  transition: var(--transition-seconds);
   &:hover {
-    opacity: 0.8;
+    opacity: var(--hover-opacity);
   }
   &__image {
     overflow: hidden;
@@ -33,8 +33,7 @@
       padding: var(--spacing-small) var(--spacing);
       z-index: 1;
       transform: rotate(-4deg);
-      border-right: 2px dotted rgba(0, 0, 0, 0.1);
-      border-left: 2px dotted rgba(0, 0, 0, 0.1);
+      background-color: var(--color-primary);
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }
   }
@@ -85,16 +84,16 @@
     font-size: var(--font-size-small);
   }
   &__category {
-    font-size: 0.75em;
+    font-size: var(--font-size-x-small);
     margin: 0;
     background: var(--color-gray);
     color: #fff;
     line-height: 1;
-    padding: 4px 6px;
+    padding: var(--spacing-small);
   }
   &__area {
     margin: 0;
-    font-size: 0.75em;
+    font-size: var(--font-size-x-small);
     display: flex;
     align-items: center;
   }
@@ -111,7 +110,7 @@
             margin-left: var(--spacing);
           }
           &:nth-child(n + 4) {
-            margin-top: 3em;
+            margin-top: var(--spacing);
           }
         }
         @include sp {
@@ -129,7 +128,7 @@
         @include pc {
           flex: 0 0 calc((100% - var(--spacing-large)) / 2);
           &:nth-child(n + 3) {
-            margin-top: 2em;
+            margin-top: var(--spacing);
           }
         }
         @include sp {
