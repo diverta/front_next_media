@@ -55,32 +55,32 @@ export default function Page() {
             <div className='c-heading--box__outer -oneLine'>
               <h2 className='c-heading--box'>今月の会員限定記事</h2>
             </div>
-            <ul className='c-card-list c-card-list--col-2'>
+            <ul className='c-media-list c-media-list--col-2'>
               {limitedContent &&
                 limitedContent.map((item, index) => (
-                  <li className='c-card__item' key={index}>
+                  <li className='c-media__item' key={index}>
                     <Link
                       href={`/member/limited/${item.topics_id}`}
-                      className='c-card'
+                      className='c-media'
                     >
-                      <div className='c-card__image'>
+                      <div className='c-media__image'>
                         <Image
                           alt={item.bannerImage.desc || 'dummy'}
                           src={item.bannerImage.url}
                           fill
                         />
                       </div>
-                      <div className='c-card__info'>
-                        <h3 className='c-card__heading'>{item.subject}</h3>
-                        <p className='c-card__text'>{item.introduction}</p>
-                        <div className='c-card__bottom'>
-                          <p className='c-card__area'>
+                      <div>
+                        <h3 className='c-media__heading'>{item.subject}</h3>
+                        <p className='c-media__text'>{item.introduction}</p>
+                        <div className='c-media__bottom'>
+                          <p className='c-media__area'>
                             <svg className='c-map__icon c-svg'>
                               <use href='/svg/icon.svg#icon-map' />
                             </svg>
                             {item.area}
                           </p>
-                          <p className='c-card__category'>
+                          <p className='c-media__category'>
                             {item.contents_type_nm}
                           </p>
                         </div>
