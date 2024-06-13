@@ -35,48 +35,47 @@ const LimitedContentBody = () => {
   }, [pathname]);
 
   return (
-    <div>
-      <section className='c-box c-memberArticle'>
-        <Metadata title={METADATA.LIMITED_CONTENT} />
+    <article className='c-box c-memberArticle'>
+      <Metadata title={METADATA.LIMITED_CONTENT} />
+      <header>
         <div className='c-heading--box__outer -oneLine'>
-          <h2 className='c-heading--box'>今月の会員限定記事</h2>
+          <p className='c-heading--box u-mt-0 u-mb-0'>今月の会員限定記事</p>
         </div>
         <h2 className='c-heading--lv2'>{data.subject}</h2>
-
-        <div className='c-memberArticle__type'>
-          <p className='c-card__category'>{data.contents_type_nm}</p>
-          <p className='c-card__area'>
+        <div className='c-memberArticle__head'>
+          <span className='c-badge u-mr-10'>{data.contents_type_nm}</span>
+          <p className='c-card__area u-mr-15'>
             <svg className='c-map__icon c-svg'>
               <use xlinkHref='/svg/icon.svg#icon-map' />
             </svg>
             {data.area}
           </p>
-          <time className='c-memberArticle__date'>{data.ymd}</time>
+          <time className='c-article__detail__date' dateTme={data.ymd}>
+            {data.ymd}
+          </time>
         </div>
-        <div className='c-memberArticle__detail'>
-          {data.introduction}
-          <br />
-          <br />
-          <div dangerouslySetInnerHTML={{ __html: data.body }} />
-        </div>
-        <div className='c-memberArticle__coupon'>
-          <dl className='c-memberArticle__coupon__info'>
-            <dt className='c-memberArticle__coupon__title'>
-              {couponLink.title}
-            </dt>
-            <dd className='c-memberArticle__coupon__url'>
-              <Link
-                href={`${couponLink.url}`}
-                target='_blnak'
-                className='c-memberArticle__coupon__link'
-              >
-                お得なクーポン詳細はこちら
-              </Link>
-            </dd>
-          </dl>
-        </div>
-      </section>
-    </div>
+      </header>
+      <div className='c-article__detail__contents'>
+        {data.introduction}
+        <br />
+        <br />
+        <div dangerouslySetInnerHTML={{ __html: data.body }} />
+      </div>
+      <div className='c-memberArticle__coupon'>
+        <dl className='c-memberArticle__coupon__inner'>
+          <dt className='c-memberArticle__coupon__title'>{couponLink.title}</dt>
+          <dd className='c-memberArticle__coupon__url'>
+            <Link
+              href={`${couponLink.url}`}
+              target='_blnak'
+              className='c-memberArticle__coupon__link'
+            >
+              お得なクーポン詳細はこちら
+            </Link>
+          </dd>
+        </dl>
+      </div>
+    </article>
   );
 };
 

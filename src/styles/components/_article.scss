@@ -23,12 +23,17 @@
     &__date {
       display: block;
       text-align: right;
-      margin-bottom: var(--spacing-small);
     }
     &__head {
       display: flex;
-      justify-content: space-between;
-      margin-top: var(--spacing-large);
+      @include pc() {
+        justify-content: space-between;
+        margin-top: var(--spacing-large);
+      }
+      @include sp() {
+        flex-direction: column-reverse;
+        margin-top: var(--spacing);
+      }
     }
     &__intro {
       border: 2px solid var(--color-base);
@@ -142,27 +147,15 @@
 }
 
 .c-memberArticle {
-  &__type {
+  &__head {
     display: flex;
-    justify-content: end;
     align-items: center;
     @include pc() {
+      justify-content: end;
       margin-top: 15px;
     }
     @include sp() {
       margin-top: 10px;
-    }
-    > * {
-      padding-left: 10px;
-    }
-  }
-  &__date {
-    font-size: 0.875em;
-  }
-  &__detail {
-    margin-top: 35px;
-    @include sp() {
-      font-size: 0.875em;
     }
   }
   &__coupon {
@@ -170,11 +163,10 @@
     border: 1px solid var(--color-base);
     position: relative;
     @include pc() {
-      padding: calc(var(--spacing) * 1.5);
+      padding: var(--spacing-large);
     }
     @include sp() {
       padding: var(--spacing);
-      font-size: 0.875em;
     }
     &::after,
     &::before {
@@ -195,13 +187,17 @@
       left: 15px;
       right: 15px;
     }
-    &__info {
+    &__inner {
       display: flex;
       align-items: flex-start;
       position: relative;
       z-index: 1;
+      @include sp() {
+        flex-direction: column;
+      }
     }
     &__title {
+      flex: 0 0 auto;
       background: var(--color-primary);
       color: var(--color-white);
       font-family: var(--font-en);
@@ -211,7 +207,7 @@
     &__link {
       transition: var(--transition-seconds);
       &:hover {
-        opacity: 0.8;
+        opacity: var(--hover-opacity);
         color: var(--color-primary);
       }
     }
