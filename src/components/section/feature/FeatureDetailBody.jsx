@@ -34,7 +34,7 @@ const FeatureDetailBody = ({ params }) => {
   return (
     <section className='c-feature'>
       <h2 className='c-heading--lv2'>{data.subject}</h2>
-      <div className='c-feature__intro'>{data.introduction}</div>
+      <div className='c-text u-white-spcace-pre-wrap'>{data.introduction}</div>
       <ul className='c-feature__list'>
         {details.map((details, index) => (
           <li key={index} className='c-feature__item'>
@@ -48,8 +48,10 @@ const FeatureDetailBody = ({ params }) => {
                   height='150'
                 />
               </figure>
-              <div className='c-feature__detail'>
-                <div className='c-feature__text'>{details.introduction}</div>
+              <div>
+                <div className='c-feature__text u-white-spcace-pre-wrap'>
+                  {details.introduction}
+                </div>
                 <div className='c-tag__outer'>
                   <svg className='c-tag__icon c-svg'>
                     <use href='/svg/icon.svg#icon-tag' />
@@ -62,14 +64,14 @@ const FeatureDetailBody = ({ params }) => {
                     ))}
                   </ul>
                 </div>
-                <p className='c-feature__link'>
+                <div className='u-display-flex u-display-flex-justify-content-end'>
                   <Link
                     href={`../../article/${details.topics_id}`}
                     className='c-button'
                   >
                     MORE
                   </Link>
-                </p>
+                </div>
               </div>
             </div>
           </li>

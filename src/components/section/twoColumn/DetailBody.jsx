@@ -61,9 +61,11 @@ const DetailBody = ({ data, params }) => {
             height='400'
           />
         </figure>
-        <time className='c-article__detail__date'>{data.ymd}</time>
+        <time className='c-article__detail__date u-mb-10' dateTime={data.ymd}>
+          {data.ymd}
+        </time>
         <h1 className='c-heading--lv1'>{data.subject}</h1>
-        <div class='c-article__detail__head'>
+        <div className='c-article__detail__head'>
           <div className='c-tag__outer'>
             <svg className='c-tag__icon c-svg'>
               <use xlinkHref='/svg/icon.svg#icon-tag' />
@@ -85,7 +87,7 @@ const DetailBody = ({ data, params }) => {
             {user ? (
               <></>
             ) : (
-              <span class='c-favorite__desc'>
+              <span className='c-favorite__desc'>
                 ログインすると
                 <br />
                 お気に入りできます
@@ -113,7 +115,9 @@ const DetailBody = ({ data, params }) => {
       </header>
       <div className='c-article__detail__contents'>
         <div className='c-article__detail__intro'>
-          <p className='c-article__detail__intro__text'>{data.introduction}</p>
+          <p className='c-article__detail__intro__text u-white-spcace-pre-wrap'>
+            {data.introduction}
+          </p>
         </div>
         {data.contentItems.map((item, index) => (
           <div key={index} className='c-article__detail__block'>
