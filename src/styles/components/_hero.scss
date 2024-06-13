@@ -48,7 +48,7 @@
     width: 130%;
     height: 96%;
     background: #b39d8b;
-    opacity: 0.3;
+    opacity: var(--hover-opacity);
     z-index: 0;
     border-radius: 0 0 50% 50%;
     transform: translateX(-50%) translateY(18px) rotate(2deg);
