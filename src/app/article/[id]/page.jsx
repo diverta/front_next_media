@@ -45,11 +45,9 @@ export default async function Page({ params }) {
     <div className='l-container'>
       <Breadcrumb paths={paths} />
       <div className='l-container--col-2 c-article'>
-        <div className='l-container--col-2__main'>
-          <div>
-            <DetailBody data={item} params={params} />
-          </div>
-        </div>
+        <main className='l-container--col-2__main'>
+          <DetailBody data={item} params={params} />
+        </main>
         <div className='l-container--col-2__side'>
           <Banner />
           <Feature />

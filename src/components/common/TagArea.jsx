@@ -28,9 +28,9 @@ export default function TagArea() {
           <li key={index} className='c-tag__item'>
             <Link
               href={`/article?tag_category_id=${tag.tag_category_id}&tag_id=${tag.tag_id}`}
-              className='c-tag__link'
+              className='c-tag'
             >
-              {tag.tag_nm}
+              #{tag.tag_nm}
             </Link>
           </li>
         ))}

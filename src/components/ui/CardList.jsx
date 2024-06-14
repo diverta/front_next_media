@@ -26,14 +26,14 @@ export default function CardList({ data }) {
               <h3 className='c-card__heading'>{card.subject}</h3>
               <p className='c-card__text'>{card.introduction}</p>
               <div className='c-card__bottom'>
-                <div className='c-tag'>
+                <div className='c-tag__outer'>
                   <svg className='c-tag__icon c-svg'>
                     <use href='/svg/icon.svg#icon-tag' />
                   </svg>
-                  <ul className='c-tag-card__list'>
+                  <ul className='c-tag__list'>
                     {card.tags.map((tag, tag_index) => (
-                      <li key={tag_index} className='c-tag-card__item'>
-                        {tag.tag_nm}
+                      <li key={tag_index} className='c-tag__item'>
+                        #{tag.tag_nm}
                       </li>
                     ))}
                   </ul>

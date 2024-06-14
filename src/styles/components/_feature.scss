@@ -1,12 +1,6 @@
 @use '../media_query' as *;
 
 .c-feature {
-  &__intro {
-    margin-top: var(--spacing);
-    @include sp() {
-      font-size: var(--font-size-small);
-    }
-  }
   &__item {
     margin-top: calc(var(--spacing-large) * 1.5);
     background-color: var(--color-white);
@@ -27,14 +21,9 @@
       margin-top: var(--spacing);
     }
   }
-  &__detail {
-    @include pc() {
-      position: relative;
-    }
-  }
   &__image {
     @include pc() {
-      margin: 0 var(--spacing) 0 0;
+      margin: 0 var(--spacing-large) 0 0;
       flex: 0 0 30%;
     }
     @include sp() {
@@ -47,22 +36,11 @@
   }
   &__text {
     @include pc() {
-      margin-bottom: var(--spacing);
+      margin: var(--spacing-small) 0 var(--spacing);
     }
     @include sp() {
       font-size: var(--font-size-small);
-      margin: var(--spacing-small) 0;
-    }
-  }
-  &__link {
-    margin: 0;
-    @include pc() {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-    @include sp() {
-      text-align: right;
+      margin: var(--spacing) 0;
     }
   }
 }

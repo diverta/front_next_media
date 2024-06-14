@@ -29,7 +29,7 @@
     line-height: 1;
 
     &-current {
-      opacity: 0.5;
+      opacity: var(--hover-opacity);
       cursor: default;
     }
 

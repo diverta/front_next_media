@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className='l-container'>
+    <main className='l-container'>
       <Suspense>
         <Article>
           <div className='l-container--col-2__side'>
@@ -23,6 +23,6 @@ export default function Page() {
           </div>
         </Article>
       </Suspense>
-    </div>
+    </main>
   );
 }
