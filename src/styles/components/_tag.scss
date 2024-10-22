@@ -4,6 +4,7 @@
   padding: var(--spacing-small) var(--spacing);
   border: 1px solid var(--color-base);
   border-radius: 20px;
+  font-size: var(--font-size-x-small);
   transition: var(--transition-seconds);
   &:hover,
   &.is-current {
@@ -28,10 +29,6 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
-    margin-top: calc((var(--spacing-small) / 2) * -1);
-  }
-  &__item {
-    margin: calc(var(--spacing-small) / 2) var(--spacing-small) 0 0;
-    font-size: var(--font-size-x-small);
+    gap: var(--spacing-small);
   }
 }
