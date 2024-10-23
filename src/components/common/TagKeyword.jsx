@@ -22,7 +22,7 @@ export default function TagKeyword() {
   }, []);
 
   return (
-    <section className='l-container--contents-side'>
+    <section className='l-container--contents'>
       <h2 className='c-heading--lv3-b'>キーワードから探す</h2>
       <ul className='c-tag__list'>
         {data.map((tag, index) => (

@@ -44,7 +44,7 @@
     width: 100%;
     margin: 0 auto;
     @include pc() {
-      max-width: 580px;
+      max-width: 500px;
     }
     @include sp() {
       width: calc(100% - var(--spacing-horizontal-sp) * 2);
@@ -79,23 +79,12 @@
 
   &--contents {
     @include pc() {
-      margin-top: var(--spacing-vertical-pc);
+      padding-top: var(--spacing-vertical-pc);
+      padding-bottom: var(--spacing-vertical-pc);
     }
     @include sp() {
-      margin-top: var(--spacing-vertical-sp);
-      &:not(:last-of-type) {
-        padding-bottom: var(--spacing-vertical-sp);
-      }
-    }
-    &-side {
-      &:not(:first-child) {
-        @include pc() {
-          margin-top: var(--spacing-vertical-side-pc);
-        }
-        @include sp() {
-          margin-top: var(--spacing-vertical-sp);
-        }
-      }
+      padding-top: var(--spacing-vertical-sp);
+      padding-bottom: var(--spacing-vertical-sp);
     }
   }
 }

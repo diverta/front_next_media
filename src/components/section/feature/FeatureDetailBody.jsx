@@ -32,52 +32,61 @@ const FeatureDetailBody = ({ params }) => {
   }, [params]);
 
   return (
-    <section className='c-feature'>
+    <article>
       <h2 className='c-heading--lv2'>{data.subject}</h2>
       <div className='c-text u-white-spcace-pre-wrap'>{data.introduction}</div>
-      <ul className='c-feature__list'>
+      <ul className='c-media-list l-container--contents u-pb-0'>
         {details.map((details, index) => (
-          <li key={index} className='c-feature__item'>
-            <h3 className='c-heading--lv4'>{details.subject}</h3>
-            <div className='c-feature__contents'>
-              <figure className='c-feature__image'>
-                <Image
-                  alt='dummy image'
-                  src={details.image.url}
-                  width='400'
-                  height='150'
-                />
-              </figure>
+          <li key={index} className='c-media__item'>
+            <Link
+              href={`../../article/${details.topics_id}`}
+              className='c-media'
+            >
+              <div className='c-media__image'>
+                <Image alt='dummy image' src={details.image.url} fill />
+              </div>
               <div>
-                <div className='c-feature__text u-white-spcace-pre-wrap'>
+                <h3 className='c-media__heading'>{details.subject}</h3>
+                <div className='u-white-spcace-pre-wrap u-mb-20'>
                   {details.introduction}
                 </div>
-                <div className='c-tag__outer'>
-                  <svg className='c-tag__icon c-svg'>
-                    <use href='/svg/icon.svg#icon-tag' />
-                  </svg>
-                  <ul className='c-tag__list'>
-                    {details.tags.map((tag, tag_index) => (
-                      <li key={tag_index} className='c-tag__item'>
-                        #{tag.tag_nm}
-                      </li>
-                    ))}
-                  </ul>
+                <div className='c-card__bottom'>
+                  <div className='c-tag__outer'>
+                    <svg className='c-tag__icon c-svg'>
+                      <use href='/svg/icon.svg#icon-tag' />
+                    </svg>
+                    <ul className='c-tag__list'>
+                      {details.tags.map((tag, tag_index) => (
+                        <li key={tag_index} className='c-tag__item'>
+                          #{tag.tag_nm}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div className='u-display-flex u-display-flex-justify-content-end'>
-                  <Link
-                    href={`../../article/${details.topics_id}`}
-                    className='c-button'
-                  >
-                    MORE
-                  </Link>
+                <div className='c-media__bottom'>
+                  <p className='c-media__area'>
+                    <svg className='c-map__icon c-svg'>
+                      <use href='/svg/icon.svg#icon-map' />
+                    </svg>
+                    {details.tags.map((tag, tag_index) =>
+                      tag.tag_category_id === 5 ? (
+                        <span key={tag_index} className='c-tag-card__item'>
+                          {tag.tag_nm}
+                        </span>
+                      ) : null,
+                    )}
+                  </p>
+                  <p className='c-media__category'>
+                    {details.contents_type_nm}
+                  </p>
                 </div>
               </div>
-            </div>
+            </Link>
           </li>
         ))}
       </ul>
-    </section>
+    </article>
   );
 };
 

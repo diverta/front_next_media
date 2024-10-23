@@ -23,9 +23,11 @@
     }
     &__lead {
       margin: 0;
+      color: var(--color-white);
       font-size: 5vw;
       font-family: var(--font-secular-one), sans-serif;
       line-height: 1.3;
+      text-shadow: 1px 2px 3px var(--color-gray);
       @include sp() {
         font-size: 10vw;
       }
@@ -33,25 +35,14 @@
     &__text {
       margin: var(--spacing) 0;
       padding: 0 var(--spacing);
+      color: var(--color-white);
       font-weight: bold;
       letter-spacing: 0.05em;
+      text-shadow: 1px 2px 3px var(--color-gray);
       @include pc() {
         font-size: var(--font-size-h4);
       }
     }
-  }
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 130%;
-    height: 96%;
-    background: #b39d8b;
-    opacity: var(--hover-opacity);
-    z-index: 0;
-    border-radius: 0 0 50% 50%;
-    transform: translateX(-50%) translateY(18px) rotate(2deg);
   }
   &::after {
     content: '';
@@ -63,12 +54,10 @@
     background:
       linear-gradient(
         to right,
-        rgba(50, 90, 130, 0.7),
+        rgba(20, 70, 154, 0.8),
         rgba(190, 210, 220, 0.5)
       ),
       url(/images/top-hero.jpg) center no-repeat;
-    z-index: 0;
-    border-radius: 0 0 50% 50%;
-    transform: translateX(-50%) rotate(0deg);
+    transform: translateX(-50%);
   }
 }

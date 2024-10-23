@@ -61,6 +61,7 @@
   }
   &--primary {
     @extend %button;
+    padding: calc(var(--spacing) * 1.5);
     border-color: var(--color-primary);
     background-color: var(--color-primary);
     color: var(--color-white);

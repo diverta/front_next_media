@@ -25,7 +25,7 @@ const Header = () => {
   };
 
   const handleNavClose = () => {
-    if(isNavToggleActive) {
+    if (isNavToggleActive) {
       setIsNavToggleActive(false);
     }
   };
@@ -66,8 +66,8 @@ const Header = () => {
             <Image
               src='/images/logo.png'
               alt='Company Name'
-              width={200}
-              height={60}
+              width={166}
+              height={50}
             />
           </Link>
         </div>
@@ -101,7 +101,7 @@ const Header = () => {
                 <Link href='/article?topic=culture'>CULTURE</Link>
               </li>
             </ul>
-            <Search onSubmit={handleNavClose}/>
+            <Search onSubmit={handleNavClose} />
             {!loading && (
               <div onClickCapture={handleNavClose}>
                 {user ? (

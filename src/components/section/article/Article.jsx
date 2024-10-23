@@ -90,8 +90,8 @@ export default function Article({ children }) {
         title={content ? content.title : categoryTitle}
         subTitle={content ? content.subtitle : list?.[0]?.contents_type_nm}
       />
-      <div className='l-container--col-2 l-container--contents'>
-        <main className='l-container--col-2__main'>
+      <div className='l-container--large l-container--contents'>
+        <main>
           <Wrapper>
             <>
               {list === null && (

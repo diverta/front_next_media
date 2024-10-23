@@ -14,14 +14,13 @@ export default function Page() {
   return (
     <main className='l-container'>
       <Suspense>
-        <Article>
-          <div className='l-container--col-2__side'>
-            <Banner />
-            <Feature />
-            <TagArea />
-            <TagKeyword />
-          </div>
-        </Article>
+        <Article />
+        <div className='l-container--large'>
+          <Feature />
+          <TagArea />
+          <TagKeyword />
+          <Banner />
+        </div>
       </Suspense>
     </main>
   );

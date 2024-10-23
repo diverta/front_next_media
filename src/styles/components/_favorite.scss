@@ -4,6 +4,9 @@
   flex: 0 0 auto;
   align-self: flex-end;
   margin: 0;
+  span:not([class]) {
+    font-family: var(--font-en);
+  }
   &__button {
     display: flex;
     align-items: center;

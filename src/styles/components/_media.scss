@@ -3,14 +3,15 @@
 
 .c-media {
   display: flex;
-  background: #fff;
-  border: 1px solid #666;
-  padding: var(--spacing-small);
-  box-shadow: 0 10px 8px -6px #bebebe;
   position: relative;
   transition: var(--transition-seconds);
+  gap: var(--spacing-large);
+  .c-media-list--col-2 & {
+    gap: var(--spacing);
+  }
   @include sp {
     flex-direction: column;
+    gap: var(--spacing-small);
   }
   &:hover {
     opacity: var(--hover-opacity);
@@ -19,16 +20,10 @@
     flex: 0 0 40%;
     overflow: hidden;
     position: relative;
-    object-fit: cover;
-    @include pc {
-      margin-right: var(--spacing);
-    }
-    @include sp {
-      margin-bottom: var(--spacing);
-    }
     img {
       position: relative !important;
       width: 100%;
+      object-fit: cover;
       transition: var(--transition-seconds) ease-in;
       .c-media:hover & {
         transform: scale(1.1);
@@ -36,23 +31,19 @@
     }
     &__badge {
       position: absolute;
-      top: 5px;
-      left: -7px;
+      top: 0;
+      left: 0;
       z-index: 1;
-      width: 25px;
-      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
       color: var(--color-white);
+      line-height: 1;
+      font-family: var(--font-en);
       background: var(--color-primary);
       text-align: center;
-      &::before {
-        position: absolute;
-        content: '';
-        top: 100%;
-        left: 0;
-        border: none;
-        border-bottom: solid 7px transparent;
-        border-right: solid 6px #ab5f21;
-      }
     }
   }
   &__date {
@@ -70,14 +61,17 @@
     font-weight: bold;
     transition: var(--transition-seconds) color;
     @include pc {
-      font-size: var(--font-size-medium);
+      font-size: var(--font-size-h3);
       overflow: hidden;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
     }
     @include sp {
-      font-size: var(--font-size-small);
+      font-size: var(--font-size-h3-sp);
+    }
+    .c-media-list--col-2 & {
+      font-size: var(--font-size-medium);
     }
     .c-media:hover & {
       color: var(--color-primary);
@@ -100,12 +94,16 @@
     margin-top: var(--spacing);
   }
   &__category {
-    font-size: var(--font-size-x-small);
+    display: flex;
+    align-items: center;
     margin: 0;
-    background: var(--color-gray);
-    color: #fff;
-    line-height: 1;
     padding: var(--spacing-small);
+    background: var(--color-primary);
+    color: #fff;
+    font-size: var(--font-size-x-small);
+    font-family: var(--font-en);
+    line-height: 1.2;
+    letter-spacing: var(--letter-spacing);
   }
   &__area {
     margin: 0;
@@ -114,46 +112,19 @@
     align-items: center;
   }
   &-list {
-    @include pc {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    &--col-3 {
-      .c-media__item {
-        @include pc {
-          flex: 0 0 calc((100% - (var(--spacing) * 2)) / 3);
-          &:not(:nth-of-type(3n + 1)) {
-            margin-left: var(--spacing);
-          }
-          &:nth-child(n + 4) {
-            margin-top: var(--spacing);
-          }
-        }
-        @include sp {
-          &:not(:first-child) {
-            margin-top: calc(var(--spacing) * 1.5);
-          }
-        }
-      }
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-large);
+    @include sp {
+      flex-direction: column;
     }
     &--col-2 {
       @include pc {
         justify-content: space-between;
       }
       .c-media__item {
-        &:nth-child(n + 3) {
-          margin-top: var(--spacing);
-        }
         @include pc {
-          flex: 0 0 calc((100% - var(--spacing)) / 2);
-          &:nth-child(n + 3) {
-            margin-top: var(--spacing);
-          }
-        }
-        @include sp {
-          &:not(:first-child) {
-            margin-top: calc(var(--spacing) * 1.5);
-          }
+          flex: 0 0 calc((100% - var(--spacing-large)) / 2);
         }
       }
     }

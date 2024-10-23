@@ -4,17 +4,17 @@
 
 .c-article {
   margin-top: var(--spacing-large);
-
-  &__detail {
-    background-color: var(--color-white);
+  header {
     @include pc() {
       padding: var(--spacing-large);
     }
     @include sp() {
       padding: var(--spacing);
     }
+  }
+  &__detail {
     &__mainImage {
-      margin: 0 0 var(--spacing);
+      margin: 0;
       overflow: hidden;
       img {
         object-fit: cover;
@@ -36,37 +36,13 @@
       }
     }
     &__intro {
-      border: 2px solid var(--color-base);
-      position: relative;
-      @include pc() {
-        padding: calc(var(--spacing) * 1.5);
-      }
+      margin: 0;
+      padding-bottom: var(--spacing-large);
+      border-bottom: 1px solid var(--color-border);
+      font-size: var(--font-size-h4);
+      line-height: 2;
       @include sp() {
-        padding: var(--spacing);
-      }
-      &::after,
-      &::before {
-        position: absolute;
-        content: '';
-        display: block;
-        background-color: var(--color-white);
-      }
-      &::after {
-        top: 15px;
-        bottom: 15px;
-        left: -2px;
-        right: -2px;
-      }
-      &::before {
-        top: -2px;
-        bottom: -2px;
-        left: 15px;
-        right: 15px;
-      }
-      &__text {
-        margin: 0;
-        position: relative;
-        z-index: 1;
+        font-size: var(---font-size-h4-sp);
       }
     }
     &__image {
@@ -82,19 +58,53 @@
       }
     }
     &__contents {
-      margin-top: var(--spacing-large);
       line-height: 1.7;
-      h1:not([class]) {
+      @include pc() {
+        padding: var(--spacing-large);
+      }
+      @include sp() {
+        padding: var(--spacing);
+      }
+      @include pc() {
+        padding: var(--spacing-large);
+      }
+      @include sp() {
+        padding: var(--spacing);
+      }
+      h1 {
         @extend .c-heading--lv1;
       }
-      h2:not([class]) {
-        @extend .c-heading--lv4;
+      h2 {
+        @extend %heading;
+        font-size: var(--font-size-h2);
+        margin: var(--spacing) 0;
+        @include sp() {
+          font-size: var(--font-size-h2-sp);
+        }
       }
-      h3:not([class]) {
-        @extend .c-heading--lv3;
+      h3 {
+        @extend %heading;
+        font-size: var(--font-size-h3);
+        margin: var(--spacing) 0;
+        @include sp() {
+          font-size: var(--font-size-h3-sp);
+        }
       }
-      h4:not([class]) {
-        @extend .c-heading--lv4;
+      h4 {
+        @extend %heading;
+        font-size: var(--font-size-h4);
+        margin: var(--spacing) 0;
+        @include sp() {
+          font-size: var(--font-size-h4-sp);
+        }
+      }
+      h5 {
+        @extend %heading;
+        font-size: var(--font-size-h5);
+        margin: var(--spacing) 0;
+        @include sp() {
+          font-size: var(--font-size-h5-sp);
+        }
       }
       p:not([class]) {
         @extend .c-text;

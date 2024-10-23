@@ -5,10 +5,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #fff;
-  border: 1px solid #666;
-  padding: var(--spacing-small);
-  box-shadow: 0 10px 8px -6px #bebebe;
   position: relative;
   transition: var(--transition-seconds);
   &:hover {
@@ -28,23 +24,26 @@
     &__badge {
       @extend .c-badge;
       position: absolute;
-      top: -16px;
-      left: 13px;
+      top: 0;
+      left: 0;
       padding: var(--spacing-small) var(--spacing);
       z-index: 1;
-      transform: rotate(-4deg);
       background-color: var(--color-primary);
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      font-family: var(--font-en);
+      letter-spacing: var(--letter-spacing);
     }
   }
   &__date {
     font-size: var(--font-size-x-small);
     margin: 0;
-    padding: 0 var(--spacing-small);
+    padding: var(--spacing-small) var(--spacing);
     position: absolute;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--color-lightest-gray);
+  }
+  &__body {
+    padding: var(--spacing-small);
   }
   &__heading {
     flex: 1 1 auto;
@@ -80,7 +79,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: var(--spacing);
+    margin-top: var(--spacing-small);
     font-size: var(--font-size-small);
   }
   &__category {

@@ -51,16 +51,16 @@ const DetailBody = ({ data, params }) => {
   }, [params]);
 
   return (
-    <article className='c-article__detail'>
+    <article className='c-article__detail l-container--contents u-pt-20'>
+      <figure className='c-article__detail__mainImage'>
+        <Image
+          alt='dummy main image'
+          src={data.image.url}
+          width='1240'
+          height='600'
+        />
+      </figure>
       <header>
-        <figure className='c-article__detail__mainImage'>
-          <Image
-            alt='dummy main image'
-            src={data.image.url}
-            width='1200'
-            height='400'
-          />
-        </figure>
         <time className='c-article__detail__date u-mb-10' dateTime={data.ymd}>
           {data.ymd}
         </time>
@@ -114,11 +114,9 @@ const DetailBody = ({ data, params }) => {
         </div>
       </header>
       <div className='c-article__detail__contents'>
-        <div className='c-article__detail__intro'>
-          <p className='c-article__detail__intro__text u-white-spcace-pre-wrap'>
-            {data.introduction}
-          </p>
-        </div>
+        <p className='c-article__detail__intro u-white-spcace-pre-wrap'>
+          {data.introduction}
+        </p>
         {data.contentItems.map((item, index) => (
           <div key={index} className='c-article__detail__block'>
             <h2>{item.header}</h2>
