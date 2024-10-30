@@ -1,3 +1,4 @@
+@use '../media_query' as *;
 .c-tag {
   display: block;
   background-color: var(--color-white);
@@ -7,6 +8,9 @@
   font-size: var(--font-size-small);
   font-weight: bold;
   transition: var(--transition-seconds);
+  @include sp() {
+    font-size: var(--font-size-x-small);
+  }
   &:hover,
   &.is-current {
     color: var(--color-white);

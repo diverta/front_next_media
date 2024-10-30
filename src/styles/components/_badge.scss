@@ -1,7 +1,9 @@
 .c-badge {
   padding: calc(var(--spacing) / 4) var(--spacing);
-  background-color: var(--color-gray);
+  background-color: var(--color-primary);
   color: var(--color-white);
+  font-family: var(--font-en);
   font-size: var(--font-size-x-small);
   text-align: center;
+  letter-spacing: var(--letter-spacing);
 }

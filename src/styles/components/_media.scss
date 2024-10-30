@@ -30,6 +30,7 @@
       }
     }
     &__badge {
+      @extend .c-badge;
       position: absolute;
       top: 0;
       left: 0;
@@ -41,9 +42,6 @@
       height: 30px;
       color: var(--color-white);
       line-height: 1;
-      font-family: var(--font-en);
-      background: var(--color-primary);
-      text-align: center;
     }
   }
   &__date {
@@ -94,16 +92,12 @@
     margin-top: var(--spacing);
   }
   &__category {
+    @extend .c-badge;
     display: flex;
     align-items: center;
     margin: 0;
     padding: var(--spacing-small);
-    background: var(--color-primary);
-    color: #fff;
-    font-size: var(--font-size-x-small);
-    font-family: var(--font-en);
     line-height: 1.2;
-    letter-spacing: var(--letter-spacing);
   }
   &__area {
     margin: 0;

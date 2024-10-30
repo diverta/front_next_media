@@ -43,7 +43,7 @@ export default async function Page({ params }) {
 
   return (
     <div className='l-container'>
-      <div class='u-bg-white'>
+      <div className='u-bg-white'>
         <Breadcrumb paths={paths} />
         <div className='l-container--large c-article'>
           <main>

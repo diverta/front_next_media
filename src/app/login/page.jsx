@@ -51,7 +51,7 @@ export default function Page() {
             <div>You have already logged in.</div>
           ) : (
             <form
-              className='c-form c-box'
+              className='c-form'
               onSubmit={handleLogin}
               onChange={handleChange}
             >

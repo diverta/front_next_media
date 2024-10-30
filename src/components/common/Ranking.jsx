@@ -23,10 +23,9 @@ export default function Ranking() {
 
   return (
     <section className='u-bg-white'>
-      <div class='l-container--large l-container--contents'>
-        <div className='c-heading--box__outer'>
-          <h2 className='c-heading--box -en'>RANKING</h2>
-          <p className='c-heading--boxSub'>お気に入りランキング</p>
+      <div className='l-container--large l-container--contents'>
+        <div className='c-heading--border-horizontal u-display-flex-wrap'>
+          <h2 className='c-heading--lv3 u-mb-0'>ランキング</h2>
         </div>
         <ul className='c-media-list c-media-list--col-2'>
           {data &&

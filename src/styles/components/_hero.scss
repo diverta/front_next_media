@@ -7,12 +7,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 70vh;
   @include pc() {
-    height: 70vh;
     margin-bottom: calc(var(--spacing-vertical-pc) / 2);
   }
   @include sp() {
-    height: 50vh;
     margin-bottom: calc(var(--spacing-vertical-sp) / 2);
   }
   &__body {
@@ -49,8 +48,8 @@
     position: absolute;
     left: 50%;
     top: 0;
-    width: 130%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
     background:
       linear-gradient(
         to right,
@@ -58,6 +57,7 @@
         rgba(190, 210, 220, 0.5)
       ),
       url(/images/top-hero.jpg) center no-repeat;
+    background-size: cover;
     transform: translateX(-50%);
   }
 }

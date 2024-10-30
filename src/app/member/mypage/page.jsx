@@ -49,11 +49,11 @@ export default function Page() {
       <Breadcrumb paths={[{ label: 'マイページ' }]} />
       <PageTitle title='マイページ' subTitle='My page' />
       <div className='l-container--col-2 l-container--contents'>
-        <main className='l-container--col-2__main'>
+        <div className='l-container--col-2__main'>
           {/* Member only content */}
-          <section className='c-box'>
-            <div className='c-heading--box__outer -oneLine'>
-              <h2 className='c-heading--box'>今月の会員限定記事</h2>
+          <section>
+            <div className='c-heading--border-horizontal'>
+              <h2 className='c-heading--lv3 u-mb-0'>今月の会員限定記事</h2>
             </div>
             <ul className='c-media-list c-media-list--col-2'>
               {limitedContent &&
@@ -101,7 +101,7 @@ export default function Page() {
               )}
             </div>
           </section>
-        </main>
+        </div>
         <div className='l-container--col-2__side'>
           <Menu />
         </div>

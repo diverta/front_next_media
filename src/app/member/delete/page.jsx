@@ -49,7 +49,7 @@ export default function Page() {
         <PageTitle title='退会' subTitle='Unsubscribe' />
         <div className='l-container--col-2 l-container--contents'>
           <main className='l-container--col-2__main'>
-            <form className='c-form c-box' onSubmit={handleSubmit}>
+            <form className='c-form' onSubmit={handleSubmit}>
               <div className='c-form-group'>
                 <dl>
                   <dt className='c-form-label'>名前</dt>

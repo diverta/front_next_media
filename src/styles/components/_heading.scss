@@ -39,14 +39,6 @@
   @include sp() {
     font-size: var(--font-size-h3-sp);
   }
-  &:before {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    height: 3px;
-    background-color: var(--color-primary);
-    width: 30px;
-  }
   &:not(:first-child) {
     @include pc() {
       margin-top: var(--spacing-large);
@@ -56,17 +48,22 @@
     }
   }
 }
-.c-heading--lv3-b {
+.c-heading--lv3--border-bottom {
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    height: 3px;
+    background-color: var(--color-primary);
+    width: 30px;
+  }
+}
+.c-heading--lv3--border-top {
   @extend %heading;
   border-top: 1px solid var(--color-border);
   margin-bottom: var(--spacing-large);
   padding-top: var(--spacing-large);
   font-size: var(--font-size-h3);
-  &.-memberMenu {
-    @include pc() {
-      display: none;
-    }
-  }
   @include sp() {
     font-size: var(--font-size-h3-sp);
   }
@@ -79,6 +76,7 @@
     }
   }
 }
+
 .c-heading--sub {
   margin: var(--spacing-small) 0 0 0;
   color: var(--color-primary);
@@ -90,81 +88,28 @@
   }
 }
 
-.c-heading--box {
-  font-weight: bold;
-  @include pc() {
-    font-size: var(--font-size-h2);
-  }
+.c-heading--border-horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-large);
   @include sp() {
-    font-size: var(--font-size-h2-sp);
+    margin-bottom: var(--spacing);
   }
-  &.-en {
-    font-family: var(--font-en);
-    letter-spacing: 0.05em;
-    @include pc() {
-      font-size: var(--font-size-h1);
-    }
-    @include sp() {
-      font-size: var(--font-size-h1-sp);
-    }
+  &::before,
+  &::after {
+    background-color: var(--color-base);
+    width: var(--spacing);
+    height: 2px;
+    content: '';
   }
-  &Sub {
-    font-weight: bold;
-    @include pc() {
-      margin: 0 0 0 var(--spacing);
-    }
-    @include sp() {
-      font-size: var(--font-size-small);
-      margin: 0;
-    }
+  &::before {
+    margin-right: var(--spacing);
+    transform: rotate(60deg);
   }
-  &__outer {
-    @include pc() {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: var(--spacing-large);
-    }
-    @include sp() {
-      position: relative;
-      text-align: center;
-      margin-bottom: var(--spacing);
-    }
-    &::before,
-    &::after {
-      background-color: var(--color-base);
-      border-radius: var(--border-radius);
-      content: '';
-      height: 3px;
-      width: 34px;
-      @include sp() {
-        position: absolute;
-        top: 20px;
-      }
-    }
-    &::before {
-      margin-right: 10px;
-      transform: rotate(60deg);
-      @include sp() {
-        left: 15px;
-      }
-    }
-    &::after {
-      margin-left: 10px;
-      transform: rotate(-60deg);
-      @include sp() {
-        right: 15px;
-      }
-    }
-    &.-oneLine {
-      @include sp() {
-        &::before,
-        &::after {
-          width: 26px;
-          top: 12px;
-        }
-      }
-    }
+  &::after {
+    margin-left: var(--spacing);
+    transform: rotate(-60deg);
   }
 }
 

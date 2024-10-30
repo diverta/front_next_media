@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Banner = () => {
   return (
-    <aside class='l-container--contents'>
+    <aside className='l-container--contents'>
       <ul className='c-banner-list'>
         <li className='c-banner__item'>
           <Link href='/'>

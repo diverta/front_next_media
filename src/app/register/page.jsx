@@ -54,7 +54,7 @@ export default function Page() {
       <PageTitle title='会員登録' subTitle='Register' />
       <div className='l-container--small l-container--contents'>
         <form
-          className='c-form c-box'
+          className='c-form'
           onSubmit={handleRegister}
           onChange={handleChange}
         >

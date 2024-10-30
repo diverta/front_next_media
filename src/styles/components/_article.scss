@@ -9,7 +9,7 @@
       padding: var(--spacing-large);
     }
     @include sp() {
-      padding: var(--spacing);
+      padding: var(--spacing) 0;
     }
   }
   &__detail {
@@ -18,6 +18,9 @@
       overflow: hidden;
       img {
         object-fit: cover;
+        @include sp {
+          height: 40vh;
+        }
       }
     }
     &__date {
@@ -63,13 +66,7 @@
         padding: var(--spacing-large);
       }
       @include sp() {
-        padding: var(--spacing);
-      }
-      @include pc() {
-        padding: var(--spacing-large);
-      }
-      @include sp() {
-        padding: var(--spacing);
+        padding: var(--spacing) 0;
       }
       h1 {
         @extend .c-heading--lv1;
@@ -151,74 +148,6 @@
       }
       @include sp() {
         margin-top: var(--spacing-large);
-      }
-    }
-  }
-}
-
-.c-memberArticle {
-  &__head {
-    display: flex;
-    align-items: center;
-    @include pc() {
-      justify-content: end;
-      margin-top: 15px;
-    }
-    @include sp() {
-      margin-top: 10px;
-    }
-  }
-  &__coupon {
-    margin-top: 35px;
-    border: 1px solid var(--color-base);
-    position: relative;
-    @include pc() {
-      padding: var(--spacing-large);
-    }
-    @include sp() {
-      padding: var(--spacing);
-    }
-    &::after,
-    &::before {
-      position: absolute;
-      content: '';
-      display: block;
-      background-color: var(--color-white);
-    }
-    &::after {
-      top: 15px;
-      bottom: 15px;
-      left: -2px;
-      right: -2px;
-    }
-    &::before {
-      top: -2px;
-      bottom: -2px;
-      left: 15px;
-      right: 15px;
-    }
-    &__inner {
-      display: flex;
-      align-items: flex-start;
-      position: relative;
-      z-index: 1;
-      @include sp() {
-        flex-direction: column;
-      }
-    }
-    &__title {
-      flex: 0 0 auto;
-      background: var(--color-primary);
-      color: var(--color-white);
-      font-family: var(--font-en);
-      padding: 2px 5px 1px;
-      margin-right: 10px;
-    }
-    &__link {
-      transition: var(--transition-seconds);
-      &:hover {
-        opacity: var(--hover-opacity);
-        color: var(--color-primary);
       }
     }
   }

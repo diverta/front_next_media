@@ -70,9 +70,9 @@ export default function Page() {
       <Breadcrumb paths={[{ label: '会員情報' }]} />
       <PageTitle title='会員情報' subTitle='Edit Profile' />
       <div className='l-container--col-2 l-container--contents'>
-        <main className='l-container--col-2__main'>
+        <div className='l-container--col-2__main'>
           <form
-            className='c-form c-box'
+            className='c-form'
             onSubmit={handleSubmit}
             onChange={handleChange}
           >
@@ -162,7 +162,7 @@ export default function Page() {
               </Link>
             </div>
           </form>
-        </main>
+        </div>
         <div className='l-container--col-2__side'>
           <Menu />
         </div>
