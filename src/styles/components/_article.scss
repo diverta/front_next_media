@@ -4,59 +4,48 @@
 
 .c-article {
   margin-top: var(--spacing-large);
-
-  &__detail {
-    background-color: var(--color-white);
+  header {
     @include pc() {
       padding: var(--spacing-large);
     }
     @include sp() {
-      padding: var(--spacing);
+      padding: var(--spacing) 0;
     }
+  }
+  &__detail {
     &__mainImage {
-      margin: 0 0 var(--spacing);
+      margin: 0;
       overflow: hidden;
       img {
         object-fit: cover;
+        @include sp {
+          height: 40vh;
+        }
       }
     }
     &__date {
       display: block;
       text-align: right;
-      margin-bottom: var(--spacing-small);
     }
-    &__intro {
-      border: 2px solid var(--color-base);
-      position: relative;
+    &__head {
+      display: flex;
       @include pc() {
-        padding: calc(var(--spacing) * 1.5);
+        justify-content: space-between;
+        margin-top: var(--spacing-large);
       }
       @include sp() {
-        padding: var(--spacing);
+        flex-direction: column-reverse;
+        margin-top: var(--spacing);
       }
-      &::after,
-      &::before {
-        position: absolute;
-        content: '';
-        display: block;
-        background-color: var(--color-white);
-      }
-      &::after {
-        top: 15px;
-        bottom: 15px;
-        left: -2px;
-        right: -2px;
-      }
-      &::before {
-        top: -2px;
-        bottom: -2px;
-        left: 15px;
-        right: 15px;
-      }
-      &__text {
-        margin: 0;
-        position: relative;
-        z-index: 1;
+    }
+    &__intro {
+      margin: 0;
+      padding-bottom: var(--spacing-large);
+      border-bottom: 1px solid var(--color-border);
+      font-size: var(--font-size-h4);
+      line-height: 2;
+      @include sp() {
+        font-size: var(---font-size-h4-sp);
       }
     }
     &__image {
@@ -72,19 +61,47 @@
       }
     }
     &__contents {
-      margin-top: var(--spacing-large);
       line-height: 1.7;
-      h1:not([class]) {
+      @include pc() {
+        padding: var(--spacing-large);
+      }
+      @include sp() {
+        padding: var(--spacing) 0;
+      }
+      h1 {
         @extend .c-heading--lv1;
       }
-      h2:not([class]) {
-        @extend .c-heading--lv4;
+      h2 {
+        @extend %heading;
+        font-size: var(--font-size-h2);
+        margin: var(--spacing) 0;
+        @include sp() {
+          font-size: var(--font-size-h2-sp);
+        }
       }
-      h3:not([class]) {
-        @extend .c-heading--lv3;
+      h3 {
+        @extend %heading;
+        font-size: var(--font-size-h3);
+        margin: var(--spacing) 0;
+        @include sp() {
+          font-size: var(--font-size-h3-sp);
+        }
       }
-      h4:not([class]) {
-        @extend .c-heading--lv4;
+      h4 {
+        @extend %heading;
+        font-size: var(--font-size-h4);
+        margin: var(--spacing) 0;
+        @include sp() {
+          font-size: var(--font-size-h4-sp);
+        }
+      }
+      h5 {
+        @extend %heading;
+        font-size: var(--font-size-h5);
+        margin: var(--spacing) 0;
+        @include sp() {
+          font-size: var(--font-size-h5-sp);
+        }
       }
       p:not([class]) {
         @extend .c-text;
@@ -120,6 +137,10 @@
       li {
         padding: var(--spacing-small) 0;
       }
+      figure {
+        margin-right: 0;
+        margin-left: 0;
+      }
     }
     &__block {
       @include pc() {
@@ -127,83 +148,6 @@
       }
       @include sp() {
         margin-top: var(--spacing-large);
-      }
-    }
-  }
-}
-
-.c-memberArticle {
-  &__type {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    @include pc() {
-      margin-top: 15px;
-    }
-    @include sp() {
-      margin-top: 10px;
-    }
-    > * {
-      padding-left: 10px;
-    }
-  }
-  &__date {
-    font-size: 0.875em;
-  }
-  &__detail {
-    margin-top: 35px;
-    @include sp() {
-      font-size: 0.875em;
-    }
-  }
-  &__coupon {
-    margin-top: 35px;
-    border: 1px solid var(--color-base);
-    position: relative;
-    @include pc() {
-      padding: calc(var(--spacing) * 1.5);
-    }
-    @include sp() {
-      padding: var(--spacing);
-      font-size: 0.875em;
-    }
-    &::after,
-    &::before {
-      position: absolute;
-      content: '';
-      display: block;
-      background-color: var(--color-white);
-    }
-    &::after {
-      top: 15px;
-      bottom: 15px;
-      left: -2px;
-      right: -2px;
-    }
-    &::before {
-      top: -2px;
-      bottom: -2px;
-      left: 15px;
-      right: 15px;
-    }
-    &__info {
-      display: flex;
-      align-items: flex-start;
-      position: relative;
-      z-index: 1;
-    }
-    &__title {
-      background: var(--color-primary);
-      color: var(--color-white);
-      font-family: var(--font-en);
-      padding: 2px 5px 1px;
-      margin-right: 10px;
-    }
-    &__link {
-      transition: var(--transition-seconds);
-      &:hover {
-        opacity: 0.8;
-        color: var(--color-primary);
       }
     }
   }

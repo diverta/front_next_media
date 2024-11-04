@@ -40,14 +40,14 @@
   &::before {
     background: url(/images/top-hero.jpg) no-repeat center;
     background-size: cover;
-    opacity: 0.7;
+    opacity: var(--hover-opacity);
     z-index: -2;
   }
   &::after {
     position: absolute;
     left: 0;
     right: 0;
-    background-color: rgba(239, 230, 222, 0.3);
+    background-color: rgba(255, 255, 255, 0.25);
     transform: skewY(6deg);
     z-index: -1;
   }

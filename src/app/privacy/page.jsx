@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className='l-container'>
+    <main className='l-container'>
       <Breadcrumb paths={[{ label: 'プライバシーポリシー' }]} />
       <PageTitle title='プライバシーポリシー' subTitle='PRIVACY POLICY' />
       <div className='l-container--large l-container--contents'>
@@ -49,6 +49,6 @@ export default function Page() {
           </p>
         </article>
       </div>
-    </div>
+    </main>
   );
 }

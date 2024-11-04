@@ -22,9 +22,12 @@ export default function Feature() {
   }, []);
 
   return (
-    <section className='l-container--contents-side'>
-      <h2 className='c-heading--lv3-b'>特集</h2>
-      <ul className='c-banner__list'>
+    <section className='l-container--contents'>
+      <div className='u-mb-40'>
+        <h2 className='c-heading--lv1'>特集</h2>
+        <p className='c-heading--sub'>Features</p>
+      </div>
+      <ul className='c-banner-list c-banner-list--col-2'>
         {data.map((item, index) => (
           <li key={index} className='c-banner__item'>
             <Link href={`/feature/${item.topics_id}`}>
@@ -33,8 +36,8 @@ export default function Feature() {
                 src={
                   item.image.url
                 } /* Assuming imageUrl is a property in each data item */
-                width={400}
-                height={180}
+                width={600}
+                height={342}
               />
             </Link>
           </li>

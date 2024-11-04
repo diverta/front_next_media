@@ -1,48 +1,39 @@
+@use '../media_query' as *;
 .c-tag {
-  display: flex;
-  .c-card__item & {
-    align-items: flex-end;
+  display: block;
+  background-color: var(--color-white);
+  padding: var(--spacing) var(--spacing-large);
+  border: 1px solid var(--color-border);
+  border-radius: 26px;
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  transition: var(--transition-seconds);
+  @include sp() {
+    font-size: var(--font-size-x-small);
   }
-  .c-article & {
+  &:hover,
+  &.is-current {
+    color: var(--color-white);
+    background-color: var(--color-base);
+  }
+  &__outer {
+    display: flex;
     align-items: flex-start;
   }
   &__icon {
     flex: 0 0 auto;
+    width: var(--font-size-base);
+    height: var(--font-size-base);
+    margin: calc(var(--spacing-small) / 2) var(--spacing-small) 0 0;
     .c-article & {
       width: 22px;
       height: 22px;
-      margin: calc(var(--spacing-small) / 2) var(--spacing-small) 0 0;
+      margin-top: var(--spacing);
     }
   }
   &__list {
     display: flex;
     flex-wrap: wrap;
-    font-size: 0.75em;
-  }
-  &__link {
-    background-color: var(--color-white);
-    padding: var(--spacing-small) var(--spacing);
-    border: 1px solid var(--color-base);
-    border-radius: 20px;
-    display: block;
-    margin: 0 var(--spacing-small) 0.8em 0;
-    transition: var(--transition-seconds);
-    &:hover, &.is-current {
-      color: var(--color-white);
-      background-color: var(--color-base);
-    }
-  }
-
-  &-card {
-    &__list {
-      display: flex;
-      padding-left: 0.25em;
-      .c-card & {
-        font-size: 0.75em;
-      }
-    }
-    &__item {
-      margin-right: var(--spacing-small);
-    }
+    gap: var(--spacing-small);
   }
 }

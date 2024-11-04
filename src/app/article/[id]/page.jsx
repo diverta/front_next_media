@@ -43,19 +43,19 @@ export default async function Page({ params }) {
 
   return (
     <div className='l-container'>
-      <Breadcrumb paths={paths} />
-      <div className='l-container--col-2 c-article'>
-        <div className='l-container--col-2__main'>
-          <div>
+      <div className='u-bg-white'>
+        <Breadcrumb paths={paths} />
+        <div className='l-container--large c-article'>
+          <main>
             <DetailBody data={item} params={params} />
-          </div>
+          </main>
         </div>
-        <div className='l-container--col-2__side'>
-          <Banner />
-          <Feature />
-          <TagArea />
-          <TagKeyword />
-        </div>
+      </div>
+      <div className='l-container--large'>
+        <Feature />
+        <TagArea />
+        <TagKeyword />
+        <Banner />
       </div>
     </div>
   );

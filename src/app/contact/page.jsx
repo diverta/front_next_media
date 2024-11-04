@@ -197,9 +197,10 @@ export default function Page() {
   };
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
       <Metadata title={METADATA.CONTACT} />
       <Breadcrumb paths={[{ label: 'お問い合わせ' }]} />
+
       <PageTitle title='お問い合わせ' subTitle='Contact' />
       <div className='l-container--small l-container--contents'>
         {submittedText ? (
@@ -478,6 +479,6 @@ export default function Page() {
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 }

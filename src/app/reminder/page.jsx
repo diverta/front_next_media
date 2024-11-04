@@ -54,12 +54,12 @@ export default function Page() {
   };
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
       <Metadata title={METADATA.REMINDER} />
       <Breadcrumb paths={[{ label: 'パスワード再発行' }]} />
       <PageTitle title='パスワード再発行' subTitle='Password Reset' />
       <div className='l-container--small l-container--contents'>
-        <div class='c-box'>
+        <div>
           {alert && <AlertSuccess message={alertMessage} />}
           {token ? (
             <form className='c-form' onSubmit={handleReset}>
@@ -121,6 +121,6 @@ export default function Page() {
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

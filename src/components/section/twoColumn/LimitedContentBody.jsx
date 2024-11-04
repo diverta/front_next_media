@@ -35,48 +35,45 @@ const LimitedContentBody = () => {
   }, [pathname]);
 
   return (
-    <div>
-      <section className='c-box c-memberArticle'>
+    <>
+      <div className='c-heading--border-horizontal'>
+        <p className='c-heading--lv3 u-mt-0 u-mb-0'>今月の会員限定記事</p>
+      </div>
+      <article className='c-article u-mt-0'>
         <Metadata title={METADATA.LIMITED_CONTENT} />
-        <div className='c-heading--box__outer -oneLine'>
-          <h2 className='c-heading--box'>今月の会員限定記事</h2>
-        </div>
-        <h2 className='c-heading--lv2'>{data.subject}</h2>
-
-        <div className='c-memberArticle__type'>
-          <p className='c-card__category'>{data.contents_type_nm}</p>
-          <p className='c-card__area'>
-            <svg className='c-map__icon c-svg'>
-              <use xlinkHref='/svg/icon.svg#icon-map' />
-            </svg>
-            {data.area}
-          </p>
-          <time className='c-memberArticle__date'>{data.ymd}</time>
-        </div>
-        <div className='c-memberArticle__detail'>
-          {data.introduction}
-          <br />
-          <br />
+        <header className='u-pt-0'>
+          <div className='u-display-flex u-mb-15'>
+            <span className='c-badge u-mr-10'>{data.contents_type_nm}</span>
+            <p className='c-card__area u-mr-15'>
+              <svg className='c-map__icon c-svg'>
+                <use xlinkHref='/svg/icon.svg#icon-map' />
+              </svg>
+              {data.area}
+            </p>
+            <time className='c-article__detail__date' dateTme={data.ymd}>
+              {data.ymd}
+            </time>
+          </div>
+          <h1 className='c-heading--lv2 u-mt-0'>{data.subject}</h1>
+        </header>
+        <div className='c-article__detail__contents'>
+          <p className='u-mt-0'>{data.introduction}</p>
           <div dangerouslySetInnerHTML={{ __html: data.body }} />
         </div>
-        <div className='c-memberArticle__coupon'>
-          <dl className='c-memberArticle__coupon__info'>
-            <dt className='c-memberArticle__coupon__title'>
+        <section className='c-article__detail__contents u-pb-0'>
+          <div className='u-bg-white u-pa-20 u-display-flex u-display-flex-align-items-center'>
+            <p className='c-badge u-mt-0 u-mb-0 u-mr-10 u-display-flex-shrink-0'>
               {couponLink.title}
-            </dt>
-            <dd className='c-memberArticle__coupon__url'>
-              <Link
-                href={`${couponLink.url}`}
-                target='_blnak'
-                className='c-memberArticle__coupon__link'
-              >
+            </p>
+            <p className='u-mt-0 u-mb-0'>
+              <Link href={`${couponLink.url}`} target='_blnak'>
                 お得なクーポン詳細はこちら
               </Link>
-            </dd>
-          </dl>
-        </div>
-      </section>
-    </div>
+            </p>
+          </div>
+        </section>
+      </article>
+    </>
   );
 };
 

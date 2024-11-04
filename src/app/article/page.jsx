@@ -12,17 +12,16 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className='l-container'>
+    <main className='l-container'>
       <Suspense>
-        <Article>
-          <div className='l-container--col-2__side'>
-            <Banner />
-            <Feature />
-            <TagArea />
-            <TagKeyword />
-          </div>
-        </Article>
+        <Article />
+        <div className='l-container--large'>
+          <Feature />
+          <TagArea />
+          <TagKeyword />
+          <Banner />
+        </div>
       </Suspense>
-    </div>
+    </main>
   );
 }

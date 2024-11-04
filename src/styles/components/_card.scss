@@ -2,15 +2,13 @@
 @use 'badge' as *;
 
 .c-card {
-  background: #fff;
-  border: 1px solid #666;
-  padding: 10px;
-  box-shadow: 0 10px 8px -6px #bebebe;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   position: relative;
-  display: block;
-  transition: 0.5s;
+  transition: var(--transition-seconds);
   &:hover {
-    opacity: 0.8;
+    opacity: var(--hover-opacity);
   }
   &__image {
     overflow: hidden;
@@ -26,50 +24,41 @@
     &__badge {
       @extend .c-badge;
       position: absolute;
-      top: -16px;
-      left: 13px;
+      top: 0;
+      left: 0;
       padding: var(--spacing-small) var(--spacing);
       z-index: 1;
-      transform: rotate(-4deg);
-      border-right: 2px dotted rgba(0, 0, 0, 0.1);
-      border-left: 2px dotted rgba(0, 0, 0, 0.1);
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    }
-    &__badge02 {
-      position: absolute;
-      top: 5px;
-      left: -7px;
-      z-index: 1;
-      width: 25px;
-      height: 25px;
-      color: var(--color-white);
-      background: var(--color-primary);
-      text-align: center;
-      &::before {
-        position: absolute;
-        content: '';
-        top: 100%;
-        left: 0;
-        border: none;
-        border-bottom: solid 7px transparent;
-        border-right: solid 6px #ab5f21;
-      }
+      background-color: var(--color-primary);
     }
   }
   &__date {
     font-size: var(--font-size-x-small);
     margin: 0;
-    padding: 0 var(--spacing-small);
+    padding: var(--spacing-small) var(--spacing);
     position: absolute;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--color-lightest-gray);
+  }
+  &__body {
+    padding: var(--spacing-small);
   }
   &__heading {
-    margin: 0 0 0.3em;
+    flex: 1 1 auto;
+    margin: var(--spacing) 0 var(--spacing-small);
     line-height: 1.3;
     font-weight: bold;
     transition: var(--transition-seconds) color;
+    @include pc {
+      font-size: var(--font-size-h4-sp);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+    @include sp {
+      font-size: var(--font-size-medium);
+    }
     .c-card:hover & {
       color: var(--color-primary);
     }
@@ -77,68 +66,48 @@
   &__text {
     margin: 0;
     font-size: var(--font-size-x-small);
+    @include pc {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
   }
   &__bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: var(--spacing);
+    margin-top: var(--spacing-small);
+    font-size: var(--font-size-small);
   }
   &__category {
-    font-size: 0.75em;
+    font-size: var(--font-size-x-small);
     margin: 0;
     background: var(--color-gray);
     color: #fff;
     line-height: 1;
-    padding: 4px 6px;
+    padding: var(--spacing-small);
   }
   &__area {
     margin: 0;
-    font-size: 0.75em;
+    font-size: var(--font-size-x-small);
     display: flex;
     align-items: center;
   }
   &-list {
+    display: flex;
+    flex-wrap: wrap;
     @include pc {
-      display: flex;
-      flex-wrap: wrap;
+      gap: var(--spacing-large);
+    }
+    @include sp {
+      flex-direction: column;
+      gap: var(--spacing);
     }
     &--col-3 {
       .c-card__item {
         @include pc {
           flex: 0 0 calc((100% - (var(--spacing-large) * 2)) / 3);
-          &:not(:nth-of-type(3n + 1)) {
-            margin-left: var(--spacing-large);
-          }
-          &:nth-child(n + 4) {
-            margin-top: 3em;
-          }
-        }
-        @include sp {
-          &:not(:first-child) {
-            margin-top: calc(var(--spacing-large) * 1.5);
-          }
-        }
-      }
-      .c-card__heading {
-        padding-top: var(--spacing-small);
-        @include pc {
-          font-size: var(--font-size-h4-sp);
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-        }
-        @include sp {
-          font-size: var(--font-size-medium);
-        }
-      }
-      .c-card__text {
-        @include pc {
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
         }
       }
     }
@@ -149,52 +118,6 @@
       .c-card__item {
         @include pc {
           flex: 0 0 calc((100% - var(--spacing-large)) / 2);
-          &:nth-child(n + 3) {
-            margin-top: 2em;
-          }
-        }
-        @include sp {
-          &:not(:first-child) {
-            margin-top: var(--spacing);
-          }
-        }
-      }
-      .c-card {
-        display: flex;
-      }
-      .c-card__image {
-        flex: 0 0 30%;
-        @include pc {
-          margin-right: var(--spacing);
-        }
-        @include sp {
-          margin-right: var(--spacing-small);
-        }
-        img {
-          object-fit: cover;
-        }
-      }
-      .c-card__heading {
-        @include pc {
-          font-size: var(--font-size-medium);
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 1;
-        }
-        @include sp {
-          font-size: var(--font-size-small);
-        }
-      }
-      .c-card__text {
-        @include pc {
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-        }
-        @include sp {
-          font-size: 0.75em;
         }
       }
     }
