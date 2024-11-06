@@ -40,10 +40,10 @@ export default function Article({ children }) {
       setContent(contentDirectory.article);
     }
 
-    // changes the searchParams object to a plain object
-    const params = searchParams
-      .entries()
-      .reduce((prev, [key, value]) => ({ ...prev, [key]: value }), {});
+    const params = Array.from(searchParams.entries()).reduce(
+      (prev, [key, value]) => ({ ...prev, [key]: value }),
+      {},
+    );
     setParams(params);
 
     async function fetchTagName(categoryid, id) {
