@@ -1,26 +1,64 @@
 .c-favorite {
-  .c-card__item & {
-    font-size: var(--font-size-small);
-    flex: 0 0 auto;
-    margin: 0;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  align-self: flex-end;
+  margin: 0;
+  span:not([class]) {
+    font-family: var(--font-en);
   }
-  .c-article & {
-    text-align: right;
-    margin: 0 0 var(--spacing) 0;
-  }
-  a {
+  &__button {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-white);
+    padding: var(--spacing-small) var(--spacing);
+    border: 1px solid var(--color-base);
+    border-radius: var(--border-radius);
+    background-color: transparent;
     transition: var(--transition-seconds);
-    &:hover {
-      opacity: 0.5;
+    &:not(:disabled) {
+      cursor: pointer;
+      &:hover {
+      }
+    }
+    &:disabled {
+      border-color: var(--color-gray);
+      background-color: var(--color-light-gray);
+      color: var(--color-gray);
+    }
+    &.is-active {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
     }
   }
   &__icon {
-    position: relative;
-    top: 2px;
-    right: 2px;
-    &.-active {
+    flex: 0 0 auto;
+    margin-right: calc(var(--spacing-small) / 2);
+    .is-active & {
       fill: var(--color-primary);
       stroke: none;
+    }
+  }
+  &__desc {
+    position: relative;
+    padding: var(--spacing-small) var(--spacing);
+    margin-right: var(--spacing-large);
+    border: 1px solid var(--color-gray);
+    color: var(--color-gray);
+    font-size: var(--font-size-x-small);
+    line-height: 1;
+    &::after {
+      position: absolute;
+      right: -0.4em;
+      top: 50%;
+      display: block;
+      width: 0.6em;
+      height: 0.6em;
+      border-top: 1px solid var(--color-gray);
+      border-right: 1px solid var(--color-gray);
+      background-color: var(--color-white);
+      transform: translate(0, -50%) rotate(45deg);
+      content: '';
     }
   }
 }

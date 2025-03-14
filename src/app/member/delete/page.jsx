@@ -9,6 +9,8 @@ import { useUser } from '@/contexts/user';
 import AlertSuccess from '@/components/ui/AlertSuccess';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Metadata from '@/components/common/Metadata';
+import { METADATA } from '@/constants/config';
 
 export default function Page() {
   const [memberInfo, setMemberInfo] = useState([]);
@@ -40,13 +42,14 @@ export default function Page() {
   };
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
+      <Metadata title={METADATA.MEMBER_DELETE} />
       <Breadcrumb paths={[{ label: '退会' }]} />
-      <PageTitle title='退会' subTitle='Unsubscribe' />
-      <div className='l-container--col-2 l-container--contents'>
-        <div className='l-container--col-2__main'>
-          <div>
-            <form className='c-form c-box' onSubmit={handleSubmit}>
+      <main>
+        <PageTitle title='退会' subTitle='Unsubscribe' />
+        <div className='l-container--col-2 l-container--contents'>
+          <main className='l-container--col-2__main'>
+            <form className='c-form' onSubmit={handleSubmit}>
               <div className='c-form-group'>
                 <dl>
                   <dt className='c-form-label'>名前</dt>
@@ -96,14 +99,14 @@ export default function Page() {
                 </div>
               )}
             </form>
-          </div>
+          </main>
+          {!alert && (
+            <div className='l-container--col-2__side'>
+              <Menu />
+            </div>
+          )}
         </div>
-        {!alert && (
-          <div className='l-container--col-2__side'>
-            <Menu />
-          </div>
-        )}
-      </div>
-    </div>
+      </main>
+    </main>
   );
 }

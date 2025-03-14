@@ -9,6 +9,8 @@ import Link from 'next/link';
 import postUpload from '@/fetch/postUpload';
 import postInquiry from '@/fetch/postInquiry';
 import getInquiryColumns from '@/fetch/getInquiryColumns';
+import Metadata from '@/components/common/Metadata';
+import { METADATA } from '@/constants/config';
 
 export default function Page() {
   const formData = useRef({});
@@ -195,8 +197,10 @@ export default function Page() {
   };
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
+      <Metadata title={METADATA.CONTACT} />
       <Breadcrumb paths={[{ label: 'お問い合わせ' }]} />
+
       <PageTitle title='お問い合わせ' subTitle='Contact' />
       <div className='l-container--small l-container--contents'>
         {submittedText ? (
@@ -354,16 +358,18 @@ export default function Page() {
                     </div>
                   )}
                   {col.type === 7 && (
-                    <input
-                      type='file'
-                      name={col.key}
-                      id={col.key}
-                      onChange={handleFileUpload}
-                      accept={
-                        col.options.map((option) => option.value).join(',') ||
-                        '*'
-                      }
-                    />
+                    <div>
+                      <input
+                        type='file'
+                        name={col.key}
+                        id={col.key}
+                        onChange={handleFileUpload}
+                        accept={
+                          col.options.map((option) => option.value).join(',') ||
+                          '*'
+                        }
+                      />
+                    </div>
                   )}
                   {col.type === 10 &&
                     col.attribute.selection_type === 'single' && (
@@ -473,6 +479,6 @@ export default function Page() {
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 }

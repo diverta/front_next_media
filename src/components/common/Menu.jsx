@@ -19,7 +19,7 @@ const Menu = () => {
   };
   return (
     <div>
-      <h2 className='c-heading--lv3-b -memberMenu'>会員メニュー</h2>
+      <h2 className='c-heading--lv3 is-sp'>会員メニュー</h2>
       <nav className='l-side__nav'>
         <ul className='l-side__nav__list'>
           <li className='l-side__nav__list__item'>

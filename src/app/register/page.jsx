@@ -9,6 +9,8 @@ import AlertError from '@/components/ui/AlertError';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
+import Metadata from '@/components/common/Metadata';
+import { METADATA } from '@/constants/config';
 
 export default function Page() {
   const { storeUser } = useUser();
@@ -46,12 +48,13 @@ export default function Page() {
   };
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
+      <Metadata title={METADATA.REGISTER} />
       <Breadcrumb paths={[{ label: '会員登録' }]} />
       <PageTitle title='会員登録' subTitle='Register' />
       <div className='l-container--small l-container--contents'>
         <form
-          className='c-form c-box'
+          className='c-form'
           onSubmit={handleRegister}
           onChange={handleChange}
         >
@@ -117,6 +120,6 @@ export default function Page() {
           </p>
         </form>
       </div>
-    </div>
+    </main>
   );
 }

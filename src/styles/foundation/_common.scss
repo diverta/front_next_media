@@ -64,7 +64,7 @@ body {
   color: var(--color-base);
   font-size: var(--font-size-base);
   font-family: var(--font-family);
-  background-color: var(--color-beige);
+  background-color: var(--color-lightest-gray);
 }
 
 button,
@@ -97,6 +97,7 @@ table {
   td {
     padding: var(--spacing);
     border: 1px solid var(--color-border);
+    background-color: var(--color-white);
   }
   th {
     background-color: var(--color-light-gray);

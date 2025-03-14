@@ -9,6 +9,8 @@ import CardList from '@/components/ui/CardList';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Metadata from '@/components/common/Metadata';
+import { METADATA } from '@/constants/config';
 
 export default function Page() {
   const [myFavorites, setMyFavorites] = useState([]);
@@ -42,65 +44,68 @@ export default function Page() {
   }, []);
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
+      <Metadata title={METADATA.MEMBER_MYPAGE} />
       <Breadcrumb paths={[{ label: 'マイページ' }]} />
       <PageTitle title='マイページ' subTitle='My page' />
       <div className='l-container--col-2 l-container--contents'>
         <div className='l-container--col-2__main'>
-          <div>
-            {/* Member only content */}
-            <section className='c-box'>
-              <div className='c-heading--box__outer -oneLine'>
-                <h2 className='c-heading--box'>今月の会員限定記事</h2>
-              </div>
-              <ul className='c-card-list c-card-list--col-2'>
-                {limitedContent &&
-                  limitedContent.map((item, index) => (
-                    <li className='c-card__item' key={index}>
-                      <Link
-                        href={`/member/limited/${item.topics_id}`}
-                        className='c-card'
-                      >
-                        <div className='c-card__image'>
-                          <Image
-                            alt={item.bannerImage.desc || 'dummy'}
-                            src={item.bannerImage.url}
-                            fill
-                          />
+          {/* Member only content */}
+          <section>
+            <div className='c-heading--border-horizontal'>
+              <h2 className='c-heading--lv3 u-mb-0'>今月の会員限定記事</h2>
+            </div>
+            <ul className='c-media-list c-media-list--col-2'>
+              {limitedContent &&
+                limitedContent.map((item, index) => (
+                  <li className='c-media__item' key={index}>
+                    <Link
+                      href={`/member/limited/${item.topics_id}`}
+                      className='c-media'
+                    >
+                      <div className='c-media__image'>
+                        <Image
+                          alt={item.bannerImage.desc || 'dummy'}
+                          src={item.bannerImage.url}
+                          fill
+                        />
+                      </div>
+                      <div>
+                        <h3 className='c-media__heading'>{item.subject}</h3>
+                        <p className='c-media__text'>{item.introduction}</p>
+                        <div className='c-media__bottom'>
+                          <p className='c-media__area'>
+                            <svg className='c-map__icon c-svg'>
+                              <use href='/svg/icon.svg#icon-map' />
+                            </svg>
+                            {item.area}
+                          </p>
+                          <p className='c-media__category'>
+                            {item.contents_type_nm}
+                          </p>
                         </div>
-                        <div className='c-card__info'>
-                          <h3 className='c-card__heading'>{item.subject}</h3>
-                          <p className='c-card__text'>{item.introduction}</p>
-                          <div className='c-card__bottom'>
-                            <p className='c-card__area'>
-                              <svg className='c-map__icon c-svg'>
-                                <use href='/svg/icon.svg#icon-map' />
-                              </svg>
-                              {item.area}
-                            </p>
-                            <p className='c-card__category'>
-                              {item.contents_type_nm}
-                            </p>
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            </section>
-            <section className='c-favoriteList l-container--contents'>
-              <h2 className='c-heading--lv1'>お気に入り記事</h2>
-              <p className='c-heading--sub'>Favorite articles</p>
-              <div className='u-mt-40'>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </section>
+          <section className='c-favoriteList l-container--contents'>
+            <h2 className='c-heading--lv1'>お気に入り記事</h2>
+            <p className='c-heading--sub'>Favorite articles</p>
+            <div className='u-mt-40'>
+              {myFavorites.length === 0 ? (
+                <p>お気に入り記事はありません。</p>
+              ) : (
                 <CardList data={myFavorites} />
-              </div>
-            </section>
-          </div>
+              )}
+            </div>
+          </section>
         </div>
         <div className='l-container--col-2__side'>
           <Menu />
         </div>
       </div>
-    </div>
+    </main>
   );
 }

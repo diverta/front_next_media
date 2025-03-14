@@ -40,10 +40,10 @@ export default function Article({ children }) {
       setContent(contentDirectory.article);
     }
 
-    // changes the searchParams object to a plain object
-    const params = searchParams
-      .entries()
-      .reduce((prev, [key, value]) => ({ ...prev, [key]: value }), {});
+    const params = Array.from(searchParams.entries()).reduce(
+      (prev, [key, value]) => ({ ...prev, [key]: value }),
+      {},
+    );
     setParams(params);
 
     async function fetchTagName(categoryid, id) {
@@ -62,9 +62,9 @@ export default function Article({ children }) {
 
   function renderListTitle() {
     if (searchKeyWord) {
-      return `${content.title}一覧[${searchKeyWord}]`;
+      return `「${searchKeyWord}」の${content.title}`;
     } else if (content) {
-      return `${content.title}一覧`;
+      return `${content.title}`;
     } else {
       return `${categoryTitle} ${title}一覧`;
     }
@@ -74,7 +74,7 @@ export default function Article({ children }) {
     <section className='c-article__list'>
       <div className='c-heading__wrapper'>
         <h2 className='c-heading--lv2 u-display-flex-grow-1'>
-          <span>{renderListTitle()}</span>
+          {renderListTitle()}
         </h2>
       </div>
       {children}
@@ -90,8 +90,8 @@ export default function Article({ children }) {
         title={content ? content.title : categoryTitle}
         subTitle={content ? content.subtitle : list?.[0]?.contents_type_nm}
       />
-      <div className='l-container--col-2 l-container--contents'>
-        <div className='l-container--col-2__main'>
+      <div className='l-container--large l-container--contents'>
+        <main>
           <Wrapper>
             <>
               {list === null && (
@@ -110,7 +110,7 @@ export default function Article({ children }) {
               )}
             </>
           </Wrapper>
-        </div>
+        </main>
         {children}
       </div>
     </>

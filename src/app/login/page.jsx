@@ -9,6 +9,8 @@ import AlertError from '@/components/ui/AlertError';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
+import Metadata from '@/components/common/Metadata';
+import { METADATA } from '@/constants/config';
 
 export default function Page() {
   const email = useRef('');
@@ -36,8 +38,10 @@ export default function Page() {
   };
 
   return (
-    <div className='l-container'>
+    <main className='l-container'>
+      <Metadata title={METADATA.LOGIN} />
       <Breadcrumb paths={[{ label: 'ログイン' }]} />
+
       <PageTitle title='ログイン' subTitle='Login' />
       <div className='l-container--small l-container--contents'>
         <div className='flex min-h-screen flex-col items-center justify-between p-24'>
@@ -47,7 +51,7 @@ export default function Page() {
             <div>You have already logged in.</div>
           ) : (
             <form
-              className='c-form c-box'
+              className='c-form'
               onSubmit={handleLogin}
               onChange={handleChange}
             >
@@ -89,6 +93,6 @@ export default function Page() {
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -24,27 +24,21 @@ export default async function Page({ params }) {
   const features = await getFeatureDetails(params.id);
 
   return (
-    <div className='l-container'>
-      <Breadcrumb
-        paths={[{ label: features?.contents_type_ext_col_01 }]}
-      />
-      <PageTitle
-        title={features?.contents_type_ext_col_01}
-        subTitle={features?.contents_type_nm}
-      />
-      <div className='l-container--col-2 l-container--contents'>
-        <div className='l-container--col-2__main'>
-          <div>
-            <FeatureDetailBody params={params} />
-          </div>
-        </div>
-        <div className='l-container--col-2__side'>
-          <Banner />
-          <Feature />
-          <TagArea />
-          <TagKeyword />
+    <main className='l-container'>
+      <Breadcrumb paths={[{ label: features?.contents_type_ext_col_01 }]} />
+
+      <PageTitle title='特集' subTitle='Feature' />
+      <div className='u-bg-white'>
+        <div className='l-container--large l-container--contents'>
+          <FeatureDetailBody params={params} />
         </div>
       </div>
-    </div>
+      <div className='l-container--large'>
+        <Feature />
+        <TagArea />
+        <TagKeyword />
+        <Banner />
+      </div>
+    </main>
   );
 }
