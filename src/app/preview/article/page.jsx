@@ -7,10 +7,18 @@ import TagArea from '@/components/common/TagArea';
 import TagKeyword from '@/components/common/TagKeyword';
 import Feature from '@/components/section/feature/Feature';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import getArticlePreview from '@/fetch/getArticlePreview';
 
 export default function Page() {
+  return (
+    <Suspense>
+      <PreviewArticle />
+    </Suspense>
+  );
+}
+
+function PreviewArticle() {
   const preview_token = useSearchParams().get('preview_token');
   const [data, setData] = useState();
   const [paths, setPaths] = useState([{}]);
