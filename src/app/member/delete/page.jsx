@@ -11,17 +11,24 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Metadata from '@/components/common/Metadata';
 import { METADATA } from '@/constants/config';
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
   const [memberInfo, setMemberInfo] = useState([]);
   const { storeUser } = useUser();
   const [alert, setAlert] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const memberInfoFunction = async () => {
       try {
         const info = await getMemberMe();
-        setMemberInfo(info.details);
+        if(info.errors.length){
+          router.push('/login');
+        }
+        else {
+          setMemberInfo(info.details);
+        }
       } catch (error) {
         console.error('Error fetching member information', error);
       }
