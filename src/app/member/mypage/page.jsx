@@ -11,18 +11,25 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Metadata from '@/components/common/Metadata';
 import { METADATA } from '@/constants/config';
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
   const [myFavorites, setMyFavorites] = useState([]);
   // const [setMyFavoritesPageInfo] = useState([]);
   const [limitedContent, setLimitedContent] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const favoriteList = async () => {
       try {
         const favorites = await getMyFavoriteList();
-        setMyFavorites(favorites.list);
-        // setMyFavoritesPageInfo(favorites.pageInfo);
+        if(favorites.errors.length){
+          router.push('/login');
+        }
+        else {
+          setMyFavorites(favorites.list);
+          // setMyFavoritesPageInfo(favorites.pageInfo);
+        }
       } catch (error) {
         console.error('Error fetching favorite list:', error);
       }
