@@ -14,15 +14,15 @@
     "jsx": "preserve",
     "baseUrl": "./", // Added baseUrl for path mapping
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     },
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.js", // Change to include JavaScript files
     "**/*.jsx", // Include JSX files
-    ".next/types/**/*.ts",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

@@ -22,7 +22,7 @@ const secularOne = Secular_One({
 });
 
 export const metadata = {
-  title:{
+  title: {
     default: METADATA.TITLE,
     template: `%s | ${METADATA.TITLE}`,
   },
