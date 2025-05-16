@@ -11,6 +11,8 @@ const FeatureDetailBody = ({ params }) => {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
+    if (!params?.id) return;
+
     const fetchList = async () => {
       try {
         const features = await getFeatureDetails(params.id);
@@ -18,7 +20,7 @@ const FeatureDetailBody = ({ params }) => {
 
         const contentsPromises = features.relatedContents
           .map((item) => item.module_id)
-          .filter((id) => id)
+          .filter(Boolean)
           .map(getDetails);
 
         const details = await Promise.all(contentsPromises);
