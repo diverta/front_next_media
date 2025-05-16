@@ -58,7 +58,7 @@ export default function Article({ children }) {
       setCategoryTitle(list?.[0]?.contents_type_ext_col_01);
     }
     fetchData();
-  }, [searchParams, title, content]);
+  }, [searchParams]);
 
   function renderListTitle() {
     if (searchKeyWord) {
