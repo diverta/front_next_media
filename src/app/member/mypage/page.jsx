@@ -23,10 +23,9 @@ export default function Page() {
     const favoriteList = async () => {
       try {
         const favorites = await getMyFavoriteList();
-        if(favorites.errors.length){
+        if (favorites.errors.length) {
           router.push('/login');
-        }
-        else {
+        } else {
           setMyFavorites(favorites.list);
           // setMyFavoritesPageInfo(favorites.pageInfo);
         }

@@ -26,10 +26,9 @@ export default function Page() {
       try {
         const info = await getMemberMe();
         console.log(info);
-        if(info.errors.length){
+        if (info.errors.length) {
           router.push('/login');
-        }
-        else {
+        } else {
           setMemberInfo(info.details);
         }
       } catch (error) {
