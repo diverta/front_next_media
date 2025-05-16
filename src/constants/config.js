@@ -15,11 +15,11 @@ export const contentDirectory = {
     title: '検索結果',
     subtitle: 'SEARCH',
   },
-}
+};
 
 export const METADATA = {
   TITLE: 'Kuroco Trip',
-  DESCRIPTION: 'Let\'s Travel and Enjoy!',
+  DESCRIPTION: "Let's Travel and Enjoy!",
   ARTICLES: 'Articles',
   DETAILS: 'Details',
   CONTACT: 'Contact',
@@ -32,4 +32,4 @@ export const METADATA = {
   MEMBER_UPDATE: 'Member Update',
   MEMBER_MYPAGE: 'My Page',
   LIMITED_CONTENT: 'Member Only',
-}
+};
