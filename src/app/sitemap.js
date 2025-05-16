@@ -28,3 +28,5 @@ export default async function sitemap() {
     ...featureDetails,
   ];
 }
+
+export const dynamic = 'force-static';

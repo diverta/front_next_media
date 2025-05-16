@@ -7,3 +7,5 @@ export default function robots() {
     sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`,
   };
 }
+
+export const dynamic = 'force-static';

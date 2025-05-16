@@ -17,26 +17,21 @@
     "*.{css,scss}": "npm run format"
   },
   "dependencies": {
-    "next": "^14.2.25",
-    "next-auth": "^4.24.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "textlint": "^13.4.1"
+    "clsx": "^2.1.0",
+    "next": "^15.3.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "autoprefixer": "latest",
-    "clsx": "^2.1.0",
-    "eslint": "latest",
-    "eslint-config-next": "^14.2.25",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.3.2",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "postcss": "latest",
+    "postcss": "^8.5.3",
     "prettier": "^3.2.5",
     "sass": "^1.69.5",
-    "tailwindcss": "latest"
+    "tailwindcss": "^3.4.17"
   }
 }
