@@ -15,6 +15,7 @@
   "rules": {
     "no-unused-vars": "warn",
     "no-undef": "warn",
-    "no-unused-expressions": "warn"
+    "no-unused-expressions": "warn",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
