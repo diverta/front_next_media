@@ -31,7 +31,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const item = await getDetails(params.id);
+  const p = await params;
+  const item = await getDetails(p.id);
 
   const paths = [
     {
@@ -47,7 +48,7 @@ export default async function Page({ params }) {
         <Breadcrumb paths={paths} />
         <div className='l-container--large c-article'>
           <main>
-            <DetailBody data={item} params={params} />
+            <DetailBody data={item} params={p} />
           </main>
         </div>
       </div>

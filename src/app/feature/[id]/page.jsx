@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const features = await getFeatureDetails(params.id);
+  const p = await params;
+  const features = await getFeatureDetails(p.id);
 
   return (
     <main className='l-container'>
@@ -30,7 +31,7 @@ export default async function Page({ params }) {
       <PageTitle title='特集' subTitle='Feature' />
       <div className='u-bg-white'>
         <div className='l-container--large l-container--contents'>
-          <FeatureDetailBody params={params} />
+          <FeatureDetailBody params={p} />
         </div>
       </div>
       <div className='l-container--large'>
