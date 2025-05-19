@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/diverta/front_next_media)
+
 ## Getting Started
 
 First, run the development server:
