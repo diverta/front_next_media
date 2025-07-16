@@ -43,14 +43,14 @@ A modern media sample site built with Next.js and [Kuroco](https://kuroco.app/) 
 
 Before deploying this template, you'll need:
 
-1. **Kuroco Account** - [Sign up for free trial](https://kuroco.app/ja/free_trial/)
+1. **Kuroco Account** - [Sign up for free trial](https://kuroco.app/free_trial/)
 2. **Kuroco Sub-site** - Create a sub-site using the `[Template]Next Media(Default)` template
 3. **GitHub Account** - For repository management
 
 ### Step 1: Set up Kuroco Backend
 
 1. **Register for Kuroco**
-   - Visit [Kuroco free trial page](https://kuroco.app/ja/free_trial/)
+   - Visit [Kuroco free trial page](https://kuroco.app/free_trial/)
    - Fill in the required information and click "Register"
    - Check your email for the registration confirmation
 
@@ -75,9 +75,7 @@ Before deployment, prepare your environment variable:
 |----------|-------------|---------|
 | `NEXT_PUBLIC_BASE_URL` | Your Kuroco API domain | `https://your-instance.a.kuroco.app` |
 
-:::tip
-You can find your API domain in Account Settings or the Endpoint List page in your Kuroco admin panel.
-:::
+*You can find your API domain in Account Settings or the Endpoint List page in your Kuroco admin panel.
 
 ### Step 3: Deploy
 
@@ -98,9 +96,7 @@ After deployment, you need to configure CORS to allow your frontend to access th
    - `https://your-vercel-app.vercel.app` (your deployed Vercel URL)
 4. Click "Save"
 
-:::warning
-Without proper CORS configuration, your frontend will not be able to fetch data from the Kuroco API, resulting in API errors.
-:::
+*Without proper CORS configuration, your frontend will not be able to fetch data from the Kuroco API, resulting in API errors.
 
 ### Step 5: Local Development (Optional)
 
