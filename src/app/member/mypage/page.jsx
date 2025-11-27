@@ -12,14 +12,26 @@ import { useEffect, useState } from 'react';
 import Metadata from '@/components/common/Metadata';
 import { METADATA } from '@/constants/config';
 import { useRouter } from 'next/navigation';
+import { useUser } from '@/contexts/user';
 
 export default function Page() {
   const [myFavorites, setMyFavorites] = useState([]);
   // const [setMyFavoritesPageInfo] = useState([]);
   const [limitedContent, setLimitedContent] = useState([]);
   const router = useRouter();
+  const { user, loading } = useUser();
+
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
 
   useEffect(() => {
+    // Only fetch data if user is authenticated
+    if (!user) return;
+
     const favoriteList = async () => {
       try {
         const favorites = await getMyFavoriteList();
@@ -34,9 +46,12 @@ export default function Page() {
       }
     };
     favoriteList();
-  }, []);
+  }, [user, router]);
 
   useEffect(() => {
+    // Only fetch data if user is authenticated
+    if (!user) return;
+
     const fetchMemberOnlyList = async () => {
       try {
         const limitedContent = await getLimitedContent();
@@ -47,7 +62,25 @@ export default function Page() {
     };
 
     fetchMemberOnlyList(); // Fetch member-only list initially
-  }, []);
+  }, [user]);
+
+  // Show loading state while checking authentication
+  if (loading) {
+    return (
+      <main className='l-container'>
+        <Metadata title={METADATA.MEMBER_MYPAGE} />
+        <div className='flex min-h-screen items-center justify-center'>
+          <div>Loading...</div>
+        </div>
+      </main>
+    );
+  }
+
+  // Don't render content if user is not authenticated
+  // (will be redirected to login page)
+  if (!user) {
+    return null;
+  }
 
   return (
     <main className='l-container'>
