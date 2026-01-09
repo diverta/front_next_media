@@ -34,7 +34,7 @@ export default function Page() {
       }
     };
     favoriteList();
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     const fetchMemberOnlyList = async () => {
