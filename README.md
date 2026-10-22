@@ -31,7 +31,8 @@ A modern media sample site built with Next.js and [Kuroco](https://kuroco.app/) 
 
 ## 🛠 Tech Stack
 
-- **Frontend**: Next.js 15.3.2, React 19.1.0
+- **Runtime**: Node.js 24.x or later
+- **Frontend**: Next.js 15.5.28, React 19.2.1
 - **Styling**: Tailwind CSS 3.4.17, Sass 1.69.5
 - **Backend**: Kuroco CMS (Headless CMS)
 - **Deployment**: Any hosting service
