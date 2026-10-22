@@ -19,7 +19,7 @@ export const contentDirectory = {
 
 export const METADATA = {
   TITLE: 'Kuroco Trip',
-  DESCRIPTION: "Let's Travel and Enjoy!",
+  DESCRIPTION: "Let's Travel!",
   ARTICLES: 'Articles',
   DETAILS: 'Details',
   CONTACT: 'Contact',
