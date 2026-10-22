@@ -37,7 +37,7 @@ export default function Page() {
     };
 
     memberInfoFunction();
-  }, []);
+  }, [router]);
 
   const name1 = useRef('');
   const name2 = useRef('');

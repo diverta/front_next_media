@@ -8,10 +8,19 @@ export default async function getContentList(params) {
   );
 
   url.searchParams.append('pageID', page);
+
   const categoryID = category[topic] || '';
-  categoryID && url.searchParams.append('contents_type', categoryID);
-  tag_id && url.searchParams.append('tag_id[]', tag_id);
-  search && url.searchParams.append('filter', `keyword contains ${search}`);
+  if (categoryID) {
+    url.searchParams.append('contents_type', categoryID);
+  }
+
+  if (tag_id) {
+    url.searchParams.append('tag_id[]', tag_id);
+  }
+
+  if (search) {
+    url.searchParams.append('filter', `keyword contains ${search}`);
+  }
 
   const res = await fetch(url);
   return await res.json();

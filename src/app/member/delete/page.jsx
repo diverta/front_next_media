@@ -34,7 +34,7 @@ export default function Page() {
     };
 
     memberInfoFunction();
-  }, []);
+  }, [router]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
